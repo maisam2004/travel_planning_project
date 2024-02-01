@@ -40,6 +40,7 @@ def logout():
     return redirect(url_for('login'))  # Redirected to login page
 
 #-----------------------------------------
+#----signup part --------------
 
 
 @app.route('/signup')
