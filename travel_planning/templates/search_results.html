@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Search page{% endblock %}
+{% block content %}
+
+<!-- Search Results Page Content -->
+
+<div class="container mt-5">
+    <h2>Search Results</h2>
+
+    <!-- Search Bar -->
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <!-- Filter Options -->
+    <div class="mt-3">
+        <label for="filterContinent">Continent:</label>
+        <select class="form-control" id="filterContinent">
+            <option>All</option>
+            <option>Asia</option>
+            <option>Europe</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <!-- Destination List -->
+    <div class="row mt-4">
+        <!-- Example Destination Item -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/destination-image.jpg" class="card-img-top" alt="Destination Image">
+                <div class="card-body">
+                    <h5 class="card-title">Destination Name</h5>
+                    <p class="card-text">Location, Type, Budget Range, etc.</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat the above block for each destination -->
+    </div>
+
+    <!-- Pagination or Load More Button -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mt-4">
+            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    </nav>
+
+</div>
+
+{% endblock %}

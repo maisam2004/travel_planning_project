@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="bg-light py-3">
+    <div class="container mt-5">
+        <h1 class="display-4">Explore the World with Your Travel App</h1>
+        <p class="lead">Discover amazing destinations and share your travel experiences.</p>
+        <hr class="my-4">
+        <p>Get started by searching for your next adventure!</p>
+        <!-- Search Bar -->
+        <form class="form-inline" action="{{ url_for('search') }}" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search destinations..." name="search_query">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Featured Destinations -->
+<div class="container mt-5">
+    <h2 class="mb-4">Featured Destinations</h2>
+    <div class="card-deck">
+        <!-- Example Featured Destination Card -->
+        <div class="card">
+            <img src="path/to/destination-image.jpg" class="card-img-top" alt="Destination Image">
+            <div class="card-body">
+                <h5 class="card-title">Paris, France</h5>
+                <p class="card-text">Explore the romantic city of Paris with its iconic landmarks.</p>
+            </div>
+        </div>
+
+        <!-- Add more featured destination cards here -->
+        <div class="card">
+            <img src="path/to/destination-image.jpg" class="card-img-top" alt="Destination Image">
+            <div class="card-body">
+                <h5 class="card-title">Paris, France</h5>
+                <p class="card-text">Explore the romantic city of Paris with its iconic landmarks.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
