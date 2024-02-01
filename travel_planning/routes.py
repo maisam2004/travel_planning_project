@@ -2,6 +2,7 @@ from flask import render_template,redirect,request,url_for,flash
 from flask_login import login_user, logout_user, login_required
 from travel_planning import app,db,login_manager
 from .models import User
+from .forms import SignupForm
 
 #from travel_planning.models import Category , Task
 
@@ -41,11 +42,37 @@ def logout():
 
 #-----------------------------------------
 #----signup part --------------
-
-
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    return render_template('signup.html')
+    form = SignupForm()
+
+    if form.validate_on_submit():
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+
+        # Check if the username or email is already taken
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            flash('Username or email already exists. Please choose a different one.', 'danger')
+            return redirect(url_for('signup'))
+
+        # Create a new user and add it to the database
+        new_user = User(username=username, email=email)
+        new_user.set_password(password)
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Account created successfully! You can now log in.', 'success')
+
+        # Automatically log in the new user
+        login_user(new_user)
+
+        return redirect(url_for('home'))
+
+    return render_template('signup.html', form=form)
+
+#=======================
 
 
 
