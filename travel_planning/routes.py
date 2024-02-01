@@ -2,7 +2,7 @@ from flask import render_template,redirect,request,url_for,flash
 from flask_login import login_user, logout_user, login_required
 from travel_planning import app,db,login_manager
 from .models import User
-from .forms import SignupForm
+from .forms import SignupForm , ResetPasswordForm
 
 #from travel_planning.models import Category , Task
 
@@ -40,7 +40,50 @@ def logout():
     flash('Logged out successfully.', 'success')
     return redirect(url_for('login'))  # Redirected to login page
 
-#-----------------------------------------
+#-Reset passwork --------------------------
+# Handling password reset request
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    form = ResetPasswordRequestForm()
+
+    if form.validate_on_submit():
+        # Implement logic to initiate the password reset process
+        # This might involve generating a unique token or link and sending an email
+        flash('Password reset instructions sent to your email.', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_password_request.html', form=form)
+
+# Handling reset link
+# Handling reset link
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password_token(token):
+    # Implement logic to validate the token and handle the password reset
+    form = ResetPasswordForm()
+
+    if form.validate_on_submit():
+        # Implement logic to update the user's password
+        flash('Password reset successful. You can now log in with your new password.', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_password.html', form=form)
+
+
+# ... your existing routes ...
+
+@app.route('/reset_password_request_alternative', methods=['GET', 'POST'],endpoint='reset_password_request_alt')
+def reset_password_request():
+    form = ResetPasswordForm()
+
+    if form.validate_on_submit():
+        # Implement logic to handle password reset
+        # This might involve sending an email with a reset link, etc.
+        flash('Password reset instructions sent to your email.', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_password.html', form=form)
+
+
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
