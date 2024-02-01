@@ -17,7 +17,6 @@ class User(db.Model, UserMixin):
 
 
 
-
 """
 class Category(db.Model):
     #schema for category model
