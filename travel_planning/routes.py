@@ -38,3 +38,9 @@ def search():
     ]
 
     return render_template('search_results.html', query=search_query, destinations=destinations)
+
+
+@app.route("/list_holidays")
+def list_holidays():
+  return "Holidays and observances"
+
