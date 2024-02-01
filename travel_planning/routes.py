@@ -1,5 +1,8 @@
-from flask import render_template,redirect,request,url_for
-from travel_planning import app,db
+from flask import render_template,redirect,request,url_for,flash
+from flask_login import login_user, logout_user, login_required
+from travel_planning import app,db,login_manager
+from .models import User
+from travel_planning import login_manager
 #from travel_planning.models import Category , Task
 
 @app.route('/')

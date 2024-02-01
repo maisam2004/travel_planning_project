@@ -1,6 +1,7 @@
 import os 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager as login_manager
 if os.path.exists("env.py"):
     import env
 
