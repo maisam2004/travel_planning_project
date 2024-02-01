@@ -55,23 +55,21 @@ def signup():
         existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
         if existing_user:
             flash('Username or email already exists. Please choose a different one.', 'danger')
-            return redirect(url_for('signup'))
+        else:
+            # Create a new user and add it to the database
+            new_user = User(username=username, email=email)
+            new_user.set_password(password)
+            db.session.add(new_user)
+            db.session.commit()
 
-        # Create a new user and add it to the database
-        new_user = User(username=username, email=email)
-        new_user.set_password(password)
-        db.session.add(new_user)
-        db.session.commit()
+            flash('Account created successfully! You can now log in.', 'success')
 
-        flash('Account created successfully! You can now log in.', 'success')
+            # Automatically log in the new user
+            login_user(new_user)
 
-        # Automatically log in the new user
-        login_user(new_user)
-
-        return redirect(url_for('home'))
+            return redirect(url_for('home'))
 
     return render_template('signup.html', form=form)
-
 #=======================
 
 
