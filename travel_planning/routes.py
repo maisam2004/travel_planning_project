@@ -2,7 +2,7 @@ from flask import render_template,redirect,request,url_for,flash
 from flask_login import login_user, logout_user, login_required
 from travel_planning import app,db,login_manager
 from .models import User
-from .forms import SignupForm , ResetPasswordForm
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm
 
 #from travel_planning.models import Category , Task
 
@@ -42,7 +42,7 @@ def logout():
 
 #-Reset passwork --------------------------
 # Handling password reset request
-@app.route('/reset_password_request', methods=['GET', 'POST'])
+@app.route('/reset_password_request', methods=['GET', 'POST'], endpoint='reset_password_request')
 def reset_password_request():
     form = ResetPasswordRequestForm()
 
@@ -55,8 +55,7 @@ def reset_password_request():
     return render_template('reset_password_request.html', form=form)
 
 # Handling reset link
-# Handling reset link
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+@app.route('/reset_password_token/<token>', methods=['GET', 'POST'])
 def reset_password_token(token):
     # Implement logic to validate the token and handle the password reset
     form = ResetPasswordForm()
@@ -68,11 +67,10 @@ def reset_password_token(token):
 
     return render_template('reset_password.html', form=form)
 
-
 # ... your existing routes ...
 
-@app.route('/reset_password_request_alternative', methods=['GET', 'POST'],endpoint='reset_password_request_alt')
-def reset_password_request():
+@app.route('/reset_password_request_alternative', methods=['GET', 'POST'])
+def reset_password_request_alternative():
     form = ResetPasswordForm()
 
     if form.validate_on_submit():
@@ -82,7 +80,6 @@ def reset_password_request():
         return redirect(url_for('login'))
 
     return render_template('reset_password.html', form=form)
-
 
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
