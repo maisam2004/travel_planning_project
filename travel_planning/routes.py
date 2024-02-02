@@ -3,7 +3,10 @@ from flask_login import login_user, logout_user, login_required
 from travel_planning import app,db,login_manager
 from .models import User
 from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm
-
+from flask_mail import Message
+from . import mail
+import os
+import secrets 
 #from travel_planning.models import Category , Task
 
 @app.route('/')
@@ -27,7 +30,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             login_user(user)
-            flash('Logged in successfully!', 'success')
+            #flash('Logged in successfully!', 'success')
             return redirect(url_for('home'))
         else:
             flash('Invalid username or password.', 'danger')
@@ -42,14 +45,36 @@ def logout():
 
 #-Reset passwork --------------------------
 # Handling password reset request
-@app.route('/reset_password_request', methods=['GET', 'POST'], endpoint='reset_password_request')
+@app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     form = ResetPasswordRequestForm()
 
     if form.validate_on_submit():
-        # Implement logic to initiate the password reset process
-        # This might involve generating a unique token or link and sending an email
-        flash('Password reset instructions sent to your email.', 'success')
+        # Check if the email exists in the database
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            # Generate a secure token for resetting the password
+            token = secrets.token_urlsafe(32)
+            user.reset_password_token = token
+            db.session.commit()
+
+            # Create a Message object for the email
+            msg = Message('Password Reset Request', sender=app.config['MAIL_USERNAME'], recipients=[user.email])
+            reset_url = url_for('reset_password_token', token=token, _external=True)
+            msg.body = f'To reset your password, click the following link: {reset_url}'
+
+            try:
+                # Send the password reset email
+                mail.send(msg)
+                flash('Password reset instructions sent to your email.', 'success')
+            except Exception as e:
+                # Log any exceptions
+                flash(f'Error sending password reset email: {str(e)}', 'danger')
+
+        else:
+            # User with the provided email does not exist
+            flash('No account found with that email address.', 'danger')
+
         return redirect(url_for('login'))
 
     return render_template('reset_password_request.html', form=form)
@@ -80,6 +105,25 @@ def reset_password_request_alternative():
         return redirect(url_for('login'))
 
     return render_template('reset_password.html', form=form)
+
+
+#--- send email reset message
+@app.route('/send_test_email')
+def send_test_email():
+    # Create a Message object
+    msg = Message('Test Email', sender=os.environ.get('MAIL_USERNAME'), recipients=['recipient@example.com'])
+    msg.body = 'This is a test email.'
+
+    try:
+        # Send the message
+        mail.send(msg)
+        flash('Test email sent successfully!', 'success')
+    except Exception as e:
+        # Log any exceptions
+        flash(f'Error sending test email: {str(e)}', 'danger')
+
+    return redirect(url_for('home'))  # Redirect to home page or another appropriate route
+
 
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
