@@ -1,6 +1,6 @@
 # forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField
+from wtforms import StringField, PasswordField , SubmitField,FileField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 class SignupForm(FlaskForm):
@@ -18,3 +18,9 @@ class ResetPasswordForm(FlaskForm):
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
+
+class AddDestinationForm(FlaskForm):
+    name = StringField('Destination Name', validators=[DataRequired()])
+    location = StringField('Destination Location', validators=[DataRequired()])
+    image = FileField('Upload Image')
+    submit = SubmitField('Add Destination')

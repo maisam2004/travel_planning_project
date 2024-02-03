@@ -1,6 +1,7 @@
 from travel_planning import db
 from flask_login import UserMixin
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 bcrypt = Bcrypt()  # Using bcrypt for password hashing
 
 class User(db.Model, UserMixin):
@@ -15,7 +16,13 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password_hash, password)
 
-
+class Destination(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    location = db.Column(db.String(150), nullable=False)
+    image = db.Column(db.String(255))  # Store the file path or URL of the image
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
 """
 class Category(db.Model):
