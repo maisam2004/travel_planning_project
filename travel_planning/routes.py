@@ -79,7 +79,7 @@ def save_destination_image(image):
     image_path = os.path.join('images', 'destinations', filename)
     image.save(os.path.join(app.root_path, 'static', image_path))
 
-    return 'static/' + image_path  # Include 'static/' in the path
+    return 'static/' + image_path  # Include 'static/' in the path 
 
 
 
