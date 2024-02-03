@@ -12,7 +12,8 @@
         {% for destination in user_destinations %}
             <div class="col mb-4">
                 <div class="card">
-                    <img src="{{ url_for('static', filename='images/destinations/' + destination.image) }}" class="card-img-top" alt="Destination Image">
+                    
+                    <img src="/{{ destination.image | replace('\\', '/') }}" class="card-img-top" alt="Destination Image">
 
                     <div class="card-body">
                         <h5 class="card-title">{{ destination.name }}</h5>

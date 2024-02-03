@@ -18,38 +18,51 @@ def home():
 from flask_login import current_user  # Import the current_user
 
 @app.route('/explore', methods=['GET', 'POST'])
-@login_required
 def explore():
-    # Handle the form submission for adding new destinations
-    form = AddDestinationForm()
+    # Check if the user is logged in
+    if current_user.is_authenticated:
+        # User is logged in, allow additional actions
+        form = AddDestinationForm()
 
-    if form.validate_on_submit():
-        new_destination_name = form.name.data  # Adjust the field name
-        new_destination_location = form.location.data  # Adjust the field name
-        new_destination_image = form.image.data  # Adjust the field name
+        if form.validate_on_submit():
+           
 
-        # Save the uploaded image and get the file path
-        image_path = save_destination_image(new_destination_image)
+           
+            new_destination_name = form.name.data
+            new_destination_location = form.location.data
+            new_destination_image = form.image.data
+    # Process and save the form data...
 
-        # Create a new Destination object and add it to the database
-        new_destination = Destination(
-            name=new_destination_name,
-            location=new_destination_location,
-            image=image_path,
-            user=current_user  # Use the actual User object
-        )
+            # Save the uploaded image and get the file path
+            image_path = save_destination_image(new_destination_image)
 
-        db.session.add(new_destination)
-        db.session.commit()
-        flash('New destination added successfully!', 'success')
+            # Create a new Destination object and add it to the database
+            new_destination = Destination(
+                name=new_destination_name,
+                location=new_destination_location,
+                image=image_path,
+                user_id=current_user.id  # Associate the destination with the current user
+            )
 
-        # Redirect to the explore page to show the updated list of destinations
-        return redirect(url_for('explore'))
+            db.session.add(new_destination)
+            db.session.commit()
 
-    # Retrieve user-specific destinations for display
-    user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
+            flash('Destination added successfully!', 'success')
+            print("Destination added successfully!")  # Add this line for additional debug information
+            return redirect(url_for('explore'))
 
-    return render_template('explore.html', form=form, user_destinations=user_destinations)
+        # Retrieve destinations for the current user
+        user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
+
+        return render_template('explore.html', form=form, user_destinations=user_destinations)
+
+    else:
+        # User is not logged in, only allow viewing
+        all_destinations = Destination.query.all()
+        return render_template('explore.html', all_destinations=all_destinations)
+
+
+
 
 def save_destination_image(image):
     # Handle the image upload, save it to a folder or cloud storage
@@ -63,10 +76,11 @@ def save_destination_image(image):
     filename = secrets.token_hex(8) + secure_filename(image.filename)
 
     # Save the file to the destination folder
-    image_path = os.path.join(destination_images_folder, filename)
-    image.save(image_path)
+    image_path = os.path.join('images', 'destinations', filename)
+    image.save(os.path.join(app.root_path, 'static', image_path))
 
-    return image_path
+    return 'static/' + image_path  # Include 'static/' in the path
+
 
 
 #hadnling login --------------------------
