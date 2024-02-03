@@ -15,68 +15,52 @@ def home():
     return render_template('home.html')
 
 
-
-
-
+from flask_login import current_user  # Import the current_user
 
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
-    # Check if the user is authenticated
+    # Check if the user is logged in
     if current_user.is_authenticated:
         # User is logged in, allow additional actions
         form = AddDestinationForm()
 
         if form.validate_on_submit():
-            # Process and save the form data...
+           
+
+           
+            new_destination_name = form.name.data
+            new_destination_location = form.location.data
+            new_destination_image = form.image.data
+    # Process and save the form data...
 
             # Save the uploaded image and get the file path
-            image_path = save_destination_image(form.image.data)
+            image_path = save_destination_image(new_destination_image)
 
             # Create a new Destination object and add it to the database
             new_destination = Destination(
-                name=form.name.data,
-                location=form.location.data,
+                name=new_destination_name,
+                location=new_destination_location,
                 image=image_path,
-                user_id=current_user.id
+                user_id=current_user.id  # Associate the destination with the current user
             )
 
             db.session.add(new_destination)
             db.session.commit()
 
             flash('Destination added successfully!', 'success')
-            print("Destination added successfully!")
+            print("Destination added successfully!")  # Add this line for additional debug information
             return redirect(url_for('explore'))
 
         # Retrieve destinations for the current user
         user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
-        
+
         return render_template('explore.html', form=form, user_destinations=user_destinations)
 
     else:
         # User is not logged in, only allow viewing
         all_destinations = Destination.query.all()
         return render_template('explore.html', all_destinations=all_destinations)
-@app.route('/explore/delete/<int:destination_id>', methods=['POST'])
-def delete_destination(destination_id):
-    # Check if the user is authenticated
-    if not current_user.is_authenticated:
-        flash('You need to log in to delete destinations.', 'danger')
-        return redirect(url_for('login'))
 
-    # Retrieve the destination by ID
-    destination = Destination.query.get_or_404(destination_id)
-
-    # Check if the current user is the creator of the destination
-    if current_user.id != destination.user_id:
-        flash('You are not authorized to delete this destination.', 'danger')
-        return redirect(url_for('explore'))
-
-    # Delete the destination from the database
-    db.session.delete(destination)
-    db.session.commit()
-
-    flash('Destination deleted successfully!', 'success')
-    return redirect(url_for('explore'))
 
 
 
