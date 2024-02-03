@@ -21,10 +21,11 @@ def home():
 
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
+    form = AddDestinationForm()
     # Check if the user is authenticated
     if current_user.is_authenticated:
         # User is logged in, allow additional actions
-        form = AddDestinationForm()
+        
 
         if form.validate_on_submit():
             # Process and save the form data...
@@ -47,15 +48,16 @@ def explore():
             print("Destination added successfully!")
             return redirect(url_for('explore'))
 
-        # Retrieve destinations for the current user
-        user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
-        
-        return render_template('explore.html', form=form, user_destinations=user_destinations)
+        # Retrieve destinations for the all users
+        #user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
+        all_destinations = Destination.query.order_by(Destination.name).all()
+        #return render_template('explore.html', form=form, user_destinations=user_destinations)
 
     else:
         # User is not logged in, only allow viewing
+        
         all_destinations = Destination.query.all()
-        return render_template('explore.html', all_destinations=all_destinations)
+    return render_template('explore.html', form=form,all_destinations=all_destinations)
 @app.route('/explore/delete/<int:destination_id>', methods=['POST'])
 def delete_destination(destination_id):
     # Check if the user is authenticated
