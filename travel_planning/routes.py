@@ -1,21 +1,78 @@
 from flask import render_template,redirect,request,url_for,flash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
-from .models import User
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm
+from .models import User,Destination
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm
 from flask_mail import Message
 from . import mail
 import os
 import secrets 
+from werkzeug.utils import secure_filename
 #from travel_planning.models import Category , Task
 
 @app.route('/')
 def home():
     return render_template('home.html')
-    
-@app.route('/explore')
-def explore(): #Destination Management
-    return render_template('explore.html')
+# explore page
+   
+@app.route('/explore', methods=['GET', 'POST'])
+def explore():
+    # Check if the user is logged in
+    if current_user.is_authenticated:
+        # User is logged in, allow additional actions
+        form = AddDestinationForm()
+
+        if form.validate_on_submit():
+            new_destination_name = form.newDestinationName.data
+            new_destination_location = form.newDestinationLocation.data
+            new_destination_image = form.newDestinationImage.data
+
+            # Save the uploaded image and get the file path
+            image_path = save_destination_image(new_destination_image)
+
+            # Create a new Destination object and add it to the database
+            new_destination = Destination(
+                name=new_destination_name,
+                location=new_destination_location,
+                image=image_path,
+                user_id=current_user.id  # Associate the destination with the current user
+            )
+
+            db.session.add(new_destination)
+            db.session.commit()
+            print("Database commit successful")
+
+            flash('Destination added successfully!', 'success')
+            return redirect(url_for('explore'))
+
+        # Retrieve destinations for the current user
+        user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
+
+        return render_template('explore.html', form=form, user_destinations=user_destinations)
+
+    else:
+        print(form.errors)
+        # User is not logged in, only allow viewing
+        all_destinations = Destination.query.all()
+        return render_template('explore.html', all_destinations=all_destinations)
+
+
+def save_destination_image(image):
+    # Handle the image upload, save it to a folder or cloud storage
+    # For now, save it to the 'static/images/destinations' folder
+    destination_images_folder = os.path.join(app.root_path, 'static', 'images', 'destinations')
+
+    # Ensure the folder exists
+    os.makedirs(destination_images_folder, exist_ok=True)
+
+    # Generate a unique filename
+    filename = secrets.token_hex(8) + secure_filename(image.filename)
+
+    # Save the file to the destination folder
+    image_path = os.path.join(destination_images_folder, filename)
+    image.save(image_path)
+
+    return image_path
 
 #hadnling login --------------------------
 @login_manager.user_loader

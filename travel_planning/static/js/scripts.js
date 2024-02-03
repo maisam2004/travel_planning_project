@@ -20,4 +20,20 @@
             // Hide the form after submission
             addFormContainer.hide();
         }); */
+        
+    });
+    $(document).ready(function () {
+
+        var originalText = $('#addDestinationText').text();
+
+        // Change the text on hover
+        $('.btn-primary').hover(
+            function () {
+                $('#addDestinationText').text('Login first');
+            },
+            function () {
+                // Restore the original text when not hovering
+                $('#addDestinationText').text(originalText);
+            }
+        );
     });
