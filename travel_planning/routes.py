@@ -58,6 +58,19 @@ def explore():
         
         all_destinations = Destination.query.all()
     return render_template('explore.html', form=form,all_destinations=all_destinations)
+
+## edit  destination -----------------
+
+@app.route('/explore/edit/<int:destination_id>', methods=['POST'])
+def edit_destination(destination_id):
+    # Check if the user is authenticated
+    if not current_user.is_authenticated:
+        flash('You need to log in to Edit  destinations.', 'danger')
+        return redirect(url_for('login'))
+    destination = Destination.query.get_or_404(destination_id)
+
+    
+## delete destination -----------------
 @app.route('/explore/delete/<int:destination_id>', methods=['POST'])
 def delete_destination(destination_id):
     # Check if the user is authenticated
