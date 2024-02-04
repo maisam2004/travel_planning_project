@@ -83,6 +83,9 @@ def edit_destination(destination_id):
         # Process and save the form data
         destination.name = form.name.data
         destination.location = form.location.data
+        if form.image.data:
+            # Process and save the uploaded image
+            destination.image = save_destination_image(form.image.data)
 
         # Save the changes to the database
         db.session.commit()
