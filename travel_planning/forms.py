@@ -1,6 +1,7 @@
 # forms.py
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField , SubmitField,FileField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 class SignupForm(FlaskForm):
@@ -29,7 +30,8 @@ class AddDestinationForm(FlaskForm):
 class EditDestinationForm(FlaskForm):
     name = StringField('Destination Name', validators=[DataRequired()])
     location = StringField('Destination Location', validators=[DataRequired()])
-    image = FileField('Upload Image')
+    
+    image = FileField('Update Image', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'], 'Images only!')])
     submit = SubmitField('Save Changes')
 
     def populate_obj(self, obj):
