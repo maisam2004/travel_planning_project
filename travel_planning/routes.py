@@ -2,7 +2,7 @@ from flask import render_template,redirect,request,url_for,flash,current_app
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm
 from flask_mail import Message
 from . import mail
 import os
@@ -61,13 +61,36 @@ def explore():
 
 ## edit  destination -----------------
 
-@app.route('/explore/edit/<int:destination_id>', methods=['POST'])
+@app.route('/explore/edit/<int:destination_id>', methods=['GET', 'POST'])
 def edit_destination(destination_id):
     # Check if the user is authenticated
     if not current_user.is_authenticated:
-        flash('You need to log in to Edit  destinations.', 'danger')
+        flash('You need to log in to edit destinations.', 'danger')
         return redirect(url_for('login'))
+
+    # Retrieve the destination to edit
     destination = Destination.query.get_or_404(destination_id)
+
+    # Check if the current user is the owner of the destination
+    if current_user.id != destination.user_id:
+        flash('You do not have permission to edit this destination.', 'danger')
+        return redirect(url_for('explore'))
+
+    # Use the EditDestinationForm to handle the edit form
+    form = EditDestinationForm(obj=destination)
+
+    if form.validate_on_submit():
+        # Process and save the form data
+        destination.name = form.name.data
+        destination.location = form.location.data
+
+        # Save the changes to the database
+        db.session.commit()
+
+        flash('Destination edited successfully!', 'success')
+        return redirect(url_for('explore'))
+
+    return render_template('edit_destination.html', form=form, destination=destination)
 
     
 ## delete destination -----------------

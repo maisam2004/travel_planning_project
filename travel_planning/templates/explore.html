@@ -21,7 +21,7 @@
                         <!-- Edit and Delete Buttons (conditionally shown) -->
                         <div class="d-flex justify-content-between">
                             {% if current_user.is_authenticated and current_user.id == destination.user_id %}
-                                <a href="#" class="btn btn-info">Edit</a>
+                                <a href="{{ url_for('edit_destination', destination_id=destination.id)}}" class="btn btn-info">Edit</a>
                                 <form method="post" action="{{ url_for('delete_destination', destination_id=destination.id) }}">
                                     <input type="hidden" name="_method" value="DELETE">  <!-- Add this line -->
                                     <button type="submit" class="btn btn-danger">Delete</button>

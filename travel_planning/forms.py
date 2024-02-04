@@ -24,3 +24,17 @@ class AddDestinationForm(FlaskForm):
     location = StringField('Destination Location', validators=[DataRequired()])
     image = FileField('Upload Image')
     submit = SubmitField('Add Destination')
+
+
+class EditDestinationForm(FlaskForm):
+    name = StringField('Destination Name', validators=[DataRequired()])
+    location = StringField('Destination Location', validators=[DataRequired()])
+    image = FileField('Upload Image')
+    submit = SubmitField('Save Changes')
+
+    def populate_obj(self, obj):
+        # Update the form fields with existing data
+        obj.name.data = self.name.data
+        obj.location.data = self.location.data
+        # Update other fields as needed
+
