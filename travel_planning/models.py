@@ -24,6 +24,21 @@ class Destination(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+
+class TravelPackage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    description = db.Column(db.Text)
+    location = db.Column(db.String(150) )
+    images = db.relationship('TravelPackageImage', backref='travel_package', lazy=True)
+
+
+class TravelPackageImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(255))
+    travel_package_id = db.Column(db.Integer, db.ForeignKey('travel_package.id'), nullable=False)
+
+
 """
 class Category(db.Model):
     #schema for category model

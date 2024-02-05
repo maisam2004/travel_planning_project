@@ -1,8 +1,8 @@
 from flask import render_template,redirect,request,url_for,flash,current_app
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
-from .models import User,Destination
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm
+from .models import User,Destination,TravelPackage,TravelPackageImage
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm
 from flask_mail import Message
 from . import mail
 import os
@@ -301,4 +301,61 @@ def search():
 @app.route("/list_holidays")
 def list_holidays():
   return "Holidays and observances"
+###to add contents for homepage 
+@app.route('/add_travel_package', methods=['GET', 'POST'])
+def add_travel_package():
+    form = AddTravelPackageForm()
 
+    if form.validate_on_submit():
+        # Retrieve data from the form
+        new_package_name = form.name.data
+        new_package_description = form.description.data
+        new_package_location = form.location.data
+
+        # Create a new TravelPackage object and add it to the database
+        new_package = TravelPackage(
+            name=new_package_name,
+            description=new_package_description,
+            location=new_package_location,
+            user_id=current_user.id  # Associate the package with the current user
+        )
+
+        db.session.add(new_package)
+        db.session.commit()
+
+        # Save the uploaded images and associate them with the new package
+        for i in range(1, 4):  # Assuming three images
+            image_key = f'image{i}'
+            image_file = getattr(form, image_key).data
+
+            if image_file:
+                image_path = save_travel_package_image(image_file)
+                new_image = TravelPackageImage(
+                    filename=image_path,
+                    travel_package_id=new_package.id
+                )
+
+                db.session.add(new_image)
+
+        db.session.commit()
+
+        flash('Travel package added successfully!', 'success')
+        return redirect(url_for('explore'))  # Redirect to the explore page or another appropriate route
+
+    return render_template('add_travel_package.html', form=form)
+
+def save_travel_package_image(image):
+    # Handle the image upload and save it to a folder
+    package_images_folder = os.path.join(current_app.root_path, 'static', 'images', 'travel_packages')
+
+    # Ensure the folder exists
+    os.makedirs(package_images_folder, exist_ok=True)
+
+    # Generate a unique filename
+    filename = secrets.token_hex(8) + secure_filename(image.filename)
+
+    # Save the file to the package images folder
+    image_path = os.path.join('images', 'travel_packages', filename)
+    image.save(os.path.join(current_app.root_path, 'static', image_path))
+
+    return 'static/' + image_path

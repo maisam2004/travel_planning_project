@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Add Travel Package{% endblock %}
+{% block content %}
+    <h2>Add Travel Package</h2>
+    <form id="addTravelPackageForm" enctype="multipart/form-data" method="POST">
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
+                <label for="name">Package Name:</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Package Name">
+
+
+                <label for="description">Package Description:</label>
+                <textarea name="description" id="description" class="form-control" ></textarea>
+
+                <label for="location">Package Location:</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="Package Location">
+
+                <!-- Add input fields for three image uploads -->
+                <label for="image1">Upload Image 1:</label>
+                <input type="file" name="image1" id="image1" class="form-control" accept="image/*" >
+
+                <label for="image2">Upload Image 2:</label>
+                <input type="file" name="image2" id="image2" class="form-control" accept="image/*" >
+
+                <label for="image3">Upload Image 3:</label>
+                <input type="file" name="image3" id="image3" class="form-control" accept="image/*" >
+
+                <button type="submit" class="btn btn-success">Add Travel Package</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

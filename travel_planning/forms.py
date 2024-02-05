@@ -1,6 +1,6 @@
 # forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField,FileField
+from wtforms import StringField, PasswordField , SubmitField,FileField, TextAreaField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
@@ -40,3 +40,15 @@ class EditDestinationForm(FlaskForm):
         obj.location.data = self.location.data
         # Update other fields as needed
 
+class AddTravelPackageForm(FlaskForm):
+    name = StringField('Travel Package Name', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    image1 = FileField('Image 1')  # Add this line for the first image
+    image2 = FileField('Image 2')  # Add this line for the second image
+    image3 = FileField('Image 3')  # Add this line for the third image
+    submit = SubmitField('Add Travel Package')
+
+class AddTravelPackageImageForm(FlaskForm):
+    filename = FileField('Image', validators=[DataRequired()])
+    submit = SubmitField('Add Image')
