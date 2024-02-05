@@ -317,7 +317,7 @@ def add_travel_package():
             name=new_package_name,
             description=new_package_description,
             location=new_package_location,
-            user_id=current_user.id  # Associate the package with the current user
+           
         )
 
         db.session.add(new_package)
@@ -340,9 +340,9 @@ def add_travel_package():
         db.session.commit()
 
         flash('Travel package added successfully!', 'success')
-        return redirect(url_for('explore'))  # Redirect to the explore page or another appropriate route
-
-    return render_template('add_travel_package.html', form=form)
+        return redirect(url_for('add_travel_package.html'))  # Redirect to the explore page or another appropriate route
+    trvale_packages = TravelPackage.query.all()
+    return render_template('add_travel_package.html', form=form,travel_packages=trvale_packages)
 
 def save_travel_package_image(image):
     # Handle the image upload and save it to a folder
@@ -358,4 +358,4 @@ def save_travel_package_image(image):
     image_path = os.path.join('images', 'travel_packages', filename)
     image.save(os.path.join(current_app.root_path, 'static', image_path))
 
-    return 'static/' + image_path
+    return '/static/' + image_path

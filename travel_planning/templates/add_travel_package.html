@@ -30,4 +30,15 @@
             </div>
         </div>
     </form>
+
+
+    <section>
+        <div class="row mx-auto">
+            {% if travel_packages %}
+                {% for t in travel_packages %}
+                    <p>{{ t.location }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}
