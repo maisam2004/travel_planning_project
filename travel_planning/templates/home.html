@@ -3,14 +3,14 @@
 {% block content %}
 
 <!-- Hero Section -->
-<div class="bg-light py-3">
-    <div class="container mt-5">
-        <h1 class="display-4">Explore the World with Your Travel App</h1>
+<div class="hero_bg py-3 mx-2">
+    <div class="mt-5 container">
+        <h1 class="display-4 ">Explore the World with Your Travel App</h1>
         <p class="lead">Discover amazing destinations and share your travel experiences.</p>
         <hr class="my-4">
         <p>Get started by searching for your next adventure!</p>
         <!-- Search Bar -->
-        <form class="form-inline" action="{{ url_for('search') }}" method="post">
+        <form class="form-inline search_form " action="{{ url_for('search') }}" method="post">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search destinations..." name="search_query">
                 <div class="input-group-append">
@@ -22,27 +22,73 @@
 </div>
 
 <!-- Featured Destinations -->
-<div class="container mt-5">
+
+<!-- -----------------------------------  -->
+<div class="container mt-5 ">
     <h2 class="mb-4">Featured Destinations</h2>
-    <div class="card-deck">
-        <!-- Example Featured Destination Card -->
-        <div class="card">
-            <img src="path/to/destination-image.jpg" class="card-img-top" alt="Destination Image">
-            <div class="card-body">
-                <h5 class="card-title">Paris, France</h5>
-                <p class="card-text">Explore the romantic city of Paris with its iconic landmarks.</p>
-            </div>
+    <div class="card-group">
+    
+    <div class="card ">
+        <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
         </div>
-<a href="{{url_for('add_travel_package')}}" target="_blank" rel="noopener noreferrer">ADD travel</a>
-        <!-- Add more featured destination cards here -->
-        <div class="card">
-            <img src="path/to/destination-image.jpg" class="card-img-top" alt="Destination Image">
+      </div>
+      <div class="card ">
+        <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+     
+
+      <div class="card">
+        <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-group">
+    
+        <div class="card ">
+            <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
             <div class="card-body">
-                <h5 class="card-title">Paris, France</h5>
-                <p class="card-text">Explore the romantic city of Paris with its iconic landmarks.</p>
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
             </div>
+          </div>
+          <div class="card ">
+            <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+    
+          <div class="card">
+            <img class="bd-placeholder-img card-img-top"  width="100%" height="180" role="img"  src="/static/images/travel_packages/4be762d5e6895fbft1img2.jpg" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+    
+    
+          
         </div>
     </div>
+    </div>
 </div>
-
+<a href="{{url_for('add_travel_package')}}" target="_blank" rel="noopener noreferrer">ADD travel</a>
 {% endblock %}

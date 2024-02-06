@@ -12,14 +12,14 @@
     <title>{% block title %}Your Travel App{% endblock %}</title>
     
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 mx-auto">
 
     <!-- Header -->
     <header>
         <!-- Bootstrap Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar  navbar-expand-lg mx-2 bg-body-tertiary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{{ url_for('home') }}">Your Travel App</a>
+              <a class="navbar-brand " href="{{ url_for('home') }}"><img src="/static/images/background/logonav11.png" alt="nav logo company" > Your Travel App</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="mt-auto bg-light">
+    <footer class="mt-4 bg-light ">
         <div class="container">
             <!-- Links and Info -->
             <ul class="list-inline">
