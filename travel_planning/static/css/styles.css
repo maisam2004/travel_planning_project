@@ -1,7 +1,20 @@
 
-
+.logo_nav_main{
+    
+    
+    background-image: url("/static/images/background/logonav11.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 80px;
+}
 .hero_bg{
-    background-image:url("/static/images/travel_packages/3bb07ba3971afb2fhelsinki1.jpg");
+    background-image:url("/static/images/background/hero3.png");
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+
     border-bottom-right-radius: 2em;
     border-bottom-left-radius:2em ;
     border-radius: 1em;
@@ -37,7 +50,7 @@
         width: 60%;
     }
   }
-  @media screen and (min-width: 500px) and (max-width: 1300px) {
+  @media screen and (min-width: 500px) and (max-width: 1900px) {
    
     .search_form{
         width: 55%;
