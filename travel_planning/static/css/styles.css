@@ -22,20 +22,9 @@
    
 }
 .search_form{
-    width: 100%;
-    margin: 0 auto;
-    height: 4em;
+    
 }
 /* features ##########  */
-.card-group .card{
-    margin:4%;
-    border-radius: 2em;
-}
-.card-group .card img{
-    
-    border-top-left-radius: 1.4em;
-    border-top-right-radius: 1.4em;
-}
 
 
 
@@ -46,20 +35,16 @@
 
 @media screen and (min-width: 500px) and (max-width: 1000px) {
    
-    body{
-        width: 60%;
-    }
+    
+    
   }
   @media screen and (min-width: 500px) and (max-width: 1900px) {
    
-    .search_form{
-        width: 55%;
-        margin: 0 auto;
-        
-    }
+  
+    
     body{
 
-        width: 90%;
+        
     }
   }
   

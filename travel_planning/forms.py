@@ -44,6 +44,9 @@ class AddTravelPackageForm(FlaskForm):
     name = StringField('Travel Package Name', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
+    hotel = StringField('Hotel')
+    latitude = StringField('Latitude', validators=[DataRequired()])  # Add latitude field
+    longitude = StringField('Longitude', validators=[DataRequired()])  # Add longitude field
     image1 = FileField('Image 1')  # Add this line for the first image
     image2 = FileField('Image 2')  # Add this line for the second image
     image3 = FileField('Image 3')  # Add this line for the third image

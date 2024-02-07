@@ -30,6 +30,9 @@ class TravelPackage(db.Model):
     name = db.Column(db.String(100))
     description = db.Column(db.Text)
     location = db.Column(db.String(150) )
+    hotel = db.Column(db.String(100))
+    latitude = db.Column(db.String(50), nullable=False)  # Add latitude column
+    longitude = db.Column(db.String(50), nullable=False)  # Add longitude column
     images = db.relationship('TravelPackageImage', backref='travel_package', lazy=True)
 
 

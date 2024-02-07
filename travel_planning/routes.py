@@ -12,10 +12,8 @@ from werkzeug.utils import secure_filename
 
 @app.route('/')
 def home():
-    return render_template('home.html')
-
-
-
+    travel_packages = TravelPackage.query.all()
+    return render_template('home.html', travel_packages=travel_packages)
 
 
 
@@ -298,9 +296,7 @@ def search():
     return render_template('search_results.html', query=search_query, destinations=destinations)
 
 
-@app.route("/list_holidays")
-def list_holidays():
-  return "Holidays and observances"
+
 ###to add contents for homepage 
 @app.route('/add_travel_package', methods=['GET', 'POST'])
 def add_travel_package():
@@ -311,12 +307,18 @@ def add_travel_package():
         new_package_name = form.name.data
         new_package_description = form.description.data
         new_package_location = form.location.data
+        new_package_hotel = form.hotel.data
+        new_package_latitude = form.latitude.data
+        new_package_longitude = form.longitude.data
 
         # Create a new TravelPackage object and add it to the database
         new_package = TravelPackage(
             name=new_package_name,
             description=new_package_description,
             location=new_package_location,
+            hotel=new_package_hotel,
+            latitude=new_package_latitude,
+            longitude=new_package_longitude
            
         )
 
@@ -340,7 +342,8 @@ def add_travel_package():
         db.session.commit()
 
         flash('Travel package added successfully!', 'success')
-        return redirect(url_for('add_travel_package.html'))  # Redirect to the explore page or another appropriate route
+        #return redirect(url_for('add_travel_package.html'))  # Redirect to the explore page or another appropriate route
+        return render_template('add_travel_package.html', form=form,travel_packages=trvale_packages)
     trvale_packages = TravelPackage.query.all()
     return render_template('add_travel_package.html', form=form,travel_packages=trvale_packages)
 
