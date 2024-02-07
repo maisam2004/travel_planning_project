@@ -68,7 +68,7 @@
               <img src="{{ package.images[0].filename }}" class="card-img-top" alt="Destination Image">
               <div class="card-body">
                   <h5 class="card-title">{{ package.name }}</h5>
-                  <p class="card-text">{{ package.description }}</p>
+                  <p class="card-text">{{ package.description|split_by_dash }}</p>
                   <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#destinationModal{{ package.id }}">Learn More</a>
               </div>
           </div>

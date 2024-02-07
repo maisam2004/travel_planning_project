@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager  
+
 import psycopg2
 import smtplib
 if os.path.exists("env.py"):
@@ -9,6 +10,11 @@ if os.path.exists("env.py"):
 from flask_mail import Mail
 
 app = Flask(__name__)
+
+
+
+
+
 
 login_manager = LoginManager(app)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
@@ -30,3 +36,11 @@ migrate = Migrate(app, db)
 
 from travel_planning import routes
 login_manager.login_view = 'login'
+
+
+
+def split_by_dash(text):
+    return text.split('-')[0].strip()  # Return the first part after splitting by '-'
+
+# Register the custom filter with Jinja2
+app.jinja_env.filters['split_by_dash'] = split_by_dash

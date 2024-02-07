@@ -10,6 +10,7 @@ import secrets
 from werkzeug.utils import secure_filename
 #from travel_planning.models import Category , Task
 
+
 @app.route('/')
 def home():
     travel_packages = TravelPackage.query.all()
