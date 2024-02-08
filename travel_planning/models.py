@@ -31,9 +31,26 @@ class TravelPackage(db.Model):
     description = db.Column(db.Text)
     location = db.Column(db.String(150) )
     hotel = db.Column(db.String(100))
+    hotel_description = db.Column(db.Text)
+    duration= db.Column(db.String(100))
+    package_price = db.Column(db.Float) 
     latitude = db.Column(db.String(50), nullable=False)  # Add latitude column
     longitude = db.Column(db.String(50), nullable=False)  # Add longitude column
     images = db.relationship('TravelPackageImage', backref='travel_package', lazy=True)
+ 
+""" class TravelPackage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    description = db.Column(db.Text)
+    location = db.Column(db.String(150))
+    duration = db.Column(db.String(150))
+    hotel = db.Column(db.String(100))
+    hotel_description = db.Column(db.Text)  # Add hotel description column
+    icons = db.Column(db.String(100))  # Assuming Font Awesome icons are stored as strings
+    package_price = db.Column(db.Float)  # Add package price column
+    latitude = db.Column(db.String(50), nullable=False)
+    longitude = db.Column(db.String(50), nullable=False)
+    images = db.relationship('TravelPackageImage', backref='travel_package', lazy=True) """
 
 
 class TravelPackageImage(db.Model):

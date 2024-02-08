@@ -2,7 +2,7 @@
 {% block title %}Add Travel Package{% endblock %}
 {% block content %}
     <h2>Add Travel Package</h2>
-    <form id="addTravelPackageForm" enctype="multipart/form-data" method="POST">
+   <form id="addTravelPackageForm" enctype="multipart/form-data" method="POST">
         {{ form.csrf_token }}
         <div class="row">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
@@ -15,14 +15,20 @@
 
                 <label for="location">Package Location:</label>
                 <input type="text" name="location" id="location" class="form-control" placeholder="Package Location">
+                
                 <label for="hotel">Hotel:</label>
                 <input type="text" name="hotel" id="hotel" class="form-control" placeholder="hotel">
+                <label for="hotel_description">Hotel Description:</label>
+                <textarea name="hotel_description" id="hotel_description" class="form-control" ></textarea>
+                <label for="duration">Duration:</label>
+                <input type="duration" name="duration" id="duration" class="form-control" placeholder="duration">
+                <label for="package_price">Package Price:</label>
+                <input type="text" name="package_price" id="package_price" class="form-control" placeholder="price">
                 <label for="latitude">map Location:</label>
                 <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitude">
                 <label for="longitude">map Location:</label>
                 <input type="text" name="longitude" id="longitude" class="form-control" placeholder="longitude">
-                <!-- Add input fields for three image uploads -->
-                <label for="image1">Upload Image 1:</label>
+                 <label for="image1">Upload Image 1:</label>
                 <input type="file" name="image1" id="image1" class="form-control" accept="image/*" >
 
                 <label for="image2">Upload Image 2:</label>
@@ -36,6 +42,12 @@
         </div>
     </form>
 
+    
+<!-- <label for="hotel_description">hotel Description:</label>
+                <textarea name="hotel_description" id="hotel_description" class="form-control" ></textarea> 
+                 
+                <label for="package_price">Package Price:</label>
+                <input type="text" name="package_price" id="package_price" class="form-control" placeholder="price">-->
 
     <section>
         <div class="row mx-auto bg-warning">

@@ -40,7 +40,7 @@ login_manager.login_view = 'login'
 
 
 def split_by_dash(text):
-    return text.split('-')[0].strip()  # Return the first part after splitting by '-'
+    return text.split('//')[0].strip()  # Return the first part after splitting by '-'
 
 # Register the custom filter with Jinja2
 app.jinja_env.filters['split_by_dash'] = split_by_dash

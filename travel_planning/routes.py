@@ -302,22 +302,29 @@ def search():
 @app.route('/add_travel_package', methods=['GET', 'POST'])
 def add_travel_package():
     form = AddTravelPackageForm()
-
+    travel_packages = TravelPackage.query.all()
     if form.validate_on_submit():
+        print('form validate data ')
         # Retrieve data from the form
         new_package_name = form.name.data
         new_package_description = form.description.data
         new_package_location = form.location.data
         new_package_hotel = form.hotel.data
+        new_package_hetel_des = form.hotel_description.data
+        new_package_duration = form.duration.data
+        new_package_package_price = form.package_price.data
         new_package_latitude = form.latitude.data
         new_package_longitude = form.longitude.data
-
+        
         # Create a new TravelPackage object and add it to the database
         new_package = TravelPackage(
             name=new_package_name,
             description=new_package_description,
             location=new_package_location,
             hotel=new_package_hotel,
+            hotel_description=new_package_hetel_des,
+            duration= new_package_duration,
+            package_price = new_package_package_price,
             latitude=new_package_latitude,
             longitude=new_package_longitude
            
@@ -344,9 +351,9 @@ def add_travel_package():
 
         flash('Travel package added successfully!', 'success')
         #return redirect(url_for('add_travel_package.html'))  # Redirect to the explore page or another appropriate route
-        return render_template('add_travel_package.html', form=form,travel_packages=trvale_packages)
-    trvale_packages = TravelPackage.query.all()
-    return render_template('add_travel_package.html', form=form,travel_packages=trvale_packages)
+        return render_template('add_travel_package.html', form=form, travel_packages=travel_packages)
+    travel_packages = TravelPackage.query.all()
+    return render_template('add_travel_package.html', form=form,travel_packages=travel_packages)
 
 def save_travel_package_image(image):
     # Handle the image upload and save it to a folder

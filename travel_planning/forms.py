@@ -1,6 +1,6 @@
 # forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField,FileField, TextAreaField
+from wtforms import StringField, PasswordField , SubmitField,FileField, TextAreaField,FloatField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
@@ -45,12 +45,33 @@ class AddTravelPackageForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
     hotel = StringField('Hotel')
+    hotel_description=TextAreaField('Hotel Description')
+    duration = StringField('Duration')
+    package_price = FloatField('Package Price')
     latitude = StringField('Latitude', validators=[DataRequired()])  # Add latitude field
     longitude = StringField('Longitude', validators=[DataRequired()])  # Add longitude field
     image1 = FileField('Image 1')  # Add this line for the first image
     image2 = FileField('Image 2')  # Add this line for the second image
     image3 = FileField('Image 3')  # Add this line for the third image
     submit = SubmitField('Add Travel Package')
+
+
+""" class AddTravelPackageForm(FlaskForm):
+    name = StringField('Travel Package Name', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    duration=StringField('Duration')
+    hotel = StringField('Hotel')
+    hotel_description = TextAreaField('Hotel Description')  # Add hotel description field
+    icons = StringField('Icons')  # Add icons field
+    package_price = FloatField('Package Price')  # Add package price field
+    latitude = StringField('Latitude', validators=[DataRequired()])
+    longitude = StringField('Longitude', validators=[DataRequired()])
+    image1 = FileField('Image 1')
+    image2 = FileField('Image 2')
+    image3 = FileField('Image 3')
+    submit = SubmitField('Add Travel Package')
+ """
 
 class AddTravelPackageImageForm(FlaskForm):
     filename = FileField('Image', validators=[DataRequired()])

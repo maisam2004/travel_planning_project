@@ -62,6 +62,7 @@
 <div class="container mt-5">
   <h2 class="mb-4">Featured Destinations</h2>
   <div class="row">
+    {% if travel_packages %}
       {% for package in travel_packages %}
       <div class="col-md-4 mb-4"> <!-- Adjust the column size as needed -->
           <div class="card h-100"> <!-- Add the h-100 class to make cards equal height -->
@@ -78,6 +79,7 @@
           <!-- Your existing modal content -->
       </div>
       {% endfor %}
+      {% endif %}
   </div>
 </div>
 
