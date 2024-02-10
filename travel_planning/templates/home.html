@@ -84,7 +84,8 @@
   </div>
 </div>
 <!-- wishes form  -->
-<form class="container mt-5 needs-validation" method="POST" action="{{ url_for('home') }}" novalidate>
+<!-- <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST"  novalidate enctype="multipart/form-data">
+     {{ form.csrf_token }}
     <h2>Tell us about your dream holiday!</h2>
   
     <div class="form-group mb-3">
@@ -137,12 +138,72 @@
     {% else %}
   <div class="text-center mt-4">
       <a class="btn btn-primary w-25"   href="{{url_for('login')}}" role="button"  aria-controls="collapseExample">
-          <!-- <span id="addDestinationText">Add New Destination</span> -->login first
+          <span id="addDestinationText">Add New Destination</span> login first
       </a>
   </div>
   {% endif %}
-  </form>
-  
+  </form> -->
+  <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <h2>Tell us about your dream holiday!</h2>
+
+    <div class="form-group mb-3">
+        <label for="holidayType">What type of holiday are you interested in?</label>
+        <select class="form-control" id="holidayType" name="holiday_type" required>
+            <option value="">Select an option</option>
+            <option value="beach">Relaxing beach vacation</option>
+            <option value="adventure">Adventure and exploration</option>
+            <option value="cultural">Cultural immersion and sightseeing</option>
+            <option value="city">Bustling city break</option>
+        </select>
+        <div class="invalid-feedback">Please choose a holiday type.</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="travelDuration">How many days can you dedicate to this trip?</label>
+        <input type="number" class="form-control" id="travelDuration" name="travel_duration" min="1" required>
+        <div class="invalid-feedback">Please enter a valid travel duration (minimum 1 day).</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="priceRange">What is your preferred price range?</label>
+        <select class="form-control" id="priceRange" name="price_range" required>
+            <option value="">Select an option</option>
+            <option value="budget">Budget-friendly (up to $1000)</option>
+            <option value="moderate">Moderate ($1000-$2500)</option>
+            <option value="luxury">Luxury (>$2500)</option>
+        </select>
+        <div class="invalid-feedback">Please choose a price range.</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="travelTime">When are you thinking of traveling (flexible dates/specific month/season)?</label>
+        <input type="text" class="form-control" id="travelTime" name="travel_time" placeholder="(e.g., flexible dates, March 2024, summer)" required>
+        <div class="invalid-feedback">Please enter your preferred travel time.</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="departureLocation">Which city or airport will you be departing from?</label>
+        <input type="text" class="form-control" id="departureLocation" name="departure_location" required>
+        <div class="invalid-feedback">Please enter your departure city or airport.</div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="additionalInfo">Anything else you want to tell us about your ideal holiday?</label>
+        <textarea class="form-control" id="additionalInfo" name="additional_info" rows="3"></textarea>
+    </div>
+
+    {% if current_user.is_authenticated %}
+        <button type="submit" class="btn btn-primary w-25" id="submitBtn">Create holiday</button>
+    {% else %}
+        <div class="text-center mt-4">
+            <a class="btn btn-primary w-25" href="{{url_for('login')}}" role="button" aria-controls="collapseExample">
+                login first
+            </a>
+        </div>
+    {% endif %}
+</form>
+
 
 
   

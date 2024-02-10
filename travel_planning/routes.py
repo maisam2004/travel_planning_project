@@ -22,9 +22,9 @@ def home():
         wished_holiday = WishedHoliday(
             holiday_type=form.holiday_type.data,
             travel_duration=form.travel_duration.data,
-            price_range=form.price_range.data,
-            travel_time=form.travel_time.data,
-            departure_location=form.departure_location.data,
+            price_range=str(form.price_range.data),
+            travel_time=str(form.travel_time.data),
+            departure_location=str(form.departure_location.data),
             additional_info=form.additional_info.data,
             user_id=current_user.id  # Ensure current_user is correct
         )
@@ -39,30 +39,6 @@ def home():
             return render_template('home.html', form=form)  # Handle exception
     return render_template('home.html', travel_packages=travel_packages,form=form)
 
-@app.route('/create_wish', methods=['POST'])
-@login_required
-def create_wish():
-    form = WishedHolidayForm()
-    if form.validate_on_submit():
-        wished_holiday = WishedHoliday(
-            holiday_type=form.holiday_type.data,
-            travel_duration=form.travel_duration.data,
-            price_range=form.price_range.data,
-            travel_time=form.travel_time.data,
-            departure_location=form.departure_location.data,
-            additional_info=form.additional_info.data,
-            user_id=current_user.id  # Ensure current_user is correct
-        )
-        db.session.add(wished_holiday)
-        try:
-            db.session.commit()  # Commit after adding to the session
-            flash('Your wished holiday has been submitted successfully!', 'success')
-            return redirect(url_for('wished_holiday'))
-        except Exception as e:
-            logging.error(f"Error saving wished holiday: {e}")
-            flash('An error occurred while submitting your wish.', 'danger')
-            return render_template('home.html', form=form)  # Handle exception
-    return render_template('home.html', form=form)
 
 @app.route('/wished_holiday')
 @login_required
