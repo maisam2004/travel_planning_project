@@ -1,6 +1,6 @@
 # forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField,FileField, TextAreaField,FloatField
+from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
@@ -76,3 +76,22 @@ class AddTravelPackageForm(FlaskForm):
 class AddTravelPackageImageForm(FlaskForm):
     filename = FileField('Image', validators=[DataRequired()])
     submit = SubmitField('Add Image')
+
+
+#Desired holidy
+
+class WishedHolidayForm(FlaskForm):
+    holiday_type = SelectField('Holiday Type', choices=[('beach', 'Relaxing beach vacation'),
+                                                        ('adventure', 'Adventure and exploration'),
+                                                        ('cultural', 'Cultural immersion and sightseeing'),
+                                                        ('city', 'Bustling city break')],
+                               validators=[DataRequired()])
+    travel_duration = IntegerField('Travel Duration (days)', validators=[DataRequired()])
+    price_range = SelectField('Price Range', choices=[('budget', 'Budget-friendly (up to $1000)'),
+                                                      ('moderate', 'Moderate ($1000-$2500)'),
+                                                      ('luxury', 'Luxury (>$2500)')],
+                              validators=[DataRequired()])
+    travel_time = StringField('Preferred Travel Time', validators=[DataRequired()])
+    departure_location = StringField('Departure Location', validators=[DataRequired()])
+    additional_info = TextAreaField('Additional Information')
+

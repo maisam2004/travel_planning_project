@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Edit Destination{% endblock %}
+{% block content %}
+
+{% for wish in wishes %}
+        <li>
+            <h3>Holiday Type: {{ wish.holiday_type }}</h3>
+            <ul>
+                <li>Travel Duration: {{ wish.travel_duration }} days</li>
+                <li>Price Range: {{ wish.price_range }}</li>
+                <li>Travel Time: {{ wish.travel_time }}</li>
+                <li>Departure Location: {{ wish.departure_location }}</li>
+                <li>Additional Information: {{ wish.additional_info }}</li>
+            </ul>
+        </li>
+        {% endfor %}
+
+
+{% endblock %}

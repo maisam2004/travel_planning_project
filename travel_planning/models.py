@@ -82,3 +82,19 @@ class Task(db.Model):
     #other types >> db.Integer,db.Float 
     def __repr__(self):
         return "# {0} - Task: {1} | Urgent: {2}".format(self.id,self.task_name,self.is_urgent) """
+
+
+
+#desire holidy
+class WishedHoliday(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    holiday_type = db.Column(db.String(50), nullable=False)
+    travel_duration = db.Column(db.Integer, nullable=False)
+    price_range = db.Column(db.String(50), nullable=False)
+    travel_time = db.Column(db.String(100), nullable=False)
+    departure_location = db.Column(db.String(100), nullable=False)
+    additional_info = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # ForeignKey relationship
+
+    # relationship with the User model
+    user = db.relationship('User', backref=db.backref('wished_holidays', lazy=True))

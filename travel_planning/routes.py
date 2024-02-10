@@ -1,8 +1,8 @@
 from flask import render_template,redirect,request,url_for,flash,current_app
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
-from .models import User,Destination,TravelPackage,TravelPackageImage
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm
+from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm
 from flask_mail import Message
 from . import mail
 import os
@@ -14,8 +14,37 @@ from werkzeug.utils import secure_filename
 @app.route('/')
 def home():
     travel_packages = TravelPackage.query.all()
-    return render_template('home.html', travel_packages=travel_packages)
+    # Initialize the holiday wish
+    form = WishedHolidayForm()
+    return render_template('home.html', travel_packages=travel_packages,form=form)
 
+@app.route('/create_wish', methods=['POST'])
+@login_required
+def create_wish():
+    form = WishedHolidayForm()
+    if form.validate_on_submit():
+        wished_holiday = WishedHoliday(
+            holiday_type=form.holiday_type.data,
+            travel_duration=form.travel_duration.data,
+            price_range=form.price_range.data,
+            travel_time=form.travel_time.data,
+            departure_location=form.departure_location.data,
+            additional_info=form.additional_info.data,
+            user_id=current_user.id
+        )
+        db.session.add(wished_holiday)
+        db.session.commit()
+        flash('Your wished holiday has been submitted successfully!', 'success')
+        return redirect(url_for('wished_holiday'))  # Redirect to the wished_holiday route
+
+    return render_template('home.html', form=form)
+
+
+@app.route('/wished_holiday')
+@login_required
+def wished_holiday():
+    wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
+    return render_template('wished_holiday.html', wishes=wishes) 
 
 
 @app.route('/explore', methods=['GET', 'POST'])
