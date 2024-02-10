@@ -90,7 +90,7 @@ class WishedHoliday(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     holiday_type = db.Column(db.String(50), nullable=False)
     travel_duration = db.Column(db.Integer, nullable=False)
-    price_range = db.Column(db.String(50), nullable=False)
+    price_range = db.Column(db.String(100), nullable=False)
     travel_time = db.Column(db.String(100), nullable=False)
     departure_location = db.Column(db.String(100), nullable=False)
     additional_info = db.Column(db.Text)
