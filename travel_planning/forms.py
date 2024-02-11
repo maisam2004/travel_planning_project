@@ -55,24 +55,6 @@ class AddTravelPackageForm(FlaskForm):
     image3 = FileField('Image 3')  # Add this line for the third image
     submit = SubmitField('Add Travel Package')
 
-
-""" class AddTravelPackageForm(FlaskForm):
-    name = StringField('Travel Package Name', validators=[DataRequired()])
-    description = TextAreaField('Description', validators=[DataRequired()])
-    location = StringField('Location', validators=[DataRequired()])
-    duration=StringField('Duration')
-    hotel = StringField('Hotel')
-    hotel_description = TextAreaField('Hotel Description')  # Add hotel description field
-    icons = StringField('Icons')  # Add icons field
-    package_price = FloatField('Package Price')  # Add package price field
-    latitude = StringField('Latitude', validators=[DataRequired()])
-    longitude = StringField('Longitude', validators=[DataRequired()])
-    image1 = FileField('Image 1')
-    image2 = FileField('Image 2')
-    image3 = FileField('Image 3')
-    submit = SubmitField('Add Travel Package')
- """
-
 class AddTravelPackageImageForm(FlaskForm):
     filename = FileField('Image', validators=[DataRequired()])
     submit = SubmitField('Add Image')
@@ -80,20 +62,6 @@ class AddTravelPackageImageForm(FlaskForm):
 
 #Desired holidy
 
-""" class WishedHolidayForm(FlaskForm):
-    holiday_type = SelectField('Holiday Type', choices=[('beach', 'Relaxing beach vacation'),
-                                                        ('adventure', 'Adventure and exploration'),
-                                                        ('cultural', 'Cultural immersion and sightseeing'),
-                                                        ('city', 'Bustling city break')],
-                               validators=[DataRequired()])
-    travel_duration = IntegerField('Travel Duration (days)', validators=[DataRequired()])
-    price_range = SelectField('Price Range', choices=[('budget', 'Budget-friendly (up to $1000)'),
-                                                      ('moderate', 'Moderate ($1000-$2500)'),
-                                                      ('luxury', 'Luxury (>$2500)')],
-                              validators=[DataRequired()])
-    travel_time = StringField('Preferred Travel Time', validators=[DataRequired()])
-    departure_location = StringField('Departure Location', validators=[DataRequired()])
-    additional_info = TextAreaField('Additional Information') """
 
 class WishedHolidayForm(FlaskForm):
     holiday_type = SelectField('Holiday Type', choices=[('beach', 'Relaxing beach vacation'),
