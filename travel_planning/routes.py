@@ -1,4 +1,4 @@
-from flask import render_template,redirect,request,url_for,flash,current_app
+from flask import render_template,redirect,request,url_for,flash,current_app,jsonify
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday
@@ -9,6 +9,8 @@ import os
 import secrets 
 from werkzeug.utils import secure_filename
 import logging
+
+
 
 #from travel_planning.models import Category , Task
 
@@ -37,7 +39,15 @@ def home():
             logging.error(f"Error saving wished holiday: {e}")
             print('An error occurred while submitting your wish.', 'danger')
             return render_template('home.html', form=form)  # Handle exception
+    
     return render_template('home.html', travel_packages=travel_packages,form=form)
+
+## dealing with like button 
+
+
+
+
+
 
 
 @app.route('/wished_holiday')

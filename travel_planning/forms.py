@@ -1,6 +1,6 @@
 # forms.py
-from flask_wtf import FlaskForm
-from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField
+from flask_wtf import FlaskForm,csrf
+from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField,HiddenField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
@@ -78,3 +78,4 @@ class WishedHolidayForm(FlaskForm):
     departure_location = StringField('Departure Location', validators=[DataRequired()])
     additional_info = TextAreaField('Additional Information')
 
+###like and ulike of travel package

@@ -73,7 +73,21 @@ body{
     margin-top: 3rem;
 }
 
+/* like button icon */
 
+.liked {
+  /* Style for the liked state */
+  color: red; /* Your preferred color */
+}
+.noliked{
+  color: #ccc;
+}
+
+
+/* carousel inside modal for images  */
+.carousel-inner{
+  aspect-ratio: 2 / 1;
+}
 @media screen and (min-width: 500px) and (max-width: 1000px) {
    
     

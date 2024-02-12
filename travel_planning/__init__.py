@@ -40,7 +40,15 @@ login_manager.login_view = 'login'
 
 
 def split_by_dash(text):
-    return text.split('//')[0].strip()  # Return the first part after splitting by '-'
+    return text.split('//')[0].strip()  # Return the first part after splitting by '//'
 
+def split_by_dash_second(text):
+    try:
+        return text.split('//')[1].strip()  # Return the second part after splitting by '//'
+    except IndexError:
+        return ''  # Return an empty string if '//' is not found or if there's an IndexError
+ # Return the second part after splitting by '//'
+    
 # Register the custom filter with Jinja2
 app.jinja_env.filters['split_by_dash'] = split_by_dash
+app.jinja_env.filters['split_by_dash_second'] = split_by_dash_second
