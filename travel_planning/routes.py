@@ -122,8 +122,13 @@ def edit_destination(destination_id):
         destination.name = form.name.data
         destination.location = form.location.data
         if form.image.data:
+            if isinstance(form.image.data, str):
+            # If form.image.data is a string, it means no new image was provided,
+            # so we keep the existing image
+                destination.image = form.image.data
+            else:
             # Process and save the uploaded image
-            destination.image = save_destination_image(form.image.data)
+                destination.image = save_destination_image(form.image.data)
 
         # Save the changes to the database
         db.session.commit()
