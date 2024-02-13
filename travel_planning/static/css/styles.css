@@ -124,6 +124,11 @@ body{
 
 }
 .text_contents{
+
+  
+  background-color: #3f73aa5e;
+}
+.text_contents{
   padding: 0.7em;
   font-size: 1rem;
   font-style: italic;
