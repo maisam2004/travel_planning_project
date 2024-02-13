@@ -18,43 +18,52 @@
     <!-- Header -->
     <header >
         <!-- Bootstrap Navbar -->
-        <nav class="navbar  navbar-expand-lg  ">
-            <div class="container-fluid">
-              <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}"><div class="logo_nav_main"></div> Your Travel App</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-md navbar-light ">
+          <div class="container-fluid">
+              <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url_for('home') }}">
+                  <div class="logo_nav_main"></div> Your Travel App
+              </a>
+              <button class="navbar-toggler order-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                  <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                    </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('explore') }}">Explore</a>
-                  </li>
-                  {% if current_user.is_authenticated %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                  </li>
-              {% else %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                  </li>
-              {% endif %}
-              {% if not current_user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('signup') }}">Signup</a>
-                  </li>
-                  
-              {% endif %}
-                </ul>
-                <form class="d-flex" role="search" action="{{ url_for('search') }}" method="post">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                      <ul class="navbar-nav me-auto mb-lg-0">
+                          
+                          <li class="nav-item">
+                              <a class="nav-link ms-2 mt-2" href="{{ url_for('explore') }}">Explore</a>
+                          </li>
+                          <!-- Add other navbar items here -->
+                      </ul>
+                      <!-- User authentication links -->
+                      <ul class="navbar-nav">
+                          {% if current_user.is_authenticated %}
+                          <li class="nav-item">
+                              <a class="nav-link" title="Log out" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket border rounded-circle p-2"></i></a>
+                          </li>
+                          {% else %}
+                          <li class="nav-item">
+                              <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket border rounded-circle p-2"></i></a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  border rounded-circle p-2"></i></a>
+                          </li>
+                          {% endif %}
+                          {% if current_user.is_authenticated %}
+                          <li class="nav-item">
+                              <span class="nav-link"><i class="fa-solid fa-user border border rounded-circle p-2"></i> Hi, {{ current_user.username }}</span>
+                          </li>
+                          {% endif %}
+                      </ul>
+                  </div>
               </div>
-            </div>
-          </nav>
+          </div>
+      </nav>
+      
     </header>
 
     

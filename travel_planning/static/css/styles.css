@@ -10,7 +10,9 @@
 .navbar{
   background-color: aqua;
 }
-
+.offcanvas-start.show{
+  background-color: aqua;
+}
 .logo_nav_main{
     
     
