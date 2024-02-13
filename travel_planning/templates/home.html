@@ -22,42 +22,6 @@
     </div>
 </div>
 
-<!-- Featured Destinations -->
-<div class="container mt-5 w-50">
-    <h2 class="mb-4">Featured Destinations</h2>
-    <div class="card-deck">
-        {% for package in travel_packages %}
-        <div class="card">
-            <img src="{{ package.images[0].filename }}" class="card-img-top" alt="Destination Image">
-            <div class="card-body">
-                <h5 class="card-title">{{ package.name }}</h5>
-                <p class="card-text">{{ package.description }}</p>
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#destinationModal{{ package.id }}">Learn More</a>
-            </div>
-        </div>
-
-        <!-- Modal 
-        <div class="modal fade" id="destinationModal{{ package.id }}" tabindex="-1" role="dialog" aria-labelledby="destinationModalLabel{{ package.id }}" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="destinationModalLabel{{ package.id }}">{{ package.name }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                         Include more details about the destination here 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-        {% endfor %}
-    </div>
-</div>
 
 <!-- Featured Destinations -->
 <div class="container mt-5">
@@ -65,7 +29,7 @@
   <div class="row">
     {% if travel_packages %}
       {% for package in travel_packages %}
-      <div class="col-lg-4 mb-4 mb-4 position-relative"> <!-- the column size as needed -->
+      <div class="col-lg-5 mb-4 mb-4 position-relative"> <!-- the column size as needed -->
           <div class="card h-100"> <!-- Add the h-100 class to make cards equal height -->
               <img src="{{ package.images[0].filename }}" class="card-img-top" alt="Destination Image">
              
@@ -79,22 +43,7 @@
                   <a href="#"  class="btn btn-primary w-100 h-40"  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">More info</a>
                  
               </div>
-              <div id="social-media-sharing  " class="mx-auto p-2">
-                <!-- WhatsApp Sharing Button -->
-                <a href="whatsapp://send?text={{ package.name }} - {{ package.description }} - {{ package.url }}" class="btn btn-whatsapp border border-dark rounded-circle  p-2 mx-2" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                
-                <!-- Twitter Sharing Button -->
-                <a href="https://twitter.com/intent/tweet?url={{ package.url }}&text={{ package.name }} - {{ package.description }}" class="btn btn-twitter border border-dark rounded-circle  p-2 mx-2" target="_blank">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                
-                <!-- Facebook Sharing Button -->
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ package.url }}" class="btn btn-facebook border border-dark rounded-circle p-2 mx-2" target="_blank">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-            </div>
+              
           </div>
       </div>
       <!-- Modal -->
