@@ -26,10 +26,10 @@
 <!-- Featured Destinations -->
 <div class="container mt-5">
   <h2 class="mb-4">Featured Destinations</h2>
-  <div class="row">
+  <div class="row ">
     {% if travel_packages %}
       {% for package in travel_packages %}
-      <div class="col-lg-5 mb-4 mb-4 position-relative"> <!-- the column size as needed -->
+      <div class="col-lg-5 "> <!-- the column size as needed -->
           <div class="card h-100"> <!-- Add the h-100 class to make cards equal height -->
               <img src="{{ package.images[0].filename }}" class="card-img-top" alt="Destination Image">
              
