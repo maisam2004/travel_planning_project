@@ -104,6 +104,7 @@
 <!-- wishes form  -->
 
   <h5>{{ get_flashed_messages(with_categories=True)|tojson|safe }}</h5>
+  <div class="whole_form">
   <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
     {{ form.csrf_token }}
     <h2>Tell us about your dream holiday!</h2>
@@ -164,7 +165,7 @@
         </div>
     {% endif %}
 </form>
-
+</div>
 
 
 {% endblock %}

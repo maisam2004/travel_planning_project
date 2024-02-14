@@ -5,10 +5,13 @@
   --modal-border:blue;
   --modal-border-top:violet;
 }
+body{
+  background-color: var(--modal-bg-color);
+}
 
 
 .navbar{
-  background-color: aqua;
+  background-color: rgb(162, 185, 185);
 }
 .offcanvas-start.show{
   background-color: aqua;
@@ -73,9 +76,7 @@ body{
   height: 90%;
   margin: auto;
 }
-.search_form{
-    
-}
+
 /* features ##########  */
 
 
@@ -93,6 +94,28 @@ body{
 .noliked{
   color: #ccc;
 }
+/* cards */
+.card{
+  background-color: rgba(128, 128, 128, 0.225);
+  backdrop-filter: blur(12px);
+}
+
+
+/* form style */
+.whole_form select,input[type=text],input[type=number]{
+  border-radius: 1em;
+}
+.whole_form label{
+  padding: 0.7em;
+  font-size: 1rem;
+  font-style: italic;
+}
+.whole_form h2{
+  padding: 0.7em;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
 
 /* modal stuff ########### */
 /* carousel inside modal for images  */
@@ -161,6 +184,27 @@ iframe{
     
   }
   @media screen and (min-width: 500px) and (max-width: 1900px) {
+    .hero_bg{
+      background-image:url("/static/images/background/night_bg.jpg");
+      /* background-position: right; */
+      background-size: cover;
+      background-repeat: no-repeat;
+  
+      /* border-bottom-right-radius: 2em;
+      border-bottom-left-radius:2em ;
+      border-radius: 1em; */
+      background-color: aqua;
+  
+      
+     
+  }
+    
+
+
+
+    
+    
+    /* container for cards */
     body > div > div.container.mt-5 > div{
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -169,13 +213,36 @@ iframe{
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
+
+    
+
+    justify-content: center;
+    gap:1em;
+    padding: 1rem;
+    }
+
+    .whole_form{
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      border:1px dotted red;
+      padding:3em;
+      background: rgb(115,126,140);
+background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 41%, rgba(192,224,187,0.9931431190640319) 100%);
+    }
+    .whole_form form{
+      border:1px solid var(--modal-text-color);
+      padding:2em;
+      background-color: #dedbdb63;
+      backdrop-filter: blur(12px);
+      width: 50%;
+      border-radius: 2em 5em;
+      
+      
     }
   
     
 
-    body{
-
-        
-    }
+   
   }
   
