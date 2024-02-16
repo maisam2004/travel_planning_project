@@ -28,19 +28,24 @@
   <div class="row ">
     {% if travel_packages %}
       {% for package in travel_packages %}
-      <div class="col-lg-5 "> <!-- the column size as needed -->
+      <div class="col-lg-5 travel-package {% if loop.index > 4 %}d-none{% endif %}"> <!-- the column size as needed -->
           <div class="card h-100 mb-4"> <!-- Add the h-100 class to make cards equal height -->
-              <img src="{{ package.images[0].filename }}" class="card-img-top" alt="Destination Image">
-             
-              
-              <div class="card-body d-flex flex-column justify-content-between">
-                  <h5 class="card-title">{{ package.name }} <i class="fa-solid fa-heart like-button"></i></h5><h6 class="text-success">{{ package.duration }}</h6>
+              <img src="{{ package.images[0].filename }}" class="bd-placeholder-img img-fluid rounded-start" alt="Destination Image">
+              <span class=" like-button position-absolute  start-0 bg-warning text-white rounded-end px-3 fs-5">$ {{ package.package_price }}</span>
+              <div class="card-body px-4 d-flex flex-column justify-content-between">
+                <h5 class="card-title fw-bolder">{{ package.name|title }} <span class="text-success fs-6"> - {{ package.duration }}</span> </h5>
                   <p class="card-text">{{ package.description|split_by_dash }}</p>
-                  <!-- LIKE BUTTONS  -->
-
-
+                  <p class="d-flex "><span  class="list-group-item special text-danger"> 
+                    {% for n in package.hotel %}
+                    {% if n.isdigit()  %}
+                    {% for i in range(n|int) %} <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %} </span> <a href="#"  class="btn btn-outline-success"  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">View more</a></p>
+                    <span class="fs-6 fw-lighter text-body-tertiary ">(base on 160 reviews ) </span>
+                  <!-- list  -->
                   
-                  <a href="#"  class="btn btn-primary w-100 h-40 "  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">More info</a>
+                  <a href="#"  class="btn btn-primary d-none "  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">More info</a>
                  
               </div>
               
@@ -100,6 +105,46 @@
       {% endfor %}
       {% endif %}
   </div>
+  <button class="btn btn-primary mt-3 show-more-btn" title="show more deals"><i class="fa-solid fa-arrow-down"></i></button>
+</div>
+
+<!-- reviews of company  -->
+<div class="reviews-container position-relative" >
+<div class="container mt-5 px-4 position-relative">
+  <h2 class="mb-4 mt-4">Happy customer</h2>
+  <div class="row ">
+    <div class="col-lg-4 mb-4">
+      <div class="card re1 h-100 position-relative top-50 ">
+        <div class="card-body">
+          <blockquote class="blockquote">
+            <p class="mb-0">"I've been using this travel app for a while now, and I must say, it's amazing! It has a wide range of destinations, easy booking process, and great customer service. Highly recommended!"</p>
+            <footer class="blockquote-footer mt-2">John Doe</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card re2 h-100 position-relative top-50">
+        <div class="card-body">
+          <blockquote class="blockquote">
+            <p class="mb-0">"The travel app helped me plan my dream vacation hassle-free. The interface is user-friendly, and I love the personalized recommendations. Will definitely use it again!"</p>
+            <footer class="blockquote-footer mt-2">Jane Smith</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card re3 h-100 position-relative top-50">
+        <div class="card-body">
+          <blockquote class="blockquote">
+            <p class="mb-0">"I'm impressed with the level of detail and information provided for each destination. The app made my travel experience memorable and stress-free. Thank you!"</p>
+            <footer class="blockquote-footer mt-2">Michael Johnson</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <!-- wishes form  -->
 
@@ -166,6 +211,19 @@
     {% endif %}
 </form>
 </div>
+
+
+<script>
+  $(document).ready(function() {
+      $('.show-more-btn').on('click', function() {
+          $('.travel-package.d-none').slice(0, 4).removeClass('d-none');
+          if ($('.travel-package.d-none').length === 0) {
+              $('.show-more-btn').hide();
+              
+          }
+      });
+  });
+  </script>
 
 
 {% endblock %}

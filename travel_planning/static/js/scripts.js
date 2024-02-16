@@ -61,4 +61,14 @@
             }
         });
 
+
+        $(".special").each(function() {
+            // Check if the list item is empty
+            if ($(this).children().length === 0) {
+                // Append the word "Special" to the list item
+                $(this).html("Special Place <i class=\"fa-solid fa-star text-wrning \"></i>");
+            }
+        });
+
+
     });

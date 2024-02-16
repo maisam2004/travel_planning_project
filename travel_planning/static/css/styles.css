@@ -85,6 +85,11 @@ body{
     margin-top: 3rem;
 }
 
+
+
+
+
+
 /* like button icon */
 
 .liked {
@@ -100,7 +105,22 @@ body{
   backdrop-filter: blur(12px);
 }
 
-
+.bd-placeholder-img { /* images aspect */
+  aspect-ratio: 2;
+}
+.btn-outline-success{
+  margin-left: 3em;
+  border-radius: 2em;
+}
+.show-more-btn{
+  border-radius: 2em;
+  position: absolute;
+  left:50%;
+  
+}
+.fw-lighter{
+  font-size: 14px !important;
+}
 /* form style */
 .whole_form select,input[type=text],input[type=number]{
   border-radius: 1em;
@@ -219,7 +239,38 @@ iframe{
     justify-content: center;
     gap:1em;
     padding: 1rem;
+
+   
     }
+    .reviews-container {
+      text-align: center;
+      
+      padding-left: 0;  /* Remove left padding */
+      padding-right: 0;  /* Remove right padding */
+      margin-left: 0;  /* Remove left margin */
+      margin-right: 0;  /* Remove right margin */
+      background-color: #cfd1d228;  /* Set background color */
+      background-image: url('/static/images/background/happy.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      margin-bottom: 0;
+
+      height: 500px;
+  }
+
+
+    .whole_form{
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      border:1px dotted red;
+      padding:3em;
+      background: rgb(115,126,140);
+background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 41%, rgba(192,224,187,0.9931431190640319) 100%);
+    }
+
+
 
     .whole_form{
       margin: 0 auto;
