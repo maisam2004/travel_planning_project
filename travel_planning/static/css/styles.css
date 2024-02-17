@@ -204,11 +204,71 @@ svg{
   width: 4em;
   height: 5em;
   padding:0.5em;
-  background-color: rgb(242, 249, 249);
+  background-color: rgb(255, 255, 255);
   border-radius: 5em;
 
   box-shadow: inset -1px -1px 10px 2px rgba(78, 78, 78, 0.201);
 }
+
+
+
+/* footer style */
+/* Footer Styles */
+footer {
+  background-color: #111; /* Dark blue background */
+  padding: 20px 0; /* Adjust padding as needed */
+}
+
+.footer-link {
+  color: #fff; /* White text color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.footer-link:hover {
+  color: #ccc; /* Lighter text color on hover */
+}
+
+.separator {
+  margin: 0 10px; /* Adjust margin as needed */
+  color: #fff; /* White color */
+}
+
+.separator span {
+  font-size: 18px; /* Adjust font size as needed */
+}
+
+.social-media a {
+  color: #000; /* Black icon color */
+  text-decoration: none; /* Remove underline */
+}
+
+.neumorphic-icon {
+  font-size: 24px; /* Adjust icon size as needed */
+  color: #000; /* Black icon color */
+  background-color: #fff; /* White background color */
+  border-radius: 50%; /* Circle shape */
+  padding: 10px; /* Adjust padding as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+.neumorphic-icon-tel {
+  font-size: 24px; /* Adjust icon size as needed */
+  color: #ece8e8; /* Black icon color */
+  background-color: #696666; /* White background color */
+  border-radius: 0.5em;
+  padding: 10px; /* Adjust padding as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.neumorphic-icon:hover {
+  background-color: #ddd; /* Lighter background color on hover */
+}
+
+
+
+
 @media screen and (min-width: 300px) and (max-width: 550px) {
   .col-lg-4 .card{/* middle card reviews */
     position: relative ;
@@ -227,7 +287,7 @@ svg{
   
   /* custemer reviews */
   .reviews-container {
-    height: 600px !important;
+    height: auto !important;
   }
     
     
@@ -329,6 +389,28 @@ background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 
       
       
     }
+
+
+    
+    .neumorphic-icon3 {
+      color:rgb(85, 85, 85);
+      width: 60px; /* Adjust size as needed */
+      height: 60px; /* Adjust size as needed */
+      border-radius: 1em; /* Make it circular */
+      background: #f0f0f0; /* Base color */
+      box-shadow: 5px 5px 15px #b8b8b8, -5px -5px 15px #ffffff; /* Soft shadows for depth */
+      /* box-shadow: inset 5px 5px 8px #b8b8b8, -5px -5px 15px #ffffff; Soft shadows for depth */
+
+      display: flex;
+      
+      justify-content: center;
+      align-items: center;
+    }
+    
+   
+    
+    
+   
   
     
 
