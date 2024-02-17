@@ -214,7 +214,7 @@ svg{
 
 /* footer style */
 /* Footer Styles */
-footer {
+body > footer {
   background-color: #27317f; /* Dark blue background */
   padding: 20px 0; /* Adjust padding as needed */
 }
@@ -291,6 +291,12 @@ footer {
     height: auto !important;
   }
     
+
+  /* choosing us */
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 42.33333333%;
+}
     
   }
   @media screen and (min-width: 500px) and (max-width: 1900px) {
@@ -304,11 +310,17 @@ footer {
       border-bottom-left-radius:2em ;
       border-radius: 1em; */
       background-color: aqua;
-  
-      
-     
+
   }
 
+
+  .card-img-bottom{
+    width:90px;
+    border: 2px solid rgb(19, 17, 17);
+    background-color: #000;
+    
+    
+  }
     
     /* container for cards */
     body > div > div.container.mt-5 > div{
