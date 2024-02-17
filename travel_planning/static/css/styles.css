@@ -114,11 +114,11 @@ body{
 }
 .show-more-btn{
   border-radius: 2em;
-  position: absolute;
+  position: relative;
   left:50%;
   
 }
-.fw-lighter{
+.fw-lighter{/* text in card for reviews */
   font-size: 14px !important;
 }
 /* form style */
@@ -198,8 +198,37 @@ iframe{
   100% { opacity: 1; }
 }
 
-@media screen and (min-width: 500px) and (max-width: 1000px) {
-   
+
+/* choose us */
+svg{
+  width: 4em;
+  height: 5em;
+  padding:0.5em;
+  background-color: rgb(242, 249, 249);
+  border-radius: 5em;
+
+  box-shadow: inset -1px -1px 10px 2px rgba(78, 78, 78, 0.201);
+}
+@media screen and (min-width: 300px) and (max-width: 550px) {
+  .col-lg-4 .card{/* middle card reviews */
+    position: relative ;
+    top: 0 !important;
+  }
+  
+    
+    
+  }
+
+@media screen and (min-width: 500px) and (max-width: 1025px) {
+  .col-lg-4 .card{ /* middle card reviews */
+    position: relative ;
+    top: 0 !important;
+  }
+  
+  /* custemer reviews */
+  .reviews-container {
+    height: 600px !important;
+  }
     
     
   }
@@ -218,11 +247,7 @@ iframe{
       
      
   }
-    
 
-
-
-    
     
     /* container for cards */
     body > div > div.container.mt-5 > div{
@@ -242,6 +267,7 @@ iframe{
 
    
     }
+    /* custemer reviews */
     .reviews-container {
       text-align: center;
       
@@ -258,6 +284,18 @@ iframe{
 
       height: 500px;
   }
+
+  /* choose us */
+  svg{
+    width: 4em;
+    height: 5em;
+    padding:0.5em;
+  }
+  
+
+
+
+
 
 
     .whole_form{
