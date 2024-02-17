@@ -197,7 +197,10 @@ iframe{
   75% { opacity: 0.75; }
   100% { opacity: 1; }
 }
-
+/* reviews */
+.col-lg-4 .card{
+  border-radius: 5em;
+}
 
 /* choose us */
 svg{
