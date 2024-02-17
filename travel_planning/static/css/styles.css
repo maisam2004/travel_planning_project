@@ -7,6 +7,10 @@
 }
 body{
   background-color: var(--modal-bg-color);
+  background-image: url("/static/images/background/night_main11.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
 }
 
 
@@ -26,9 +30,7 @@ body{
     width: 100px;
     height: 80px;
 }
-body{
-/*   background-image: url("/static/images/background/bg12.jpg");
- */}
+
  header{
   position:sticky;
   top: 0;
@@ -351,14 +353,18 @@ body > footer {
       padding-right: 0;  /* Remove right padding */
       margin-left: 0;  /* Remove left margin */
       margin-right: 0;  /* Remove right margin */
-      background-color: #cfd1d228;  /* Set background color */
-      background-image: url('/static/images/background/happy.png');
-      background-size: contain;
+      background-color: #9d351865;  /* Set background color */
+      background-image: url("/static/images/background/review_bg.webp");
+      backdrop-filter: blur(1000px);
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: right;
       margin-bottom: 0;
 
-      height: 500px;
+      height: 700px;
+  }
+  .blockquote-footer{
+    color:var(--modal-text-color);
   }
 
   /* choose us */
