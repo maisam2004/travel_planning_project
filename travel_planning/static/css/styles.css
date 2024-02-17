@@ -215,7 +215,7 @@ svg{
 /* footer style */
 /* Footer Styles */
 footer {
-  background-color: #111; /* Dark blue background */
+  background-color: #27317f; /* Dark blue background */
   padding: 20px 0; /* Adjust padding as needed */
 }
 
@@ -262,8 +262,9 @@ footer {
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.neumorphic-icon:hover {
-  background-color: #ddd; /* Lighter background color on hover */
+.neumorphic-icon:hover,.neumorphic-icon-tel:hover {
+  background-color: #858080; /* Lighter background color on hover */
+  
 }
 
 
