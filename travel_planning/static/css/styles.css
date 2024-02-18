@@ -14,6 +14,10 @@ body{
   overflow: scroll;
   
 }
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
 body::before {
   content: ""; /* Required for the pseudo-element to be rendered */
   position: absolute;
@@ -276,8 +280,8 @@ svg{
 
 /* footer style */
 /* Footer Styles */
-body > footer {
-  background-color: #27317f; /* Dark blue background */
+.main_footer {
+  background-color: #16463a; /* Dark blue background */
   padding: 20px 0; /* Adjust padding as needed */
 }
 
@@ -446,10 +450,10 @@ body > footer {
       margin: 0 auto;
       display: flex;
       width: 100%;
-      border:1px dotted red;
+     
       padding:3em;
-      background: rgb(115,126,140);
-background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 41%, rgba(192,224,187,0.9931431190640319) 100%);
+      background: rgba(115, 126, 140, 0.157);
+background: linear-gradient(185deg, rgba(115, 126, 140, 0.398) 7%, rgba(125, 162, 205, 0.394) 41%, rgba(192, 224, 187, 0.177) 100%);
     }
 
 
@@ -458,10 +462,10 @@ background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 
       margin: 0 auto;
       display: flex;
       width: 100%;
-      border:1px dotted red;
+      
       padding:3em;
       background: rgb(115,126,140);
-background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(125,162,205,1) 41%, rgba(192,224,187,0.9931431190640319) 100%);
+background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162, 205, 0.293) 41%, rgba(192, 224, 187, 0.243) 100%);
     }
     .whole_form form{
       border:1px solid var(--modal-text-color);
