@@ -424,6 +424,12 @@ svg{
 
 
   @media screen and (min-width: 500px) and (max-width: 1900px) {
+    .hero-container{
+      padding-top: 1em !important;
+      padding-bottom: 5em;
+      margin-bottom: 1em;
+    }
+    
     .hero_bg{
       background-image:url("/static/images/background/night_bg.jpg");
       /* background-position: right; */
@@ -436,15 +442,27 @@ svg{
       background-color: aqua;
 
   }
+.carousel-item,.carousel-item.active{
+  position: relative;
+}
+  .carousel-item img{
+    
+    border-radius: 2em;
+  }
+  .carousel-caption {
+    top:-5% !important;
+
+  }
+  .carousel-caption .display-4{
+    color:var(--modal-text-container) !important;
+  }
 
 
   .card-img-bottom{ /* reviews img */
     width:90px;
     border: 2px solid rgb(215, 212, 212);
     background-color: #000;
-    
- 
-    
+
   }
     
     /* container for cards */

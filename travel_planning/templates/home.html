@@ -3,13 +3,13 @@
 {% block content %}
 
 <!-- Hero Section -->
-<div class="py-5 hero_bg hero_bg hero-container mx-auto">
+<div class="py-5 hero_bg hero-container mx-auto">
     <div class="container hero_texts mt-5">
         
-        <h1 class="display-4">Explore the World with Your Travel App</h1>
-        <p class="lead">Discover amazing destinations and share your travel experiences.</p>
-        <br class="my-4">
-        
+        <h1 class="display-4 d-sm-none">Explore the World with Your Travel App</h1>
+        <p class="lead d-sm-none">Discover amazing destinations and share your travel experiences.</p>
+        <br class="my-4 d-sm-none">
+        <!-- slide for desktop view -->
         <!-- Search Bar -->
         <!-- <p>Get started by searching for your next adventure!</p>
           <form class="form-inline" action="{{ url_for('search') }}" method="post">
@@ -20,6 +20,38 @@
                 </div>
             </div>
         </form> -->
+        <div id="carouselExampleCaptions" class="d-none d-sm-block carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <!-- First slide -->
+              <div class="carousel-item active">
+                <img src="/static/images/background/landmark.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-sm-block">
+                 
+                  <h1 class="display-4">Explore the World with Your Travel App</h1>
+                  <p class="lead">Discover amazing destinations and share your travel experiences.</p>
+                </div>
+              </div>
+              <!-- Second slide -->
+              <div class="carousel-item">
+                <img src="/static/images/background/landmark.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-sm-block">
+                  
+                  <h1 class="display-4">Experience Adventure Like Never Before</h1>
+                  <p class="lead">Embark on thrilling journeys and create unforgettable memories.</p>
+                </div>
+              </div>
+              <!-- Add more slides as needed -->
+          </div>
+          <!-- Previous and Next buttons -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+      </div>
     </div>
 </div>
 
