@@ -4,21 +4,22 @@
 
 <!-- Hero Section -->
 <div class="py-5 hero_bg hero_bg hero-container mx-auto">
-    <div class="container mt-5">
-        <div class="hero_bg2"></div>
+    <div class="container hero_texts mt-5">
+        
         <h1 class="display-4">Explore the World with Your Travel App</h1>
         <p class="lead">Discover amazing destinations and share your travel experiences.</p>
-        <hr class="my-4">
-        <p>Get started by searching for your next adventure!</p>
+        <br class="my-4">
+        
         <!-- Search Bar -->
-        <form class="form-inline" action="{{ url_for('search') }}" method="post">
+        <!-- <p>Get started by searching for your next adventure!</p>
+          <form class="form-inline" action="{{ url_for('search') }}" method="post">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search destinations..." name="search_query">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </div>
-        </form>
+        </form> -->
     </div>
 </div>
 
@@ -29,7 +30,7 @@
     {% if travel_packages %}
       {% for package in travel_packages %}
       <div class="col-lg-5 travel-package {% if loop.index > 4 %}d-none{% endif %}"> <!-- the column size as needed -->
-          <div class="card h-100 mb-4"> <!-- Add the h-100 class to make cards equal height -->
+          <div class="card h-100 "> <!-- Add the h-100 class to make cards equal height -->
               <img src="{{ package.images[0].filename }}" class="bd-placeholder-img img-fluid rounded-start" alt="Destination Image">
               <span class=" like-button position-absolute  start-0 bg-warning text-white rounded-end px-3 fs-5">$ {{ package.package_price }}</span>
               <div class="card-body px-4 d-flex flex-column justify-content-between">
@@ -160,13 +161,16 @@
 <div class="reviews-container position-relative" >
 <div class="container mt-5 px-4 position-relative">
   <h2 class="mb-4 mt-4 text-white text-center">Voices of Our Customers</h2>
+  <img  clas="" src="/static/images/background/five_star.png" class="five_star " alt="John Doe image">
   <div class="row ">
     <div class="col-lg-4 mb-4">
       <div class="card re1 h-100 position-relative  ">
         <div class="card-body">
           <blockquote class="blockquote">
             <img src="/static/images/background/john_doe.jpeg" class="card-img-bottom rounded-circle position-relative" alt="John Doe image">
+           
             <footer class="blockquote-footer mt-2 ">John Doe</footer>
+            
             <p class="mb-0">"I've been using this travel app for a while now, and I must say, it's amazing! It has a wide range of destinations, easy booking process, and great customer service. Highly recommended!"</p>
           </blockquote>
         </div>
@@ -210,7 +214,9 @@
   <div class="whole_form">
   <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
     {{ form.csrf_token }}
-    <h2>Tell us about your dream holiday!</h2>
+    <h2 ></i><br>Tell us about your dream holiday!<br>
+      <i class="fa-solid fa-sun  " style="color: #e9f01f;"></i>
+      <i class="fa-solid fa-umbrella-beach "  style="color: #e9f01f;"></i></h2>
 
     <div class="form-group mb-3">
         <label for="holidayType">What type of holiday are you interested in?</label>
@@ -268,7 +274,8 @@
         </div>
     {% endif %}
 </form>
-
+<p class="mx-auto w-75 pt-2 ps-2 d-sm-none" ><i class="fas fa-phone d-sm-none"></i>  or call us on <a href="tel:+11234567890"><span class="text-white">+1 (123) 456-7890</span></a></p>
+  </div>
 <script>
   $(document).ready(function() {
       $('.show-more-btn').on('click', function() {
