@@ -325,8 +325,26 @@ svg{
   background-color: #858080; /* Lighter background color on hover */
   
 }
+/*explore page */
+.explored{
+  background-image: url("/static/images/background/explored2.jpg");
+  background-size:100wh;
+  background-position: top;
+  
+}
+/* login page*/
 
+.login{
+  background-image: url("/static/images/background/login.jpg");
+  background-size: cover;
+  background-position: center;
+}
 /* sign up page*/
+.signup{
+  background-image: url("/static/images/background/signup2.jpg");
+  background-size: cover;
+  background-position: center;
+}
  /* CSS for the glassmorphism effect */
  .glassmorphism {
   background: rgba(255, 255, 255, 0.15); /* Background color with opacity */

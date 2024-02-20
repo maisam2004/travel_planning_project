@@ -13,7 +13,7 @@
     <title>{% block title %}Your Travel App{% endblock %}</title>
     
 </head>
-<body class="d-flex flex-column min-vh-100 mx-auto">
+<body id="top" class="d-flex flex-column min-vh-100 mx-auto {% block class %}Your{% endblock %}">
 
     <!-- Header -->
     <header >
@@ -103,6 +103,7 @@
              <!-- Contact Telephone -->
         
         </div>
+        <a href="#top" title="top of page" ><i class="fa-solid fa-arrow-up neumorphic-icon"></i></a>
     </footer>
     
 
