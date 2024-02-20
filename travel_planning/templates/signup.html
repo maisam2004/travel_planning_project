@@ -51,8 +51,8 @@
 
 <div class="container">
   <div class="row justify-content-center move_down">
-      <div class="col-md-6">
-          <h2 class="text-center">Signup Page</h2>
+      <div class="col-md-6 glassmorphism form-container">
+          <h2 class="text-center text-dark fw-semibold border-bottom border-info p-4 ">Sign Up</h2>
 
           {% with messages = get_flashed_messages() %}
               {% if messages %}
@@ -65,25 +65,25 @@
           <form action="{{ url_for('signup') }}" method="POST">
               {{ form.hidden_tag() }}
               <div class="form-group mt-2">
-                  <label for="username">Username:</label>
-                  {{ form.username(class="form-control form-control-lg mt-2", size=30) }}
+                  <label class="fw-semibold" for="username">Username:</label>
+                  {{ form.username(class="form-control form-control-lg mt-2 rounded-pill", size=30) }}
               </div>
               <div class="form-group mt-2">
-                  <label for="email">Email:</label>
-                  {{ form.email(class="form-control form-control-lg", size=40) }}
+                  <label class="fw-semibold" for="email">Email:</label>
+                  {{ form.email(class="form-control form-control-lg rounded-pill", size=40) }}
               </div>
               <div class="form-group mt-2">
-                  <label for="password">Password:</label>
-                  {{ form.password(class="form-control form-control-lg", size=30) }}
+                  <label class="fw-semibold" for="password">Password:</label>
+                  {{ form.password(class="form-control form-control-lg rounded-pill", size=30) }}
               </div>
               <div class="form-group mt-2">
-                  <label for="confirm_password">Confirm Password:</label>
-                  {{ form.confirm_password(class="form-control form-control-lg", size=30) }}
+                  <label class="fw-semibold" for="confirm_password">Confirm Password:</label>
+                  {{ form.confirm_password(class="form-control form-control-lg rounded-pill", size=30) }}
               </div>
-              <button type="submit" class="btn btn-outline-primary btn-block my-4 mx-auto">Sign Up</button>
+              <button type="submit"  class="btn w-50 shadow-sm rounded-pill btn-outline-dark fw-semibold btn-block my-4 mx-auto">Sign Up</button>
           </form>
 
-          <p class="text-center">Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
+          <p class="text-center fw-semibold ">Already have an account? <a class="bg-dark-subtle p-2" href="{{ url_for('login') }}">Log in here</a></p>
       </div>
   </div>
 </div>

@@ -326,6 +326,23 @@ svg{
   
 }
 
+/* sign up page*/
+ /* CSS for the glassmorphism effect */
+ .glassmorphism {
+  background: rgba(255, 255, 255, 0.15); /* Background color with opacity */
+  backdrop-filter: blur(10px); /* Blur effect */
+  border-radius: 10px; /* Border radius */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Border color with opacity */
+  padding: 20px; /* Padding */
+}
+
+/* CSS for the form border */
+.form-container {
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Border color with opacity */
+  border-radius: 10px; /* Border radius */
+  padding: 20px; /* Padding */
+}
+
 
 
 
@@ -431,7 +448,7 @@ svg{
     }
     
     .hero_bg{
-      background-image:url("/static/images/background/night_bg.jpg");
+      /* background-image:url("/static/images/background/night_bg.jpg"); */
       /* background-position: right; */
       background-size: cover;
       background-repeat: no-repeat;
@@ -439,7 +456,7 @@ svg{
       /* border-bottom-right-radius: 2em;
       border-bottom-left-radius:2em ;
       border-radius: 1em; */
-      background-color: aqua;
+      background-color: rgba(0, 255, 255, 0);
 
   }
 .carousel-item,.carousel-item.active{
@@ -450,12 +467,21 @@ svg{
     border-radius: 2em;
   }
   .carousel-caption {
-    top:-5% !important;
+    top:-0% !important;
 
   }
   .carousel-caption .display-4{
     color:var(--modal-text-container) !important;
+    font-weight: 500;
   }
+  .carousel-caption .lead {
+   
+    font-weight: 600;
+    
+}
+
+
+
 
 
   .card-img-bottom{ /* reviews img */
