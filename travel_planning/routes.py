@@ -10,10 +10,11 @@ import secrets
 from werkzeug.utils import secure_filename
 import logging
 
-
-
 #from travel_planning.models import Category , Task
 
+@app.route('/about', methods=['POST','GET'])
+def about():
+    return render_template('about_us.html')
 
 @app.route('/', methods=['POST','GET'])
 def home():
