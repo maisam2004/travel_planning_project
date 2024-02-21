@@ -35,29 +35,29 @@
                       <ul class="navbar-nav me-auto mb-lg-0">
                           
                           <li class="nav-item">
-                              <a class="nav-link ms-2 mt-2" href="{{ url_for('explore') }}">Explore</a>
+                              <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('explore') }}">Explore</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link ms-2 mt-2" href="{{ url_for('about') }}">About us</a>
+                            <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('about') }}">About us</a>
                         </li>
                       </ul>
                       <!-- User authentication links -->
                       <ul class="navbar-nav">
                           {% if current_user.is_authenticated %}
                           <li class="nav-item">
-                              <a class="nav-link" title="Log out" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket border rounded-circle p-2"></i></a>
+                              <a class="nav-link " title="Log out " href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket neumorphic-icon-nav "></i></a>
                           </li>
                           {% else %}
                           <li class="nav-item">
-                              <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket border rounded-circle p-2"></i></a>
+                              <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket neumorphic-icon-nav "></i></a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  border rounded-circle p-2"></i></a>
+                              <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  neumorphic-icon-nav "></i></a>
                           </li>
                           {% endif %}
                           {% if current_user.is_authenticated %}
                           <li class="nav-item">
-                              <span class="nav-link"><i class="fa-solid fa-user border border rounded-circle p-2"></i> Hi, {{ current_user.username }}</span>
+                              <span class="nav-link"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</span>
                           </li>
                           {% endif %}
                       </ul>

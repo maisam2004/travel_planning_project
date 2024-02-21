@@ -38,6 +38,33 @@ body{
     width: 100px;
     height: 80px; */
 }
+.neumorphic-icon-nav {
+  font-size: 20px; /* Adjust icon size as needed */
+  color: #643279; /* Black icon color */
+  background-color: #ffffff00; /* White background color */
+  border-radius: 50%; /* Circle shape */
+  padding: 10px; /* Adjust padding as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+.neumorphic-icon-nav:hover{
+  background-color: #686b3e5c;
+  color: #000;
+
+}
+.navbar-nav{
+  padding-left: 4px !important;
+  font-weight: 500 !important;
+
+}
+.nav-lik-1:hover{
+  background-color: #686b3e5c;
+  color: #000;
+  
+}
+.nav-link{
+  color:#643279;
+}
 
  header{
   position:sticky;
@@ -456,6 +483,20 @@ svg{
     top:-1em;
   
   }
+  .reviews-container .container{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .reveiw-rows{
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-left: 0.5em !important;
+    padding-right: 0 !important;
+    width: 100%;
+
+  }
+
+  
   
   /* form style to create own desire */
 .whole_form{
