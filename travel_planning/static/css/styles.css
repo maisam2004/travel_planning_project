@@ -453,6 +453,10 @@ svg{
   background: linear-gradient(185deg, rgba(115, 126, 140, 0.842) 7%, rgba(125, 162, 205, 0.891) 41%, rgba(192, 224, 187, 0.849) 100%);
 }
 
+/* for about page imgs*/
+.img-circle{
+  width: 98% !important;
+}
     
     
   }
@@ -614,8 +618,12 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
       justify-content: center;
       align-items: center;
     }
+
+    /* about page wrap */
     
-   
+   .img_p{
+    flex-wrap: nowrap !important;
+   }
     
     
    
