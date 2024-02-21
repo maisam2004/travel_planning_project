@@ -125,9 +125,12 @@ body{
 .card{
   background-color: rgba(128, 128, 128, 0.225);
   background-color: rgba(243, 240, 240, 0.3);
+  background-color: #5a83784d;
   backdrop-filter: blur(10px);
 }
-
+.card.shadow{
+  background-color: #d3f6ed78;
+}
 .bd-placeholder-img { /* images aspect */
   aspect-ratio: 2;
 }
@@ -226,10 +229,21 @@ iframe{
   100% { opacity: 1; }
 }
 /* reviews */
-.reviews-container{
-  
-  
+.glow-paragraph {
+  animation: glow 4s;
 }
+
+@keyframes glow {
+  0% {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff, 0 0 80px #ffffff;
+  }
+  100% {
+    color: inherit;
+    text-shadow: none;
+  }
+}
+
 
 .reviews-container .col-lg-4 .card{
   border-radius: 5em;
@@ -492,7 +506,7 @@ svg{
     overflow-x: auto !important;
     padding-left: 0.5em !important;
     padding-right: 0 !important;
-    width: 100%;
+    width: 103%;
 
   }
 
@@ -679,6 +693,25 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
    .img_p{
     flex-wrap: nowrap !important;
    }
+
+   @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(30px); /* Optional: You can add a vertical translation */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .card {
+    animation: fade-in 0.5s ease-in-out; /* Adjust duration and timing function as needed */
+  }
+  .card.in-view {
+    animation: fade-in 0.5s ease-in-out; /* Same animation as before */
+  }
+  
     
     
    
