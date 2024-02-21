@@ -31,12 +31,12 @@ body{
 .logo_nav_main{
     
     
-    background-image: url("/static/images/background/logonav11.png");
+    /* background-image: url("/static/images/background/travel_app7.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100px;
-    height: 80px;
+    height: 80px; */
 }
 
  header{
@@ -493,6 +493,8 @@ svg{
       background-color: rgba(0, 255, 255, 0);
 
   }
+
+  /*for main slid page */
 .carousel-item,.carousel-item.active{
   position: relative;
 }
@@ -501,7 +503,7 @@ svg{
     border-radius: 2em;
   }
   .carousel-caption {
-    top:-0% !important;
+    top:20% !important;
 
   }
   .carousel-caption .display-4{
