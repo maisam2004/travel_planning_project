@@ -22,12 +22,9 @@
                     
                     <img src="/{{ destination.image | replace('\\', '/') }}" class="card-img-top" alt="Destination Image">
     
-                    <div class="card-body card_contents ">
-                        <!-- <button id="likeButton" data-destination-id="{{ destination.id }}">Like</button> -->
-
-                        <h5 class="card-title">{{ destination.name|upper}}</h5>
-                        <p class="card-text explore_location ">{{ destination.location }}</p>
-                        <p class="card-text explore_location">{{ destination.description }}</p>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ destination.name }}</h5>
+                        <p class="card-text">{{ destination.location }}</p>
                         <!-- Edit and Delete Buttons (conditionally shown) -->
                         <div class="d-flex justify-content-between">
                             {% if current_user.is_authenticated and current_user.id == destination.user_id %}
@@ -66,8 +63,6 @@
                         <input type="text" name="name" id="newDestinationName" class="form-control rounded-pill">
                         <label class="fw-semibold py-2 mt-2" for="newDestinationLocation">Destination Location:</label>
                         <input type="text" name="location" id="newDestinationLocation" class="form-control rounded-pill">
-                        <label class="fw-semibold py-2 mt-2" for="newDestinationDescription">Description:</label>
-                        <textarea name="description" id="newDestinationDescription" class="form-control rounded-pill"></textarea>
                         <!-- Add input field for image file -->
                         <label class="fw-semibold py-2 mt-2" for="newDestinationImage">Upload Image:</label>
                         <input type="file" name="image" id="newDestinationImage" class="form-control rounded-pill">
@@ -87,8 +82,6 @@
     </div>
     {% endif %}
 </div>
-
-
 
 {% endblock %}
 

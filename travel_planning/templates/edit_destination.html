@@ -12,6 +12,8 @@
                 <input type="text" name="name" id="editDestinationName" class="form-control" value="{{ destination.name }}">
                 <label for="editDestinationLocation">Destination Location:</label>
                 <input type="text" name="location" id="editDestinationLocation" class="form-control" value="{{ destination.location }}">
+                <label class="fw-semibold py-2 mt-2" for="newDestinationDescription">Description:</label>
+                        <textarea name="description" id="newDestinationDescription" class="form-control " value="{{ destination.description }}">{{ destination.description }}</textarea>
                 <!-- <label for="image">Update Image:</label>
                 <input type="file" name="image" id="newDestinationImage" class="form-control" value="destination.image"> -->
 

@@ -76,7 +76,6 @@ def explore():
             new_destination = Destination(
                 name=form.name.data,
                 location=form.location.data,
-                description=form.description.data,
                 image=image_path,
                 user_id=current_user.id
             )
@@ -98,25 +97,6 @@ def explore():
         
         all_destinations = Destination.query.all()
     return render_template('explore.html', form=form,all_destinations=all_destinations)
-
-
-
-#liked destinations 
-from flask import request, jsonify
-
-@app.route('/like', methods=['POST'])
-def like_destination():
-    destination_id = request.form['destination_id']  #  the destination ID
-    destination = Destination.query.get(destination_id)
-    if destination:
-        # Increment the likes count
-        destination.likes += 1
-        db.session.commit()
-        return jsonify({'success': True, 'likes': destination.likes})
-    else:
-        return jsonify({'success': False, 'error': 'Destination not found'})
-
-
 
 ## edit  destination -----------------
 
@@ -142,7 +122,6 @@ def edit_destination(destination_id):
         # Process and save the form data
         destination.name = form.name.data
         destination.location = form.location.data
-        destination.description = form.description.data
         if form.image.data:
             if isinstance(form.image.data, str):
             # If form.image.data is a string, it means no new image was provided,

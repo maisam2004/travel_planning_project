@@ -23,7 +23,6 @@ class ResetPasswordRequestForm(FlaskForm):
 class AddDestinationForm(FlaskForm):
     name = StringField('Destination Name', validators=[DataRequired()])
     location = StringField('Destination Location', validators=[DataRequired()])
-    description = TextAreaField('Description') 
     image = FileField('Upload Image')
     submit = SubmitField('Add Destination')
 
@@ -31,7 +30,7 @@ class AddDestinationForm(FlaskForm):
 class EditDestinationForm(FlaskForm):
     name = StringField('Destination Name', validators=[DataRequired()])
     location = StringField('Destination Location', validators=[DataRequired()])
-    description = TextAreaField('Description')
+    
     image = FileField('Update Image', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'], 'Images only!')])
     submit = SubmitField('Save Changes')
 

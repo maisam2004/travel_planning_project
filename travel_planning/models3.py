@@ -20,8 +20,6 @@ class Destination(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     location = db.Column(db.String(150), nullable=False)
-    description = db.Column(db.Text)  # New field for description
-    likes = db.Column(db.Integer, default=0)  # New field for likes
     image = db.Column(db.String(255))  # Store the file path or URL of the image
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)

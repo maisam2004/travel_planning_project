@@ -332,6 +332,18 @@ svg{
   background-position: top;
   
 }
+.card_contents{
+  background-color: #16463a69;
+
+}
+
+.explore_location{/* font of card body */
+  color:var(--modal-text-color);
+  text-shadow: 1px 1px gray;
+  font-size: 1rem;
+  font-style: italic;
+}
+
 /* login page*/
 
 .login{
