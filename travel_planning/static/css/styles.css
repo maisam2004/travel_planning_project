@@ -28,16 +28,9 @@ body{
   background-color: aqua;
  
 }
-.logo_nav_main{
-    
-    
-    /* background-image: url("/static/images/background/travel_app7.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100px;
-    height: 80px; */
-}
+
+
+
 .neumorphic-icon-nav {
   font-size: 20px; /* Adjust icon size as needed */
   color: #643279; /* Black icon color */
@@ -105,6 +98,29 @@ body{
 
 .move_down{
     margin-top: 3rem;
+}
+
+/* HOVER APP ICON */
+/* CSS for the initial logo */
+.logo_nav_main {
+  /* Add styles for the initial logo */
+  /* For example: */
+  width: 200px; /* Adjust size as needed */
+  height: 40px;
+  background-image: url('/static/images/background/travel_app7u.jpg');
+  background-size: cover;
+}
+
+/* CSS for the hover effect */
+.logo-hover {
+  display: none; /* Initially hide the hover image */
+}
+
+/* When hovering over the navbar brand link, show the hover image */
+.navbar-brand:hover .logo-hover {
+  display: inline-block; /* Show the hover image */
+  position: absolute;
+  left:7px;
 }
 
 
@@ -192,7 +208,7 @@ body{
 .carousel-item img{
   border-radius: 1em;
 }
-.carousel-inner{
+#carouselExampleSlidesOnly .carousel-inner{
   aspect-ratio: 2 / 1;
 }
 .modal-body h6{
@@ -550,6 +566,9 @@ svg{
   }
 
   /*for main slid page */
+  .carousel-inner {
+    aspect-ratio: 3/2;
+  }
 .carousel-item,.carousel-item.active{
   position: relative;
 }
@@ -558,15 +577,23 @@ svg{
     border-radius: 2em;
   }
   .carousel-caption {
-    top:20% !important;
+    top:25% !important;
+    
 
   }
+
   .carousel-caption .display-4{
     color:var(--modal-text-container) !important;
+    filter: drop-shadow(0 0 0.75rem rgba(55, 14, 22, 0.838));
+    text-shadow: 1px 1px black;
     font-weight: 500;
+
+    --bs-bg-opacity: 0.3;
   }
   .carousel-caption .lead {
-   
+    background-color: #0000004a;
+    filter: drop-shadow(0 0 0.75rem rgba(55, 14, 22, 0.838));
+    text-shadow: 1px 1px black;
     font-weight: 600;
     
 }
