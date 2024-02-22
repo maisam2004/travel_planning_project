@@ -55,13 +55,13 @@
   <div class="row ">
     {% if travel_packages %}
       {% for package in travel_packages %}
-      <div class="col-lg-5 travel-package {% if loop.index > 4 %}d-none{% endif %}"> <!-- the column size as needed -->
-          <div class="card h-100 "> <!-- Add the h-100 class to make cards equal height -->
+      <div class="col-lg-5 travel-package {% if loop.index > 4 %}d-none{% endif %}">
+        <div class="card h-100 hover-effect" data-package-id="{{ package.id }}"> <!-- Add the h-100 class to make cards equal height -->
               <img src="{{ package.images[0].filename }}" class="bd-placeholder-img img-fluid rounded-start" alt="Destination Image">
               <span class=" like-button position-absolute  start-0 bg-warning text-white rounded-end px-3 fs-5">$ {{ package.package_price }}</span>
               <div class="card-body px-4 d-flex flex-column justify-content-between">
                 <h5 class="card-title fw-bolder">{{ package.name|title }} <span class="text-success fs-6"> - {{ package.duration }}</span> </h5>
-                  <p class="card-text">{{ package.description|split_by_dash }}</p>
+                  <p class="card-text">{{ package.description|split_by_dash }}✈️ 🎉</p>
                   <p class="d-flex "><span  class="list-group-item special text-danger"> 
                     {% for n in package.hotel %}
                     {% if n.isdigit()  %}
@@ -72,7 +72,7 @@
                     <span class=" fw-lighter text-body-tertiary ">(base on 160 reviews ) </span>
                   <!-- list  -->
                   
-                  <a href="#"  class="btn btn-primary d-none "  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">More info</a>
+                  <a href="#"  class="btn btn-primary d-none more-info-link"  data-bs-toggle="modal" data-bs-target="#destinationModal{{ package.id }}">More info</a>
                  
               </div>
               
@@ -105,16 +105,16 @@
 
 
                 <!-- modal content here -->
-                <h3>{{package.location}}</h3>
+                <h3>🏛️{{package.location}}</h3>
                 <div class="text_contents">
-                <p class="first_p">{{ package.description|split_by_dash }}</p>
+                <p class="first_p">{{ package.description|split_by_dash }} 🍝 🍕 🍨</p>
                 {% if package.description|split_by_dash_second %}
                 <p class="d-none d-lg-block">{{ package.description|split_by_dash_second }}</p>
                 {% endif %}
-                <h6 >for : {{ package.duration }}</h6>
-                <h6 >only $ {{ package.package_price }} </h6>
+                <h6 >🌙 ☀️ : {{ package.duration }}</h6>
+                <h6 >💰 Only $ {{ package.package_price }} </h6>
                 </div>
-                <p class="w-75 mx-auto ">Call Now : <span class="blink text-danger bg-warning">001 564 789 502213.</span></p>
+                <p class="w-75 mx-auto ">📞Now : <span class="blink text-danger bg-warning">001 564 789 502213.</span></p>
                 <!--  about the destination  -->
                 <div class="accordion" id="accordionExample">
                   <div class="accordion-item">
@@ -138,7 +138,11 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                        {{ package.hotel_description }}
+                        <h4>{{ package.hotel }}</h4>
+                        <p class="">🏰{{ package.hotel_description|split_by_dash }}</p>
+                        {% if package.hotel_description|split_by_dash_second %}
+                        <p class="d-none d-lg-block">🎉{{ package.hotel_description|split_by_dash_second }}</p>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -339,6 +343,14 @@
               
           }
       }); 
+
+
+
+
+      $('.card').click(function() {
+    var packageId = $(this).data('package-id');
+    $('#destinationModal' + packageId).modal('show'); // Show the corresponding modal
+  });
 
 /*   const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {

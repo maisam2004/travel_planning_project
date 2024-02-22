@@ -6,7 +6,7 @@
   --modal-border-top:violet;
 }
 body{
-  background-color: var(--modal-bg-color);
+  background-color:burlywood;
   background-image: url("/static/images/background/main_body2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -340,7 +340,8 @@ svg{
 /* footer style */
 /* Footer Styles */
 .main_footer {
-  background-color: #16463a; /* Dark blue background */
+  background-color: #16463a; /* Dark green blue background */
+  background-color: #332449;
   padding: 20px 0; /* Adjust padding as needed */
 }
 
@@ -638,6 +639,14 @@ svg{
 
    
     }
+
+    .hover-effect:hover{
+      
+      box-shadow: 5px 5px 2px rgba(128, 128, 128, 0.681);
+      cursor: pointer;
+      
+    }
+
     /* custemer reviews */
     .reviews-container {
       text-align: center;
@@ -744,6 +753,10 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
   }
   
   .card {
+
+
+
+
     animation: fade-in 0.5s ease-in-out; /* Adjust duration and timing function as needed */
   }
   .card.in-view {
