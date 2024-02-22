@@ -779,6 +779,10 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
   .whole_form form {
     width:85%;
   }
+  /* about us  */
+  .img_p{
+    display: block !important;
+  }
       
     }
 
