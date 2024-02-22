@@ -108,7 +108,8 @@ body{
   width: 200px; /* Adjust size as needed */
   height: 40px;
   background-image: url('/static/images/background/travel_app7u.jpg');
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* CSS for the hover effect */
@@ -229,6 +230,14 @@ body{
 .blink {
   animation: blink 1s steps(1, end) infinite;
 }
+
+.accordion-button{
+  background-color:rgb(201, 205, 230);
+  
+}
+
+
+
 .modal_footer .btn .btn-outline-warning{
   transform: translateY(-.2rem);
 }
@@ -595,6 +604,8 @@ svg{
     filter: drop-shadow(0 0 0.75rem rgba(55, 14, 22, 0.838));
     text-shadow: 1px 1px black;
     font-weight: 600;
+    font-size: 1.6em;
+    
     
 }
 
