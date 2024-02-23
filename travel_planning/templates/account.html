@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Account{% endblock %}
+{% block class %}account{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Account Information</h1>
+      <p>Email: {{ user.email }}</p>
+      <!-- Add more user details here -->
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Wished Holidays</h2>
+      {% if wishes %}
+        <ul class="list-group">
+          {% for wish in wishes %}
+            <li class="list-group-item">{{ wish.holiday_type }} - {{ wish.travel_duration }} - {{ wish.price_range }}</li>
+            <!-- Add more details as needed -->
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No wished holidays found.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

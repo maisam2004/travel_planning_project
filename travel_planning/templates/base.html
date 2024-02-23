@@ -26,7 +26,8 @@
           <div class="container-fluid">
               <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url_for('home') }}">
                 <div class="logo_nav_main"></div> <!-- Placeholder for initial logo -->
-                <img src="/static/images/background/travel_app7.jpg" alt="travel app logo" class="logo-hover">
+                <!-- <img src="/static/images/background/travel_app7.jpg" alt="travel app logo" class="logo-hover"> -->
+                <img src="{{ url_for('static', filename='images/background/travel_app7.jpg') }}" alt="travel app logo" class="logo-hover">
             </a>
               <button class="navbar-toggler order-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                   <span class="navbar-toggler-icon"></span>

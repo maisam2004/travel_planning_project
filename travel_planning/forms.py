@@ -1,5 +1,5 @@
 # forms.py
-from flask_wtf import FlaskForm,csrf
+from flask_wtf import FlaskForm
 from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField,HiddenField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, Length
@@ -11,6 +11,9 @@ class SignupForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
 
 
+""" class AccountForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    image = FileField('Profile Image', validators=[FileAllowed(['jpg', 'png', 'jpeg'])]) """
 
 class ResetPasswordForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])

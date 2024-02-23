@@ -12,6 +12,18 @@ import logging
 
 #from travel_planning.models import Category , Task
 
+
+
+@app.route('/account')
+@login_required
+def account():
+    # Retrieve wished holidays associated with the current user
+    wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
+    
+    # Pass user and wished holidays information to the account.html template
+    return render_template('account.html', user=current_user, wishes=wishes)
+
+
 @app.route('/about', methods=['POST','GET'])
 def about():
     return render_template('about_us.html')
