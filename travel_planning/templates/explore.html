@@ -4,7 +4,7 @@
 {% block content %}
 <!-- Main Content -->
 <div class="container mt-5">
-    <h2 class="mb-4">Your Destinations</h2>
+    <h2 class="mb-4 fira-code-h2">Your Destinations</h2>
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="border shadow p-4 alert-info fs-4 text-success bg-dark-subtle rounded" role="alert">
@@ -25,7 +25,7 @@
                     <div class="card-body card_contents ">
                         <!-- <button id="likeButton" data-destination-id="{{ destination.id }}">Like</button> -->
 
-                        <h5 class="card-title">{{ destination.name|upper}}</h5>
+                        <h5 class="card-title fira-code-h5">{{ destination.name|upper}}</h5>
                         <p class="card-text explore_location ">{{ destination.location }}</p>
                         <p class="card-text explore_location">{{ destination.description }}</p>
                         <!-- Edit and Delete Buttons (conditionally shown) -->
@@ -81,7 +81,7 @@
         </div>
     {% else %}
     <div class="text-center mt-4">
-        <a class="btn btn-primary w-40"   href="{{url_for('login')}}" role="button"  aria-controls="collapseExample">
+        <a class="btn btn-primary w-50 rounded-pill"   href="{{url_for('login')}}" role="button"  aria-controls="collapseExample">
             <span id="addDestinationText">Add New Destination</span>
         </a>
     </div>

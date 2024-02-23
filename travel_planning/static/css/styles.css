@@ -4,6 +4,23 @@
   --modal-text-color:pink;
   --modal-border:blue;
   --modal-border-top:violet;
+  --font-Amu-family: 'Amulya', sans-serif;
+}
+
+
+
+
+.fira-code-h2 {
+  font-family: var(--font-Amu-family);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.fira-code-h5 {
+  font-family: var(--font-Amu-family);
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-style: normal;
 }
 body{
   background-color:burlywood;
@@ -153,7 +170,7 @@ body{
 .card{
   background-color: rgba(128, 128, 128, 0.225);
   background-color: rgba(243, 240, 240, 0.3);
-  background-color: #5a83784d;
+  /* background-color: #5a83784d; */
   backdrop-filter: blur(10px);
 }
 .card.shadow{
@@ -211,6 +228,9 @@ body{
 /* background-color: var(--primary-color); */
 .modal-title{
   color:var(--modal-text-container);
+  font-family: var(--font-Amu-family);
+  font-size: 2em;
+
 }
 .modal-content{
   background-color:var(--modal-bg-color) !important;
@@ -452,6 +472,12 @@ svg{
 }
 
 
+/* about heading */
+.about .p-2{
+  font-family: var(--font-Amu-family);
+  font-size: 2.1em;
+}
+
 
 
 @media screen and (min-width: 300px) and (max-width: 550px) {
@@ -561,6 +587,9 @@ svg{
 .img-circle{
   width: 98% !important;
 }
+
+
+
     
     
   }
@@ -751,6 +780,7 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
    .img_p{
     flex-wrap: nowrap !important;
    }
+
 
    @keyframes fade-in {
     from {
