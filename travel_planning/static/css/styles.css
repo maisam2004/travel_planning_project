@@ -87,6 +87,15 @@ body{
   color:#643279;
 }
 
+/*login page footer */
+.login footer{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+}
+
+
+
  header{
   position:sticky;
   top: 0;
@@ -479,6 +488,27 @@ svg{
 }
 
 
+/*login sign up */
+.login h2{
+  font-family: var(--font-Amu-family);
+  font-size: 1.7em;
+  
+}
+.login .pb-1{
+  font-family: var(--font-Amu-family);
+  font-size: 1em;
+}
+.signup h2{
+  font-family: var(--font-Amu-family);
+  font-size: 1.7em;
+  
+}
+.signup label{
+  font-family: var(--font-Amu-family);
+  font-size: 0.9em;
+  
+}
+
 
 @media screen and (min-width: 300px) and (max-width: 550px) {
   .col-lg-4 .card{/* middle card reviews */
@@ -587,6 +617,12 @@ svg{
 .img-circle{
   width: 98% !important;
 }
+
+/* login page */
+.login .col-md-6{
+  width: 100% !important;
+}
+    
 
 
 
@@ -836,6 +872,14 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
   /* about us  */
   .img_p{
     display: block !important;
+  }
+
+  /*login page height */
+  .login .content{
+    /* height: 63vh; */
+  }
+  .login .col-md-6{
+    width: 70% !important;
   }
       
     }
