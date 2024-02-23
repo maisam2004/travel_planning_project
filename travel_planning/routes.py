@@ -1,8 +1,8 @@
 from flask import render_template,redirect,request,url_for,flash,current_app,jsonify
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
-from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm
+from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm
 from flask_mail import Message
 from . import mail
 import os
@@ -14,14 +14,48 @@ import logging
 
 
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+
     # Retrieve wished holidays associated with the current user
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
+
+    # Retrieve user's image if it exists
+    user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+    current_user_image = user_image.image_path if user_image else None
+    just_path = current_user_image.split('static\\') 
+    current_user_image1 = just_path[1].replace("\\", "/")
     
-    # Pass user and wished holidays information to the account.html template
-    return render_template('account.html', user=current_user, wishes=wishes)
+    
+    
+    # Create form instance
+    user_image_form = UserImageForm()
+
+    if user_image_form.validate_on_submit():
+        # Save the uploaded image
+        image_file = user_image_form.image.data
+        filename = secure_filename(image_file.filename)
+        
+        # Define the file path in the static/images folder
+        filepath = os.path.join(current_app.root_path, 'static', 'images', filename)
+        image_file.save(filepath)
+
+        # Check if user already has an image record
+        if user_image:
+            user_image.image_path = filepath
+        else:
+            # Create a new image record for the user
+            user_image = UserImage(user_id=current_user.id, image_path=filepath)
+            db.session.add(user_image)
+
+        db.session.commit()
+        flash('Profile image uploaded successfully!', 'success')
+        return redirect(url_for('account'))
+
+    # Pass form and current user's image path to the template
+    return render_template('account.html', user=current_user, current_user_image1=current_user_image1, user_image_form=user_image_form,wishes=wishes)
+
 
 
 @app.route('/about', methods=['POST','GET'])

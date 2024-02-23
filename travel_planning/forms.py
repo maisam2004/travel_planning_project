@@ -11,9 +11,9 @@ class SignupForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
 
 
-""" class AccountForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    image = FileField('Profile Image', validators=[FileAllowed(['jpg', 'png', 'jpeg'])]) """
+""" user image for account page """
+class UserImageForm(FlaskForm):
+    image = FileField('Profile Image', validators=[DataRequired(), FileAllowed(['jpg', 'png', 'jpeg'])])
 
 class ResetPasswordForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])

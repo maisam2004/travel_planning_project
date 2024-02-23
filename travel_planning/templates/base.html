@@ -34,7 +34,7 @@
               </button>
               <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                   <div class="offcanvas-header">
-                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="homelink" href="{{ url_for('home') }}">Menu</a></h5>
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                   <div class="offcanvas-body">
@@ -63,7 +63,8 @@
                           {% endif %}
                           {% if current_user.is_authenticated %}
                           <li class="nav-item">
-                              <span class="nav-link"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</span>
+                              <!-- <span class="nav-link"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</span> -->
+                              <a class="nav-link " title="account " href="{{ url_for('account') }}"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</a>
                           </li>
                           {% endif %}
                       </ul>

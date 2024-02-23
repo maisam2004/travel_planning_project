@@ -28,6 +28,17 @@ body{
   background-color: aqua;
  
 }
+.account{
+  background: rgb(132, 96, 154);
+  background: linear-gradient(185deg, rgba(115,126,140,1) 7%, rgba(186,91,200,1) 41%, rgba(192,224,187,0.9931431190640319) 100%);
+  
+}
+.account .user_info{
+  background-color: rgba(201, 190, 201, 0.598);
+  margin: 0 auto;
+  border-radius: 1em;
+  line-height: 2.5em;
+}
 
 
 
