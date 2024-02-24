@@ -12,9 +12,9 @@
     <link href="https://api.fontshare.com/v2/css?f[]=amulya@501,400,401,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static',filename ='css/styles.css')}}" rel="stylesheet" >
     <link rel="apple-touch-icon" sizes="180x180" href="/static/images/background/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/static/images/background/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/static/images/background/favicon-16x16.png">
-<link rel="manifest" href="/static/images/background/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/background/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/background/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/background/site.webmanifest">
     <title>{% block title %}Your Travel App{% endblock %}</title>
     
 </head>
@@ -41,11 +41,14 @@
                   <div class="offcanvas-body">
                       <ul class="navbar-nav me-auto mb-lg-0">
                           
-                          <li class="nav-item">
-                              <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('explore') }}">Explore</a>
+                        <li class="nav-item{% if request.endpoint == 'explore': %} active{% endif %}">
+                            <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('explore') }}">Explore</a>
                           </li>
-                          <li class="nav-item">
-                            <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('about') }}">About us</a>
+                          <li class="nav-item{% if request.endpoint == 'about': %} active {% endif %}">
+                            <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('about') }}">About</a>
+                        </li>
+                        <li class="nav-item{% if request.endpoint == 'contact_us': %} active {% endif %}">
+                            <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('contact_us') }}">contact</a>
                         </li>
                       </ul>
                       <!-- User authentication links -->
@@ -55,10 +58,10 @@
                               <a class="nav-link " title="Log out " href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket neumorphic-icon-nav "></i></a>
                           </li>
                           {% else %}
-                          <li class="nav-item">
+                          <li class="nav-item {% if active_page == 'login' %}active{% endif %}">
                               <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket neumorphic-icon-nav "></i></a>
                           </li>
-                          <li class="nav-item">
+                          <li class="nav-item {% if active_page == 'signup' %}active{% endif %}">
                               <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  neumorphic-icon-nav "></i></a>
                           </li>
                           {% endif %}

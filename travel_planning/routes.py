@@ -14,9 +14,17 @@ import logging
 
 
 
+# route for contact_us page
+@app.route('/contact_us')
+def contact_us():
+    
+    return render_template('contact_us.html'  )
+
+
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    
 
     # Retrieve wished holidays associated with the current user
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
@@ -54,16 +62,18 @@ def account():
         return redirect(url_for('account'))
 
     # Pass form and current user's image path to the template
-    return render_template('account.html', user=current_user, current_user_image1=current_user_image1, user_image_form=user_image_form,wishes=wishes)
+    return render_template('account.html', user=current_user, current_user_image1=current_user_image1, user_image_form=user_image_form,wishes=wishes )
 
 
 
 @app.route('/about', methods=['POST','GET'])
 def about():
-    return render_template('about_us.html')
+    
+    return render_template('about_us.html' )
 
 @app.route('/', methods=['POST','GET'])
 def home():
+    
     travel_packages = TravelPackage.query.all()
     # Initialize the holiday wish
     form = WishedHolidayForm()
@@ -85,9 +95,9 @@ def home():
         except Exception as e:
             logging.error(f"Error saving wished holiday: {e}")
             print('An error occurred while submitting your wish.', 'danger')
-            return render_template('home.html', form=form)  # Handle exception
+            return render_template('home.html', form=form )  # Handle exception
     
-    return render_template('home.html', travel_packages=travel_packages,form=form)
+    return render_template('home.html', travel_packages=travel_packages,form=form )
 
 ## dealing with like button 
 
@@ -106,6 +116,7 @@ def wished_holiday():
 
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
+    
     form = AddDestinationForm()
     # Check if the user is authenticated
     if current_user.is_authenticated:
@@ -143,7 +154,7 @@ def explore():
         # User is not logged in, only allow viewing
         
         all_destinations = Destination.query.all()
-    return render_template('explore.html', form=form,all_destinations=all_destinations)
+    return render_template('explore.html', form=form,all_destinations=all_destinations )
 
 
 
@@ -168,6 +179,7 @@ def like_destination():
 
 @app.route('/explore/edit/<int:destination_id>', methods=['GET', 'POST'])
 def edit_destination(destination_id):
+    
     # Check if the user is authenticated
     if not current_user.is_authenticated:
         flash('You need to log in to edit destinations.', 'danger')
@@ -204,7 +216,7 @@ def edit_destination(destination_id):
         flash('Destination edited successfully!', 'success')
         return redirect(url_for('explore'))
 
-    return render_template('edit_destination.html', form=form, destination=destination)
+    return render_template('edit_destination.html', form=form, destination=destination )
 
     
 ## delete destination -----------------
@@ -256,6 +268,7 @@ def load_user(user_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -266,7 +279,7 @@ def login():
             return redirect(url_for('home'))
         else:
             flash('Invalid username or password.', 'danger')
-    return render_template('login.html')
+    return render_template('login.html'  )
 
 @app.route('/logout')
 @login_required
@@ -360,6 +373,7 @@ def send_test_email():
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    
     form = SignupForm()
 
     if form.validate_on_submit():
@@ -385,7 +399,7 @@ def signup():
 
             return redirect(url_for('home'))
 
-    return render_template('signup.html', form=form)
+    return render_template('signup.html', form=form )
 #=======================
 
 
