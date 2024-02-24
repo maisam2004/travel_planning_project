@@ -58,10 +58,10 @@
                               <a class="nav-link " title="Log out " href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket neumorphic-icon-nav "></i></a>
                           </li>
                           {% else %}
-                          <li class="nav-item {% if active_page == 'login' %}active{% endif %}">
+                          <li class="nav-item ">
                               <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket neumorphic-icon-nav "></i></a>
                           </li>
-                          <li class="nav-item {% if active_page == 'signup' %}active{% endif %}">
+                          <li class="nav-item ">
                               <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  neumorphic-icon-nav "></i></a>
                           </li>
                           {% endif %}
