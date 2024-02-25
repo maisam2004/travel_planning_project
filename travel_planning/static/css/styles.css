@@ -199,7 +199,7 @@ body{
 .show-more-btn{
   border-radius: 2em;
   position: relative;
-  left:50%;
+  left:39%;
   
 }
 .fw-lighter{/* text in card for reviews */
@@ -644,6 +644,14 @@ svg{
   }
   
 
+/*   show more button
+ */
+
+ .show-more-btn{
+  width: auto !important;
+  
+
+ }
   /*review star */
   .five_star{
     width: 6em;
