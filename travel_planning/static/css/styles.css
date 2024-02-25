@@ -490,7 +490,10 @@ svg{
   font-family: var(--font-Amu-family);
   font-size: 2.1em;
 }
+.about .first_row{
+  background-color: #510451;
 
+}
 
 /*login sign up */
 .login h2{
