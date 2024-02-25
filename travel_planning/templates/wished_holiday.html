@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Edit Destination{% endblock %}
+{% block class %}wished{% endblock %}
 {% block content %}
 
-{% for wish in wishes %}
-        <li>
-            <h3>Holiday Type: {{ wish.holiday_type }}</h3>
+<div class="container mt-5  ">
+
+        <div class="alert alert-success" role="alert">
+    <strong>Success!</strong> The details have been added to your account. We will get back to you later.
+</div>
+        <div class="glassmorphism">
+            <h3>Holiday Type: {{ wishes.holiday_type }}</h3>
             <ul>
-                <li>Travel Duration: {{ wish.travel_duration }} days</li>
-                <li>Price Range: {{ wish.price_range }}</li>
-                <li>Travel Time: {{ wish.travel_time }}</li>
-                <li>Departure Location: {{ wish.departure_location }}</li>
-                <li>Additional Information: {{ wish.additional_info }}</li>
+                <li>Travel Duration: {{ wishes.travel_duration }} days</li>
+                <li>Price Range: {{ wishes.price_range }}</li>
+                <li>Travel Time: {{ wishes.travel_time }}</li>
+                <li>Departure Location: {{ wishes.departure_location }}</li>
+                <li>Additional Information: {{ wishes.additional_info }}</li>
             </ul>
-        </li>
-        {% endfor %}
+        </div>
+    </div>         
 
 
 {% endblock %}

@@ -520,8 +520,8 @@ svg{
   
  
   background: rgb(114, 99, 125) ;
-  background: linear-gradient(355deg, rgb(51 36 73) 4%, rgba(186,91,200,1) 63%, rgb(139 207 207) 98%);
-  
+/*   background: linear-gradient(355deg, rgb(51 36 73) 4%, rgba(186,91,200,1) 63%, rgb(139 207 207) 98%);
+ */  background: linear-gradient(355deg, rgb(51 36 73) 4%, rgb(65 61 65) 63%, rgb(139 207 207) 98%);
   
   
 }
@@ -560,6 +560,16 @@ svg{
   
 }
 
+
+/* wished page*/
+.wished .content{
+  min-height: 70vh;
+  
+}
+.wished {
+  
+  
+}
 
 
 @media screen and (min-width: 300px) and (max-width: 550px) {

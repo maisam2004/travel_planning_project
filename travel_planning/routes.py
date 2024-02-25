@@ -111,9 +111,26 @@ def home():
 @login_required
 def wished_holiday():
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
-    return render_template('wished_holiday.html', wishes=wishes) 
+    last_wish = WishedHoliday.query.filter_by(user_id=current_user.id).order_by(WishedHoliday.id.desc()).first()
+
+    return render_template('wished_holiday.html', wishes=last_wish) 
+
+#delete wished holiday ===========================================
+@app.route('/account/delete/<int:wishedholiday_id>', methods=['POST'])
+@login_required
+def delete_wished(wishedholiday_id):
+    # Check if the user is authenticated
+
+    wished = WishedHoliday.query.get_or_404(wishedholiday_id)
 
 
+    # Delete the destination from the database
+    db.session.delete(wished)
+    db.session.commit()
+
+    flash('Destination deleted successfully!', 'success')
+    return redirect(url_for('account'))
+#====================================================================
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
     
@@ -230,7 +247,7 @@ def delete_destination(destination_id):
     # Retrieve the destination by ID
     destination = Destination.query.get_or_404(destination_id)
 
-    # Check if the current user is the creator of the destination
+    # Check if the current user is the creator
     if current_user.id != destination.user_id:
         flash('You are not authorized to delete this destination.', 'danger')
         return redirect(url_for('explore'))

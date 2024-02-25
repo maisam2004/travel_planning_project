@@ -43,9 +43,15 @@
     <div class="col-md-6">
       <h2>Wished Holidays</h2>
       {% if wishes %}
-        <ul class="list-group">
+        <ol class="list-group justify-content-between">
           {% for wish in wishes %}
-            <li class="list-group-item">{{ wish.holiday_type }} - {{ wish.travel_duration }} - {{ wish.price_range }}</li>
+            <li class="list-group-item fw-semibold ">- type of holiday : {{ wish.holiday_type }} <br>- duration: {{ wish.travel_duration }} <br>- price range: {{ wish.price_range }}
+              <form method="post" action="{{ url_for('delete_wished', wishedholiday_id=wish.id) }}">
+                <input type="hidden" name="_method" value="DELETE"> 
+                <button type="submit" class="btn btn-outline-danger rounded-pill ">Delete</button>
+            </form>
+          </ul>
+            </li>
             <!-- Add more details as needed -->
           {% endfor %}
         </ul>
