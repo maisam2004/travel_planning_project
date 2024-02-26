@@ -364,10 +364,13 @@ Through its commitment to user privacy, security, and usability, travelapp's "Si
 
 - HTML5
 - CSS3
+- PYTHON 
+- FLASK 
 - JavaScript
 
 ### Frameworks, Libraries & Programs Used
-
+- [Python Flask](https://flask.palletsprojects.com/): Micro web framework for building web applications in Python.
+- [PostgreSQL](https://www.postgresql.org/): Open-source relational database management system for storing application data.
 - [Bootstrap](https://getbootstrap.com/): Front-end framework for responsive design.
 - [jQuery](https://jquery.com/): JavaScript library for DOM manipulation and event handling.
 - [Font Awesome](https://fontawesome.com/): Icon library for scalable vector icons.
