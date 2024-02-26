@@ -2,13 +2,14 @@ Sure, here's the updated README for your Travel App:
 
 # YourTravelApp
 
-![YourTravelApp Logo](assets/images/yourtravelapplogo.png)
+![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
 
-![YourTravelApp Different View Look](assets/images/differentview.jpg)
 
-Explore the world through YourTravelApp, your ultimate travel companion.
+![YourTravelApp Different View Look](travel_planning/static/images/background/travel_app7u.jpg)
 
-Visit the live site: [YourTravelApp.com](https://yourtravelapp.com/)
+Explore the holiday deals through YourTravelApp, your ultimate travel companion.
+
+Visit the live site: [YourTravelApp.com](https://travelapp.com/)
 
 Embark on a virtual journey, discover new destinations, and plan your next adventure!
 
@@ -52,7 +53,7 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 ---
 
-![YourTravelApp Banner](assets/images/banner.jpg)
+![YourTravelApp Banner](travel_planning/static/images/background/travel_app7u.jpg)
 
 ## User Experience (UX)
 
@@ -62,7 +63,7 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 - I want to explore new travel destinations and get inspired for my next trip.
 - I want a user-friendly interface that allows me to navigate through the site effortlessly.
-- I want to find comprehensive travel guides and information about different countries holiday packages.
+- I want to find comprehensive travel guides and information about different holiday packages.
 
 #### Returning Visitor Goals
 
@@ -70,8 +71,8 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 #### Frequent Visitor Goals
 
-- I want to contribute by sharing my travel experiences and tips.
-- I want to connect with other travel enthusiasts through user profiles.
+- I want to contribute by sharing my travel experience and tips.
+- I want to connect with other travel enthusiasts .
 
 ---
 
@@ -79,23 +80,24 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 ### Colour Scheme
 
-The color scheme is carefully selected to evoke a sense of adventure and wanderlust. Earthy tones and vibrant blues are used to represent the beauty of nature and the vastness of the world.
+"The color scheme is thoughtfully curated to capture the essence of adventure and wanderlust. While predominantly earthy tones are employed to evoke a sense of groundedness and connection to nature, the design also incorporates elements of glassmorphism. Background images are strategically utilized to infuse depth and dimension, creating a visually immersive experience that echoes the beauty of the natural world."
 
-- Primary Colour: `#355c7d` (Deep Blue)
-- Secondary Colour: `#6c5b7b` (Plum)
+- Primary Color: `#643279` (Purple)
+- Secondary Colour: `#ffffff` (Shiny White)
 - Accent Colour: `#c06c84` (Dusty Rose)
 - Background: `#f8b400` (Bright Yellow)
 
-![YourTravelApp Color Scheme](assets/wireframes/yourtravelapp.png)
+![YourTravelApp Color Scheme](travel_planning/static/images/background/different_color.png)
 
 ### Typography
 
-The chosen fonts are both modern and easy to read, enhancing the overall user experience.
+The chosen fonts are both modern and easy to read, enhancing the overall user experience.by help from this [Fontpair](https://www.fontpair.co/) website guide.
 
-- Page Title: [Roboto Slab italic](https://fonts.google.com/specimen/Roboto?query=roboto)
-- Body Text: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
-- Body text : [Roboto](https://fonts.google.com/specimen/Roboto?query=roboto)
-  ![Roboto exapmple Font Example](assets/images/robotfont.png)
+- Page Title: [Roboto Slab ](https://fonts.google.com/specimen/Roboto?query=roboto)
+- Body Text title: [amulya](https://www.fontshare.com/fonts/amulya)
+- Body text : [Roboto](https://fonts.google.com/specimen/Roboto?query=roboto) 
+- Body text : [amulya](https://www.fontshare.com/fonts/amulya)
+  ![Amulya exapmple Font Example](travel_planning/static/images/background/amulya.jpg)
 
 ### Imagery
 
@@ -103,11 +105,13 @@ Stunning images of landscapes and iconic landmarks are incorporated to transport
 
 ### Wireframes
 
-Wireframes for mobile, tablet/desktop were created using Adobe xd.
+Wireframes for mobile, desktop were created using microsoft paint.
 
 Hompage desktop and mobile
 
-- <img src="./assets/wireframes/first_wireframe.png" style="width: 60%; height: 60%;">-<img src="./assets/wireframes/mobile_first_wireframe.png" style="width: 30%; height: 50%;">
+- <img src="./travel_planning/static/images/wireframes/homepage1.jpg" style="width: 60%; height: 60%;">- <img src="./travel_planning/static/images/wireframes/homepage2.jpg" style="width: 60%; height: 60%;">
+-<img src="./travel_planning/static/images/wireframes/home_mobileview2.jpg" style="width: 30%; height: 50%;">
+-<img src="./travel_planning/static/images/wireframes/home_mobileview1.jpg" style="width: 30%; height: 50%;">
 
 <img src="./assets/wireframes/flags.png" style="width: 60%; height: 60%;">-<img src="./assets/wireframes/flagsmobile.png" style="width: 30%; height: 50%;"> 
 --third lists and map hotels --

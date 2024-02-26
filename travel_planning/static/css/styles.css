@@ -6,7 +6,17 @@
   --modal-border-top:violet;
   --font-Amu-family: 'Amulya', sans-serif;
 }
-
+/* carousel inside modal for images  */
+:root {
+  --modal-bg-color:linear-gradient(to right bottom, hsl(236, 50%, 50%), hsl(195, 50%, 50%)); /* Define a root variable for the primary color */
+  --modal-bg-color2:radial-gradient(farthest-corner circle at 100% 0%, #00a3ff 0%, #bd2eb3 100%);
+  --modal-bg-color3:linear-gradient(185deg, rgba(125,162,205,1) 9%, rgba(66,130,205,1) 78%, rgba(196,210,203,0.9931431190640319) 99%);
+  --modal-text-tel-color:rgba(160, 243, 35, 0.902);
+  --modal-text-container:rgb(236, 202, 11);
+  --modal-text-color:hsl(0, 0%, 100%);
+  --modal-border:blue;
+  --modal-border-top:violet;
+}
 
 
 
@@ -227,17 +237,7 @@ body{
 
 
 /* modal stuff ########### */
-/* carousel inside modal for images  */
-:root {
-  --modal-bg-color:linear-gradient(to right bottom, hsl(236, 50%, 50%), hsl(195, 50%, 50%)); /* Define a root variable for the primary color */
-  --modal-bg-color2:radial-gradient(farthest-corner circle at 100% 0%, #00a3ff 0%, #bd2eb3 100%);
-  --modal-bg-color3:linear-gradient(185deg, rgba(125,162,205,1) 9%, rgba(66,130,205,1) 78%, rgba(196,210,203,0.9931431190640319) 99%);
-  --modal-text-tel-color:rgba(160, 243, 35, 0.902);
-  --modal-text-container:rgb(236, 202, 11);
-  --modal-text-color:hsl(0, 0%, 100%);
-  --modal-border:blue;
-  --modal-border-top:violet;
-}
+
 /* background-color: var(--primary-color); */
 .modal-title{
   color:var(--modal-text-container);
