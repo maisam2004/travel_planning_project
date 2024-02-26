@@ -216,6 +216,30 @@ The homepage of TravelWander.com offers a captivating introduction to the travel
 
   - A dynamic background  runs throughout the homepage, adding a touch of dynamism and reinforcing the travel theme.
 
+- **Modal for Deals:**
+
+### Homepage Travel Deals Modal
+
+The homepage of travelapp introduces users to enticing travel deals displayed as interactive cards. Upon clicking on a travel deal card, users can access a detailed modal window that provides comprehensive information about the selected deal. This modal enhances the user experience by offering a convenient way to explore key details and make informed decisions regarding their travel plans.
+
+
+- <img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 50%;">
+
+- **Modal Content:**
+
+  - The modal window presents essential details such as the price of the travel package, destination, duration of the holiday, and any special offers or discounts available. By displaying this information prominently, users can quickly assess the value and suitability of the travel deal, facilitating efficient decision-making.
+
+- **Interactive Map:**
+
+  - In addition to textual information, the modal incorporates an interactive map feature that visualizes the destination of the travel package. By leveraging mapping technologies, users can gain insights into the geographical location, nearby attractions, and points of interest associated with the holiday destination, enhancing their understanding and appreciation of the travel offer.
+
+- **Contact Information:**
+
+  - To further assist users and address any inquiries or concerns, the modal includes contact details such as telephone numbers or email addresses for reaching out to travelapp's customer support team. This direct communication channel enables users to seek personalized assistance, receive expert guidance, and make informed decisions regarding their travel arrangements.
+
+By integrating a feature-rich modal window into the homepage's travel deal cards, travelapp enhances user engagement and satisfaction, providing a seamless browsing experience that empowers users to explore, evaluate, and book their dream holidays with confidence and ease.
+
+
 ---
 <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
