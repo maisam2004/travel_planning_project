@@ -107,27 +107,41 @@ Stunning images of landscapes and iconic landmarks are incorporated to transport
 
 Wireframes for mobile, desktop were created using microsoft paint.
 
-Hompage desktop and mobile
+--Hompage -- hompage desktop and mobile
 
-- <img src="./travel_planning/static/images/wireframes/homepage1.jpg" style="width: 60%; height: 60%;">- <img src="./travel_planning/static/images/wireframes/homepage2.jpg" style="width: 60%; height: 60%;">
--<img src="./travel_planning/static/images/wireframes/home_mobileview2.jpg" style="width: 30%; height: 50%;">
--<img src="./travel_planning/static/images/wireframes/home_mobileview1.jpg" style="width: 30%; height: 50%;">
+- <img src="./travel_planning/static/images/wireframes/homepage1.jpg" style="width: 60%; height: 60%;">- <img src="./travel_planning/static/images/wireframes/homepage2.jpg" style="width: 60%; height: 60%;">-<img src="./travel_planning/static/images/wireframes/home_mobileview1.jpg" style="width: 30%; height: 50%;">-<img src="./travel_planning/static/images/wireframes/home_mobileview2.jpg" style="width: 30%; height: 50%;">
 
-<img src="./assets/wireframes/flags.png" style="width: 60%; height: 60%;">-<img src="./assets/wireframes/flagsmobile.png" style="width: 30%; height: 50%;"> 
---third lists and map hotels --
-- <img src="./assets/wireframes/hotelsmaplists.png" style="width: 60%; height: 60%;">
-- <img src="./assets/wireframes/hotelsmaplists.png" style="width: 60%; height: 60%;"><img src="./assets/wireframes/hotelsmaplisttablet1.png" style="width: 60%; height: 60%;"><img src="./assets/wireframes/hotelsmaplisttablet.png" style="width: 50%; height: 50%;">
 
-updated
+--Explored page  -- about share info of their holiday
 
-- <img src="./assets/wireframes/mobile_hotelslists.png" style="width: 30%; height: 50%;"> - <img src="./assets/wireframes/hotelsmaplistmobile1.png" style="width: 30%; height: 50%;">
-- <img src="./assets/wireframes/hotelsmaplistmobile2.png" style="width: 30%; height: 50%;">
-- <img src="./assets/wireframes/hotelfulldetails1.png" style="width: 60%; height: 60%;">
-- <img src="./assets/wireframes/mobile_hotelfulldetails.png" style="width: 30%; height: 50%;"><img src="./assets/wireframes/hotelfulldetailsmobile.png" style="width: 30%; height: 60%;">
+- <img src="./travel_planning/static/images/wireframes/explored.jpg" style="width: 60%; height: 60%;">
+- <img src="./travel_planning/static/images/wireframes/explored_mobileview.jpg" style="width: 30%; height: 50%;">
+
+
+--About page  -- about compony view
+
+<img src="./travel_planning/static/images/wireframes/about.jpg" style="width: 60%; height: 60%;">
+<img src="./travel_planning/static/images/wireframes/about_mibleview.jpg" style="width: 30%; height: 50%;">
+
+-- Account page -- user own info page
+
+- <img src="./travel_planning/static/images/wireframes/account.jpg" style="width: 50%; height: 50%;"> - <img src="./travel_planning/static/images/wireframes/account_mobleview.jpg" style="width: 30%; height: 45%;">
+
+-- contact  page -- company contact information
+
+- <img src="./travel_planning/static/images/wireframes/account.jpg" style="width: 50%; height: 50%;"> - <img src="./travel_planning/static/images/wireframes/account_mobleview.jpg" style="width: 30%; height: 45%;">
+
+--Login page  -- user login page
+
+- <img src="./travel_planning/static/images/wireframes/login.jpg" style="width: 50%; height: 50%;"> <img src="./travel_planning/static/images/wireframes/login_mobleview.jpg" style="width: 30%; height: 50%;">
+
+--Signup page  -- user sign up page
+
+- <img src="./travel_planning/static/images/wireframes/signup.jpg" style="width: 60%; height: 50%;"> <img src="./travel_planning/static/images/wireframes/signup_mobileview.jpg" style="width: 30%; height: 60%;">
 
 ### Features
 
-Explore the rich features of YourTravelApp, designed to provide an immersive and dynamic experience for users.
+Explore the rich features of YourTravelApp, meticulously crafted to offer users an immersive and dynamic journey. Leveraging the power of Flask and a robust database system, every corner of the application pulsates with interactivity, ensuring seamless navigation and personalized experiences tailored to each user's preferences. 
 
 1. **Responsive Design:**
 
@@ -137,13 +151,13 @@ Explore the rich features of YourTravelApp, designed to provide an immersive and
 
 2. **Destination Discovery:**
 
-   - Discover new travel destinations through curated lists and interactive maps.
+   - Discover new travel destinations through curated cads and showing data in modal with interactive map .
 3. **Travel Guides:**
 
-   - Access comprehensive travel guides with useful tips, recommendations, and insights for various countries and cities.
+   - Access comprehensive travel guides with useful tips, recommendations, and insights for various populare cities.
 4. **User Profiles:**
 
-   - Create a personalized user profile to share travel experiences, connect with other users, and bookmark favorite destinations.
+   - Create a personalized user profile to share travel experiences, connect with other users, in explored page
 5. **Interactive Maps:**
 
    - Plan your itinerary effectively with interactive maps showcasing points of interest, hotels, and attractions.
