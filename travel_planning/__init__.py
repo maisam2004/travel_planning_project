@@ -10,9 +10,7 @@ if os.path.exists("env.py"):
 from flask_mail import Mail
 import sqlalchemy.dialects.postgresql
 
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+
 
 
 
