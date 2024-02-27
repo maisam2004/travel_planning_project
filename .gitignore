@@ -2,3 +2,4 @@ evn.py
 __pycache__/
 core.python*
 oldfiles
+venv
