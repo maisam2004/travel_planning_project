@@ -6,7 +6,7 @@ os.environ.setdefault("SECRET_KEY","any_secret_key")
 os.environ.setdefault("DEBUG","True")
 os.environ.setdefault("DEVELOPMENT","True")
 os.environ.setdefault("DB_URL","postgresql://postgres:soor1993@localhost/travel_planning")
-
+os.environ.setdefault("DATABASE_URL","postgresql://postgres:soor1993@localhost/travel_planning")
 
 os.environ.setdefault("MAIL_SERVER",'smtp.gmail.com')
 os.environ.setdefault('MAIL_PORT','587')
