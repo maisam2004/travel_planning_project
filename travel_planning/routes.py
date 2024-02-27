@@ -9,7 +9,7 @@ import os
 import secrets 
 from werkzeug.utils import secure_filename
 import logging
-import sqlalchemy.dialects.postgresql
+
 
 #from travel_planning.models import Category , Task
 
