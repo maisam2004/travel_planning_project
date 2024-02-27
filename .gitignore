@@ -3,3 +3,4 @@ __pycache__/
 core.python*
 oldfiles
 venv
+heroku_commands.txt
