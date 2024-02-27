@@ -102,11 +102,7 @@ body{
 }
 
 /*login page footer */
-.login footer{
-  position:fixed;
-  bottom:0;
-  width: 100%;
-}
+
 
 
 
@@ -695,6 +691,11 @@ svg{
 .login .col-md-6{
   width: 100% !important;
 }
+.login footer{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+}
     
 
 
@@ -913,8 +914,9 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
     animation: fade-in 0.5s ease-in-out; /* Same animation as before */
   }
   
-    
-    
+  .login .content{
+    min-height: 75vh !important;
+  }
    
   
     
@@ -948,12 +950,13 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
   }
 
   /*login page height */
-  .login .content{
-    /* height: 63vh; */
-  }
+
+  
   .login .col-md-6{
     width: 70% !important;
   }
+
+
 
   .contact_us h1{
     text-shadow: 1px 1px 1px rgb(111, 77, 111);
