@@ -696,6 +696,11 @@ svg{
   bottom:0;
   width: 100%;
 }
+.reset_pass footer{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+}
     
 
 
@@ -915,6 +920,9 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162
   }
   
   .login .content{
+    min-height: 75vh !important;
+  }
+  .reset_pass .content{
     min-height: 75vh !important;
   }
    
