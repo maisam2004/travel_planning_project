@@ -20,4 +20,4 @@ os.environ.setdefault("DATABASE_URL","postgres://jqlmmofnytqpko:1cb0882f86a7ac9d
 os.environ.setdefault("MAIL_SERVER",'smtp.gmail.com')
 os.environ.setdefault('MAIL_PORT','587')
 os.environ.setdefault('MAIL_USERNAME','maisam2004@gmail.com')
-os.environ.setdefault("MAIL_PASSWORD","Soorarash2004")
+os.environ.setdefault("MAIL_PASSWORD","qtxd tmyq cerj qlgb")
