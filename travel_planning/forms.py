@@ -16,8 +16,9 @@ class UserImageForm(FlaskForm):
     image = FileField('Profile Image', validators=[DataRequired(), FileAllowed(['jpg', 'png', 'jpeg'])])
 
 class ResetPasswordForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('New Password', validators=[DataRequired()])
     submit = SubmitField('Reset Password')
+
     
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
