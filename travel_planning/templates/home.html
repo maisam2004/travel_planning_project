@@ -268,7 +268,7 @@
 
 <!-- wishes form  -->
 
-  <h5>{{ get_flashed_messages(with_categories=True)|tojson|safe }}</h5>
+  
   <div class="whole_form">
   <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
     {{ form.csrf_token }}
@@ -352,19 +352,7 @@
     $('#destinationModal' + packageId).modal('show'); // Show the corresponding modal
   });
 
-/*   const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-    } else {
-      entry.target.classList.remove('in-view');
-    }
-  });
-}); */
 
-/* document.querySelectorAll('.card').forEach(card => {
-  observer.observe(card);
-}); */
 
 const $cards = $('.travel-package');
 
