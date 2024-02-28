@@ -4,7 +4,7 @@ from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage
 from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm
 
-from . import Mail,Message
+from . import Mail,Message,mail
 import os
 import secrets 
 from werkzeug.utils import secure_filename
@@ -328,7 +328,8 @@ def reset_password_request():
 
             try:
                 # Send the password reset email
-                Mail.send(msg)
+                mail.send(msg)
+                
                 flash('Password reset instructions sent to your email.', 'success')
             except Exception as e:
                 # Log any exceptions
@@ -386,7 +387,7 @@ def send_test_email():
         flash(f'Error sending test email: {str(e)}', 'danger')
 
     return redirect(url_for('home'))  # Redirect to home page or another appropriate route
-#Error sending password reset email: [Errno 111] Connection refused
+
 
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
