@@ -322,10 +322,42 @@ def reset_password_request():
             db.session.commit()
 
             # Create a Message object for the email
-            msg = Message('Password Reset Request', sender=app.config['MAIL_USERNAME'], recipients=[user.email])
+            msg = Message('Password Reset Request at Travel-app', sender=app.config['MAIL_USERNAME'], recipients=[user.email],html=True)
             reset_url = url_for('reset_password_token', token=token, _external=True)
-            msg.body = f'To reset your password, click the following link: {reset_url}'
-
+            
+            #msg.body = f'To reset your password, click the following link: {reset_url}'
+            msg.html = f"""
+                            <!DOCTYPE html>
+                            <html>
+                            <head>
+                                <meta charset="UTF-8">
+                                <title>Password Reset Request</title>
+                                <style>
+                                    body {{
+                                        font-family: sans-serif;
+                                    }}
+                                    .button {{
+                                        background-color: #007bff; /* Blue color */
+                                        border-radius:50%;
+                                        color: white;
+                                        padding: 10px 20px;
+                                        text-decoration: none;
+                                        border-radius: 5px;
+                                        display: inline-block;
+                                    }}
+                                </style>
+                            </head>
+                            <body>
+                                <h2>Password Reset Request</h2>
+                                <p>Hi {user.username},</p>
+                                <p>You recently requested to reset your password for your account.</p>
+                                <p>To proceed with resetting your password, please click the button below:</p>
+                                <a href="{reset_url}" class="button">Reset Password</a>
+                                <p>If you didn't make this request, please ignore this email.</p>
+                                <p>Thanks,<br>Travel App Team</p>
+                            </body>
+                            </html>
+                            """   
             try:
                 # Send the password reset email
                 mail.send(msg)
