@@ -328,7 +328,7 @@ def reset_password_request():
 
             try:
                 # Send the password reset email
-                mail.send(msg)
+                Mail.send(msg)
                 flash('Password reset instructions sent to your email.', 'success')
             except Exception as e:
                 # Log any exceptions
@@ -379,14 +379,14 @@ def send_test_email():
 
     try:
         # Send the message
-        mail.send(msg)
+        Mail.send(msg)
         flash('Test email sent successfully!', 'success')
     except Exception as e:
         # Log any exceptions
         flash(f'Error sending test email: {str(e)}', 'danger')
 
     return redirect(url_for('home'))  # Redirect to home page or another appropriate route
-
+#Error sending password reset email: [Errno 111] Connection refused
 
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
