@@ -7,7 +7,7 @@ import psycopg2
 import smtplib
 if os.path.exists("env.py"):
     import env
-from flask_mail import Mail
+from flask_mail import Mail,Message
 import sqlalchemy.dialects.postgresql
 
 

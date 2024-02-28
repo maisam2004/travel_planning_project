@@ -3,8 +3,8 @@ from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage
 from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm
-from flask_mail import Message
-from . import mail
+
+from . import Mail,Message
 import os
 import secrets 
 from werkzeug.utils import secure_filename
