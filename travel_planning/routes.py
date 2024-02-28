@@ -346,11 +346,22 @@ def reset_password_request():
 # Handling reset link
 @app.route('/reset_password_token/<token>', methods=['GET', 'POST'])
 def reset_password_token(token):
-    # Implement logic to validate the token and handle the password reset
+    # Validate the token
+    user = User.query.filter_by(reset_password_token=token).first()
+    if not user:
+        flash('Invalid or expired password reset token.', 'danger')
+        return redirect(url_for('home'))
+
+    # User and token are valid
     form = ResetPasswordForm()
 
     if form.validate_on_submit():
-        # Implement logic to update the user's password
+        # Update the user's password
+        user.set_password(form.password.data)  #  bcrypt  hashing
+        db.session.commit()
+        user.reset_password_token = None  #  clear token
+        db.session.commit()
+
         flash('Password reset successful. You can now log in with your new password.', 'success')
         return redirect(url_for('login'))
 
