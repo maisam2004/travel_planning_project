@@ -1,5 +1,9 @@
 import os
 
+#Database Name: travel_planning
+#Username: postgres
+#Password: soor1993
+#Host: localhost (This indicates it's on your local machine)
 
 
 
