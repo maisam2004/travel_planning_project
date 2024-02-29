@@ -25,9 +25,9 @@ login_manager = LoginManager(app)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 uri = os.environ.get("DATABASE_URL")  # or other relevant config var
 
-""" if uri.startswith("postgres://"):
+if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
- """
+ 
 #os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
