@@ -573,6 +573,10 @@ svg{
   background-image: none !important;
   background-color: #815eb6;
 }
+.reset_pass form button:hover{
+  background-color: #000;
+  color:white !important;
+}
 
 
 
