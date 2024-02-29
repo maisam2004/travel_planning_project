@@ -179,15 +179,11 @@ YourTravelApp is committed to accessibility and strives to provide an inclusive 
 
 -- Deployed pages
 
-
 ### **All pages header and footer was at base html file and specific route generate that page specific route place here for that page .**
 
 ---
 
-
-
 ### **Home page** (route and page images)
-
 
 ### Route Explanation
 
@@ -196,6 +192,7 @@ YourTravelApp is committed to accessibility and strives to provide an inclusive 
 - **Purpose**: Renders the home page and handles the submission of wished holidays.
 - **Tech Used**: Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
 - **Functionality**:
+
   - Queries all travel packages from the database.
   - Initializes a form for submitting wished holidays (`WishedHolidayForm`).
   - If the form is submitted (`POST` request) and passes validation:
@@ -209,12 +206,10 @@ YourTravelApp is committed to accessibility and strives to provide an inclusive 
     - Flashes an error message to the user.
     - Renders the home page again with the form to handle the exception.
 - **Template**: Renders the `home.html` template, passing the following data:
+
   - `travel_packages`: List of all travel packages queried from the database.
   - `form`: Instance of the `WishedHolidayForm` for submitting wished holidays.
-
-
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
-
 
 #### Home Page web
 
@@ -265,8 +260,6 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 ---
 
-
-
 ### Explore Route Explanation
 
 * **Page** : Explore Page
@@ -313,7 +306,6 @@ Through a combination of intuitive design, interactive features, and robust data
 
 ---
 
-
 ### about Route Explanation
 
 - **Page**: About Us Page
@@ -345,8 +337,6 @@ An illustrative image complements our approach, highlighting our dedication to p
 Step-by-step visuals outline our process, from conceptualization to implementation, showcasing our meticulous attention to detail and user-centric design philosophy. By prioritizing user feedback, continuous improvement, and seamless integration of cutting-edge technologies, we ensure that every aspect of travelapp reflects our commitment to excellence.
 
 ---
-
-
 
 <img src="./travel_planning/static/images/wireframes/full_account.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpeg" style="width: 30%; height: 50%;">
 
@@ -415,6 +405,125 @@ The "Signup" and "Login" pages of travelapp serve as key entry points for users 
   - The "Signup" and "Login" pages feature responsive design elements, ensuring optimal display and functionality across various devices and screen sizes. Whether accessing the platform from a desktop computer, tablet, or smartphone, users can enjoy a consistent and accessible signup and login experience, enhancing usability and convenience.
 
 Through its commitment to user privacy, security, and usability, travelapp's "Signup" and "Login" pages establish a strong foundation for user engagement and satisfaction. By prioritizing data protection, seamless integration, and responsive design, the platform empowers users to register, login, and access its features with confidence and ease.
+
+## Backend of application
+
+#### 1. Introduction
+
+Welcome to the backend of our Flask TravelApp project! In this section, we'll delve into the inner workings of our backend architecture, exploring its crucial role in managing server-side operations, processing data, and interacting with the database.
+
+The backend serves as the backbone of our application, handling various tasks such as user authentication, data retrieval and manipulation, and business logic implementation. It plays a pivotal role in ensuring the smooth functioning of the application, providing the necessary infrastructure for delivering content to users and facilitating seamless interactions between the frontend and the database.
+
+A well-designed backend is essential for maintaining the integrity and reliability of our application. It enables us to efficiently process user requests, handle complex business logic, and manage data persistence, ultimately contributing to a positive user experience.
+
+In the following sections, we'll explore the technologies, database structure, API endpoints, and route explanations that comprise our backend architecture, offering insights into the underlying mechanisms that power our Flask TravelApp.
+
+### 2. Technologies and Frameworks:
+
+"**To ensure the proper functioning of this application, the following technologies must be imported within the routes.py file.**"
+
+Here's an updated list of technologies and frameworks used in your Flask TravelApp project :
+
+* Flask: A lightweight and flexible web framework for Python.
+* Flask SQLAlchemy: A Flask extension that adds ORM support for SQLAlchemy, facilitating database interactions.
+* Flask Login: A Flask extension for managing user authentication and session management.
+* Flask Mail: A Flask extension for sending email messages.
+* PostgreSQL: A powerful open-source relational database management system used for data storage in the application.
+* Werkzeug: A utility library for WSGI (Web Server Gateway Interface) applications, used in Flask for file handling and other tasks.
+* Jinja2: A templating engine for Python, used in Flask for generating dynamic HTML content.
+* Psycopg2: A PostgreSQL adapter for Python, used for interacting with the PostgreSQL database.
+* SQLAlchemy: A SQL toolkit and Object-Relational Mapping (ORM) library for Python, used in conjunction with Flask SQLAlchemy for database operations.
+* SMTPlib: A Python library for sending email messages via the Simple Mail Transfer Protocol (SMTP).
+* Heroku: A cloud platform that hosts your Flask application and provides tools for deployment, scaling, and monitoring.
+
+### Database Structure:
+
+To set up the database structure for this application, I began by installing PostgreSQL on my local machine. Once installed, I accessed the PostgreSQL SQL shell command prompt and created a new database named "traveling_app". This database served as the foundation for storing all application data.
+
+To create the necessary tables within the "traveling_app" database, I ran the Flask application. Each time the application was executed, the required tables, including those for users, destinations, travel packages, wished holidays, and user images, were automatically generated within the database. This process ensured that the database structure aligned with the application's data model, facilitating efficient data storage and retrieval.
+
+To ensure the proper creation of database tables, I meticulously examined the forms utilized on each page of the application. Understanding the data input requirements of these forms was crucial for designing the database schema effectively.
+
+To translate these form structures into database tables, I created two essential files: models.py and forms.py. The models.py file defined the database models corresponding to each form, specifying the fields and their data types. On the other hand, the forms.py file encapsulated the form structures themselves, facilitating data validation and user input handling.
+
+This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
+
+###### For the homepage,
+
+I've implemented a feature to display enticing deals to users. These deals are sourced from a dedicated table in the database called TravelPackage.
+
+```
+def home():
+  
+    travel_packages = TravelPackage.query.all()
+```
+
+To achieve this, I created a database model named TravelPackage to represent each deal. This model is closely integrated with a form specifically designed for adding new deals, which is accessible through an admin-only page called *add_travel_package*.
+
+The add_travel_package page, although not visible to regular users, serves as a management interface for administrators to insert new deals into the TravelPackage table. These newly added deals are then seamlessly integrated into the homepage, enriching the user experience with a diverse range of attractive offers.
+
+<img src="./travel_planning/static/images/wireframes/code_add_tr.jpg" style="width: 65%; height: 20%;">
+
+
+
+### 1. Introduction to Backend:
+
+- Start by introducing the backend of your Flask TravelApp project.
+- Explain the role of the backend in handling server-side operations, data processing, and interaction with the database.
+- Highlight the importance of a well-designed backend in ensuring the smooth functioning of the application.
+
+### 2. Technologies and Frameworks:
+
+- List the technologies and frameworks used in the backend development.
+- Provide a brief explanation of each technology/framework and its role in the project.
+- For example:
+  ```
+  Technologies and Frameworks Used:
+  - Flask: Lightweight web framework for building web applications in Python.
+  - SQLAlchemy: Python SQL toolkit and Object-Relational Mapping (ORM) library.
+  - Flask-WTF: Flask extension for handling web forms.
+  - Bootstrap: Front-end framework for building responsive and mobile-first websites.
+  ```
+
+### 3. Database Structure:
+
+- Describe the structure of the database used in your Flask application.
+- Explain the tables/entities in the database and their relationships, if any.
+- You can include a brief overview and optionally, a diagram illustrating the database schema.
+
+### 4. API Endpoints:
+
+- If your Flask application exposes any API endpoints, list them along with their functionalities.
+- Briefly explain the purpose of each endpoint and the expected input/output.
+- Example:
+  ```
+  API Endpoints:
+  - /api/users (GET): Retrieve a list of all users.
+  - /api/destinations (POST): Create a new destination.
+  ```
+
+### 5. Route Explanations:
+
+- Provide detailed explanations for each route in your Flask application.
+- Include information such as route name, HTTP methods, purpose, functionality, and the template rendered.
+- Use a structured format or bullet points to organize the information effectively.
+
+### 6. Code Snippets:
+
+- Include relevant code snippets from your Flask routes, models, and forms to illustrate how the backend functionality is implemented.
+- Use fenced code blocks with appropriate syntax highlighting to make the code readable.
+
+### 7. Deployment:
+
+- If your Flask TravelApp project is deployed, provide instructions or a brief overview of the deployment process.
+- Include any configuration steps required for deployment, such as setting environment variables or configuring the database.
+
+### 8. Conclusion:
+
+- Summarize the key features of the backend and how they contribute to the overall functionality of the Flask TravelApp project.
+- Emphasize the importance of the backend in delivering a seamless user experience and achieving the project goals.
+
+For your Flask TravelApp project, you can start by introducing the backend, highlighting the technologies and frameworks used, describing the database structure, and explaining the API endpoints and routes. As you proceed, you can provide code snippets and deployment instructions to give users a comprehensive understanding of the backend implementation.
 
 ## Technologies Used
 
