@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Home page{% endblock %}
+{% block class %}home{% endblock %}
 {% block content %}
 
 <!-- Hero Section -->
@@ -337,7 +338,7 @@
 <script>
   $(document).ready(function() {
        $('.show-more-btn').on('click', function() {
-          $('.travel-package.d-none').slice(0, 4).removeClass('d-none');
+          $('.travel-package.d-none').slice(0, 4).removeClass('d-none'); // Show more deals
           if ($('.travel-package.d-none').length === 0) {
               $('.show-more-btn').hide();
               

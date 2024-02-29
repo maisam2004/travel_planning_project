@@ -235,13 +235,13 @@ body{
 /* modal stuff ########### */
 
 /* background-color: var(--primary-color); */
-.modal-title{
+.home .modal-title{
   color:var(--modal-text-container);
   font-family: var(--font-Amu-family);
   font-size: 2em;
 
 }
-.modal-content{
+.home .modal-content{
   background-color:var(--modal-bg-color) !important;
   background-image: var(--modal-bg-color);
   color:var(--modal-text-color);
@@ -252,7 +252,7 @@ body{
 #carouselExampleSlidesOnly .carousel-inner{
   aspect-ratio: 2 / 1;
 }
-.modal-body h6{
+.home .modal-body h6{
   color:var(--modal-text-tel-color);
 
 }
@@ -278,7 +278,7 @@ body{
 
 
 
-.modal_footer .btn .btn-outline-warning{
+.home .modal_footer .btn .btn-outline-warning{
   transform: translateY(-.2rem);
 }
 iframe{
@@ -558,7 +558,10 @@ svg{
   
   
 }
-
+/* eplored page*/
+.explored .modal{
+  z-index: 1060;
+}
 
 /* wished page*/
 .wished .content{
@@ -573,10 +576,7 @@ svg{
   background-image: none !important;
   background-color: #815eb6;
 }
-.reset_pass form button:hover{
-  background-color: #000;
-  color:white !important;
-}
+
 
 
 
