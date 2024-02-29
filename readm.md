@@ -176,20 +176,49 @@ YourTravelApp is committed to accessibility and strives to provide an inclusive 
 - Alt text for images to ensure content comprehension for visually impaired users.
 
 ---
+
 -- Deployed pages
+
+
+### **All pages header and footer was at base html file and specific route generate that page specific route place here for that page .**
+
+---
+
+
+
+### **Home page** (route and page images)
+
+
+### Route Explanation
+
+- **Page**: Home Page
+- **Method**: POST, GET
+- **Purpose**: Renders the home page and handles the submission of wished holidays.
+- **Tech Used**: Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
+- **Functionality**:
+  - Queries all travel packages from the database.
+  - Initializes a form for submitting wished holidays (`WishedHolidayForm`).
+  - If the form is submitted (`POST` request) and passes validation:
+    - Creates a new `WishedHoliday` object with the submitted data.
+    - Adds the new `WishedHoliday` object to the database session.
+    - Commits the changes to the database.
+    - Flashes a success message to the user.
+    - Redirects the user to the wished holiday page (`wished_holiday` route).
+  - If an exception occurs during database operations:
+    - Logs the error message.
+    - Flashes an error message to the user.
+    - Renders the home page again with the form to handle the exception.
+- **Template**: Renders the `home.html` template, passing the following data:
+  - `travel_packages`: List of all travel packages queried from the database.
+  - `form`: Instance of the `WishedHolidayForm` for submitting wished holidays.
+
 
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
 
-<img src="./travel_planning/static/images/wireframes/full_login.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_login.jpeg" style="width: 30%; height: 50%;">
-<img src="./travel_planning/static/images/wireframes/full_signup.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_signup.jpeg" style="width: 30%; height: 50%;">
+#### Home Page web
 
-
-
-
-#### Home Page
-
-The homepage of TravelWander.com offers a captivating introduction to the travel experience, blending aesthetics and functionality seamlessly.
+The homepage of Travelapp offers a captivating introduction to the travel experience, blending aesthetics and functionality seamlessly.
 
 - **Site Name and Logo:**
 
@@ -215,46 +244,67 @@ The homepage of TravelWander.com offers a captivating introduction to the travel
 - **Background :**
 
   - A dynamic background  runs throughout the homepage, adding a touch of dynamism and reinforcing the travel theme.
-
 - **Modal for Deals:**
 
 ### Homepage Travel Deals Modal
 
 The homepage of travelapp introduces users to enticing travel deals displayed as interactive cards. Upon clicking on a travel deal card, users can access a detailed modal window that provides comprehensive information about the selected deal. This modal enhances the user experience by offering a convenient way to explore key details and make informed decisions regarding their travel plans.
 
-
 - <img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 50%;">
-
 - **Modal Content:**
 
   - The modal window presents essential details such as the price of the travel package, destination, duration of the holiday, and any special offers or discounts available. By displaying this information prominently, users can quickly assess the value and suitability of the travel deal, facilitating efficient decision-making.
-
 - **Interactive Map:**
 
   - In addition to textual information, the modal incorporates an interactive map feature that visualizes the destination of the travel package. By leveraging mapping technologies, users can gain insights into the geographical location, nearby attractions, and points of interest associated with the holiday destination, enhancing their understanding and appreciation of the travel offer.
-
 - **Contact Information:**
 
   - To further assist users and address any inquiries or concerns, the modal includes contact details such as telephone numbers or email addresses for reaching out to travelapp's customer support team. This direct communication channel enables users to seek personalized assistance, receive expert guidance, and make informed decisions regarding their travel arrangements.
 
 By integrating a feature-rich modal window into the homepage's travel deal cards, travelapp enhances user engagement and satisfaction, providing a seamless browsing experience that empowers users to explore, evaluate, and book their dream holidays with confidence and ease.
 
-
 ---
+
+
+
+### Explore Route Explanation
+
+* **Page** : Explore Page
+* **Method** : POST, GET
+* **Purpose** : Renders the explore page and handles the addition of new destinations.
+* **Tech Used** : Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
+* **Functionality** :
+* Initializes a form for adding destinations (`AddDestinationForm`).
+* Checks if the user is authenticated:
+  * If authenticated:
+    * Handles form submission:
+      * Saves the uploaded image and retrieves the file path.
+      * Creates a new `Destination` object with the submitted data.
+      * Adds the new `Destination` object to the database session.
+      * Commits the changes to the database.
+      * Flashes a success message to the user.
+      * Redirects the user back to the explore page.
+    * Retrieves all destinations ordered by name from the database.
+  * If not authenticated:
+    * Retrieves all destinations from the database.
+* Renders the `explore.html` template, passing the following data:
+  * `form`: Instance of the `AddDestinationForm` for adding destinations.
+  * `all_destinations`: List of all destinations queried from the database.
+
+This route handles the rendering of the explore page and allows authenticated users to add new destinations. It utilizes forms for data submission and interacts with the database to store and retrieve destination information.
+
 <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
-## Explore Page
+## Explore Page web
 
 The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
 
 - **User Submissions:**
 
   - Users can effortlessly post their recent holiday details, including destination highlights, activities, and memorable moments. Accompanied by stunning images, each submission offers a unique glimpse into diverse travel experiences, inspiring others to embark on their adventures.
-
 - **Interactive Cards:**
 
   - Bootstrap cards facilitate seamless navigation and interaction, allowing users to explore submissions with ease. The inclusion of edit and delete buttons empowers users to modify their content, ensuring flexibility and control over their posted experiences.
-
 - **Database Interaction:**
 
   - Behind the scenes, travelapp seamlessly interacts with the database to retrieve, display, and manage user submissions. Leveraging the power of Flask and SQLAlchemy, the platform delivers a seamless user experience, enabling smooth data handling and efficient content management.
@@ -262,11 +312,25 @@ The "Explore" page of travelapp serves as a dynamic platform for users to share 
 Through a combination of intuitive design, interactive features, and robust database functionality, the "Explore" page invites users to share their travel tales, connect with fellow adventurers, and discover new destinations in an immersive and engaging manner.
 
 ---
+
+
+### about Route Explanation
+
+- **Page**: About Us Page
+- **Method**: POST, GET
+- **Purpose**: Renders the about us page.
+- **Tech Used**: Flask, Flask SQLAlchemy, Jinja (for templating)
+- **Functionality**:
+  - Renders the `about_us.html` template, which displays information about the website or organization.
+- **Template**: Renders the `about_us.html` template, which typically includes information such as the purpose of the website, team members, mission statement, and contact information.
+
+This route simply renders the about us page without any additional functionality. It serves as a static page to provide information about the website or organization to the users.
+
 <img src="./travel_planning/static/images/wireframes/full_about.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_about_mobile.jpeg" style="width: 30%; height: 50%;">
 
 #### About Page
-The "About" page of travelapp offers a glimpse into our vision, approach, and the process behind our platform's creation. Designed to be both informative and engaging, this page provides insights into what drives us and how we strive to deliver exceptional travel experiences.
 
+The "About" page of travelapp offers a glimpse into our vision, approach, and the process behind our platform's creation. Designed to be both informative and engaging, this page provides insights into what drives us and how we strive to deliver exceptional travel experiences.
 
 - **Our Vision:**
 
@@ -279,7 +343,11 @@ An illustrative image complements our approach, highlighting our dedication to p
 - **Our Process:**
 
 Step-by-step visuals outline our process, from conceptualization to implementation, showcasing our meticulous attention to detail and user-centric design philosophy. By prioritizing user feedback, continuous improvement, and seamless integration of cutting-edge technologies, we ensure that every aspect of travelapp reflects our commitment to excellence.
+
 ---
+
+
+
 <img src="./travel_planning/static/images/wireframes/full_account.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpeg" style="width: 30%; height: 50%;">
 
 ## Account Page
@@ -289,21 +357,19 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 - **Profile Information:**
 
   - Users can access and update their profile information, including username, email, and any additional details provided during registration. The user-friendly interface ensures easy navigation and efficient management of account details.
-
 - **Upload Personal Image:**
 
   - A dedicated feature enables users to upload a personalized profile image, enhancing their presence and adding a touch of personalization to their account. Utilizing Flask's file upload functionality, users can effortlessly select and upload images directly from their device.
-
 - **Last Wished Holiday:**
 
   - As part of the user experience enhancement, travelapp displays details of the user's last wished holiday on the "Account" page. Leveraging data stored in the WishedHoliday table, users can conveniently reference their desired holiday preferences, facilitating future travel planning and exploration.
-
 - **Database Integration:**
 
   - Behind the scenes, travelapp seamlessly integrates with a database system to retrieve and display user information, uploaded images, and wished holiday details. Leveraging Flask-SQLAlchemy, the platform ensures secure data storage and efficient data retrieval, enhancing the overall user experience.
 
 Through a combination of intuitive design, personalized features, and robust database functionality, the "Account" page empowers users to manage their profile, upload personalized content, and access essential information, fostering a seamless and engaging user experience.
----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 <img src="./travel_planning/static/images/wireframes/full_contact.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpeg" style="width: 30%; height: 50%;">
 
 ## Contact Page
@@ -313,15 +379,12 @@ The "Contact" page of travelapp serves as a centralized hub for users to access 
 - **Contact Information:**
 
   - Users can easily locate contact details, including email addresses and phone numbers, enabling seamless communication with travelapp's support team. The intuitive layout ensures quick access to essential information, facilitating efficient resolution of inquiries and support requests.
-
 - **Interactive Map:**
 
   - An interactive map feature enhances the user experience by visually representing the geographical location of travelapp's headquarters or primary operating regions. Leveraging mapping APIs, users can explore the platform's physical presence and gain insights into its global reach and coverage.
-
 - **Email Integration:**
 
   - To streamline communication and facilitate direct inquiries, travelapp offers users the option to send emails directly from the "Contact" page. By integrating email functionality, users can compose messages within the platform, minimizing friction and enhancing convenience.
-
 - **User-friendly Interface:**
 
   - The "Contact" page features a user-friendly interface designed to promote ease of use and accessibility. Clear navigation elements and prominently displayed contact information ensure that users can quickly locate and utilize the available communication channels without any hassle.
@@ -329,6 +392,7 @@ The "Contact" page of travelapp serves as a centralized hub for users to access 
 Through its comprehensive approach to user support and engagement, the "Contact" page reinforces travelapp's commitment to customer satisfaction and service excellence. By providing users with accessible contact information, interactive map functionality, and seamless email integration, the platform empowers users to connect with ease and confidence, fostering a positive and enriching user experience.
 
 ---
+
 <img src="./travel_planning/static/images/wireframes/full_signup.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_signup.jpeg" style="width: 30%; height: 50%;">
 
 <img src="./travel_planning/static/images/wireframes/full_login.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_login.jpeg" style="width: 30%; height: 50%;">
@@ -340,23 +404,17 @@ The "Signup" and "Login" pages of travelapp serve as key entry points for users 
 - **Signup Page:**
 
   - The "Signup" page enables new users to create an account and become members of the travelapp community. With a user-friendly registration form, users can provide essential information, such as username, email address, and password, to establish their accounts securely. Stringent validation checks ensure data accuracy and integrity, enhancing the overall signup process and mitigating potential errors or discrepancies.
-
 - **Login Page:**
 
   - The "Login" page offers registered users convenient access to their accounts, facilitating secure authentication and personalized interactions with travelapp's features. Utilizing industry-standard encryption protocols, such as HTTPS and secure password hashing, the login process ensures robust protection of user credentials and sensitive information. Through a streamlined login interface, users can enter their credentials confidently, knowing that their privacy and security are prioritized.
-
 - **Database Integration:**
 
   - Both the "Signup" and "Login" pages seamlessly interact with travelapp's secure database infrastructure, storing and retrieving user account data in a protected environment. By leveraging database technologies and secure authentication mechanisms, the platform maintains data integrity and confidentiality, safeguarding user information against unauthorized access or manipulation.
-
 - **Responsive Design:**
 
   - The "Signup" and "Login" pages feature responsive design elements, ensuring optimal display and functionality across various devices and screen sizes. Whether accessing the platform from a desktop computer, tablet, or smartphone, users can enjoy a consistent and accessible signup and login experience, enhancing usability and convenience.
 
 Through its commitment to user privacy, security, and usability, travelapp's "Signup" and "Login" pages establish a strong foundation for user engagement and satisfaction. By prioritizing data protection, seamless integration, and responsive design, the platform empowers users to register, login, and access its features with confidence and ease.
-
-
-
 
 ## Technologies Used
 
@@ -364,11 +422,12 @@ Through its commitment to user privacy, security, and usability, travelapp's "Si
 
 - HTML5
 - CSS3
-- PYTHON 
-- FLASK 
+- PYTHON
+- FLASK
 - JavaScript
 
 ### Frameworks, Libraries & Programs Used
+
 - [Python Flask](https://flask.palletsprojects.com/): Micro web framework for building web applications in Python.
 - [PostgreSQL](https://www.postgresql.org/): Open-source relational database management system for storing application data.
 - [Bootstrap](https://getbootstrap.com/): Front-end framework for responsive design.

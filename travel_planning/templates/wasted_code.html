@@ -58,3 +58,39 @@
         </form> -->
         div class="d-none" style="width: 100%"><iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
         src="https://maps.google.com/maps?width=100%25&amp;height=350&amp;hl=en&amp;q={{package.latitude}},{{package.longitude}}+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps trackers</a></iframe></div>
+
+
+
+        <details>
+            <summary><code>home</code> Route</summary>
+            
+            ```python
+            @app.route('/', methods=['POST','GET'])
+            def home():
+                travel_packages = TravelPackage.query.all()
+                form = WishedHolidayForm()
+                if form.validate_on_submit():
+                    wished_holiday = WishedHoliday(
+                        holiday_type=form.holiday_type.data,
+                        travel_duration=form.travel_duration.data,
+                        price_range=str(form.price_range.data),
+                        travel_time=str(form.travel_time.data),
+                        departure_location=str(form.departure_location.data),
+                        additional_info=form.additional_info.data,
+                        user_id=current_user.id
+                    )
+                    db.session.add(wished_holiday)
+                    try:
+                        db.session.commit()
+                        flash('Wished holiday submitted successfully!', 'success')
+                        return redirect(url_for('wished_holiday'))
+                    except Exception as e:
+                        logging.error(f"Error saving wished holiday: {e}")
+                        flash('Error submitting wished holiday.', 'danger')
+                        return render_template('home.html', form=form )
+                return render_template('home.html', travel_packages=travel_packages, form=form )
+
+                Page: Home Page
+                Method: POST, GET
+                Functionality: Renders home page, handles wished holiday submissions.
+            </details>
