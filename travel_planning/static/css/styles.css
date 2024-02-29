@@ -575,6 +575,7 @@ svg{
 }
 
 
+
 @media screen and (min-width: 300px) and (max-width: 550px) {
   .col-lg-4 .card{/* middle card reviews */
     position: relative ;
