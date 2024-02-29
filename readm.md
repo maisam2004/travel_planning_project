@@ -440,7 +440,7 @@ Here's an updated list of technologies and frameworks used in your Flask TravelA
 
 To set up the database structure for this application, I began by installing PostgreSQL on my local machine. Once installed, I accessed the PostgreSQL SQL shell command prompt and created a new database named "traveling_app". This database served as the foundation for storing all application data.
 
-To create the necessary tables within the "traveling_app" database, I ran the Flask application. Each time the application was executed, the required tables, including those for users, destinations, travel packages, wished holidays, and user images, were automatically generated within the database. This process ensured that the database structure aligned with the application's data model, facilitating efficient data storage and retrieval.
+To create the necessary tables within the "***traveling_planning***" database, I ran the Flask application. Each time the application was executed, the required tables, including those for users, destinations, travel packages, wished holidays, and user images, were automatically generated within the database. This process ensured that the database structure aligned with the application's data model, facilitating efficient data storage and retrieval.
 
 To ensure the proper creation of database tables, I meticulously examined the forms utilized on each page of the application. Understanding the data input requirements of these forms was crucial for designing the database schema effectively.
 
@@ -455,41 +455,18 @@ I've implemented a feature to display enticing deals to users. These deals are s
 ```
 def home():
   
-    travel_packages = TravelPackage.query.all()
+    travel_packages 			=    TravelPackage.query.all()
 ```
 
-To achieve this, I created a database model named TravelPackage to represent each deal. This model is closely integrated with a form specifically designed for adding new deals, which is accessible through an admin-only page called *add_travel_package*.
+To achieve this, I created a database model named TravelPackage to represent each deal. This model is closely integrated with a form specifically designed for adding new deals, which is accessible through an admin-only page called ***add_travel_package.***
 
 The add_travel_package page, although not visible to regular users, serves as a management interface for administrators to insert new deals into the TravelPackage table. These newly added deals are then seamlessly integrated into the homepage, enriching the user experience with a diverse range of attractive offers.
 
 <img src="./travel_planning/static/images/wireframes/code_add_tr.jpg" style="width: 65%; height: 20%;">
 
+---
 
-
-### 1. Introduction to Backend:
-
-- Start by introducing the backend of your Flask TravelApp project.
-- Explain the role of the backend in handling server-side operations, data processing, and interaction with the database.
-- Highlight the importance of a well-designed backend in ensuring the smooth functioning of the application.
-
-### 2. Technologies and Frameworks:
-
-- List the technologies and frameworks used in the backend development.
-- Provide a brief explanation of each technology/framework and its role in the project.
-- For example:
-  ```
-  Technologies and Frameworks Used:
-  - Flask: Lightweight web framework for building web applications in Python.
-  - SQLAlchemy: Python SQL toolkit and Object-Relational Mapping (ORM) library.
-  - Flask-WTF: Flask extension for handling web forms.
-  - Bootstrap: Front-end framework for building responsive and mobile-first websites.
-  ```
-
-### 3. Database Structure:
-
-- Describe the structure of the database used in your Flask application.
-- Explain the tables/entities in the database and their relationships, if any.
-- You can include a brief overview and optionally, a diagram illustrating the database schema.
+* databse and tables that has been created !
 
 ### 4. API Endpoints:
 
