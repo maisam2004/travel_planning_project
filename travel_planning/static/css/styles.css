@@ -569,6 +569,10 @@ svg{
   
   
 }
+.reset_pass {
+  background-image: none !important;
+  background-color: #815eb6;
+}
 
 
 @media screen and (min-width: 300px) and (max-width: 550px) {
