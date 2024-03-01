@@ -447,7 +447,7 @@ In the following sections, we'll explore the technologies, database structure, a
 * **dump.sql**: This SQL dump file is used to replicate your database on Heroku Postgres.
 * **Maintain consistent formatting:** Use consistent indentation and spacing to improve readability.
 
-### 2. Technologies and Frameworks:
+### 2. backend Technologies and Frameworks:
 
 "**To ensure the proper functioning of this application, the following technologies must be imported within the routes.py file.**"
 
@@ -1039,8 +1039,6 @@ heroku logs --tail
 
 ---
 
-
-
 ### Conclusion:
 
 The backend of the Flask application is the core component responsible for handling data processing, business logic, and database interactions. It encompasses routes, models, and forms to create a robust web application.
@@ -1078,6 +1076,10 @@ The backend of the Flask application is the core component responsible for handl
 
 Overall, the backend serves as the foundation of the application, orchestrating various components to deliver a seamless user experience while ensuring data integrity, security, and performance.
 
+---
+
+---
+
 ## Technologies Used
 
 ### Languages Used
@@ -1092,7 +1094,7 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 
 - [Python Flask](https://flask.palletsprojects.com/): Micro web framework for building web applications in Python.
 - [PostgreSQL](https://www.postgresql.org/): Open-source relational database management system for storing application data.
-- [Bootstrap](https://getbootstrap.com/): Front-end framework for responsive design.
+- [Bootstrap](https://getbootstrap.com/) v5.3: Front-end framework for responsive design.
 - [jQuery](https://jquery.com/): JavaScript library for DOM manipulation and event handling.
 - [Font Awesome](https://fontawesome.com/): Icon library for scalable vector icons.
 - [Google Fonts](https://fonts.google.com/): Source of custom fonts for enhanced typography.
@@ -1103,24 +1105,9 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 
 ---
 
-## Deployment & Local Development
-
-### Deployment
-
-YourTravelApp is deployed using GitHub Pages. To deploy the site:
-
-1. Navigate to the repository settings on GitHub.
-2. Scroll down to the GitHub Pages section.
-3. Select the main branch as the source.
-4. The site will be automatically deployed, and the link will be provided.
-
-### Local Development
-
-To run YourTravelApp locally, follow these steps:
-
 #### How to Fork
 
-1. Log in to GitHub and locate the repository: [YourTravelApp](https://github.com/yourusername/yourtravelapp).
+1. Log in to GitHub and locate the repository: [TravelApp](https://github.com/yourusername/yourtravelapp).
 2. At the top right of the page, click the Fork button.
 3. After forking, you'll have a copy of the repository in your GitHub account.
 
