@@ -58,7 +58,7 @@
       {% for package in travel_packages %}
       <div class="col-lg-5 travel-package {% if loop.index > 4 %}d-none{% endif %}">
         <div class="card h-100 hover-effect" data-package-id="{{ package.id }}"> <!-- Add the h-100 class to make cards equal height -->
-              <img src="{{ package.images[0].filename }}" class="bd-placeholder-img img-fluid rounded-start" alt="Destination Image">
+              <img src="{{ package.images[0].filename.replace('\\', '/') }}" class="bd-placeholder-img img-fluid rounded-start" alt="Destination Image">
               <span class=" like-button position-absolute  start-0 bg-warning text-white rounded-end px-3 fs-5">$ {{ package.package_price }}</span>
               <div class="card-body px-4 d-flex flex-column justify-content-between">
                 <h5 class="card-title fw-bolder fira-code-h5">{{ package.name|title }} <span class="text-success fs-6"> - {{ package.duration }}</span> </h5>
@@ -124,9 +124,9 @@
                         <i class="fa-solid fa-location-dot mx-2"></i>Map
                       </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" >
                       <div class="accordion-body">
-                        <div style="width: 100%"><iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+                        <div style="width: 100%"><iframe width="100%;" height="350" scrolling="no" marginheight="0" marginwidth="0" 
                           src="https://maps.google.com/maps?width=100%25&amp;height=350&amp;hl=en&amp;q={{package.latitude}},{{package.longitude}}+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps trackers</a></iframe></div>
                   </div>
                     </div>

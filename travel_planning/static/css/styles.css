@@ -281,9 +281,12 @@ body{
 .home .modal_footer .btn .btn-outline-warning{
   transform: translateY(-.2rem);
 }
-iframe{
+.home iframe{
   border-radius: 1em;
+  border: 0; /* Equivalent to frameborder="0" */
+  overflow: hidden;
 }
+
 
 
 @keyframes blink {
