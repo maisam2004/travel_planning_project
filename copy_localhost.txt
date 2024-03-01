@@ -1,6 +1,0 @@
-in powershell ;
-it asks for database password 
-
-pg_dump -U postgres -d travel_planning > E:\learned\code_instute\projects\travel_planning_project\travel_planning\dump.sql
-
-then create copy of localhost to dump.sql file 
