@@ -18,6 +18,7 @@ import logging
 # route for contact_us page
 @app.route('/contact_us')
 def contact_us():
+    """This is to hadle contact page """
     
     return render_template('contact_us.html'  )
 
@@ -25,6 +26,7 @@ def contact_us():
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    """This is to handle user account page """
     
 
     # Retrieve wished holidays associated with the current user
@@ -69,12 +71,13 @@ def account():
 
 @app.route('/about', methods=['POST','GET'])
 def about():
+    """This is to handle about page """
     
     return render_template('about_us.html' )
 
 @app.route('/', methods=['POST','GET'])
 def home():
-    
+    """This is to handle home page """
     travel_packages = TravelPackage.query.all()
     # Initialize the holiday wish
     form = WishedHolidayForm()
@@ -111,6 +114,7 @@ def home():
 @app.route('/wished_holiday')
 @login_required
 def wished_holiday():
+    """This is for submite wished holiday """
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
     last_wish = WishedHoliday.query.filter_by(user_id=current_user.id).order_by(WishedHoliday.id.desc()).first()
 
@@ -120,7 +124,7 @@ def wished_holiday():
 @app.route('/account/delete/<int:wishedholiday_id>', methods=['POST'])
 @login_required
 def delete_wished(wishedholiday_id):
-    # Check if the user is authenticated
+    """This is for submite wished holiday """
 
     wished = WishedHoliday.query.get_or_404(wishedholiday_id)
 
@@ -134,7 +138,7 @@ def delete_wished(wishedholiday_id):
 #====================================================================
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
-    
+    """This is for explore page show users posts """
     form = AddDestinationForm()
     # Check if the user is authenticated
     if current_user.is_authenticated:
@@ -181,6 +185,7 @@ from flask import request, jsonify
 
 @app.route('/like', methods=['POST'])
 def like_destination():
+    """This is for liked holiday """
     destination_id = request.form['destination_id']  #  the destination ID
     destination = Destination.query.get(destination_id)
     if destination:
@@ -197,6 +202,7 @@ def like_destination():
 
 @app.route('/explore/edit/<int:destination_id>', methods=['GET', 'POST'])
 def edit_destination(destination_id):
+    """This is for edit submited wished holiday """
     
     # Check if the user is authenticated
     if not current_user.is_authenticated:
@@ -240,6 +246,7 @@ def edit_destination(destination_id):
 ## delete destination -----------------
 @app.route('/explore/delete/<int:destination_id>', methods=['POST'])
 def delete_destination(destination_id):
+    """This is for delete submited wished holiday """
     # Check if the user is authenticated
     if not current_user.is_authenticated:
         flash('You need to log in to delete destinations.', 'danger')
@@ -263,7 +270,7 @@ def delete_destination(destination_id):
 
 
 def save_destination_image(image):
-    # Handle the image upload, save it to a folder or cloud storage
+    """ Handle the image upload, save it to a folder or cloud storage"""
     # For now, save it to the 'static/images/destinations' folder
     destination_images_folder = os.path.join(app.root_path, 'static', 'images', 'destinations')
     
@@ -282,10 +289,12 @@ def save_destination_image(image):
 #hadnling login --------------------------
 @login_manager.user_loader
 def load_user(user_id):
+    """handle login user"""
     return User.query.get(int(user_id))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """This is for submite login form """
     
     if request.method == 'POST':
         username = request.form['username']
@@ -302,6 +311,7 @@ def login():
 @app.route('/logout')
 @login_required
 def logout():
+    """for logout the user """
     logout_user()
     flash('Logged out successfully.', 'success')
     return redirect(url_for('login'))  # Redirected to login page
@@ -310,6 +320,7 @@ def logout():
 # Handling password reset request
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
+    """This is for submite reset form password """
     form = ResetPasswordRequestForm()
 
     if form.validate_on_submit():
@@ -378,7 +389,7 @@ def reset_password_request():
 # Handling reset link
 @app.route('/reset_password_token/<token>', methods=['GET', 'POST'])
 def reset_password_token(token):
-    
+    """Handling reset link from email  """
 
 
     # User and token are valid
@@ -386,7 +397,7 @@ def reset_password_token(token):
 
     if form.validate_on_submit():
         # Update the user's password
-        user = User.query.get(1)  # Assuming you know the user ID for testing
+        user = User.query.get(1)  
         user.set_password(form.password.data)  # Use bcrypt for secure hashing
         db.session.commit()
 
@@ -413,7 +424,7 @@ def reset_password_request_alternative():
 #--- send email reset message
 @app.route('/send_test_email')
 def send_test_email():
-    # Create a Message object
+    """ Create a test for email  """ 
     msg = Message('Test Email', sender=os.environ.get('MAIL_USERNAME'), recipients=['recipient@example.com'])
     msg.body = 'This is a test email.'
 
@@ -431,6 +442,7 @@ def send_test_email():
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """Handle for inputed signup page form """
     
     form = SignupForm()
 
@@ -485,6 +497,7 @@ def search():
 ###to add contents for homepage 
 @app.route('/add_travel_package', methods=['GET', 'POST'])
 def add_travel_package():
+    """Handle data porovided for travel packages an show in home """
     form = AddTravelPackageForm()
     travel_packages = TravelPackage.query.all()
     if form.validate_on_submit():
@@ -540,7 +553,8 @@ def add_travel_package():
     return render_template('add_travel_package.html', form=form,travel_packages=travel_packages)
 
 def save_travel_package_image(image):
-    # Handle the image upload and save it to a folder
+    """Handle the image upload and save it to a folder"""
+    
     package_images_folder = os.path.join(current_app.root_path, 'static', 'images', 'travel_packages')
 
     # Ensure the folder exists
