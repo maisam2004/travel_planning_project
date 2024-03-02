@@ -1129,13 +1129,44 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 
 ## Testing
 
+### Contents
+
+- [Automated Testing](#automated-testing)
+  - [W3C Validator](#w3c-validator)
+  - [CSS Jigsaw](#css-validator)
+  - [JavaScript jshint.com](#javascript-validator)
+  - [Lighthouse](#lighthouse)
+- [Manual Testing](#manual-testing)
+  - [Testing User Stories](#testing-user-stories)
+  - [Full Testing](#full-testing)
+
+---
+
 ### Automated Testing
 
-Automated testing was conducted using various tools to ensure the quality and performance of YourTravelApp.
+Automated testing was conducted using various tools to ensure the quality and performance of TravelApp.
 
 #### W3C Validator
 
 All HTML files were tested using the W3C Markup Validation Service to identify any syntax errors or warnings.
+
+
+<img src="./travel_planning/static/images/wireframes/home_valid.jpg" style="width: 60%; height: 30%;">
+
+<img src="./travel_planning/static/images/wireframes/explore_valid.jpg" style="width: 40%; height: 30%;">
+
+<img src="./travel_planning/static/images/wireframes/about_valid.jpg" style="width: 40%; height: 30%;">
+
+... 
+
+#### [CSS Jigsaw](#css-validator)
+
+- for this project we have only 1 file styles.css and validated on css validator
+
+<img src="./travel_planning/static/images/wireframes/css_valid.jpg" style="width: 70%; height: 30%;">
+
+
+
 
 #### JavaScript Validator
 
