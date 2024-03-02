@@ -34,7 +34,7 @@
                                 <a href="{{ url_for('edit_destination', destination_id=destination.id)}}" class="btn btn-info">Edit</a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal_{{ destination.id }}">Delete </button>
                             {% else %}
-                                <a href="#" class="btn btn-info disabled" aria-disabled="true">Edit</a>
+                                <a href="#" class="btn btn-info disabled" >Edit</a>
                                 <button class="btn btn-danger disabled" aria-disabled="true">Delete</button>
                             {% endif %}
                         </div>
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Modal -->
-      <div class="modal fade" id="confirmDeleteModal_{{ destination.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="confirmDeleteModal_{{ destination.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -84,17 +84,17 @@
                 {{ form.csrf_token }}
                 <div class="row">
                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto glassmorphism">
-                        <!-- Add your form fields here -->
+                        
                         <label class="fw-semibold py-2 mt-2" for="newDestinationName">Destination Name:</label>
                         <input type="text" name="name" id="newDestinationName" class="form-control rounded-pill">
                         <label class="fw-semibold py-2 mt-2" for="newDestinationLocation">Destination Location:</label>
                         <input type="text" name="location" id="newDestinationLocation" class="form-control rounded-pill">
                         <label class="fw-semibold py-2 mt-2" for="newDestinationDescription">Description:</label>
                         <textarea name="description" id="newDestinationDescription" class="form-control rounded-pill"></textarea>
-                        <!-- Add input field for image file -->
+                        <!-- input field  image file -->
                         <label class="fw-semibold py-2 mt-2" for="newDestinationImage">Upload Image:</label>
                         <input type="file" name="image" id="newDestinationImage" class="form-control rounded-pill">
-                        <!-- Add more fields as needed -->
+                        <!-- more fields  -->
                         <button type="submit" class="btn btn-success  my-4 w-50 shadow-sm rounded-pill">Add Destination</button>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
         </div>
     {% else %}
     <div class="text-center mt-4">
-        <a class="btn btn-primary w-50 rounded-pill"   href="{{url_for('login')}}" role="button"  aria-controls="collapseExample">
+        <a class="btn btn-primary w-50 rounded-pill"   href="{{url_for('login')}}" role="button" >
             <span id="addDestinationText">Add New Destination</span>
         </a>
     </div>

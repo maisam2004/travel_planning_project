@@ -538,6 +538,12 @@ svg{
 
 
 }
+.contact_us iframe{
+  border-radius: 1em;
+  border: 0; /* Equivalent to frameborder="0" */
+  overflow: hidden;
+  width:100%;
+}
 .contact_us h1{
   text-shadow: 1px 1px 1px rgb(111, 77, 111);
   font-size: xxx-large;
@@ -557,9 +563,9 @@ svg{
   font-size:x-large;
   
 }
-.contact_us h5{
+.contact_us h2{
   border-bottom: 1px solid rgb(191, 195, 199);
-  
+  font-size: 1.3em;
   
 }
 /* eplored page*/

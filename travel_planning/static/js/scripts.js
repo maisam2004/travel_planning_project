@@ -1,9 +1,9 @@
-
-    $(document).ready(function () {
+$(document).ready(function () {
 
         var originalText = $('#addDestinationText').text();
 
         // Change the text on hover
+        // explore page 
         $('.btn-primary').hover(
             function () {
                 $('#addDestinationText').text('Login first');
@@ -16,30 +16,16 @@
 
         
    
-    $('.like-button').click(function() {
-        var icon = $(this);
-        if (icon.hasClass('liked')) {
-            icon.removeClass('liked').addClass('notliked'); // change class for unlike
-        } else {
-            icon.removeClass('notliked').addClass('liked'); // change class for like
-        }
-    });
+ 
 
-        var originalBackgroundImage = $('#hero-section').css('background-image');
+       /*  var originalBackgroundImage = $('#hero-section').css('background-image');
         var originalTitleText = $('#hero-title').text();
         var originalLeadText = $('#hero-text').text();
 
         var scrollTriggerPosition = 1000;
         var scrollTriggerPosition2 = 5600;
         $(window).scroll(function() {
-            // Get the height of the featured destinations section
-            //var featuredDestinationsHeight = $('.container.mt-5').offset().top;
-
-            // Get the height of the hero section
-            //var heroSectionHeight = $('.hero-container').height();
-
-            // Calculate the scroll position
-           // var scrollPosition = $(window).scrollTop();
+           
            var scrollPosition = $(window).scrollTop();
 
             // Check if the scroll position is below the featured destinations section
@@ -60,15 +46,72 @@
                 $('#hero-text').text(originalLeadText);
             }
         });
+ */
+        // home page 
 
-
-        $(".special").each(function() {
+        // for hotel stars 
+        $(".special").each(function() { 
             // Check if the list item is empty
             if ($(this).children().length === 0) {
                 // Append the word "Special" to the list item
                 $(this).html("Special Place <i class=\"fa-solid fa-star text-wrning \"></i>");
             }
         });
+
+        
+        $('.show-more-btn').on('click', function() {
+            $('.travel-package.d-none').slice(0, 4).removeClass('d-none'); // Show more deals
+            if ($('.travel-package.d-none').length === 0) {
+                $('.show-more-btn').hide();
+                
+            }
+        }); 
+  
+  
+  
+        // for hotel stars show cards slowly 
+        $('.card').click(function() {
+      var packageId = $(this).data('package-id');
+      $('#destinationModal' + packageId).modal('show'); // Show the corresponding modal
+    });
+  
+  
+  
+  const $cards = $('.travel-package');
+  
+    // Set up the fading animation
+    $cards.each(function() {
+      $(this).css('opacity', '0');
+    });
+  
+    // Function to check if an element is in view
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    // Function to fade in the cards when they come into view
+    function fadeInCards() {
+      $cards.each(function() {
+        if (isElementInViewport(this)) {
+          $(this).animate({ opacity: 1 }, 1000); // Adjust the duration as needed
+        }
+      });
+    }
+  
+    // Call the fadeInCards function when the page is scrolled
+    $(window).scroll(function() {
+      fadeInCards();
+    });
+  
+    // Call the fadeInCards function initially
+    fadeInCards();
+  
 
 
     });
