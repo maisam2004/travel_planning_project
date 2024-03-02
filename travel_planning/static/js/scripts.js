@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-        var originalText = $('#addDestinationText').text();
+        let originalText = $('#addDestinationText').text();
 
         // Change the text on hover
         // explore page 
@@ -71,7 +71,7 @@ $(document).ready(function () {
   
         // for hotel stars show cards slowly 
         $('.card').click(function() {
-      var packageId = $(this).data('package-id');
+      let packageId = $(this).data('package-id');
       $('#destinationModal' + packageId).modal('show'); // Show the corresponding modal
     });
   
