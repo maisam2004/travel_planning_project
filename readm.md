@@ -4,7 +4,9 @@ Sure, here's the updated README for your Travel App:
 
 ![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
 
-![YourTravelApp Different View Look](travel_planning/static/images/background/travel_app7u.jpg)
+
+<img src="./travel_planning/static/images/wireframes/tree_screen_image.jpg" style="width: 100%; height: 70%;">
+
 
 Explore the holiday deals through YourTravelApp, your ultimate travel companion.
 
@@ -1116,14 +1118,14 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 1. Clone the repository to your local machine using the following command:
 
    ```
-   git clone https://github.com/yourusername/yourtravelapp.git
+   git clone https://github.com/maisam2004/travel_planning_project.git
    ```
 2. Navigate to the project directory:
 
    ```
-   cd yourtravelapp
+   cd travel_planning
    ```
-3. Open the index.html file in your browser to view the site locally.
+3. Open the home.html file in your browser to view the site locally.
 
 ---
 
@@ -1247,6 +1249,11 @@ Each device tested the site using the following browsers:
 * Microsoft Edge
 * Firefox
 
+
+---
+
+* some of pages features
+
 <div style="border: 2px solid #fff; padding: 6px;">
  <h2>Home Page Features</h2>
 </div>
@@ -1366,7 +1373,7 @@ Each device tested the site using the following browsers:
 
 ### Content
 
-- Travel guides and destination information sourced from reputable travel websites and tourism boards.
+- Travel guides and destination information sourced from popular travel websites and tourism boards.
 
 ### Media
 
