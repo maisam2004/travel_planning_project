@@ -4,9 +4,7 @@ Sure, here's the updated README for your Travel App:
 
 ![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
 
-
 <img src="./travel_planning/static/images/wireframes/tree_screen_image.jpg" style="width: 100%; height: 70%;">
-
 
 Explore the holiday deals through YourTravelApp, your ultimate travel companion.
 
@@ -140,7 +138,7 @@ Wireframes for mobile, desktop were created using microsoft paint.
 
 ### Features
 
-Explore the rich features of YourTravelApp, meticulously crafted to offer users an immersive and dynamic journey. Leveraging the power of Flask and a robust database system, every corner of the application pulsates with interactivity, ensuring seamless navigation and personalized experiences tailored to each user's preferences.
+Explore the rich features of TravelApp, meticulously crafted to offer users an immersive and dynamic journey. Leveraging the power of Flask and a robust database system, every corner of the application pulsates with interactivity, ensuring seamless navigation and personalized experiences tailored to each user's preferences.
 
 1. **Responsive Design:**
 
@@ -170,20 +168,26 @@ Explore the rich features of YourTravelApp, meticulously crafted to offer users 
 
 ### Accessibility
 
-YourTravelApp is committed to accessibility and strives to provide an inclusive experience for all users. The site is designed with accessibility features such as:
+TravelApp is committed to accessibility and strives to provide an inclusive experience for all users. The site is designed with accessibility features such as:
 
 - Semantic HTML for screen readers and assistive technologies.
 - High contrast color schemes for improved readability.
 - Keyboard navigation support for users with mobility impairments.
 - Alt text for images to ensure content comprehension for visually impaired users.
 
----
+## Page Structure and Navigation
 
--- Deployed pages
+Each page in the application follows a consistent layout with a header and footer included in the base HTML file. Specific routes are responsible for generating the content for each page, ensuring a cohesive user experience throughout the application.
 
-### **All pages header and footer was at base html file and specific route generate that page specific route place here for that page .**
+### Header and Footer Inclusion
 
----
+The header and footer elements, containing navigation links and other essential components, are defined in the base HTML file. This ensures uniformity across all pages and simplifies navigation for users.
+
+### Page-Specific Routing
+
+Page-specific routes are configured to generate content for individual pages. These routes determine the data and layout to be displayed based on the requested page, ensuring that users are directed to the appropriate content.
+
+By maintaining a standard structure and employing specific routing mechanisms, the application offers seamless navigation and consistent presentation across all pages.
 
 ### **Home page** (route and page images)
 
@@ -324,6 +328,8 @@ This route simply renders the about us page without any additional functionality
 
 #### About Page
 
+---
+
 The "About" page of travelapp offers a glimpse into our vision, approach, and the process behind our platform's creation. Designed to be both informative and engaging, this page provides insights into what drives us and how we strive to deliver exceptional travel experiences.
 
 - **Our Vision:**
@@ -408,7 +414,7 @@ The "Signup" and "Login" pages of travelapp serve as key entry points for users 
 
 Through its commitment to user privacy, security, and usability, travelapp's "Signup" and "Login" pages establish a strong foundation for user engagement and satisfaction. By prioritizing data protection, seamless integration, and responsive design, the platform empowers users to register, login, and access its features with confidence and ease.
 
-## Backend of application
+## Backend of application ( CRUD )
 
 #### 1. Introduction
 
@@ -422,7 +428,7 @@ In the following sections, we'll explore the technologies, database structure, a
 
 <img src="./travel_planning/static/images/wireframes/file_structure.jpg" style="width: 40%; height: 20%;">
 
-### **File Structure:**
+##### **File Structure**
 
 **-Core application structure:**
 
@@ -477,9 +483,9 @@ To define the database structure, models were created using a Python framework (
 
 The provided images (db_pic1.jpg and db_pic2.jpg) illustrate the relationships between the database tables.
 
-<img src="./travel_planning/static/images/wireframes/db_pic1.jpg" style="width: 70%; height: 20%;">
+<img src="./travel_planning/static/images/wireframes/db_pic1.jpg" style="width: 80%; height: 20%;">
 
-<img src="./travel_planning/static/images/wireframes/db_pic2.jpg" style="width: 60%; height: 20%;">
+<img src="./travel_planning/static/images/wireframes/db_pic2.jpg" style="width: 80%; height: 20%;">
 
 To ensure the proper creation of database tables, I meticulously examined the forms utilized on each page of the application. Understanding the data input requirements of these forms was crucial for designing the database schema effectively.
 
@@ -487,7 +493,10 @@ To translate these form structures into database tables, I created two essential
 
 This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
 
-###### For the homepage,
+##### | homepage - backend |
+| ------------------ |
+
+
 
     -route (/)
 
@@ -540,7 +549,12 @@ The add_travel_package page, although not visible to regular users, serves as a 
     * On success, flashes a success message and redirects to the `wished_holiday` route (assuming it exists).
     * On error, logs the error, flashes an error message, and re-renders the `home.html` template with the form.
 
-###### for Explore page
+      ---
+
+##### 
+| Explore  - backend |
+| ------------------ |
+
 
 users be able to see where other user went for holiday and see a picture of and while any use who post this data could edit or delete this info ,and these two buttons was disable for other user . and routes used for this page , was
 
@@ -592,7 +606,9 @@ def delete_destination(destination_id):
 
 ---
 
-###### for sign up page
+##### | Signup - backend |
+| ---------------- |
+
 
 user by entering required data in form  would be able join this web and route related to deal with entered data was :
 
@@ -630,7 +646,10 @@ def signup():
 
 ---
 
-###### for Login  page
+
+##### | Login -backend |
+| -------------- |
+
 
 user by entering required data in form  would be able to enter to his accoutn and routes related to deal with entered data was :
 
@@ -669,7 +688,9 @@ This decorator defines a function named `load_user` that acts as the user loader
 
 ---
 
-###### for login  page forget password link
+##### | reset password -backend |
+| ----------------------- |
+
 
 ```
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -700,8 +721,7 @@ def reset_password_request():
 
 **Additional Note:**
 
-* Remember to configure Flask-Mail with your email server settings.
-  -----------------------------------------------------------------
+* ###### Remember to configure Flask-Mail with your email server settings.
 
 ###### for reset_password page
 
@@ -738,9 +758,10 @@ Table for `/reset_password_token/<token>` Route:
 
 ---
 
-###### for account page
+| account -backend |
+| ---------------- |
 
-to show wished holiday form which was filled and sumbited on homepage
+###### to show wished holiday form which was filled and sumbited on homepage form
 
 ```
 @app.route('/account', methods=['GET', 'POST'])
@@ -1082,7 +1103,7 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 
 ---
 
-## Technologies Used
+## Technologies Used (all)
 
 ### Languages Used
 
@@ -1181,7 +1202,7 @@ All HTML files were tested using the W3C Markup Validation Service to identify a
 
 JavaScript code was validated using JSHint to detect any potential errors and  no major issues found.
 
-<img src="./travel_planning/static/images/background/js_valid1.jpg" style="width: 75%; height: 30%;">
+<img src="./travel_planning/static/images/wireframes/js_valid1.jpg" style="width: 75%; height: 30%;">
 
 scripts.js :passed
 
@@ -1249,10 +1270,10 @@ Each device tested the site using the following browsers:
 * Microsoft Edge
 * Firefox
 
-
 ---
 
-* some of pages features
+**
+    some of pages features**
 
 <div style="border: 2px solid #fff; padding: 6px;">
  <h2>Home Page Features</h2>
@@ -1275,7 +1296,6 @@ Each device tested the site using the following browsers:
   - **Result:** Data is securely stored and can be accessed for further processing.
   - **Pass/Fail:** Pass
 
-
 <div style="border: 2px solid #fff; padding: 6px;">
  <h2>Explore Page Features</h2>
 </div>
@@ -1296,8 +1316,6 @@ Each device tested the site using the following browsers:
   - **Workflow:** Upon form submission, data is validated, processed, and stored in the database.
   - **Result:** Data is securely stored and can be accessed for further processing.
   - **Pass/Fail:** Pass
-
-
 
 <div style="border: 2px solid #fff; padding: 6px;">
  <h2>Signup Page Features</h2>

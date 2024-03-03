@@ -222,7 +222,8 @@ body{
   padding: 0.7em;
   font-size: 1rem;
   font-style: italic;
-  text-shadow: 1px 1px 1px rgba(3, 5, 26, 0.342);
+  color:black;
+  text-shadow: 1px 1px 3px rgb(180 181 191 / 34%);
 }
 .whole_form h2{
   padding: 0.7em;
@@ -873,7 +874,8 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.398) 7%, rgba(125, 162
       
       padding:3em;
       background: rgb(115,126,140);
-background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162, 205, 0.293) 41%, rgba(192, 224, 187, 0.243) 100%);
+/* background: linear-gradient(185deg, rgba(115, 126, 140, 0.186) 7%, rgba(125, 162, 205, 0.293) 41%, rgba(192, 224, 187, 0.243) 100%);
+ */background: linear-gradient(185deg, rgb(6 26 8 / 37%) 7%, rgb(125 162 205 / 31%) 41%, rgb(33 27 52) 100%);
     }
     .whole_form form{
       border:1px solid var(--modal-text-color);
