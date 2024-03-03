@@ -1,14 +1,14 @@
 Sure, here's the updated README for your Travel App:
 
-# YourTravelApp
+# Travel App
 
 ![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
 
 <img src="./travel_planning/static/images/wireframes/tree_screen_image.jpg" style="width: 100%; height: 70%;">
 
-Explore the holiday deals through YourTravelApp, your ultimate travel companion.
+Explore the holiday deals through TravelApp, your ultimate travel companion.
 
-Visit the live site: [YourTravelApp.com](https://travelapp.com/)
+Visit the live site: [TravelApp.com](https://travelapp.com/)
 
 Embark on a virtual journey, discover new destinations, and plan your next adventure!
 
@@ -49,6 +49,8 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
   - [Content](#content)
   - [Media](#media)
   - [Acknowledgments](#acknowledgments)
+
+## Frontend part
 
 ---
 
@@ -189,32 +191,9 @@ Page-specific routes are configured to generate content for individual pages. Th
 
 By maintaining a standard structure and employing specific routing mechanisms, the application offers seamless navigation and consistent presentation across all pages.
 
-### **Home page** (route and page images)
+### **Home page** 
 
-### Route Explanation
 
-- **Page**: Home Page
-- **Method**: POST, GET
-- **Purpose**: Renders the home page and handles the submission of wished holidays.
-- **Tech Used**: Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
-- **Functionality**:
-
-  - Queries all travel packages from the database.
-  - Initializes a form for submitting wished holidays (`WishedHolidayForm`).
-  - If the form is submitted (`POST` request) and passes validation:
-    - Creates a new `WishedHoliday` object with the submitted data.
-    - Adds the new `WishedHoliday` object to the database session.
-    - Commits the changes to the database.
-    - Flashes a success message to the user.
-    - Redirects the user to the wished holiday page (`wished_holiday` route).
-  - If an exception occurs during database operations:
-    - Logs the error message.
-    - Flashes an error message to the user.
-    - Renders the home page again with the form to handle the exception.
-- **Template**: Renders the `home.html` template, passing the following data:
-
-  - `travel_packages`: List of all travel packages queried from the database.
-  - `form`: Instance of the `WishedHolidayForm` for submitting wished holidays.
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
 #### Home Page web
@@ -264,9 +243,62 @@ The homepage of travelapp introduces users to enticing travel deals displayed as
 
 By integrating a feature-rich modal window into the homepage's travel deal cards, travelapp enhances user engagement and satisfaction, providing a seamless browsing experience that empowers users to explore, evaluate, and book their dream holidays with confidence and ease.
 
+
+##### home Route Explanation
+
+-**Page**: Home Page
+
+-**Method**: POST, GET
+
+-**Purpose**: Renders the home page and handles the submission of wished holidays.
+
+-**Tech Used**: Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
+
+-**Functionality**:
+
+- Queries all travel packages from the database.
+- Initializes a form for submitting wished holidays (`WishedHolidayForm`).
+- If the form is submitted (`POST` request) and passes validation:
+
+  - Creates a new `WishedHoliday` object with the submitted data.
+  - Adds the new `WishedHoliday` object to the database session.
+  - Commits the changes to the database.
+  - Flashes a success message to the user.
+  - Redirects the user to the wished holiday page (`wished_holiday` route).
+- If an exception occurs during database operations:
+
+  - Logs the error message.
+  - Flashes an error message to the user.
+  - Renders the home page again with the form to handle the exception.
+
+-**Template**: Renders the `home.html` template, passing the following data:
+
+  -`travel_packages`: List of all travel packages queried from the database.
+
+  -`form`: Instance of the `WishedHolidayForm` for submitting wished holidays.
+
+
 ---
 
-### Explore Route Explanation
+### ![img](./travel_planning/static/images/wireframes/full_explored.jpeg)- ![](./travel_planning/static/images/wireframes/full_mobile_explored.jpeg)
+
+## Explore Page (crud)
+
+The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
+
+- **User Submissions:**
+
+  - Users can effortlessly post their recent holiday details, including destination highlights, activities, and memorable moments. Accompanied by stunning images, each submission offers a unique glimpse into diverse travel experiences, inspiring others to embark on their adventures.
+- **Interactive Cards:**
+
+  - Bootstrap cards facilitate seamless navigation and interaction, allowing users to explore submissions with ease. The inclusion of edit and delete buttons empowers users to modify their content, ensuring flexibility and control over their posted experiences.
+- **Database Interaction:**
+
+  - Behind the scenes, travelapp seamlessly interacts with the database to retrieve, display, and manage user submissions. Leveraging the power of Flask and SQLAlchemy, the platform delivers a seamless user experience, enabling smooth data handling and efficient content management.
+
+Through a combination of intuitive design, interactive features, and robust database functionality, the "Explore" page invites users to share their travel tales, connect with fellow adventurers, and discover new destinations in an immersive and engaging manner.
+
+##### Explore Route Explanation
 
 * **Page** : Explore Page
 * **Method** : POST, GET
@@ -292,37 +324,7 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 This route handles the rendering of the explore page and allows authenticated users to add new destinations. It utilizes forms for data submission and interacts with the database to store and retrieve destination information.
 
-<img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
-
-## Explore Page web
-
-The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
-
-- **User Submissions:**
-
-  - Users can effortlessly post their recent holiday details, including destination highlights, activities, and memorable moments. Accompanied by stunning images, each submission offers a unique glimpse into diverse travel experiences, inspiring others to embark on their adventures.
-- **Interactive Cards:**
-
-  - Bootstrap cards facilitate seamless navigation and interaction, allowing users to explore submissions with ease. The inclusion of edit and delete buttons empowers users to modify their content, ensuring flexibility and control over their posted experiences.
-- **Database Interaction:**
-
-  - Behind the scenes, travelapp seamlessly interacts with the database to retrieve, display, and manage user submissions. Leveraging the power of Flask and SQLAlchemy, the platform delivers a seamless user experience, enabling smooth data handling and efficient content management.
-
-Through a combination of intuitive design, interactive features, and robust database functionality, the "Explore" page invites users to share their travel tales, connect with fellow adventurers, and discover new destinations in an immersive and engaging manner.
-
 ---
-
-### about Route Explanation
-
-- **Page**: About Us Page
-- **Method**: POST, GET
-- **Purpose**: Renders the about us page.
-- **Tech Used**: Flask, Flask SQLAlchemy, Jinja (for templating)
-- **Functionality**:
-  - Renders the `about_us.html` template, which displays information about the website or organization.
-- **Template**: Renders the `about_us.html` template, which typically includes information such as the purpose of the website, team members, mission statement, and contact information.
-
-This route simply renders the about us page without any additional functionality. It serves as a static page to provide information about the website or organization to the users.
 
 <img src="./travel_planning/static/images/wireframes/full_about.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_about_mobile.jpeg" style="width: 30%; height: 50%;">
 
@@ -343,6 +345,18 @@ An illustrative image complements our approach, highlighting our dedication to p
 - **Our Process:**
 
 Step-by-step visuals outline our process, from conceptualization to implementation, showcasing our meticulous attention to detail and user-centric design philosophy. By prioritizing user feedback, continuous improvement, and seamless integration of cutting-edge technologies, we ensure that every aspect of travelapp reflects our commitment to excellence.
+
+#### about Route Explanation
+
+- **Page**: About Us Page
+- **Method**: POST, GET
+- **Purpose**: Renders the about us page.
+- **Tech Used**: Flask, Flask SQLAlchemy, Jinja (for templating)
+- **Functionality**:
+  - Renders the `about_us.html` template, which displays information about the website or organization.
+- **Template**: Renders the `about_us.html` template, which typically includes information such as the purpose of the website, team members, mission statement, and contact information.
+
+This route simply renders the about us page without any additional functionality. It serves as a static page to provide information about the website or organization to the users.
 
 ---
 
@@ -365,8 +379,38 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 
   - Behind the scenes, travelapp seamlessly integrates with a database system to retrieve and display user information, uploaded images, and wished holiday details. Leveraging Flask-SQLAlchemy, the platform ensures secure data storage and efficient data retrieval, enhancing the overall user experience.
 
-Through a combination of intuitive design, personalized features, and robust database functionality, the "Account" page empowers users to manage their profile, upload personalized content, and access essential information, fostering a seamless and engaging user experience.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+###### Through a combination of intuitive design, personalized features, and robust database functionality, the "Account" page empowers users to manage their profile, upload personalized content, and access essential information, fostering a seamless and engaging user experience.
+
+
+
+##### Account Route Explanation
+
+- **Page**: Account Page
+- **Method**: GET, POST
+- **Purpose**: Renders the user account page and allows users to manage their profile information and view wished holidays.
+- **Tech Used**: Flask, Flask-Login, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
+- **Functionality**:
+
+  - Retrieves wished holidays associated with the current user from the database.
+  - Retrieves the user's profile image if it exists.
+  - Initializes a form (`UserImageForm`) for uploading or updating the user's profile image.
+  - If the form is submitted (`POST` request) and passes validation:
+
+    - Saves the uploaded image to the server.
+    - Updates the user's profile image record in the database.
+    - Flashes a success message to the user.
+    - Redirects the user back to the account page to view the updated profile image.
+  - Renders the account page with the user's profile information, profile image, and wished holidays.
+- **Template**: Renders the `account.html` template, passing the following data:
+
+  - `user`: Current user object.
+  - `current_user_image1`: Path to the current user's profile image.
+  - `user_image_form`: Instance of the `UserImageForm` for uploading or updating profile image.
+  - `wishes`: List of wished holidays associated with the current user.
+
+---
+
+
 
 <img src="./travel_planning/static/images/wireframes/full_contact.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpeg" style="width: 30%; height: 50%;">
 
@@ -388,6 +432,24 @@ The "Contact" page of travelapp serves as a centralized hub for users to access 
   - The "Contact" page features a user-friendly interface designed to promote ease of use and accessibility. Clear navigation elements and prominently displayed contact information ensure that users can quickly locate and utilize the available communication channels without any hassle.
 
 Through its comprehensive approach to user support and engagement, the "Contact" page reinforces travelapp's commitment to customer satisfaction and service excellence. By providing users with accessible contact information, interactive map functionality, and seamless email integration, the platform empowers users to connect with ease and confidence, fostering a positive and enriching user experience.
+
+
+##### Contact Us Route Explanation
+
+- **Page**: Contact Us Page
+- **Method**: GET
+- **Purpose**: Renders the contact us page, allowing users to access the contact information and form.
+- **Tech Used**: Flask, Jinja2, HTML, CSS
+- **Functionality**:
+
+  - Renders the `contact_us.html` template, providing users with the contact information and form.
+- **Template**: Renders the `contact_us.html` template, which may include:
+
+  - Contact details such as email addresses, phone numbers, or physical addresses.
+  - A form for users to submit inquiries, feedback, or messages.
+  - Any additional information or instructions related to contacting the website or business.
+
+
 
 ---
 
@@ -414,9 +476,52 @@ The "Signup" and "Login" pages of travelapp serve as key entry points for users 
 
 Through its commitment to user privacy, security, and usability, travelapp's "Signup" and "Login" pages establish a strong foundation for user engagement and satisfaction. By prioritizing data protection, seamless integration, and responsive design, the platform empowers users to register, login, and access its features with confidence and ease.
 
+
+##### Signup Route Explanation
+
+- **Page**: Signup Page
+- **Method**: GET, POST
+- **Purpose**: Handles user signup form submission and creates a new user account.
+- **Tech Used**: Flask, Flask-WTF, Flask SQLAlchemy, Flask-Login, Bootstrap (for flash messages)
+- **Functionality**:
+
+  - Initializes a form instance (`SignupForm`) for user signup.
+  - If the form is submitted (`POST` request) and passes validation:
+
+    - Retrieves username, email, and password from the form data.
+    - Checks if the username or email is already taken in the database.
+    - If not taken, creates a new user object and adds it to the database.
+    - Flashes a success message to the user upon successful account creation.
+    - Logs in the new user automatically.
+    - Redirects the user to the home page.
+  - Renders the signup page with the signup form.
+
+##### Login Route Explanation
+
+- **Page**: Login Page
+- **Method**: GET, POST
+- **Purpose**: Handles user login form submission and authenticates user credentials.
+- **Tech Used**: Flask, Flask-WTF, Flask SQLAlchemy, Flask-Login, Bootstrap (for flash messages)
+- **Functionality**:
+
+  - If the request method is `POST`:
+
+    - Retrieves username and password from the login form data.
+    - Queries the database for a user with the provided username.
+    - If a user is found and the password is correct:
+
+      - Logs in the user.
+      - Redirects the user to the home page.
+    - If the username or password is invalid:
+
+      - Flashes an error message to the user.
+  - Renders the login page with the login form.
+
+
+
 ## Backend of application ( CRUD )
 
-#### 1. Introduction
+#### Introduction
 
 Welcome to the backend of our Flask TravelApp project! In this section, we'll delve into the inner workings of our backend architecture, exploring its crucial role in managing server-side operations, processing data, and interacting with the database.
 
@@ -455,7 +560,7 @@ In the following sections, we'll explore the technologies, database structure, a
 * **dump.sql**: This SQL dump file is used to replicate your database on Heroku Postgres.
 * **Maintain consistent formatting:** Use consistent indentation and spacing to improve readability.
 
-### 2. backend Technologies and Frameworks:
+### backend Technologies and Frameworks:
 
 "**To ensure the proper functioning of this application, the following technologies must be imported within the routes.py file.**"
 
@@ -494,8 +599,6 @@ To translate these form structures into database tables, I created two essential
 This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
 
 ##### | homepage - backend |
-| ------------------ |
-
 
 
     -route (/)
@@ -549,12 +652,8 @@ The add_travel_package page, although not visible to regular users, serves as a 
     * On success, flashes a success message and redirects to the `wished_holiday` route (assuming it exists).
     * On error, logs the error, flashes an error message, and re-renders the `home.html` template with the form.
 
-      ---
-
-##### 
 | Explore  - backend |
 | ------------------ |
-
 
 users be able to see where other user went for holiday and see a picture of and while any use who post this data could edit or delete this info ,and these two buttons was disable for other user . and routes used for this page , was
 
@@ -607,8 +706,8 @@ def delete_destination(destination_id):
 ---
 
 ##### | Signup - backend |
-| ---------------- |
 
+| ---------------- |
 
 user by entering required data in form  would be able join this web and route related to deal with entered data was :
 
@@ -646,10 +745,9 @@ def signup():
 
 ---
 
-
 ##### | Login -backend |
-| -------------- |
 
+| -------------- |
 
 user by entering required data in form  would be able to enter to his accoutn and routes related to deal with entered data was :
 
@@ -689,8 +787,8 @@ This decorator defines a function named `load_user` that acts as the user loader
 ---
 
 ##### | reset password -backend |
-| ----------------------- |
 
+| ----------------------- |
 
 ```
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -1272,8 +1370,7 @@ Each device tested the site using the following browsers:
 
 ---
 
-**
-    some of pages features**
+    **some of pages features tests**
 
 <div style="border: 2px solid #fff; padding: 6px;">
  <h2>Home Page Features</h2>
@@ -1395,7 +1492,7 @@ Each device tested the site using the following browsers:
 
 ### Media
 
-- Images sourced from Unsplash, Pixabay, and Pexels.
+- Images sourced from Unsplash,freepik, Pixabay, and Pexels.
 - Icons sourced from Font Awesome.
 
 ### Acknowledgments
