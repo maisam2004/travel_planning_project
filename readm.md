@@ -279,8 +279,9 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 
 ---
+ <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
-### ![img](./travel_planning/static/images/wireframes/full_explored.jpeg)- ![](./travel_planning/static/images/wireframes/full_mobile_explored.jpeg)
+
 
 ## Explore Page (crud)
 
