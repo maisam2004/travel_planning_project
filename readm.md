@@ -1150,14 +1150,11 @@ Automated testing was conducted using various tools to ensure the quality and pe
 
 All HTML files were tested using the W3C Markup Validation Service to identify any syntax errors or warnings.
 
+<img src="./travel_planning/static/images/wireframes/home_valid.jpg" style="width: 55%; height: 50%;">- <img src="./travel_planning/static/images/wireframes/explore_valid.jpg" style="width: 30%; height: 50%;">
 
-<img src="./travel_planning/static/images/wireframes/home_valid.jpg" style="width: 60%; height: 30%;">
+<img src="./travel_planning/static/images/wireframes/about_valid.jpg" style="width: 40%; height: 50%;">- <img src="./travel_planning/static/images/wireframes/account_valid.jpg" style="width: 33%; height: 50%;">
 
-<img src="./travel_planning/static/images/wireframes/explore_valid.jpg" style="width: 40%; height: 30%;">
-
-<img src="./travel_planning/static/images/wireframes/about_valid.jpg" style="width: 40%; height: 30%;">
-
-... 
+<img src="./travel_planning/static/images/wireframes/login_valid.jpg" style="width: 40%; height: 50%;">- <img src="./travel_planning/static/images/wireframes/signup_valid.jpg" style="width: 34%; height: 50%;">
 
 #### [CSS Jigsaw](#css-validator)
 
@@ -1165,41 +1162,198 @@ All HTML files were tested using the W3C Markup Validation Service to identify a
 
 <img src="./travel_planning/static/images/wireframes/css_valid.jpg" style="width: 70%; height: 30%;">
 
+#### Validator (html , css)
 
-
+* **home.html** : Passed.(homepage had lots of reapeated errors for id of modals then by add dynamic package is it sorted )
+* **explore.html** :Passed
+* **about.html** : Passed.
+* **contact.html** : Passed.
+* **account.html** : Passed.
+* **login.html** : Passed.
+* **signup.html**: Passed.
+* **wished_holiday**:passed.
+* **style.css** : Passed.
+  (css validating first errors was mostly for values and some empty properties but modified)
 
 #### JavaScript Validator
 
-JavaScript code was validated using JSHint to detect any potential errors or issues.
+JavaScript code was validated using JSHint to detect any potential errors and  no major issues found.
+
+<img src="./travel_planning/static/images/background/js_valid1.jpg" style="width: 75%; height: 30%;">
+
+scripts.js :passed
 
 #### Lighthouse
 
 Lighthouse audits were performed to assess the site's performance, accessibility, best practices, and SEO.
 
-### Manual Testing
+## Manual Testing
 
-Manual testing was conducted to validate user stories and ensure the functionality of all features.
+##### TravelApp
 
-#### Testing User Stories
+TravelApp is a web application that allows users to explore various travel destinations and packages,  and book their next trip seamlessly.
 
-- **First Time Visitor Goals:**
+### Testing User Stories
 
-  - Navigated through the site to explore different destinations.
-  - Found the interface intuitive and easy to use.
-  - Accessed travel guides and information about holiday packages.
-- **Returning Visitor Goals:**
+#### First Time Visitors
 
-  - Interacted with the interactive map to plan an itinerary.
-- **Frequent Visitor Goals:**
+| Goals                                                                         | How are they achieved?                                                                             |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| I want to look through travel package deals and their destinations.           | The TravelApp website provides a variety of destinations and travel packages for users to explore. |
+| I want to easily navigate through the website to find the information I need. | Intuitive navigation and clear calls-to-action are implemented for easy exploration.               |
+| I want visually appealing content that showcases destinations and packages.   | High-quality images and well-crafted content are used to visually engage first-time visitors.      |
 
-  - Created a user profile and shared travel experiences.
-  - Connected with other users through the community forum.
+#### Returning Visitors
+
+| Goals                                                              | How are they achieved?                                                                                 |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| I want to review and compare travel packages efficiently.          | The packages page allows users to view and compare details of various travel packages easily.          |
+| I want to find new and exciting destinations to plan my next trip. | The destinations page highlights different travel spots, providing inspiration for returning visitors. |
+
+#### Frequent Visitors
+
+| Goals                                                             | How are they achieved?                                                                                |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| I want to check for any new travel packages or updates regularly. | A blog or news section keeps frequent visitors informed about new packages, travel tips, and updates. |
+| I want a seamless booking experience for selected packages.       | The booking process is streamlined, providing an efficient and user-friendly experience.              |
+
+#### Users Posting Holiday Details
+
+| Goals                                                                  | How are they achieved?                                                                                                           |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| I want to share details of my recent holidays with other users.        | The Explore page allows registered users to post details and images of their recent holidays for others to view and be inspired. |
+| I want to edit or delete my posted holiday details if needed.          | The Explore page provides options for users to edit or delete their posted holiday details as desired.                           |
+| I want to easily navigate and interact with the Explore page features. | Intuitive navigation and clear UI elements are implemented to ensure a seamless user experience on the Explore page.             |
 
 #### Full Testing
 
 Comprehensive testing was performed on all pages, forms, buttons, and interactive elements to ensure proper functionality and responsiveness across devices.
 
----
+**testing was performed on the following devices:**
+
+**Laptop:**
+
+* SAMSUNG Galaxy Book3 360 15.6
+
+**Mobile Devices:**
+
+* iPhone XR
+* iPhone 14 pro
+* Google pixel 7
+
+Each device tested the site using the following browsers:
+
+* Google Chrome
+* Microsoft Edge
+* Firefox
+
+<div style="border: 2px solid #fff; padding: 6px;">
+ <h2>Home Page Features</h2>
+</div>
+
+| Feature               | Expected Outcome                                                                  | Testing Performed                                    | Result                                                                | Pass/Fail |
+| --------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- | --------- |
+| Hero Section          | Display captivating hero section with carousel showcasing travel app's benefits   | Reviewed hero section on different screen sizes      | Hero section displayed correctly with carousel and compelling content | Pass      |
+| Featured Destinations | Present featured destinations with images, descriptions, and pricing information  | Checked display of multiple destinations and details | Destinations displayed properly with relevant information             | Pass      |
+| More Deals Button     | Clicking "More Deals" button reveals additional travel packages                   | Clicked on button to confirm functionality           | More deals were loaded and displayed as expected                      | Pass      |
+| Why Choose Us Section | Highlight unique selling points of the travel app through card-based presentation | Reviewed card content and layout                     | USPs presented clearly with appropriate graphics and descriptions     | Pass      |
+| Reviews Section       | Display customer testimonials with images in a visually appealing manner          | Verified display of multiple reviews                 | Testimonials showcased well with relevant images and glowing feedback | Pass      |
+| Wished Holiday Form   | Provide a form for users to express their dream holiday preferences               | Filled out form with test data                       | Form submission successful, data stored and processed correctly       | Pass      |
+
+**Form Submission Data Handling:**
+
+- **Backend Functionality:**
+  - **Technology:** Flask framework for backend processing.
+  - **Workflow:** Upon form submission, data is validated and stored in the database.
+  - **Result:** Data is securely stored and can be accessed for further processing.
+  - **Pass/Fail:** Pass
+
+
+<div style="border: 2px solid #fff; padding: 6px;">
+ <h2>Explore Page Features</h2>
+</div>
+
+| Feature                             | Expected Outcome                                                                     | Testing Performed                                    | Result                                                              | Pass/Fail |
+| ----------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------- | --------- |
+| Destination Display                 | Show user's destinations with name, location, and description                        | Checked display of multiple destinations and details | Destinations displayed correctly with relevant information          | Pass      |
+| Add New Destination Button          | Allow authenticated users to add new destinations via a collapsible form             | Clicked on button to add new destination             | Form for adding new destination opened and submitted successfully   | Pass      |
+| Edit and Delete Buttons             | Enable authenticated users to edit and delete their own destinations                 | Tested edit and delete buttons for authorized user   | Editing and deleting destinations functionality worked as expected  | Pass      |
+| Modal Confirmation for Delete       | Prompt user for confirmation before deleting a destination                           | Clicked delete button to confirm action              | Modal displayed asking for confirmation before deleting destination | Pass      |
+| Form Validation for New Destination | Validate form fields before adding a new destination to prevent erroneous data entry | Attempted submission with invalid data               | Form prevented submission and displayed appropriate error messages  | Pass      |
+| Image Upload for New Destination    | Allow users to upload an image for their new destination                             | Uploaded image during new destination creation       | Image successfully uploaded and displayed with the destination      | Pass      |
+
+**Form Submission Data Handling:**
+
+- **Backend Functionality:**
+  - **Technology:** Flask framework for backend processing.
+  - **Workflow:** Upon form submission, data is validated, processed, and stored in the database.
+  - **Result:** Data is securely stored and can be accessed for further processing.
+  - **Pass/Fail:** Pass
+
+
+
+<div style="border: 2px solid #fff; padding: 6px;">
+ <h2>Signup Page Features</h2>
+</div>
+
+| Feature                | Expected Outcome                                                        | Testing Performed                                        | Result                                                                      | Pass/Fail |
+| ---------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------- | --------- |
+| Username Input         | Allow user to input desired username                                    | Entered username in input field                          | Username entered correctly and displayed in the form                        | Pass      |
+| Email Input            | Enable user to input valid email address                                | Entered email address in input field                     | Email address entered correctly and displayed in the form                   | Pass      |
+| Password Input         | Provide field for user to input password                                | Entered password in input field                          | Password entered securely and displayed as masked characters                | Pass      |
+| Confirm Password Input | Allow user to confirm password by re-entering                           | Entered confirmed password in input field                | Confirmed password matches original password input                          | Pass      |
+| Signup Button          | Enable user to submit signup form with valid inputs                     | Clicked signup button to submit form                     | Form submission processed successfully and user redirected appropriately    | Pass      |
+| Link to Login Page     | Provide option for users to navigate to login page if already signed up | Clicked on login page link                               | Redirected to login page as expected                                        | Pass      |
+| Form Validation        | Validate form inputs to ensure correctness and prevent errors           | Attempted submission with invalid or missing data        | Form prevented submission and displayed appropriate error messages          | Pass      |
+| Flash Messages Display | Show error messages if signup fails or if there are validation issues   | Tested signup form with incorrect or missing information | Error messages displayed correctly for validation issues and failed signups | Pass      |
+
+**Form Submission Data Handling:**
+
+- **Backend Functionality:**
+  - **Technology:** Flask framework for backend processing.
+  - **Workflow:** Upon form submission, data is validated, processed, and stored in the database.
+  - **Result:** Data is securely stored, and user accounts are created successfully upon valid submissions.
+  - **Pass/Fail:** Pass
+
+<div style="border: 2px solid #fff; padding: 6px;">
+ <h2>Account Page Features</h2>
+</div>
+
+| Feature                     | Expected Outcome                                            | Testing Performed                                    | Result                                                                     | Pass/Fail |
+| --------------------------- | ----------------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------------------------- | --------- |
+| Profile Image Upload        | Allow user to upload a profile image for their account      | Uploaded profile image with various file formats     | Profile image uploaded successfully and displayed in the user info section | Pass      |
+| User Information Display    | Display user's email address and other relevant information | Checked display of user email and other details      | User information displayed accurately and formatted correctly              | Pass      |
+| Profile Image Update Button | Provide button for user to update their profile image       | Clicked on update button to upload new profile image | New profile image uploaded successfully and reflected in user info         | Pass      |
+| Wished Holidays Display     | Show a list of holidays that the user has wished for        | Checked display of wished holidays list              | Wished holidays listed correctly with relevant details                     | Pass      |
+| Delete Wished Holiday       | Allow user to remove a wished holiday from their list       | Attempted deletion of wished holiday from list       | Wished holiday successfully removed upon deletion                          | Pass      |
+| No Wished Holidays Message  | Display message if user has not added any wished holidays   | Checked display when no wished holidays are present  | Message shown indicating no wished holidays found                          | Pass      |
+
+**Form Submission Data Handling:**
+
+- **Backend Functionality:**
+  - **Technology:** Flask framework for backend processing.
+  - **Workflow:** Upon form submission, image data is validated, processed, and stored.
+  - **Result:** Uploaded images are securely stored and associated with the user's account.
+  - **Pass/Fail:** Pass
+
+<div style="border: 2px solid #fff; padding: 6px;">
+ <h2>Reset Password Page Features</h2>
+</div>
+
+| Feature                  | Expected Outcome                                              | Testing Performed                               | Result                                        | Pass/Fail |
+| ------------------------ | ------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------- | --------- |
+| Form Submission Handling | Allow user to submit a new password through a form            | Submitted new password with various inputs      | Form submitted successfully with new password | Pass      |
+| Password Input Field     | Provide input field for user to enter their new password      | Entered new passwords with different lengths    | Password input field displayed correctly      | Pass      |
+| Error Message Display    | Show error message if there are validation errors in the form | Entered incorrect passwords and empty fields    | Error messages displayed for invalid inputs   | Pass      |
+| Submit Button            | Provide button for user to submit their new password          | Clicked on submit button to submit new password | New password submitted successfully           | Pass      |
+
+**Form Submission Data Handling:**
+
+- **Backend Functionality:**
+  - **Technology:** Flask framework for backend processing.
+  - **Workflow:** Upon form submission, password data is validated, processed, and updated in the database.
+  - **Result:** User's password is securely updated in the database.
+  - **Pass/Fail:** Pass
 
 ## Credits
 
