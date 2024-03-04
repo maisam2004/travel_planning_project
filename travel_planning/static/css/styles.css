@@ -428,6 +428,15 @@ svg{
   margin-right: 10px; /* Adjust margin as needed */
   transition: background-color 0.3s ease; /* Smooth transition */
 }
+.neumorphic-icon2 {
+  font-size: 24px; /* Adjust icon size as needed */
+  color: #000; /* Black icon color */
+  background-color: #c0c543; /* White background color */
+  border-radius: 50%; /* Circle shape */
+  padding: 10px; /* Adjust padding as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
 .neumorphic-icon-tel {
   font-size: 24px; /* Adjust icon size as needed */
   color: #ece8e8; /* Black icon color */
@@ -442,6 +451,12 @@ svg{
   background-color: #858080; /* Lighter background color on hover */
   
 }
+
+.neumorphic-icon2:hover {
+  background-color: #858080; /* Lighter background color on hover */
+  
+}
+
 /*explore page */
 .explored{
   background-image: url("/static/images/background/explored2.jpg");
