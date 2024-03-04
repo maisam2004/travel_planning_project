@@ -27,8 +27,8 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Destination Discovery](#destination-discovery)
     - [Future Enhancements](#future-enhancements)
   - [Accessibility](#accessibility)
-  - [homepage](#homepage)
-  - [explore page](#explore)
+  - [homepage](#homepage)#homepage
+  - [explore page](#explore-page-crud-explore)
   - [about page](#about)
   - [User account](#account)
   - [contact](#contact)
@@ -203,7 +203,7 @@ By maintaining a standard structure and employing specific routing mechanisms, t
 
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
-### [Homepage ](#homepage) {#homepaga}
+### [Homepage ](#homepage)
 
 The homepage of Travelapp offers a captivating introduction to the travel experience, blending aesthetics and functionality seamlessly.
 
