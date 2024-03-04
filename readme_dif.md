@@ -27,12 +27,17 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Destination Discovery](#destination-discovery)
     - [Future Enhancements](#future-enhancements)
   - [Accessibility](#accessibility)
-  - [homepage](#homepage)#homepage
-  - [explore page](#explore-page-crud-explore)
-  - [about page](#about)
-  - [User account](#account)
-  - [contact](#contact)
-  - [signup / login](#login)
+  - [Main pages](#main-pages)
+    - [homepage](#homepage)
+    - [explore page](#explore-page-crud-explore)
+    - [about page](#about-page)
+    - [User account](#account-page)
+    - [contact](#contact-page)
+    - [signup / login](#signup-and-login-pages)
+- [Backend app](#backend-of-application--crud-)
+ -[Backend Technologies](#backend-technologies-and-frameworks)
+ -[Database Structure](#database-structure)
+ 
 - [Technologies Used](#technologies-used)
 
   - [Languages Used](#languages-used)
@@ -199,7 +204,9 @@ Page-specific routes are configured to generate content for individual pages. Th
 
 By maintaining a standard structure and employing specific routing mechanisms, the application offers seamless navigation and consistent presentation across all pages.
 
-### main pages
+---
+
+## Main Pages
 
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
@@ -287,9 +294,9 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
-## Explore Page (crud) {#explore}
+## Explore Page (crud)
 
-- [explore page](#explore)
+
 
 The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
 
@@ -337,7 +344,7 @@ This route handles the rendering of the explore page and allows authenticated us
 
 #### About Page
 
-- [about page](#about)
+
 
 ---
 
@@ -421,9 +428,6 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 
 ## Contact Page
 
-- [User account](#account)
-  - [contact](#contact)
-  - [signup / login](#login)
 
 The "Contact" page of travelapp serves as a centralized hub for users to access essential contact information and connect with the platform's administrators. With a focus on accessibility and user engagement, this page provides convenient access to support channels and location details.
 
@@ -563,7 +567,7 @@ In the following sections, we'll explore the technologies, database structure, a
 * **dump.sql**: This SQL dump file is used to replicate your database on Heroku Postgres.
 * **Maintain consistent formatting:** Use consistent indentation and spacing to improve readability.
 
-### backend Technologies and Frameworks:
+### Backend Technologies and Frameworks:
 
 "**To ensure the proper functioning of this application, the following technologies must be imported within the routes.py file.**"
 
