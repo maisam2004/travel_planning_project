@@ -1,4 +1,3 @@
-
 # Travel App
 
 ![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
@@ -28,16 +27,17 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Future Enhancements](#future-enhancements)
   - [Accessibility](#accessibility)
   - [Main pages](#main-pages)
-    - [homepage](#homepage)
-    - [explore page](#explore-page-crud-explore)
+    - [homepage](#homepage-)
+    - [explore page](#explore-page-crud)
     - [about page](#about-page)
     - [User account](#account-page)
     - [contact](#contact-page)
     - [signup / login](#signup-and-login-pages)
 - [Backend app](#backend-of-application--crud-)
- -[Backend Technologies](#backend-technologies-and-frameworks)
- -[Database Structure](#database-structure)
- 
+
+  - [Backend Technologies](#backend-technologies-and-frameworks)
+  - [Database Structure](#database-structure)
+  - 
 - [Technologies Used](#technologies-used)
 
   - [Languages Used](#languages-used)
@@ -65,7 +65,6 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
   - [Acknowledgments](#acknowledgments)
 
 ## Frontend
-
 
 ![YourTravelApp Banner](travel_planning/static/images/background/travel_app7u.jpg)
 
@@ -296,8 +295,6 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 ## Explore Page (crud)
 
-
-
 The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
 
 - **User Submissions:**
@@ -343,8 +340,6 @@ This route handles the rendering of the explore page and allows authenticated us
 <img src="./travel_planning/static/images/wireframes/full_about.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_about_mobile.jpeg" style="width: 30%; height: 50%;">
 
 #### About Page
-
-
 
 ---
 
@@ -427,7 +422,6 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 <img src="./travel_planning/static/images/wireframes/full_contact.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpeg" style="width: 30%; height: 50%;">
 
 ## Contact Page
-
 
 The "Contact" page of travelapp serves as a centralized hub for users to access essential contact information and connect with the platform's administrators. With a focus on accessibility and user engagement, this page provides convenient access to support channels and location details.
 
@@ -606,6 +600,8 @@ To translate these form structures into database tables, I created two essential
 This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
 
 ##### | homepage - backend |
+| ------------------ |
+
 
     -route (/)
 
@@ -711,9 +707,12 @@ def delete_destination(destination_id):
 
 ---
 
-##### | Signup - backend |
+**User Authentication and Account Management**
 
+##### | Signup - backend |
 | ---------------- |
+
+
 
 user by entering required data in form  would be able join this web and route related to deal with entered data was :
 
@@ -749,11 +748,10 @@ def signup():
     * Flashes a success message and logs in the new user using `login_user(new_user)`.
     * Redirects the user to the home page (`url_for('home')`).
 
----
-
 ##### | Login -backend |
-
 | -------------- |
+
+
 
 user by entering required data in form  would be able to enter to his accoutn and routes related to deal with entered data was :
 
@@ -775,7 +773,7 @@ Table for Routes:
 | `/login`(GET)                          | GET             | Displays the login form       | - Renders the form for entering username and password      | `User`(potential) | `User`                  | N/A (potentially `LoginForm`) |
 | `/login`(POST)                         | POST            | Handles login form submission | - Processes login credentials, validates against user data | `User`            | `User`                  | N/A (potentially `LoginForm`) |
 
-juse explain login_manager :
+explain login_manager :
 
 **`@login_manager.user_loader`:**
 
@@ -792,9 +790,13 @@ This decorator defines a function named `load_user` that acts as the user loader
 
 ---
 
-##### | reset password -backend |
+#### **Password Management**
 
+
+##### | Reset password -backend |
 | ----------------------- |
+
+
 
 ```
 @app.route('/reset_password_request', methods=['GET', 'POST'])
