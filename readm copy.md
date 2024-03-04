@@ -28,6 +28,12 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Destination Discovery](#destination-discovery)
     - [Future Enhancements](#future-enhancements)
   - [Accessibility](#accessibility)
+  - [homepage](#homepage)
+  - [explore page](#explore)
+  - [about page](#about)
+  - [User account](#account)
+  - [contact](#contact)
+  - [signup / login](#login)
 - [Technologies Used](#technologies-used)
 
   - [Languages Used](#languages-used)
@@ -195,11 +201,11 @@ Page-specific routes are configured to generate content for individual pages. Th
 
 By maintaining a standard structure and employing specific routing mechanisms, the application offers seamless navigation and consistent presentation across all pages.
 
-### **Home page**
+### main pages
 
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
-#### Home Page web
+#### Home Page Web
 
 The homepage of Travelapp offers a captivating introduction to the travel experience, blending aesthetics and functionality seamlessly.
 
@@ -283,7 +289,9 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
-## Explore Page (crud)
+## Explore Page (crud){#explore}
+
+- [explore page](#explore)
 
 The "Explore" page of travelapp serves as a dynamic platform for users to share their latest holiday experiences, complete with captivating images and personal anecdotes. Utilizing Bootstrap's card feature, each submission is elegantly presented in a visually appealing format, enhancing readability and engagement.
 
@@ -329,7 +337,9 @@ This route handles the rendering of the explore page and allows authenticated us
 
 <img src="./travel_planning/static/images/wireframes/full_about.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_about_mobile.jpeg" style="width: 30%; height: 50%;">
 
-#### About Page
+#### About Page {#about}
+- [about page](#about)
+  
 
 ---
 
@@ -363,7 +373,7 @@ This route simply renders the about us page without any additional functionality
 
 <img src="./travel_planning/static/images/wireframes/full_account.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpeg" style="width: 30%; height: 50%;">
 
-## Account Page
+## Account Page {#account}
 
 The "Account" page of travelapp offers users a personalized space to view and manage their profile information, including uploaded images and details of their last wished holiday. With a focus on user-centric design and functionality, this page provides a seamless experience for users to interact with their account settings and preferences.
 
@@ -411,7 +421,10 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 
 <img src="./travel_planning/static/images/wireframes/full_contact.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpeg" style="width: 30%; height: 50%;">
 
-## Contact Page
+## Contact Page {#contact}
+- [User account](#account)
+  - [contact](#contact)
+  - [signup / login](#login)
 
 The "Contact" page of travelapp serves as a centralized hub for users to access essential contact information and connect with the platform's administrators. With a focus on accessibility and user engagement, this page provides convenient access to support channels and location details.
 
@@ -451,7 +464,7 @@ Through its comprehensive approach to user support and engagement, the "Contact"
 
 <img src="./travel_planning/static/images/wireframes/full_login.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_login.jpeg" style="width: 30%; height: 50%;">
 
-## Signup and Login Pages
+## Signup and Login Pages {#login}
 
 The "Signup" and "Login" pages of travelapp serve as key entry points for users to access and interact with the platform's features securely. Designed with a focus on user authentication and account management, these pages provide a seamless and intuitive experience for new users registering for membership and existing members logging into their accounts.
 
