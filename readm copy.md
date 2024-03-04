@@ -14,10 +14,12 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 ## Contents
 
-- [Frontend](##Frontend-part)
+- [Frontend](#frontend)
 - [User Experience](#user-experience-ux)
+
   - [User Stories](#user-stories)
 - [Design](#design)
+
   - [Colour Scheme](#colour-scheme)
   - [Typography](#typography)
   - [Imagery](#imagery)
@@ -27,14 +29,17 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Future Enhancements](#future-enhancements)
   - [Accessibility](#accessibility)
 - [Technologies Used](#technologies-used)
+
   - [Languages Used](#languages-used)
   - [Frameworks, Libraries &amp; Programs Used](#frameworks-libraries--programs-used)
 - [Deployment &amp; Local Development](#deployment--local-development)
+
   - [Deployment](#deployment)
   - [Local Development](#local-development)
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
 - [Testing](#testing)
+
   - [Automated Testing](#automated-testing)
     - [W3C Validator](#w3c-validator)
     - [JavaScript Validator](#javascript-validator)
@@ -43,12 +48,13 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [Testing User Stories](#testing-user-stories)
     - [Full Testing](#full-testing)
 - [Credits](#credits)
+
   - [Code Used](#code-used)
   - [Content](#content)
   - [Media](#media)
   - [Acknowledgments](#acknowledgments)
 
-## Frontend part
+## Frontend
 
 ---
 
