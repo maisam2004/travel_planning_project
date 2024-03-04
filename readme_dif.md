@@ -1,4 +1,3 @@
-Sure, here's the updated README for your Travel App:
 
 # Travel App
 
@@ -62,7 +61,6 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 ## Frontend
 
----
 
 ![YourTravelApp Banner](travel_planning/static/images/background/travel_app7u.jpg)
 
@@ -205,7 +203,7 @@ By maintaining a standard structure and employing specific routing mechanisms, t
 
 - <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
 
-#### Home Page {#homepage} 
+### [Homepage ](#homepage) {#homepaga}
 
 The homepage of Travelapp offers a captivating introduction to the travel experience, blending aesthetics and functionality seamlessly.
 
@@ -289,7 +287,7 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 <img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
 
-## Explore Page (crud)
+## Explore Page (crud) {#explore}
 
 - [explore page](#explore)
 
