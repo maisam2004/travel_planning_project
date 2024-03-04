@@ -37,17 +37,22 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
   - [Backend Technologies](#backend-technologies-and-frameworks)
   - [Database Structure](#database-structure)
-  - 
-- [Technologies Used](#technologies-used)
+  - [User Authentication](#-signup---backend-)
+  - [Password Management](#password-management)
+  - [Other routes](#code-snippets-of-other-routes)
+  - [Databse interaction](#database-interaction)
+  - [Conclusion](#conclusion)
+  - [Backend Components](#backend-components)
+- [Deployment &amp; Local Development](#deployment)
+
+  - [Local Development](#local-development)
+    - [How to Clone](#local-deployment)
+    - [How to Fork](#how-to-fork)
+  - [Heroku Deployment](#deployment-to-heroku)
+- [Technologies Used](#technologies-used-all)
 
   - [Languages Used](#languages-used)
   - [Frameworks, Libraries &amp; Programs Used](#frameworks-libraries--programs-used)
-- [Deployment &amp; Local Development](#deployment--local-development)
-
-  - [Deployment](#deployment)
-  - [Local Development](#local-development)
-    - [How to Fork](#how-to-fork)
-    - [How to Clone](#how-to-clone)
 - [Testing](#testing)
 
   - [Automated Testing](#automated-testing)
@@ -600,8 +605,8 @@ To translate these form structures into database tables, I created two essential
 This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
 
 ##### | homepage - backend |
-| ------------------ |
 
+| ------------------ |
 
     -route (/)
 
@@ -710,9 +715,8 @@ def delete_destination(destination_id):
 **User Authentication and Account Management**
 
 ##### | Signup - backend |
+
 | ---------------- |
-
-
 
 user by entering required data in form  would be able join this web and route related to deal with entered data was :
 
@@ -749,9 +753,8 @@ def signup():
     * Redirects the user to the home page (`url_for('home')`).
 
 ##### | Login -backend |
+
 | -------------- |
-
-
 
 user by entering required data in form  would be able to enter to his accoutn and routes related to deal with entered data was :
 
@@ -792,11 +795,9 @@ This decorator defines a function named `load_user` that acts as the user loader
 
 #### **Password Management**
 
-
 ##### | Reset password -backend |
+
 | ----------------------- |
-
-
 
 ```
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -1045,39 +1046,89 @@ class WishedHolidayForm(FlaskForm):
     additional_info = TextAreaField('Additional Information')
 ```
 
+---
+
+### Conclusion:
+
+The backend of the Flask application is the core component responsible for handling data processing, business logic, and database interactions. It encompasses routes, models, and forms to create a robust web application.
+
+### Overview:
+
+1. **Routes:**
+   * Routes define the endpoints of the application and handle HTTP requests and responses.
+   * They contain the logic to render templates, process form submissions, and interact with the database.
+   * Routes are responsible for rendering HTML pages, handling user authentication, and executing CRUD (Create, Read, Update, Delete) operations on the database.
+2. **Models:**
+   * Models represent the structure and behavior of the application's data.
+   * They define database tables and relationships between them using ORM (Object-Relational Mapping).
+   * Models encapsulate data access and manipulation methods, ensuring data integrity and consistency.
+   * Relationships between models enable complex data querying and retrieval.
+3. **Forms:**
+   * Forms define the structure and validation rules for HTML forms in the application.
+   * They handle user input, validate data, and provide error messages for invalid submissions.
+   * Forms facilitate secure data transmission between the client and server, preventing common vulnerabilities like CSRF (Cross-Site Request Forgery) and SQL injection.
+
+### Backend Components:
+
+* **User Authentication:** The backend manages user authentication and authorization, allowing users to register, log in, and access protected resources.
+* **Database Interactions:** Backend components interact with the database to perform CRUD operations, store and retrieve data, and maintain data consistency.
+* **Data Validation:** Forms and backend logic validate user input to ensure data integrity and prevent malicious or incorrect data from being stored in the database.
+* **Business Logic:** Backend code implements the application's business rules and logic, orchestrating various components to achieve specific functionalities.
+* **Error Handling:** The backend handles errors gracefully, providing informative error messages and logging exceptions for debugging purposes.
+* **Security Measures:** Backend components incorporate security measures like password hashing, CSRF protection, and input validation to safeguard against common web vulnerabilities.
+
+### Short Explanations:
+
+* **Routes:** Define application endpoints, handle HTTP requests, and execute backend logic.
+* **Models:** Represent database tables and define data structures and relationships.
+* **Forms:** Define HTML form structures, validate user input, and facilitate data transmission.
+
+Overall, the backend serves as the foundation of the application, orchestrating various components to deliver a seamless user experience while ensuring data integrity, security, and performance.
+
+---
+
 ### Deployment:
 
 #### Local Deployment:
 
-1. **Clone the Repository:**
+**Clone the Repository:**
 
-   - Clone the repository to your local machine using the following command:
+- Clone the repository to your local machine using the following command:
 
-   ```
+```
    git clone <repository_url>
-   ```
-2. **Install Dependencies:**
+```
 
-   - Navigate to the project directory and install the required dependencies using:
+**Install Dependencies:**
 
-   ```
-   pip install -r requirements.txt
-   ```
-3. **Database Setup:**
+- Navigate to the project directory and install the required dependencies using:
 
-   - Ensure you have a local database setup (SQLite, MySQL, PostgreSQL, etc.).
-   - Update the database URI in the `config.py` file to point to your local database.
-4. **Run the Application:**
+```
+pip install -r requirements.txt
+```
 
-   - Start the Flask application using the following command:
+**Database Setup:**
 
-   ```
-   flask run 
-   or 
-   python run.py
-   ```
+- Ensure you have a local database setup (SQLite, MySQL, PostgreSQL, etc.).
+- Update the database URI in the `config.py` file to point to your local database.
 
-   - The application will be accessible at `http://localhost:5000`.
+**Run the Application:**
+
+- Start the Flask application using the following command:
+
+```
+flask run 
+or 
+python run.py
+```
+
+- The application will be accessible at `http://localhost:5000`.
+
+#### How to Fork
+
+1. Log in to GitHub and locate the repository: [TravelApp](https://github.com/yourusername/yourtravelapp).
+2. At the top right of the page, click the Fork button.
+3. After forking, you'll have a copy of the repository in your GitHub account.
 
 <img src="./travel_planning/static/images/wireframes/heroku_logo.jpg" style="width: 50%; height: 40%;">
 
@@ -1168,45 +1219,6 @@ heroku logs --tail
 
 ---
 
-### Conclusion:
-
-The backend of the Flask application is the core component responsible for handling data processing, business logic, and database interactions. It encompasses routes, models, and forms to create a robust web application.
-
-### Overview:
-
-1. **Routes:**
-   * Routes define the endpoints of the application and handle HTTP requests and responses.
-   * They contain the logic to render templates, process form submissions, and interact with the database.
-   * Routes are responsible for rendering HTML pages, handling user authentication, and executing CRUD (Create, Read, Update, Delete) operations on the database.
-2. **Models:**
-   * Models represent the structure and behavior of the application's data.
-   * They define database tables and relationships between them using ORM (Object-Relational Mapping).
-   * Models encapsulate data access and manipulation methods, ensuring data integrity and consistency.
-   * Relationships between models enable complex data querying and retrieval.
-3. **Forms:**
-   * Forms define the structure and validation rules for HTML forms in the application.
-   * They handle user input, validate data, and provide error messages for invalid submissions.
-   * Forms facilitate secure data transmission between the client and server, preventing common vulnerabilities like CSRF (Cross-Site Request Forgery) and SQL injection.
-
-### Backend Components:
-
-* **User Authentication:** The backend manages user authentication and authorization, allowing users to register, log in, and access protected resources.
-* **Database Interactions:** Backend components interact with the database to perform CRUD operations, store and retrieve data, and maintain data consistency.
-* **Data Validation:** Forms and backend logic validate user input to ensure data integrity and prevent malicious or incorrect data from being stored in the database.
-* **Business Logic:** Backend code implements the application's business rules and logic, orchestrating various components to achieve specific functionalities.
-* **Error Handling:** The backend handles errors gracefully, providing informative error messages and logging exceptions for debugging purposes.
-* **Security Measures:** Backend components incorporate security measures like password hashing, CSRF protection, and input validation to safeguard against common web vulnerabilities.
-
-### Short Explanations:
-
-* **Routes:** Define application endpoints, handle HTTP requests, and execute backend logic.
-* **Models:** Represent database tables and define data structures and relationships.
-* **Forms:** Define HTML form structures, validate user input, and facilitate data transmission.
-
-Overall, the backend serves as the foundation of the application, orchestrating various components to deliver a seamless user experience while ensuring data integrity, security, and performance.
-
----
-
 ---
 
 ## Technologies Used (all)
@@ -1227,32 +1239,12 @@ Overall, the backend serves as the foundation of the application, orchestrating 
 - [jQuery](https://jquery.com/): JavaScript library for DOM manipulation and event handling.
 - [Font Awesome](https://fontawesome.com/): Icon library for scalable vector icons.
 - [Google Fonts](https://fonts.google.com/): Source of custom fonts for enhanced typography.
+- 
 - [Adobe XD](https://www.adobe.com/products/xd.html): Design tool for wireframing and prototyping.
+- [Microsoft paint](https://www.microsoft.com/en-us/windows/paint): Drawing tools to Create with pencil, fill, color picker, text and more
 - [GitHub](https://github.com/): Version control and collaboration platform.
 - [Git](https://git-scm.com/): Distributed version control system.
 - [Visual Studio Code](https://code.visualstudio.com/): Code editor for writing and editing code.
-
----
-
-#### How to Fork
-
-1. Log in to GitHub and locate the repository: [TravelApp](https://github.com/yourusername/yourtravelapp).
-2. At the top right of the page, click the Fork button.
-3. After forking, you'll have a copy of the repository in your GitHub account.
-
-#### How to Clone
-
-1. Clone the repository to your local machine using the following command:
-
-   ```
-   git clone https://github.com/maisam2004/travel_planning_project.git
-   ```
-2. Navigate to the project directory:
-
-   ```
-   cd travel_planning
-   ```
-3. Open the home.html file in your browser to view the site locally.
 
 ---
 
