@@ -599,7 +599,7 @@ svg{
 
 .hero_bg{
   position: relative;
-    background-image:url("/static/images/background/bg131.png");
+    background-image:url("/static/images/background/bg131.jpg");
     /* background-position: right; */
     background-size: cover;
     background-repeat: no-repeat;
@@ -655,6 +655,7 @@ svg{
     padding: 1em;
   }
 
+  .travel-package{margin-bottom: 0.7em;}
   
 
 /*   show more button
