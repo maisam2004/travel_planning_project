@@ -25,12 +25,12 @@
         <!-- Bootstrap Navbar -->
         <nav class="navbar navbar-expand-md navbar-light ">
           <div class="container-fluid">
-              <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url_for('home') }}"  target="_blank">
+              <a class="navbar-brand d-flex align-items-center me-auto" aria-label="travel app homepage" href="{{ url_for('home') }}"  target="_blank">
                 <div class="logo_nav_main"></div> <!-- Placeholder for initial logo -->
                 <!-- <img src="/static/images/background/travel_app7.jpg" alt="travel app logo" class="logo-hover"> -->
                 <img src="{{ url_for('static', filename='images/background/travel_app7.jpg') }}" alt="travel app logo" class="logo-hover">
             </a>
-              <button class="navbar-toggler order-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <button id="sandwich_bar" class="navbar-toggler  order-lg-0" aria-label="sandwich bar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -108,9 +108,9 @@
             </div>
             <!-- Social Media Links -->
             <div class="social-media">
-                <a href="#" target="_blank"><i class="fab fa-facebook neumorphic-icon"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter neumorphic-icon"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram neumorphic-icon"></i></a>
+                <a href="#" target="_blank" aria-label="facebook link icon"><i class="fab fa-facebook neumorphic-icon"></i></a>
+                <a href="#" target="_blank" aria-label="twiter link icon"><i class="fab fa-twitter neumorphic-icon"></i></a>
+                <a href="#" target="_blank" aria-label="instagram link icon"><i class="fab fa-instagram neumorphic-icon"></i></a>
                 <a href="mailto:your-email@example.com" target="_blank"><i class="fa-solid fa-envelope neumorphic-icon"></i></a>
 
             </div>
