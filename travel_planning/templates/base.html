@@ -35,7 +35,7 @@
               </button>
               <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                   <div class="offcanvas-header">
-                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="homelink" href="{{ url_for('home') }}" target="_blank">Menu</a></h5>
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="homelink" href="{{ url_for('home') }}" target="_blank">HOME</a></h5>
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                   <div class="offcanvas-body">
@@ -54,21 +54,21 @@
                       <!-- User authentication links -->
                       <ul class="navbar-nav">
                           {% if current_user.is_authenticated %}
-                          <li class="nav-item">
-                              <a class="nav-link " title="Log out " href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket neumorphic-icon-nav "></i></a>
+                          <li class="nav-item {% if request.endpoint == 'login': %} active{% endif %}">
+                              <a class="nav-link nav-lik-1 " title="Log out " target="_blank" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket neumorphic-icon-nav "></i></a>
                           </li>
                           {% else %}
-                          <li class="nav-item ">
-                              <a class="nav-link" title="Login" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket neumorphic-icon-nav "></i></a>
+                          <li class="nav-item {% if request.endpoint == 'login': %} active{% endif %}">
+                              <a class="nav-link nav-lik-1" title="Login" target="_blank" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket neumorphic-icon-nav "></i></a>
                           </li>
-                          <li class="nav-item ">
-                              <a class="nav-link" title="Sign up" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  neumorphic-icon-nav "></i></a>
+                          <li class="nav-item {% if request.endpoint == 'signup': %} active{% endif %} ">
+                              <a class="nav-link nav-lik-1" title="Sign up" target="_blank" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus  neumorphic-icon-nav "></i></a>
                           </li>
                           {% endif %}
                           {% if current_user.is_authenticated %}
-                          <li class="nav-item">
+                          <li class="nav-item {% if request.endpoint == 'account': %} active{% endif %}">
                               <!-- <span class="nav-link"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</span> -->
-                              <a class="nav-link " title="account " href="{{ url_for('account') }}"  target="_blank"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</a>
+                              <a class="nav-link nav-lik-1 " title="account " target="_blank" href="{{ url_for('account') }}"  target="_blank"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</a>
                           </li>
                           {% endif %}
                       </ul>

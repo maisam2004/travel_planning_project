@@ -11,78 +11,22 @@ from werkzeug.utils import secure_filename
 import logging
 
 
+#from travel_planning.models import Category , Task
 
 
 
-@app.route('/', methods=['POST','GET'])
-def home():
-    """Renders the home page, handles form submissions, and displays travel packages.
-
-    This route serves the main functionality of the home page:
-        - Retrieves all travel packages for display.
-        - Initializes forms for wished holiday submission and callback requests.
-        - Handles wished holiday form submissions:
-            - Creates a new WishedHoliday object from form data.
-            - Saves the wished holiday to the database on success.
-            - Displays success or error flash messages based on the outcome.
-            - Redirects to the wished holiday page on success.
-        - Handles callback request form submissions:
-            - Creates a new UsersCallbackRequest object from form data.
-            - Saves the callback request to the database.
-            - Displays a success flash message.
-        - Renders the 'home.html' template with:
-            - All travel packages.
-            - The wished holiday form.
-            - The callback request form.
-
-    Returns:
-        Rendered 'home.html' template with travel packages and forms.
-    """
-    travel_packages = TravelPackage.query.all()
-    # Initialize the forms
-    callback_request_form = CallbackRequestForm()
-    wished_holiday_form = WishedHolidayForm()
-
-    if wished_holiday_form.validate_on_submit():
-        # Handle wished holiday form submission
-        wished_holiday = WishedHoliday(
-            holiday_type=wished_holiday_form.holiday_type.data,
-            travel_duration=wished_holiday_form.travel_duration.data,
-            price_range=str(wished_holiday_form.price_range.data),
-            travel_time=str(wished_holiday_form.travel_time.data),
-            departure_location=str(wished_holiday_form.departure_location.data),
-            additional_info=wished_holiday_form.additional_info.data,
-            user_id=current_user.id  # Ensure current_user is correct
-        )
-        db.session.add(wished_holiday)
-        try:
-            db.session.commit()
-            flash('Your wished holiday has been submitted successfully!', 'success')
-            return redirect(url_for('wished_holiday'))  # Redirect to the home page after successful submission
-        except Exception as e:
-            logging.error(f"Error saving wished holiday: {e}")
-            flash('An error occurred while submitting your wish.', 'danger')
+# route for contact_us page
+@app.route('/contact_us')
+def contact_us():
+    """This is to hadle contact page """
     
-    if callback_request_form.validate_on_submit():
-        # Handle callback request form submission
-        callback_request = UsersCallbackRequest(
-            name=callback_request_form.name.data,
-            phone=callback_request_form.phone.data,
-            package_name=callback_request_form.package_name.data,
-            message=callback_request_form.message.data
-        )
-        db.session.add(callback_request)
-        db.session.commit()
-        flash('Your call request submitted successfully, we will contact you shortly', 'success')
-    
-    return render_template('home.html', travel_packages=travel_packages, form=wished_holiday_form, callback_request_form=callback_request_form)
-
+    return render_template('contact_us.html'  )
 
 
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    """Render the user account page and handle profile image uploads."""
+    """This is to handle user account page """
     
 
     # Retrieve wished holidays associated with the current user
@@ -125,42 +69,138 @@ def account():
 
 
 
+@app.route('/about', methods=['POST','GET'])
+def about():
+    """This is to handle about page """
+    
+    return render_template('about_us.html' )
+
+
+
+@app.route('/', methods=['POST','GET'])
+def home():
+    """This is to handle home page """
+    travel_packages = TravelPackage.query.all()
+    # Initialize the forms
+    callback_request_form = CallbackRequestForm()
+    wished_holiday_form = WishedHolidayForm()
+
+    if wished_holiday_form.validate_on_submit():
+        # Handle wished holiday form submission
+        wished_holiday = WishedHoliday(
+            holiday_type=wished_holiday_form.holiday_type.data,
+            travel_duration=wished_holiday_form.travel_duration.data,
+            price_range=str(wished_holiday_form.price_range.data),
+            travel_time=str(wished_holiday_form.travel_time.data),
+            departure_location=str(wished_holiday_form.departure_location.data),
+            additional_info=wished_holiday_form.additional_info.data,
+            user_id=current_user.id  # Ensure current_user is correct
+        )
+        db.session.add(wished_holiday)
+        try:
+            db.session.commit()
+            flash('Your wished holiday has been submitted successfully!', 'success')
+            return redirect(url_for('wished_holiday'))  # Redirect to the home page after successful submission
+        except Exception as e:
+            logging.error(f"Error saving wished holiday: {e}")
+            flash('An error occurred while submitting your wish.', 'danger')
+    
+    if callback_request_form.validate_on_submit():
+        # Handle callback request form submission
+        callback_request = UsersCallbackRequest(
+            name=callback_request_form.name.data,
+            phone=callback_request_form.phone.data,
+            package_name=callback_request_form.package_name.data,
+            message=callback_request_form.message.data
+        )
+        db.session.add(callback_request)
+        db.session.commit()
+        flash('Your call request submitted successfully, we will contact you shortly', 'success')
+    
+    return render_template('home.html', travel_packages=travel_packages, form=wished_holiday_form, callback_request_form=callback_request_form)
+
+
+
+
+""" @app.route('/', methods=['POST','GET'])
+def home():
+    This is to handle home page 
+    travel_packages = TravelPackage.query.all()
+    callback_request_form = CallbackRequestForm()
+    # Initialize the holiday wish
+    form = WishedHolidayForm()
+    if form.validate_on_submit():
+        wished_holiday = WishedHoliday(
+            holiday_type=form.holiday_type.data,
+            travel_duration=form.travel_duration.data,
+            price_range=str(form.price_range.data),
+            travel_time=str(form.travel_time.data),
+            departure_location=str(form.departure_location.data),
+            additional_info=form.additional_info.data,
+            user_id=current_user.id  # Ensure current_user is correct
+        )
+        db.session.add(wished_holiday)
+        try:
+            db.session.commit()  # Commit after adding to the session
+            flash('Your wished holiday has been submitted successfully!', 'success')
+            return redirect(url_for('wished_holiday'))
+        except Exception as e:
+            logging.error(f"Error saving wished holiday: {e}")
+            print('An error occurred while submitting your wish.', 'danger')
+            return render_template('home.html', form=form )  # Handle exception
+    
+    return render_template('home.html', travel_packages=travel_packages,form=form,callback_request_form=callback_request_form )
+ """
+## rquest callback on modal 
+
+""" @app.route('/submit_callback_request', methods=['POST'])
+def submit_callback_request():
+    This is to handle request call back  form and return flashed message on top of homepage 
+    form = CallbackRequestForm(request.form)
+
+    if form.validate_on_submit():
+        # Form data is valid, proceed to create and save the callback request
+        callback_request = UsersCallbackRequest(
+            name=form.name.data,
+            phone=form.phone.data,
+            package_name=form.package_name.data,
+            message=form.message.data
+        )
+
+        db.session.add(callback_request)
+        db.session.commit()
+        flash('Your request submitted successfully, we will contact you shortly', 'success')
+        #return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
+        
+    else:
+        # Form data is invalid, return error response
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f'Error in field "{getattr(form, field).label.text}": {error}', 'danger')
+
+    callback_request_form = CallbackRequestForm()
+    travel_packages = TravelPackage.query.all()
+    form = WishedHolidayForm()
+    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form) """
+
+
+
+
+
 @app.route('/wished_holiday')
 @login_required
 def wished_holiday():
-    """Displays a user's submitted wished holidays.
-
-    This route retrieves all wished holidays for the currently logged-in user 
-    from the database and renders them on the 'wished_holiday.html' template.
-
-    Returns:
-        Rendered 'wished_holiday.html' template with the user's wished holidays.
-    """
+    """This is for submite wished holiday """
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
     last_wish = WishedHoliday.query.filter_by(user_id=current_user.id).order_by(WishedHoliday.id.desc()).first()
 
     return render_template('wished_holiday.html', wishes=last_wish) 
 
-
-
-#delete wished holiday =============
+#delete wished holiday ===========================================
 @app.route('/account/delete/<int:wishedholiday_id>', methods=['POST'])
 @login_required
 def delete_wished(wishedholiday_id):
-    """Deletes a wished holiday for the logged-in user.
-
-    This route retrieves a wished holiday by its ID, checks if it belongs to 
-    the current user, and then deletes it from the database. If successful, a 
-    success flash message is displayed, and the user is redirected to the 
-    account page.
-
-    Args:
-        wishedholiday_id (int): ID of the wished holiday to delete.
-
-    Returns:
-        Redirects to the account page with a success flash message on success.
-        Returns a 404 error if the wished holiday is not found.
-    """
+    """This is for submite wished holiday """
 
     wished = WishedHoliday.query.get_or_404(wishedholiday_id)
 
@@ -171,42 +211,10 @@ def delete_wished(wishedholiday_id):
 
     flash('Destination deleted successfully!', 'success')
     return redirect(url_for('account'))
-
-
-
-# route for contact_us page
-@app.route('/contact_us')
-def contact_us():
-    """This is to hadle contact page """
-    
-    return render_template('contact_us.html'  )
-
-
-
-
-
-@app.route('/about', methods=['POST','GET'])
-def about():
-    """Render the about page."""
-    
-    return render_template('about_us.html' )
-
-
-
-
-
+#====================================================================
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
-    """Shows a list of destinations and allows adding new ones (if logged in).
-
-    This route handles both GET and POST requests for the explore page. It displays 
-    a list of all destinations (public or user's own if logged in) and provides 
-    a form for adding new destinations (for authenticated users only).
-
-    Returns:
-        Rendered 'explore.html' template with a list of destinations and an 
-        optional add destination form if the user is logged in.
-    """
+    """This is for explore page show users posts """
     form = AddDestinationForm()
     # Check if the user is authenticated
     if current_user.is_authenticated:
@@ -248,23 +256,29 @@ def explore():
 
 
 
+#liked destinations 
+from flask import request, jsonify
+
+@app.route('/like', methods=['POST'])
+def like_destination():
+    """This is for liked holiday """
+    destination_id = request.form['destination_id']  #  the destination ID
+    destination = Destination.query.get(destination_id)
+    if destination:
+        # Increment the likes count
+        destination.likes += 1
+        db.session.commit()
+        return jsonify({'success': True, 'likes': destination.likes})
+    else:
+        return jsonify({'success': False, 'error': 'Destination not found'})
+
 
 
 ## edit  destination -----------------
 
 @app.route('/explore/edit/<int:destination_id>', methods=['GET', 'POST'])
 def edit_destination(destination_id):
-    """Edits a user's own destination (authenticated users only).
-
-    Allows editing destination details and saving changes.
-
-    Args:
-        destination_id (int): ID of the destination to edit.
-
-    Returns:
-        - Redirects on success/failure (with flash messages).
-        - Renders edit form on GET or invalid form submission.
-    """
+    """This is for edit submited wished holiday """
     
     # Check if the user is authenticated
     if not current_user.is_authenticated:
@@ -308,18 +322,7 @@ def edit_destination(destination_id):
 ## delete destination -----------------
 @app.route('/explore/delete/<int:destination_id>', methods=['POST'])
 def delete_destination(destination_id):
-    """Deletes a destination (authenticated users only).
-
-    Allows authenticated users to delete their own destinations.
-
-    Args:
-        destination_id (int): ID of the destination to delete.
-
-    Returns:
-        - Redirects to explore page with success message on success.
-        - Redirects to login page with error message if not authenticated.
-        - Redirects to explore page with error message if not authorized.
-    """
+    """This is for delete submited wished holiday """
     # Check if the user is authenticated
     if not current_user.is_authenticated:
         flash('You need to log in to delete destinations.', 'danger')
@@ -343,22 +346,7 @@ def delete_destination(destination_id):
 
 
 def save_destination_image(image):
-    """Saves a destination image to a designated folder.
-
-    This function handles uploading a destination image, generates a unique 
-    filename, and saves it to the 'static/images/destinations' folder within 
-    the application's root directory.
-
-    Args:
-        image (werkzeug.datastructures.FileStorage): The image file object 
-            uploaded by the user.
-
-    Returns:
-        str: The relative path (including 'static/') of the saved image file.
-
-    Raises:
-        OSError: If an error occurs while creating the destination folder.
-    """
+    """ Handle the image upload, save it to a folder or cloud storage"""
     # For now, save it to the 'static/images/destinations' folder
     destination_images_folder = os.path.join(app.root_path, 'static', 'images', 'destinations')
     
@@ -377,37 +365,12 @@ def save_destination_image(image):
 #hadnling login --------------------------
 @login_manager.user_loader
 def load_user(user_id):
-    """Retrieves a user by ID for login purposes.
-
-    This callback function is used by Flask-Login to retrieve a user object 
-    based on the provided user ID. It queries the database for a User record 
-    matching the ID and returns it, allowing Flask-Login to handle user 
-    session management.
-
-    Args:
-        user_id (str): User ID to retrieve.
-
-    Returns:
-        User: The retrieved user object if found, otherwise None.
-    """
+    """handle login user"""
     return User.query.get(int(user_id))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """Handles user login requests.
-
-    This route processes login attempts. On a GET request, it renders the 
-    login form. On a POST request, it retrieves username and password from the 
-    form data, validates them against the database, and logs in the user on 
-    success. If login fails, an error flash message is displayed.
-
-    Returns:
-        - Rendered 'login.html' template on GET request.
-        - Redirected to the home page with a success flash message on successful 
-          login.
-        - Rendered 'login.html' template again with an error flash message on 
-          failed login attempt.
-    """
+    """This is for submite login form """
     
     if request.method == 'POST':
         username = request.form['username']
@@ -424,15 +387,7 @@ def login():
 @app.route('/logout')
 @login_required
 def logout():
-    """Logs out the currently authenticated user.
-
-    This route handles user logout requests. It logs out the current user 
-    using Flask-Login and displays a success flash message. The user is then 
-    redirected to the login page.
-
-    Returns:
-        Redirected to the login page with a success flash message.
-    """
+    """for logout the user """
     logout_user()
     flash('Logged out successfully.', 'success')
     return redirect(url_for('login'))  # Redirected to login page
@@ -441,23 +396,7 @@ def logout():
 # Handling password reset request
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
-    """Initiates password reset process by email.
-
-    This route handles the initial password reset request:
-      - Renders a form for users to enter their email address.
-      - On valid form submission:
-         - Checks for a user with the given email.
-         - Generates a secure reset token and assigns it to the user.
-         - Sends an email with a password reset link containing the token.
-         - Redirects to the login page with a success message.
-      - On email not found or email sending failure:
-         - Displays an appropriate error flash message.
-         - Redirects to the login page.
-
-    Returns:
-        - Rendered 'reset_password_request.html' template with form on GET.
-        - Redirected to login page with success/error message on POST.
-    """
+    """This is for submite reset form password """
     form = ResetPasswordRequestForm()
 
     if form.validate_on_submit():
@@ -526,22 +465,8 @@ def reset_password_request():
 # Handling reset link
 @app.route('/reset_password_token/<token>', methods=['GET', 'POST'])
 def reset_password_token(token):
-    """Allows resetting a password using a valid reset token.
+    """Handling reset link from email  """
 
-    This route handles password reset requests using a token typically sent 
-    via email. It retrieves a user based on the token (replace `User.query.get(1)` 
-    with your token validation logic) and renders a form to set a new password. 
-    On a valid form submission, it updates the user's password and redirects to 
-    the login page with a success message.
-
-    Args:
-        token (str): The password reset token from the email link.
-
-    Returns:
-        - Rendered 'reset_password.html' template with a form on GET request.
-        - Redirected to the login page with a success flash message on successful 
-          password reset.
-    """
 
     # User and token are valid
     form = ResetPasswordForm()
@@ -561,21 +486,6 @@ def reset_password_token(token):
 
 @app.route('/reset_password_request_alternative', methods=['GET', 'POST'])
 def reset_password_request_alternative():
-    """Initiates the password reset process (alternative method).
-
-    This route handles the initial step of password reset (implementation 
-    details might differ from the token-based approach). It renders a form 
-    where users can enter their email or username. On form submission 
-    (replace with your actual logic), it potentially sends a reset link or 
-    instructions via email and redirects to the login page with a success 
-    message.
-
-    Returns:
-        - Rendered 'reset_password.html' template with a form on GET request.
-        - Redirected to the login page with a success flash message indicating 
-          reset instructions were sent (replace with actual behavior).
-    """
-
     form = ResetPasswordForm()
 
     if form.validate_on_submit():
@@ -608,14 +518,7 @@ def send_test_email():
 #----signup part --------------
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    """Processes user signup and logs in on success.
-
-    Renders signup form, validates data, creates new users, 
-    and redirects on success or displays errors.
-
-    Returns:
-        Rendered signup form or redirects based on success/failure.
-    """
+    """Handle for inputed signup page form """
     
     form = SignupForm()
 
@@ -646,7 +549,7 @@ def signup():
 #=======================
 
 
-#for practic code not used here 
+
 @app.route('/search', methods=['POST'])
 def search():
     # Retrieve the search query from the form
@@ -664,24 +567,6 @@ def search():
     ]
 
     return render_template('search_results.html', query=search_query, destinations=destinations)
-
-
-#liked destinations 
-
-@app.route('/like', methods=['POST'])
-def like_destination():
-    """This is for liked holiday .has not been used for last edited code"""
-    destination_id = request.form['destination_id']  #  the destination ID
-    destination = Destination.query.get(destination_id)
-    if destination:
-        # Increment the likes count
-        destination.likes += 1
-        db.session.commit()
-        return jsonify({'success': True, 'likes': destination.likes})
-    else:
-        return jsonify({'success': False, 'error': 'Destination not found'})
-
-
 
 
 
