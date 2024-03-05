@@ -100,7 +100,7 @@ def home():
         try:
             db.session.commit()
             flash('Your wished holiday has been submitted successfully!', 'success')
-            return redirect(url_for('home'))  # Redirect to the home page after successful submission
+            return redirect(url_for('wished_holiday'))  # Redirect to the home page after successful submission
         except Exception as e:
             logging.error(f"Error saving wished holiday: {e}")
             flash('An error occurred while submitting your wish.', 'danger')

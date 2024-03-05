@@ -277,7 +277,7 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 -**Method**: POST, GET
 
--**Purpose**: Renders the home page and handles the submission of wished holidays.
+-**Purpose**: Renders the home page and handles the submission of wished holidays and request callback form.
 
 -**Tech Used**: Flask, Flask SQLAlchemy, Flask-WTF, Bootstrap (for flash messages)
 
@@ -285,13 +285,17 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 - Queries all travel packages from the database.
 - Initializes a form for submitting wished holidays (`WishedHolidayForm`).
+- Initializes a callback_request_form for submitting wished holidays (`CallbackRequestForm`).
 - If the form is submitted (`POST` request) and passes validation:
 
-  - Creates a new `WishedHoliday` object with the submitted data.
-  - Adds the new `WishedHoliday` object to the database session.
+  - if sumbete to either forms :
+  - Creates a new `WishedHoliday` or `UsersCallbackRequest`  object with the submitted data.
+  - Adds the new `WishedHoliday` or `UsersCallbackRequest ` object to the database session.
   - Commits the changes to the database.
   - Flashes a success message to the user.
   - Redirects the user to the wished holiday page (`wished_holiday` route).
+    or
+  - Redirects the user to page (`home` route) by user call back request.
 - If an exception occurs during database operations:
 
   - Logs the error message.
@@ -630,6 +634,15 @@ def home():
 
 Here's the table specifically for the home route,
 
+| Route (URL Pattern) | HTTP Method | Description                                                                                | Page Interaction                                                                           | Database Table(s)                                            | Related models.py Classes                                    | Related forms.py Classes                      |
+| ------------------- | ----------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
+| `/`(home)         | GET         | Displays the homepage with travel packages, wished holiday form, and callback request form | - Shows existing travel packages. - Renders forms for wished holiday and callback request. | `TravelPackage`,`UsersCallbackRequest`,`WishedHoliday` | `TravelPackage`,`UsersCallbackRequest`,`WishedHoliday` | `WishedHolidayForm`,`CallbackRequestForm` |
+| `/`(home)         | POST        | Handles submissions from both wished holiday and callback request forms                    | - Processes and stores wished holiday or callback request data based on submitted form.    | `TravelPackage`,`UsersCallbackRequest`,`WishedHoliday` | `TravelPackage`,`UsersCallbackRequest`,`WishedHoliday` | `WishedHolidayForm`,`CallbackRequestForm` |
+
+This table summarizes the functionality of the `/` route. It displays travel packages and renders forms for both wished holiday and callback requests on GET requests. On POST requests, it handles submissions from either form, processing and storing data accordingly.
+
+(the old version )
+
 | Route (URL Pattern) | HTTP Method | Description                              | Page Interaction                                      | Database Table(s) | Related models.py Classes | Related forms.py Classes |
 | ------------------- | ----------- | ---------------------------------------- | ----------------------------------------------------- | ----------------- | ------------------------- | ------------------------ |
 | `/` (Home)        | GET         | Displays the homepage                    | - Show "Travel Packages" section                      | `TravelPackage` | `TravelPackage`         | -                        |
@@ -656,88 +669,57 @@ The add_travel_package page, although not visible to regular users, serves as a 
 | `/add_travel_package` | GET         | Displays the "Add Travel Package" form       | - Renders the form to add a new travel package | None                                      | None                                      | `AddTravelPackageForm` |
 | `/add_travel_package` | POST        | Handles "Add Travel Package" form submission | - Processes and stores new travel package data | `TravelPackage`, `TravelPackageImage` | `TravelPackage`, `TravelPackageImage` | `AddTravelPackageForm` |
 
+**Explanation: updated**
 
-**Explanation:**
+**1. Route and Function:**
 
-* The table shows both GET and POST methods for the home route (`/`).
-* The GET request:
-  * Retrieves all `TravelPackage` objects from the database using `TravelPackage.query.all()`.
-  * Renders the "home.html" template, passing the retrieved travel packages and an empty `WishedHolidayForm` to the template context.
-  * Additionally, it creates an instance of `CallbackRequestForm` to handle callback requests.
-* The POST request:
-  * Validates the submitted `WishedHolidayForm` data.
-  * Creates a new `WishedHoliday` object with data from the form, including user ID retrieved from `current_user` (ensure it's correct).
-  * Adds the `WishedHoliday` object to the database session using `db.session.add(wished_holiday)`.
-  * Commits the changes to the database using `db.session.commit()`.
-  * Handles potential exceptions (e.g., database errors) using a `try-except` block:
-    * On success, flashes a success message and redirects to the `wished_holiday` route (assuming it exists).
-    * On error, logs the error, flashes an error message, and re-renders the `home.html` template with the form.
-  * The route also handles callback requests:
-    * It initializes an instance of `CallbackRequestForm` to handle callback form submissions.
-    * It renders the "home.html" template with the callback request form in addition to other forms and data.
-    * The callback request form submission logic is handled separately in the `submit_callback_request` route.
+* The route `@app.route('/', methods=['POST', 'GET'])` defines that this function handles both GET (page load) and POST (form submission) requests at the root URL (`/`).
+* The function `def home():` contains the logic for processing both forms.
 
+**2. Data Fetching and Form Initialization:**
 
-**On the homepage, each travel package modal includes a form for requesting a callback. This form is linked to a separate route specifically designed to handle callback requests.**
+* `travel_packages = TravelPackage.query.all()` retrieves all travel packages from the database and stores them in the `travel_packages` variable. This data will be passed to the template for display.
+* `callback_request_form = CallbackRequestForm()` and `wished_holiday_form = WishedHolidayForm()` initialize instances of the respective Flask-WTF forms. These forms will be used for user input and validation.
 
-```
-@app.route('/submit_callback_request', methods=['POST'])
-def submit_callback_request():
-    """This is to handle request call back  form and return flashed message on top of homepage """
-    form = CallbackRequestForm(request.form)
+**3. Handling Wished Holiday Form Submission:**
 
-    if form.validate_on_submit():
-        # Form data is valid, proceed to create and save the callback request
-        callback_request = UsersCallbackRequest(
-            name=form.name.data,
-            phone=form.phone.data,
-            package_name=form.package_name.data,
-            message=form.message.data
-        )
+* `if wished_holiday_form.validate_on_submit():` checks if the `wished_holiday_form` was submitted using the POST method and its data is valid.
+* Inside the `if` block:
+  * A new `WishedHoliday` object is created with form data.
+  * The object is added to the database session using `db.session.add(wished_holiday)`.
+  * A `try-except` block handles potential database errors during commit.
+    * On successful commit (`db.session.commit()`):
+      * A success flash message is displayed using `flash()`.
+      * The user is redirected back to the homepage (`redirect(url_for('home'))`) to avoid duplicate form submissions.
+    * In case of an exception (`except Exception as e`):
+      * The error is logged using `logging.error()`.
+      * An error flash message is displayed.
 
-        db.session.add(callback_request)
-        db.session.commit()
-        flash('Your request submitted successfully, we will contact you shortly', 'success')
-        #return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
-    else:
-        # Form data is invalid, return error response
-        for field, errors in form.errors.items():
-            for error in errors:
-                flash(f'Error in field "{getattr(form, field).label.text}": {error}', 'danger')
+**4. Handling Callback Request Form Submission:**
 
-    callback_request_form = CallbackRequestForm()
-    travel_packages = TravelPackage.query.all()
-    form = WishedHolidayForm()
-    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form)
+* This section is similar to the wished holiday form handling:
+  * `if callback_request_form.validate_on_submit():` checks if the `callback_request_form` was submitted and valid.
+  * Inside the `if` block:
+    * A new `UsersCallbackRequest` object is created with form data.
+    * The object is added to the database session and committed.
+    * A success flash message is displayed.
 
-```
+**5. Rendering the Template:**
 
-##### Submit Callback Request - Backend
+* The function returns `render_template('home.html')`, which renders the `home.html` template.
+* The following variables are passed to the template:
+  * `travel_packages`: List of travel packages to be displayed.
+  * `form`: The `wished_holiday_form` instance for user input.
+  * `callback_request_form`: The `CallbackRequestForm` instance for user input.
 
-This route handles the submission of the request callback form and displays a flashed message on the top of the homepage.
+**Improvements:**
 
-##### Route:
+* Consider adding CSRF protection to both forms using Flask-WTF's `CSRFMixin` class to prevent Cross-Site Request Forgery attacks.
+* I can enhance the error handling for form validation failures to display specific error messages for each invalid field.
 
-| Route (URL Pattern)          | HTTP Method | Description                                         | Page Interaction                                   | Database Table(s)        | Related Models                              | Related Forms           |
-| ---------------------------- | ----------- | --------------------------------------------------- | -------------------------------------------------- | ------------------------ | ------------------------------------------- | ----------------------- |
-| `/submit_callback_request` | POST        | Handles the submission of the request callback form | - Validates the form data                          | `UsersCallbackRequest` | `UsersCallbackRequest` class in models.py | `CallbackRequestForm` |
-|                              |             |                                                     | - Creates and saves a new callback request         |                          |                                             |                         |
-|                              |             |                                                     | - Flashes a success message upon successful submit |                          |                                             |                         |
-|                              |             |                                                     | - Flashes error messages for invalid form fields   |                          |                                             |                         |
-
-### Explanation:
-
-- The route `/submit_callback_request` handles POST requests submitted by users filling out the request callback form.
-- It validates the form data using the `CallbackRequestForm` class.
-- If the form data is valid, it creates a new `UsersCallbackRequest` object with the submitted data.
-- The new callback request is then added to the database and committed.
-- A success message is flashed if the submission is successful.
-- If the form data is invalid, error messages are flashed for each invalid form field.
-- Finally, the rendered template is returned to the homepage (`home.html`) with necessary data such as `travel_packages` and forms for further interactions.
+This implementation allows users to submit both the wished holiday and callback request forms on the same page (/). The code handles form validation, database interactions, and flash messages appropriately.
 
 ---
-
-
 
 | Explore  - backend |
 | ------------------ |
