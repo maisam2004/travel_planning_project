@@ -251,13 +251,23 @@ The homepage of travelapp introduces users to enticing travel deals displayed as
 - <img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 50%;">
 - **Modal Content:**
 
-  - The modal window presents essential details such as the price of the travel package, destination, duration of the holiday, and any special offers or discounts available. By displaying this information prominently, users can quickly assess the value and suitability of the travel deal, facilitating efficient decision-making.
-- **Interactive Map:**
+<img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 20%;">- updated modal  <img src="./travel_planning/static/images/wireframes/request_call_back_close.jpg" style="width: 30%; height: 50%;">
 
-  - In addition to textual information, the modal incorporates an interactive map feature that visualizes the destination of the travel package. By leveraging mapping technologies, users can gain insights into the geographical location, nearby attractions, and points of interest associated with the holiday destination, enhancing their understanding and appreciation of the travel offer.
-- **Contact Information:**
+The modal window presents essential details such as the price of the travel package, destination, duration of the holiday, and any special offers or discounts available. By displaying this information prominently, users can quickly assess the value and suitability of the travel deal, facilitating efficient decision-making.
 
-  - To further assist users and address any inquiries or concerns, the modal includes contact details such as telephone numbers or email addresses for reaching out to travelapp's customer support team. This direct communication channel enables users to seek personalized assistance, receive expert guidance, and make informed decisions regarding their travel arrangements.
+**Interactive Map:**
+
+- In addition to textual information, the modal incorporates an interactive map feature that visualizes the destination of the travel package. By leveraging mapping technologies, users can gain insights into the geographical location, nearby attractions, and points of interest associated with the holiday destination, enhancing their understanding and appreciation of the travel offer.
+
+**Contact Information:**
+
+- To further assist users and address any inquiries or concerns, the modal includes contact details such as telephone numbers or email addresses for reaching out to travelapp's customer support team. This direct communication channel enables users to seek personalized assistance, receive expert guidance, and make informed decisions regarding their travel arrangements.
+
+**Request call back** :
+
+* By submitting the form in the "Request Callback" section, all the information provided by the user is captured. This allows us to contact the user at a later time based on the details provided in the form.
+
+<img src="./travel_planning/static/images/wireframes/request_call_back.jpg" style="width: 20%; height: 20%;">- sumbited form data >   <img src="./travel_planning/static/images/wireframes/request_call_back_db.jpg" style="width: 50%; height: 50%;">
 
 By integrating a feature-rich modal window into the homepage's travel deal cards, travelapp enhances user engagement and satisfaction, providing a seamless browsing experience that empowers users to explore, evaluate, and book their dream holidays with confidence and ease.
 
@@ -293,6 +303,8 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
   -`travel_packages`: List of all travel packages queried from the database.
 
   -`form`: Instance of the `WishedHolidayForm` for submitting wished holidays.
+
+-`callback_request_form `: Instance of the `CallbackRequestForm()` for  request call back in modal form.
 
 ---
 
@@ -644,12 +656,14 @@ The add_travel_package page, although not visible to regular users, serves as a 
 | `/add_travel_package` | GET         | Displays the "Add Travel Package" form       | - Renders the form to add a new travel package | None                                      | None                                      | `AddTravelPackageForm` |
 | `/add_travel_package` | POST        | Handles "Add Travel Package" form submission | - Processes and stores new travel package data | `TravelPackage`, `TravelPackageImage` | `TravelPackage`, `TravelPackageImage` | `AddTravelPackageForm` |
 
+
 **Explanation:**
 
 * The table shows both GET and POST methods for the home route (`/`).
 * The GET request:
   * Retrieves all `TravelPackage` objects from the database using `TravelPackage.query.all()`.
   * Renders the "home.html" template, passing the retrieved travel packages and an empty `WishedHolidayForm` to the template context.
+  * Additionally, it creates an instance of `CallbackRequestForm` to handle callback requests.
 * The POST request:
   * Validates the submitted `WishedHolidayForm` data.
   * Creates a new `WishedHoliday` object with data from the form, including user ID retrieved from `current_user` (ensure it's correct).
@@ -658,6 +672,72 @@ The add_travel_package page, although not visible to regular users, serves as a 
   * Handles potential exceptions (e.g., database errors) using a `try-except` block:
     * On success, flashes a success message and redirects to the `wished_holiday` route (assuming it exists).
     * On error, logs the error, flashes an error message, and re-renders the `home.html` template with the form.
+  * The route also handles callback requests:
+    * It initializes an instance of `CallbackRequestForm` to handle callback form submissions.
+    * It renders the "home.html" template with the callback request form in addition to other forms and data.
+    * The callback request form submission logic is handled separately in the `submit_callback_request` route.
+
+
+**On the homepage, each travel package modal includes a form for requesting a callback. This form is linked to a separate route specifically designed to handle callback requests.**
+
+```
+@app.route('/submit_callback_request', methods=['POST'])
+def submit_callback_request():
+    """This is to handle request call back  form and return flashed message on top of homepage """
+    form = CallbackRequestForm(request.form)
+
+    if form.validate_on_submit():
+        # Form data is valid, proceed to create and save the callback request
+        callback_request = UsersCallbackRequest(
+            name=form.name.data,
+            phone=form.phone.data,
+            package_name=form.package_name.data,
+            message=form.message.data
+        )
+
+        db.session.add(callback_request)
+        db.session.commit()
+        flash('Your request submitted successfully, we will contact you shortly', 'success')
+        #return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
+    else:
+        # Form data is invalid, return error response
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f'Error in field "{getattr(form, field).label.text}": {error}', 'danger')
+
+    callback_request_form = CallbackRequestForm()
+    travel_packages = TravelPackage.query.all()
+    form = WishedHolidayForm()
+    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form)
+
+```
+
+##### Submit Callback Request - Backend
+
+This route handles the submission of the request callback form and displays a flashed message on the top of the homepage.
+
+##### Route:
+
+| Route (URL Pattern)          | HTTP Method | Description                                         | Page Interaction                                   | Database Table(s)        | Related Models                              | Related Forms           |
+| ---------------------------- | ----------- | --------------------------------------------------- | -------------------------------------------------- | ------------------------ | ------------------------------------------- | ----------------------- |
+| `/submit_callback_request` | POST        | Handles the submission of the request callback form | - Validates the form data                          | `UsersCallbackRequest` | `UsersCallbackRequest` class in models.py | `CallbackRequestForm` |
+|                              |             |                                                     | - Creates and saves a new callback request         |                          |                                             |                         |
+|                              |             |                                                     | - Flashes a success message upon successful submit |                          |                                             |                         |
+|                              |             |                                                     | - Flashes error messages for invalid form fields   |                          |                                             |                         |
+
+### Explanation:
+
+- The route `/submit_callback_request` handles POST requests submitted by users filling out the request callback form.
+- It validates the form data using the `CallbackRequestForm` class.
+- If the form data is valid, it creates a new `UsersCallbackRequest` object with the submitted data.
+- The new callback request is then added to the database and committed.
+- A success message is flashed if the submission is successful.
+- If the form data is invalid, error messages are flashed for each invalid form field.
+- Finally, the rendered template is returned to the homepage (`home.html`) with necessary data such as `travel_packages` and forms for further interactions.
+
+---
+
+
 
 | Explore  - backend |
 | ------------------ |

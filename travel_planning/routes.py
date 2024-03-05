@@ -108,6 +108,7 @@ def home():
 
 @app.route('/submit_callback_request', methods=['POST'])
 def submit_callback_request():
+    """This is to handle request call back  form and return flashed message on top of homepage """
     form = CallbackRequestForm(request.form)
 
     if form.validate_on_submit():
