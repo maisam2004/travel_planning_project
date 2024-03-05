@@ -75,9 +75,56 @@ def about():
     
     return render_template('about_us.html' )
 
+
+
 @app.route('/', methods=['POST','GET'])
 def home():
     """This is to handle home page """
+    travel_packages = TravelPackage.query.all()
+    # Initialize the forms
+    callback_request_form = CallbackRequestForm()
+    wished_holiday_form = WishedHolidayForm()
+
+    if wished_holiday_form.validate_on_submit():
+        # Handle wished holiday form submission
+        wished_holiday = WishedHoliday(
+            holiday_type=wished_holiday_form.holiday_type.data,
+            travel_duration=wished_holiday_form.travel_duration.data,
+            price_range=str(wished_holiday_form.price_range.data),
+            travel_time=str(wished_holiday_form.travel_time.data),
+            departure_location=str(wished_holiday_form.departure_location.data),
+            additional_info=wished_holiday_form.additional_info.data,
+            user_id=current_user.id  # Ensure current_user is correct
+        )
+        db.session.add(wished_holiday)
+        try:
+            db.session.commit()
+            flash('Your wished holiday has been submitted successfully!', 'success')
+            return redirect(url_for('home'))  # Redirect to the home page after successful submission
+        except Exception as e:
+            logging.error(f"Error saving wished holiday: {e}")
+            flash('An error occurred while submitting your wish.', 'danger')
+    
+    if callback_request_form.validate_on_submit():
+        # Handle callback request form submission
+        callback_request = UsersCallbackRequest(
+            name=callback_request_form.name.data,
+            phone=callback_request_form.phone.data,
+            package_name=callback_request_form.package_name.data,
+            message=callback_request_form.message.data
+        )
+        db.session.add(callback_request)
+        db.session.commit()
+        flash('Your call request submitted successfully, we will contact you shortly', 'success')
+    
+    return render_template('home.html', travel_packages=travel_packages, form=wished_holiday_form, callback_request_form=callback_request_form)
+
+
+
+
+""" @app.route('/', methods=['POST','GET'])
+def home():
+    This is to handle home page 
     travel_packages = TravelPackage.query.all()
     callback_request_form = CallbackRequestForm()
     # Initialize the holiday wish
@@ -103,12 +150,12 @@ def home():
             return render_template('home.html', form=form )  # Handle exception
     
     return render_template('home.html', travel_packages=travel_packages,form=form,callback_request_form=callback_request_form )
-
+ """
 ## rquest callback on modal 
 
-@app.route('/submit_callback_request', methods=['POST'])
+""" @app.route('/submit_callback_request', methods=['POST'])
 def submit_callback_request():
-    """This is to handle request call back  form and return flashed message on top of homepage """
+    This is to handle request call back  form and return flashed message on top of homepage 
     form = CallbackRequestForm(request.form)
 
     if form.validate_on_submit():
@@ -124,6 +171,7 @@ def submit_callback_request():
         db.session.commit()
         flash('Your request submitted successfully, we will contact you shortly', 'success')
         #return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
+        
     else:
         # Form data is invalid, return error response
         for field, errors in form.errors.items():
@@ -133,7 +181,7 @@ def submit_callback_request():
     callback_request_form = CallbackRequestForm()
     travel_packages = TravelPackage.query.all()
     form = WishedHolidayForm()
-    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form)
+    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form) """
 
 
 
