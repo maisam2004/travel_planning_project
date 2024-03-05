@@ -83,4 +83,13 @@ class WishedHolidayForm(FlaskForm):
     departure_location = StringField('Departure Location', validators=[DataRequired()])
     additional_info = TextAreaField('Additional Information')
 
-###like and ulike of travel package
+##request call back on modal
+    
+# forms.py
+
+
+class CallbackRequestForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired(), Length(max=100)])
+    phone = StringField('Phone', validators=[DataRequired(), Length(max=20)])
+    package_name = StringField('Package Name', validators=[Length(max=100)])
+    message = TextAreaField('Message')

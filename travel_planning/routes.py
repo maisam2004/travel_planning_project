@@ -1,8 +1,8 @@
 from flask import render_template,redirect,request,url_for,flash,current_app,jsonify
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
-from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage
-from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm
+from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage,UsersCallbackRequest
+from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm,CallbackRequestForm
 
 from . import Mail,Message,mail
 import os
@@ -103,9 +103,29 @@ def home():
     
     return render_template('home.html', travel_packages=travel_packages,form=form )
 
-## dealing with like button 
+## rquest callback on modal 
 
+@app.route('/submit_callback_request', methods=['POST'])
+def submit_callback_request():
+    form = CallbackRequestForm(request.form)
 
+    if form.validate_on_submit():
+        # Form data is valid, proceed to create and save the callback request
+        callback_request = UsersCallbackRequest(
+            name=form.name.data,
+            phone=form.callbackPhone.data,
+            package_name=form.package_name.data,
+            message=form.callbackMessage.data
+        )
+
+        db.session.add(callback_request)
+        db.session.commit()
+
+        return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
+    else:
+        # Form data is invalid, return error response
+        errors = form.errors
+        return jsonify({'errors': errors}), 400
 
 
 

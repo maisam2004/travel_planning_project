@@ -120,3 +120,20 @@ class Task(db.Model):
         return "# {0} - Task: {1} | Urgent: {2}".format(self.id,self.task_name,self.is_urgent) """
 
 
+        <form id="callbackForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="callbackName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="callbackName" name="callbackName" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+                <label for="callbackPhone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="callbackPhone" name="callbackPhone" required>
+                <div class="invalid-feedback">Please enter your phone number.</div>
+            </div>
+            <div class="mb-3">
+                <label for="callbackMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="callbackMessage" name="callbackMessage" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
