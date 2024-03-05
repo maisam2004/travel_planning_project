@@ -248,7 +248,6 @@ The homepage of Travelapp offers a captivating introduction to the travel experi
 
 The homepage of travelapp introduces users to enticing travel deals displayed as interactive cards. Upon clicking on a travel deal card, users can access a detailed modal window that provides comprehensive information about the selected deal. This modal enhances the user experience by offering a convenient way to explore key details and make informed decisions regarding their travel plans.
 
-- <img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 50%;">
 - **Modal Content:**
 
 <img src="./travel_planning/static/images/wireframes/modal_deals.jpeg" style="width: 30%; height: 20%;">- updated modal  <img src="./travel_planning/static/images/wireframes/request_call_back_close.jpg" style="width: 30%; height: 50%;">
@@ -612,7 +611,7 @@ The provided images (db_pic1.jpg and db_pic2.jpg) illustrate the relationships b
 
 <img src="./travel_planning/static/images/wireframes/db_pic1.jpg" style="width: 80%; height: 20%;">
 
-<img src="./travel_planning/static/images/wireframes/db_pic2.jpg" style="width: 80%; height: 20%;">
+<img src="./travel_planning/static/images/wireframes/travel_pannign_db_update.jpg" style="width: 80%; height: 20%;">
 
 To ensure the proper creation of database tables, I meticulously examined the forms utilized on each page of the application. Understanding the data input requirements of these forms was crucial for designing the database schema effectively.
 
@@ -621,8 +620,9 @@ To translate these form structures into database tables, I created two essential
 This systematic approach ensured that the database tables accurately represented the data captured by the application forms, establishing a robust foundation for seamless data management and retrieval.
 
 ##### | homepage - backend |
-
 | ------------------ |
+
+
 
     -route (/)
 
@@ -814,9 +814,14 @@ def signup():
     * Flashes a success message and logs in the new user using `login_user(new_user)`.
     * Redirects the user to the home page (`url_for('home')`).
 
-##### | Login -backend |
+---
 
+
+
+##### | Login -backend |
 | -------------- |
+
+
 
 user by entering required data in form  would be able to enter to his accoutn and routes related to deal with entered data was :
 
@@ -857,9 +862,10 @@ This decorator defines a function named `load_user` that acts as the user loader
 
 #### **Password Management**
 
-##### | Reset password -backend |
+##### | Reset password -backend  |
+| ------------------------- |
 
-| ----------------------- |
+
 
 ```
 @app.route('/reset_password_request', methods=['GET', 'POST'])

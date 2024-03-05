@@ -393,6 +393,11 @@ svg{
   padding: 1.2em;
 }
 
+.home #submitBtn {
+  margin: 0 20%;
+  border:2px solid #09060c;
+}
+
 /* footer style */
 /* Footer Styles */
 .main_footer {

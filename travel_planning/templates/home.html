@@ -371,10 +371,10 @@
     </div>
 
     {% if current_user.is_authenticated %}
-        <button type="submit" class="btn btn-primary w-50 rounded-pill" id="submitBtn">Create holiday</button>
+        <button type="submit" class="btn btn-dark w-50 rounded-pill" id="submitBtn">Create holiday</button>
     {% else %}
         <div class="text-center mt-4"  id="collapseExample">
-            <a class="btn btn-primary w-50 rounded-pill" href="{{url_for('login')}}" role="button" aria-controls="collapseExample">
+            <a class="btn btn-dark w-50 rounded-pill" href="{{url_for('login')}}" role="button" aria-controls="collapseExample">
                 login first
             </a>
         </div>
