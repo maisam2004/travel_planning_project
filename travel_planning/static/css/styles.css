@@ -949,10 +949,10 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.398) 7%, rgba(125, 162
 
 
 
-    animation: fade-in 0.5s ease-in-out; /* Adjust duration and timing function as needed */
+    animation: fade-in 0.4s ease-in-out; /* Adjust duration and timing function as needed */
   }
   .card.in-view {
-    animation: fade-in 0.5s ease-in-out; /* Same animation as before */
+    animation: fade-in 0.4s ease-in-out; /* Same animation as before */
   }
   
   .login .content{
