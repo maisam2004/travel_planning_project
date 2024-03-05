@@ -79,6 +79,7 @@ def about():
 def home():
     """This is to handle home page """
     travel_packages = TravelPackage.query.all()
+    callback_request_form = CallbackRequestForm()
     # Initialize the holiday wish
     form = WishedHolidayForm()
     if form.validate_on_submit():
@@ -101,7 +102,7 @@ def home():
             print('An error occurred while submitting your wish.', 'danger')
             return render_template('home.html', form=form )  # Handle exception
     
-    return render_template('home.html', travel_packages=travel_packages,form=form )
+    return render_template('home.html', travel_packages=travel_packages,form=form,callback_request_form=callback_request_form )
 
 ## rquest callback on modal 
 
@@ -113,19 +114,25 @@ def submit_callback_request():
         # Form data is valid, proceed to create and save the callback request
         callback_request = UsersCallbackRequest(
             name=form.name.data,
-            phone=form.callbackPhone.data,
+            phone=form.phone.data,
             package_name=form.package_name.data,
-            message=form.callbackMessage.data
+            message=form.message.data
         )
 
         db.session.add(callback_request)
         db.session.commit()
-
-        return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
+        flash('Your request submitted successfully, we will contact you shortly', 'success')
+        #return jsonify({'message': 'Your request submitted successfully,we will contact you shortly'})
     else:
         # Form data is invalid, return error response
-        errors = form.errors
-        return jsonify({'errors': errors}), 400
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f'Error in field "{getattr(form, field).label.text}": {error}', 'danger')
+
+    callback_request_form = CallbackRequestForm()
+    travel_packages = TravelPackage.query.all()
+    form = WishedHolidayForm()
+    return render_template('home.html', travel_packages=travel_packages, form=form,callback_request_form=callback_request_form)
 
 
 
