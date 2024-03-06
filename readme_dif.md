@@ -127,31 +127,16 @@ Wireframes for mobile, desktop were created using microsoft paint.
 
 --**Hompage -- hompage desktop and mobile**
 
-
-
-
 <img src="./travel_planning/static/images/wireframes/homepage1.jpg" style="width: 55%; height: 60%;">- <img src="./travel_planning/static/images/wireframes/home_mobileview1.jpg" style="width: 30%; height: 60%;">-<img src="./travel_planning/static/images/wireframes/homepage2.jpg" style="width: 55%; height: 50%;">-<img src="./travel_planning/static/images/wireframes/home_mobileview2.jpg" style="width: 26%; height: 50%;">
-
 
 ---
 
-
-
 **--Explored page  -- about share info of their holiday**
-
-
-
-
 
 <img src="./travel_planning/static/images/wireframes/explored.jpg" style="width: 60%; height: 60%;">
 <img src="./travel_planning/static/images/wireframes/explored_mobileview.jpg" style="width: 30%; height: 50%;">
 
-
-
-
 ---
-
-
 
 **--About page  -- about compony view**
 
@@ -160,15 +145,11 @@ Wireframes for mobile, desktop were created using microsoft paint.
 
 ---
 
-
-
 -- **Account page -- user own info page**
 
 - <img src="./travel_planning/static/images/wireframes/account.jpg" style="width: 50%; height: 50%;"> - <img src="./travel_planning/static/images/wireframes/account_mobleview.jpg" style="width: 30%; height: 45%;">
 
 ---
-
-
 
 -- **contact  page -- company contact information**
 
@@ -1346,7 +1327,6 @@ heroku logs --tail
   - [W3C Validator](#w3c-validator)
   - [CSS Jigsaw](#css-validator)
   - [JavaScript jshint.com](#javascript-validator)
-  - [Lighthouse](#lighthouse)
 - [Manual Testing](#manual-testing)
   - [Testing User Stories](#testing-user-stories)
   - [Full Testing](#full-testing)
@@ -1393,10 +1373,6 @@ JavaScript code was validated using JSHint to detect any potential errors and  n
 <img src="./travel_planning/static/images/wireframes/js_valid1.jpg" style="width: 75%; height: 30%;">
 
 scripts.js :passed
-
-#### Lighthouse
-
-Lighthouse audits were performed to assess the site's performance, accessibility, best practices, and SEO.
 
 ## Manual Testing
 
