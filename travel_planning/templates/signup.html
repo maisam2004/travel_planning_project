@@ -11,44 +11,7 @@
 <!-- Link to Login Page -->
 <!-- Add your signup page content here -->
 
-<!-- <div class="container">
-  <div class="row justify-content-center move_down ">
-      <div class="col-md-6 ">
-          <h2 class="text-center">Signup Page</h2>
 
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <div class="alert alert-danger" role="alert">
-      {{ messages[0] }}
-    </div>
-  {% endif %}
-{% endwith %}
-
-<form action="{{ url_for('signup') }}" method="POST">
-    {{ form.hidden_tag() }}  <div>
-        <label for="username">Username:</label>
-        {{ form.username(size=30) }}
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        {{ form.email(size=40) }}
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        {{ form.password(size=30) }}
-    </div>
-    <div>
-        <label for="confirm_password">Confirm Password:</label>
-        {{ form.confirm_password(size=30) }}
-    </div>
-    <button type="submit">Sign Up</button>
-</form>
-<p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
-
-        </div>
-    </div>
-</div> -->
 
 <div class="container">
   <div class="row justify-content-center move_down">
