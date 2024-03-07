@@ -1543,6 +1543,9 @@ Each device tested the site using the following browsers:
   - **Result:** User's password is securely updated in the database.
   - **Pass/Fail:** Pass
 
+<img src="./travel_planning/static/images/wireframes/successfull_pass_reset.jpg" style="width: 34%; height: 50%;">
+
+
 ## Credits
 
 ### Code Used
