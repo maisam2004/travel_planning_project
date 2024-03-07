@@ -7,13 +7,7 @@
         <div class="col-md-6 glassmorphism form-container">
             <h2 class="text-center text-dark fw-semibold border-bottom border-info p-4 ">Login page</h2>
 
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages[-1] %}
