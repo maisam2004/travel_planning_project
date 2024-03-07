@@ -33,13 +33,13 @@
               <button id="sandwich_bar" class="navbar-toggler  order-lg-0" aria-label="sandwich bar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                   <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas offcanvas-start mt-2" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                   <div class="offcanvas-header">
                       <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="homelink" href="{{ url_for('home') }}" target="_blank">HOME</a></h5>
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
-                  <div class="offcanvas-body">
-                      <ul class="navbar-nav me-auto mb-lg-0">
+                  <div class="offcanvas-body ">
+                      <ul class="navbar-nav me-auto mt-1 mb-lg-0">
                           
                         <li class="nav-item{% if request.endpoint == 'explore': %} active{% endif %}">
                             <a class="nav-link nav-lik-1 ms-2 mt-2" href="{{ url_for('explore') }}"  target="_blank">Explore</a>

@@ -158,9 +158,10 @@ body{
 .logo_nav_main {
   /* Add styles for the initial logo */
   /* For example: */
-  width: 210px; /* Adjust size as needed */
-  height: 42px;
-  background-image: url('/static/images/background/travel_app7u.jpg');
+  margin-left: 0.4em;
+  width: 245px; /* Adjust size as needed */
+  height: 54px;
+  background-image: url('/static/images/background/end_logo.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
