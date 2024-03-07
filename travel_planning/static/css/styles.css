@@ -169,6 +169,8 @@ body{
 /* CSS for the hover effect */
 .logo-hover {
   display: none; /* Initially hide the hover image */
+  width: 192px;
+  height: 53px;
 }
 
 /* When hovering over the navbar brand link, show the hover image */
