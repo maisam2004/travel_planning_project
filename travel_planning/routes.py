@@ -759,3 +759,32 @@ def save_travel_package_image(image):
     image.save(os.path.join(current_app.root_path, 'static', image_path))
 
     return '/static/' + image_path
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Custom error handler for handling 400 Bad Request errors.
+
+    Args:
+        e (Exception): The exception object representing the error.
+
+    Returns:
+        str: A user-friendly message indicating a bad request.
+    """
+
+    return "Page not found. Please check the URL.", 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """
+    Custom error handler for handling 500 Internal Server Error.
+
+    Args:
+        e (Exception): The exception object representing the error.
+
+    Returns:
+        str: A user-friendly message indicating an internal server error.
+    """
+
+    return render_template("error.html"), 500
