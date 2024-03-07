@@ -158,10 +158,10 @@ body{
 .logo_nav_main {
   /* Add styles for the initial logo */
   /* For example: */
-  margin-left: 0.4em;
-  width: 245px; /* Adjust size as needed */
+  margin-left: 1.2em;
+  width: 265px; /* Adjust size as needed */
   height: 54px;
-  background-image: url('/static/images/background/end_logo.jpg');
+  background-image: url('/static/images/background/logo_end2.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -169,8 +169,9 @@ body{
 /* CSS for the hover effect */
 .logo-hover {
   display: none; /* Initially hide the hover image */
-  width: 192px;
-  height: 53px;
+  width: 201px;
+  height: 57px;
+  margin-left: 1.3em;
 }
 
 /* When hovering over the navbar brand link, show the hover image */

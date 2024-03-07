@@ -1,6 +1,6 @@
 # Travel App
 
-![YourTravelApp Logo](travel_planning/static/images/background/travel_app7u.jpg)
+![YourTravelApp Logo](travel_planning/static/images/wireframes/logo_readme.jpg)
 
 <img src="./travel_planning/static/images/wireframes/tree_screen_image.jpg" style="width: 100%; height: 70%;">
 
@@ -220,7 +220,7 @@ By maintaining a standard structure and employing specific routing mechanisms, t
 
 ## Main Pages
 
-- <img src="./travel_planning/static/images/wireframes/full_homepage.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpeg" style="width: 30%; height: 50%;">
+- <img src="./travel_planning/static/images/wireframes/full_homepage.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_homepage.jpg" style="width: 30%; height: 50%;">
 
 ### [Homepage ](#homepage)
 
@@ -319,7 +319,7 @@ By integrating a feature-rich modal window into the homepage's travel deal cards
 
 ---
 
-<img src="./travel_planning/static/images/wireframes/full_explored.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_explored.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_explored.jpg" style="width: 30%; height: 50%;">
 
 ## Explore Page (crud)
 
@@ -365,7 +365,7 @@ This route handles the rendering of the explore page and allows authenticated us
 
 ---
 
-<img src="./travel_planning/static/images/wireframes/full_about.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_about_mobile.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_about.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_about.jpg" style="width: 30%; height: 50%;">
 
 #### About Page
 
@@ -399,7 +399,7 @@ This route simply renders the about us page without any additional functionality
 
 ---
 
-<img src="./travel_planning/static/images/wireframes/full_account.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_account.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpg" style="width: 30%; height: 50%;">
 
 ## Account Page
 
@@ -447,7 +447,7 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 
 ---
 
-<img src="./travel_planning/static/images/wireframes/full_contact.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_contact.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_contact.jpg" style="width: 30%; height: 50%;">
 
 ## Contact Page
 
@@ -485,9 +485,9 @@ Through its comprehensive approach to user support and engagement, the "Contact"
 
 ---
 
-<img src="./travel_planning/static/images/wireframes/full_signup.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_signup.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_signup.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_signup.jpg" style="width: 30%; height: 50%;">
 
-<img src="./travel_planning/static/images/wireframes/full_login.jpeg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_login.jpeg" style="width: 30%; height: 50%;">
+<img src="./travel_planning/static/images/wireframes/full_login.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_login.jpg" style="width: 30%; height: 50%;">
 
 ## Signup and Login Pages
 
@@ -1544,7 +1544,6 @@ Each device tested the site using the following browsers:
   - **Pass/Fail:** Pass
 
 <img src="./travel_planning/static/images/wireframes/successfull_pass_reset.jpg" style="width: 34%; height: 50%;">
-
 
 ## Credits
 
