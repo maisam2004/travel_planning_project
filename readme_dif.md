@@ -1,6 +1,6 @@
 # Travel App
 
-![YourTravelApp Logo](travel_planning/static/images/wireframes/logo_readme.jpg)
+![YourTravelApp Logo](travel_planning/static/images/wireframes/readme_logo.jpg)
 
 <img src="./travel_planning/static/images/wireframes/three_screen.jpg" style="width: 100%; height: 70%;">
 
@@ -33,6 +33,7 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
     - [User account](#account-page)
     - [contact](#contact-page)
     - [signup / login](#signup-and-login-pages)
+    - [Reset / passwrod](#password-reset-process-and-pages)
 - [Backend app](#backend-of-application--crud-)
 
   - [Backend Technologies](#backend-technologies-and-frameworks)
@@ -534,7 +535,6 @@ Through its commitment to user privacy, security, and usability, travelapp's "Si
 - **Purpose**: Handles user login form submission and authenticates user credentials.
 - **Tech Used**: Flask, Flask-WTF, Flask SQLAlchemy, Flask-Login, Bootstrap (for flash messages)
 - **Functionality**:
-
   - If the request method is `POST`:
 
     - Retrieves username and password from the login form data.
@@ -547,6 +547,44 @@ Through its commitment to user privacy, security, and usability, travelapp's "Si
 
       - Flashes an error message to the user.
   - Renders the login page with the login form.
+
+---
+
+<img src="./travel_planning/static/images/wireframes/request_password.jpg" style="width: 28%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/new_password_mobile.jpg" style="width: 30%; height: 50%;">-> <img src="./travel_planning/static/images/wireframes/success_password.jpg" style="width: 30%; height: 50%;">
+
+### Password Reset Process and pages
+
+---
+
+The password reset functionality in our application allows users to securely reset their passwords in case they forget them. This process involves the following steps:
+
+1. **Initiating a Password Reset Request**
+   * When a user clicks on the "Forgot Password" link on the login page, they are directed to the `reset_password_request` route.
+   * Here, they are presented with a form to enter their email address.
+   * On submitting the form:
+     * The application checks if the provided email exists in the database.
+     * If found, a secure token is generated and associated with the user.
+     * An email containing a password reset link with the token is sent to the user's email address.
+     * The user is redirected to the login page with a success message.
+2. **Resetting the Password**
+   * When the user receives the password reset email and clicks on the provided link, they are directed to the `reset_password_token` route.
+   * Here, the token from the link is validated, and the user is presented with a form to set a new password.
+   * On submitting the form:
+     * The user's password is securely updated in the database.
+     * The user is redirected to the login page with a success message, indicating that the password reset was successful.
+
+### Explanation of Routes
+
+* **`/reset_password_request` Route** : Handles the initial password reset request.
+* Renders a form for users to enter their email address.
+* Generates a secure reset token and sends an email with a password reset link containing the token.
+* On successful email sending, redirects to the login page with a success message.
+* **`/reset_password_token/<token>` Route** : Allows resetting a password using a valid reset token.
+* Retrieves the user based on the provided token.
+* Renders a form for the user to set a new password.
+* On successful form submission, updates the user's password and redirects to the login page with a success message.
+
+These routes facilitate a seamless and secure password reset process for our users, enhancing the overall user experience of our application.
 
 ## Backend of application ( CRUD )
 
