@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage,UsersCallbackRequest
 from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDestinationForm,EditDestinationForm,AddTravelPackageForm,WishedHolidayForm,UserImageForm,CallbackRequestForm
-
+import phonenumbers
 from . import Mail,Message,mail
 import os
 import secrets 
@@ -66,16 +66,31 @@ def home():
             flash('An error occurred while submitting your wish.', 'danger')
     
     if callback_request_form.validate_on_submit():
-        # Handle callback request form submission
-        callback_request = UsersCallbackRequest(
-            name=callback_request_form.name.data,
-            phone=callback_request_form.phone.data,
-            package_name=callback_request_form.package_name.data,
-            message=callback_request_form.message.data
-        )
-        db.session.add(callback_request)
-        db.session.commit()
-        flash('Your call request submitted successfully, we will contact you shortly', 'success')
+        # Validate name
+        if not callback_request_form.name.data.strip() or len(callback_request_form.name.data.strip()) < 2:
+            flash('Please enter a valid name (at least two characters).', 'danger')
+        elif callback_request_form.phone.data.strip() == "":
+            flash('Please enter your phone number.', 'danger')
+        else:
+            # Validate phone number
+            phone_number = callback_request_form.phone.data
+            try:
+                parsed_phone = phonenumbers.parse(phone_number, None)
+                if not phonenumbers.is_valid_number(parsed_phone):
+                    flash('Please enter a valid phone number.', 'danger')
+                else:
+                    # Handle callback request form submission
+                    callback_request = UsersCallbackRequest(
+                        name=callback_request_form.name.data,
+                        phone=callback_request_form.phone.data,
+                        package_name=callback_request_form.package_name.data,
+                        message=callback_request_form.message.data
+                    )
+                    db.session.add(callback_request)
+                    db.session.commit()
+                    flash('Your call request submitted successfully, we will contact you shortly', 'success')
+            except phonenumbers.phonenumberutil.NumberParseException:
+                flash('Please enter a valid phone number.', 'danger')
     
     return render_template('home.html', travel_packages=travel_packages, form=wished_holiday_form, callback_request_form=callback_request_form)
 
