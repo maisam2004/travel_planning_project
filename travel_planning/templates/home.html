@@ -58,7 +58,7 @@
 
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        {% for category, message in [messages[-1]] %}
+        {% for category, message in messages %}
             <div class="alert alert-{{ category }}">{{ message }}</div>
         {% endfor %}
     {% endif %}
@@ -178,7 +178,7 @@
                           </div>
                           <div class="mb-3">
                             <label for="callbackPhone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control rounded-pill" id="callbackPhone" name="phone" required pattern="^(?:\+?\d{2,3}\s?)?\d{9,11}$">
+                            <input type="tel" class="form-control rounded-pill" id="callbackPhone" name="phone" required pattern="^\d{7,14}$">
                               <div class="invalid-feedback">Please enter your phone number.</div>
                           </div>
                           <div class="mb-3">
