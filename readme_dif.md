@@ -2,7 +2,7 @@
 
 ![YourTravelApp Logo](travel_planning/static/images/wireframes/logo_readme.jpg)
 
-<img src="./travel_planning/static/images/wireframes/tree_screen_image.jpg" style="width: 100%; height: 70%;">
+<img src="./travel_planning/static/images/wireframes/three_screen.jpg" style="width: 100%; height: 70%;">
 
 Explore the holiday deals through TravelApp, your ultimate travel companion.
 
