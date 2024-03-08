@@ -140,12 +140,17 @@ body{
 }
 
 /* features ##########  */
-.home .alert-danger,.alert-success{
+.home .alert-success{
   font-weight: 700 !important;
   border-radius: 2em;
   text-align: center;
 
 
+}
+.home .alert-danger{
+  font-weight: 700 !important;
+  border-radius: 2em;
+  text-align: center;
 }
 
 
