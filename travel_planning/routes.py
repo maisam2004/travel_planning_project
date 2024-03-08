@@ -1,4 +1,4 @@
-from flask import render_template,redirect,request,url_for,flash,current_app,jsonify
+from flask import render_template,redirect,request,url_for,flash,current_app,jsonify,session
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage,UsersCallbackRequest
@@ -9,6 +9,7 @@ import os
 import secrets 
 from werkzeug.utils import secure_filename
 import logging
+import datetime
 
 
 
@@ -466,8 +467,9 @@ def reset_password_request():
         if user:
             # Generate a secure token for resetting the password
             token = secrets.token_urlsafe(32)
-            user.reset_password_token = token
-            db.session.commit()
+            session['reset_password_token'] = token
+            session['reset_password_token_expiration'] = datetime.datetime.now() + datetime.timedelta(minutes=15)
+
 
             # Create a Message object for the email
             msg = Message('Password Reset Request at Travel-app', sender=app.config['MAIL_USERNAME'], recipients=[user.email],html=True)
@@ -499,7 +501,7 @@ def reset_password_request():
                                 <h2>Password Reset Request</h2>
                                 <p>Hi {user.username},</p>
                                 <p>You recently requested to reset your password for your account.</p>
-                                <p>To proceed with resetting your password, please click the button below:</p>
+                                <p>To proceed with resetting your password in the next 15 minutes, please click the button below:</p>
                                 <a href="{reset_url}" class="button">Reset Password</a>
                                 <p>If you didn't make this request, please ignore this email.</p>
                                 <p>Thanks,<br>Travel App Team</p>
@@ -524,9 +526,12 @@ def reset_password_request():
     return render_template('reset_password_request.html', form=form)
 
 # Handling reset link
+from datetime import datetime
+
 @app.route('/reset_password_token/<token>', methods=['GET', 'POST'])
 def reset_password_token(token):
-    """Allows resetting a password using a valid reset token.
+    """
+    Allows resetting a password using a valid reset token.
 
     This route handles password reset requests using a token typically sent 
     via email. It retrieves a user based on the token (replace `User.query.get(1)` 
@@ -544,6 +549,7 @@ def reset_password_token(token):
     """
 
     # User and token are valid
+     # User and token are valid
     form = ResetPasswordForm()
 
     if form.validate_on_submit():
@@ -555,8 +561,15 @@ def reset_password_token(token):
         flash('Password reset successful. You can now log in with your new password.', 'success')
         return redirect(url_for('login'))
 
-    return render_template('reset_password.html', form=form)
+    # Check if the reset token is valid and has not expired
+    if 'reset_password_token' in session and 'reset_password_token_expiration' in session:
+        if session['reset_password_token'] == token and session['reset_password_token_expiration'].replace(tzinfo=None) > datetime.now():
+            # Token is valid and has not expired
+            return render_template('reset_password.html', form=form)
 
+    # Token is invalid or has expired
+    flash('Invalid or expired password reset token.', 'danger')
+    return redirect(url_for('login'))
 # ... your existing routes ...
 
 @app.route('/reset_password_request_alternative', methods=['GET', 'POST'])
