@@ -9,7 +9,8 @@ import os
 import secrets 
 from werkzeug.utils import secure_filename
 import logging
-import datetime
+from datetime import datetime, timedelta
+
 
 
 
@@ -468,8 +469,8 @@ def reset_password_request():
             # Generate a secure token for resetting the password
             token = secrets.token_urlsafe(32)
             session['reset_password_token'] = token
-            session['reset_password_token_expiration'] = datetime.datetime.now() + datetime.timedelta(minutes=15)
-
+            session['reset_password_token_expiration'] = datetime.now() + timedelta(minutes=15)
+            
 
             # Create a Message object for the email
             msg = Message('Password Reset Request at Travel-app', sender=app.config['MAIL_USERNAME'], recipients=[user.email],html=True)
