@@ -449,7 +449,7 @@ def reset_password_request():
       - Renders a form for users to enter their email address.
       - On valid form submission:
          - Checks for a user with the given email.
-         - Generates a secure reset token and assigns it to the user.
+         - Generates a secure reset token and assigns it to the user.and secssion 
          - Sends an email with a password reset link containing the token.
          - Redirects to the login page with a success message.
       - On email not found or email sending failure:
