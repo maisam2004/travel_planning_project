@@ -71,7 +71,7 @@ Embark on a virtual journey, discover new destinations, and plan your next adven
 
 ## Frontend
 
-![YourTravelApp Banner](travel_planning/static/images/background/travel_app7u.jpg)
+![YourTravelApp Banner](travel_planning/static/images/background/travel_app7u.jpg)   update logo . ![YourTravelApp Banner](travel_planning/static/images/wireframes/logo_end2.jpg)
 
 ## User Experience (UX)
 
