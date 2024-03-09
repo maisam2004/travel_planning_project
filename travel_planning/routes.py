@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 
 
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['POST', 'GET'])
 def home():
     """Renders the home page, handles form submissions, and displays travel packages.
 
@@ -27,12 +27,12 @@ def home():
             - Creates a new WishedHoliday object from form data.
             - Saves the wished holiday to the database on success.
             - Displays success or error flash messages based on the outcome.
-            - Redirects to the wished holiday page on success.
+            - Redirects to the wished holiday page on success (optional).
         - Handles callback request form submissions:
             - Creates a new UsersCallbackRequest object from form data.
             - Saves the callback request to the database.
             - Displays a success flash message.
-            - validat form data
+            - Validates form data.
         - Renders the 'home.html' template with:
             - All travel packages.
             - The wished holiday form.
@@ -41,56 +41,72 @@ def home():
     Returns:
         Rendered 'home.html' template with travel packages and forms.
     """
+
     travel_packages = TravelPackage.query.all()
     # Initialize the forms
     callback_request_form = CallbackRequestForm()
     wished_holiday_form = WishedHolidayForm()
-    
+
+    # Collect errors (outside conditional blocks)
+    wished_holiday_errors = []
+    callback_request_errors = []
 
     if wished_holiday_form.validate_on_submit():
-    #if wished_holiday_form.is_submitted() and wished_holiday_form.validate():
         # Handle wished holiday form submission
         wished_holiday = WishedHoliday(
             holiday_type=wished_holiday_form.holiday_type.data,
             travel_duration=wished_holiday_form.travel_duration.data,
-            price_range=str(wished_holiday_form.price_range.data),
-            travel_time=str(wished_holiday_form.travel_time.data),
-            departure_location=str(wished_holiday_form.departure_location.data),
-            additional_info=wished_holiday_form.additional_info.data,
+            # ... other fields ...
             user_id=current_user.id  # Ensure current_user is correct
         )
         db.session.add(wished_holiday)
         try:
             db.session.commit()
             flash('Your wished holiday has been submitted successfully!', 'success')
-            return redirect(url_for('wished_holiday'))  # Redirect to the home page after successful submission
+            # Redirect to home page after successful submission (optional)
+            # return redirect(url_for('wished_holiday'))
         except Exception as e:
             logging.error(f"Error saving wished holiday: {e}")
             flash('An error occurred while submitting your wish.', 'danger')
-    #if callback_request_form.validate_on_submit():
-    if callback_request_form.is_submitted() and callback_request_form.validate():
-        """ if len(callback_request_form.name.data.strip()) < 2 :
-            flash('Please enter a valid name (at least two characters) .', 'danger') """
+
+    # Collect errors after handling submission (if any)
+    if not wished_holiday_form.validate_on_submit():
+        for field, errors in wished_holiday_form.errors.items():
+            for error in errors:
+                wished_holiday_errors.append(f"{field.capitalize()}: {error}")
+
+    if callback_request_form.validate_on_submit():
+        # Handle callback request form submission (similar to wished_holiday)
+        callback_request = UsersCallbackRequest(
+            name=callback_request_form.name.data.strip(),
+            phone=callback_request_form.phone.data.strip(),
+            package_name=callback_request_form.package_name.data.strip(),
+            message=callback_request_form.message.data.strip()
+        )
+        db.session.add(callback_request)
         try:
-            # Handle callback request form submission
-            callback_request = UsersCallbackRequest(
-                name=callback_request_form.name.data.strip(),
-                phone=callback_request_form.phone.data.strip(),
-                package_name=callback_request_form.package_name.data.strip(),
-                message=callback_request_form.message.data.strip()
-            )
-            db.session.add(callback_request)
             db.session.commit()
             flash('Your call request submitted successfully, we will contact you shortly', 'success')
         except phonenumbers.phonenumberutil.NumberParseException:
             flash('Please enter a valid phone number.', 'danger')
-            flash('Your call request NOT submitted successfully,please try again', 'danger')
-    
-    
-    return render_template('home.html', travel_packages=travel_packages, wished_holiday_form=wished_holiday_form, callback_request_form=callback_request_form)
+        except Exception as e:
+            logging.error(f"Error saving callback request: {e}")
+            flash('An error occurred while submitting your request.', 'danger')
 
+    # Collect errors after handling submission (if any)
+    if not callback_request_form.validate_on_submit():
+        for field, errors in callback_request_form.errors.items():
+            for error in errors:
+                callback_request_errors.append(f"{field.capitalize()}: {error}")
 
+    return render_template('home.html',
+                           travel_packages=travel_packages,
+                           wished_holiday_form=wished_holiday_form,
+                           callback_request_form=callback_request_form,
+                           wished_holiday_errors=wished_holiday_errors,
+                           callback_request_errors=callback_request_errors)
 
+#################################################
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():

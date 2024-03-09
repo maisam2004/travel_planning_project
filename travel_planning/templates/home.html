@@ -56,37 +56,6 @@
 <!-- code where  display flashed messages sumbited request -->
  
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-
-
-{% if callback_request_form.errors   %}
-    <div class="alert alert-danger">
-        **Callback Request Form Errors:**
-        <ul>
-            {% for error in callback_request_form.errors  %}
-                <li>please check your {{ error }} input in callback request </li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
-
-
-{% if wished_holiday_form.errors and wished_holiday_form.validate_on_submit() %}
-    <div class="alert alert-danger">
-        **Wished Holiday Form Errors:**
-        <ul>
-            {% for error in wished_holiday_form.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
 
 
 <!-- Your existing HTML content -->
