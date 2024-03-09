@@ -1,9 +1,9 @@
 # forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField,HiddenField
+from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField,validators
 from flask_wtf.file import FileField, FileAllowed
-from wtforms.validators import DataRequired, Email, EqualTo, Length
-
+from wtforms.validators import DataRequired, Email, EqualTo, Length,ValidationError
+import phonenumbers 
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -85,11 +85,20 @@ class WishedHolidayForm(FlaskForm):
 
 ##request call back on modal
     
-# forms.py
+
 
 
 class CallbackRequestForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired(), Length(max=100)])
+    name = StringField('Name', validators=[DataRequired(), Length(min=2, max=100)])
     phone = StringField('Phone', validators=[DataRequired(), Length(max=20)])
     package_name = StringField('Package Name', validators=[Length(max=100)])
     message = TextAreaField('Message')
+
+    def validate_phone_number(self, field):  # Define the validator inside the class
+        phone_number = field.data
+        try:
+            parsed_number = phonenumbers.parse(phone_number)  # Use parse instead of phonenumbers.parse
+            phonenumbers.is_valid_number(parsed_number)  # Use is_valid_number instead of phonenumbers.is_valid_number
+        except phonenumbers.phonenumberutil.NumberParseException:
+            raise ValidationError('Please enter a valid phone number.')
+

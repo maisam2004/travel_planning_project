@@ -486,6 +486,9 @@ svg{
   background-color: #16463a69;
 
 }
+.explored .card img{
+  aspect-ratio: 2/2;
+}
 
 .explore_location{/* font of card body */
   color:var(--modal-text-color);

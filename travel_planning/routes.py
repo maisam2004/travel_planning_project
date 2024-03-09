@@ -32,6 +32,7 @@ def home():
             - Creates a new UsersCallbackRequest object from form data.
             - Saves the callback request to the database.
             - Displays a success flash message.
+            - validat form data
         - Renders the 'home.html' template with:
             - All travel packages.
             - The wished holiday form.
@@ -44,8 +45,10 @@ def home():
     # Initialize the forms
     callback_request_form = CallbackRequestForm()
     wished_holiday_form = WishedHolidayForm()
+    
 
     if wished_holiday_form.validate_on_submit():
+    #if wished_holiday_form.is_submitted() and wished_holiday_form.validate():
         # Handle wished holiday form submission
         wished_holiday = WishedHoliday(
             holiday_type=wished_holiday_form.holiday_type.data,
@@ -64,39 +67,27 @@ def home():
         except Exception as e:
             logging.error(f"Error saving wished holiday: {e}")
             flash('An error occurred while submitting your wish.', 'danger')
+    #if callback_request_form.validate_on_submit():
+    if callback_request_form.is_submitted() and callback_request_form.validate():
+        """ if len(callback_request_form.name.data.strip()) < 2 :
+            flash('Please enter a valid name (at least two characters) .', 'danger') """
+        try:
+            # Handle callback request form submission
+            callback_request = UsersCallbackRequest(
+                name=callback_request_form.name.data.strip(),
+                phone=callback_request_form.phone.data.strip(),
+                package_name=callback_request_form.package_name.data.strip(),
+                message=callback_request_form.message.data.strip()
+            )
+            db.session.add(callback_request)
+            db.session.commit()
+            flash('Your call request submitted successfully, we will contact you shortly', 'success')
+        except phonenumbers.phonenumberutil.NumberParseException:
+            flash('Please enter a valid phone number.', 'danger')
+            flash('Your call request NOT submitted successfully,please try again', 'danger')
     
-    if callback_request_form.validate():
-    # Validate name
-        if len(callback_request_form.name.data.strip()) < 2:
-            flash('Please enter a valid name (at least two characters).', 'danger')
-        else:
-            # Validate phone number
-            phone_number = callback_request_form.phone.data.strip()
-            if phone_number == "":
-                flash('Please enter your phone number.', 'danger')
-            else:
-                try:
-                    # Handle callback request form submission
-                    callback_request = UsersCallbackRequest(
-                        name=callback_request_form.name.data.strip(),
-                        phone=phone_number,
-                        package_name=callback_request_form.package_name.data.strip(),
-                        message=callback_request_form.message.data.strip()
-                    )
-                    db.session.add(callback_request)
-                    db.session.commit()
-                    flash('Your call request submitted successfully, we will contact you shortly', 'success')
-                except phonenumbers.phonenumberutil.NumberParseException:
-                    flash('Please enter a valid phone number.', 'danger')
-    else:
-    # If form not submitted, flash message for empty name field
-        if callback_request_form.name.data is None or callback_request_form.name.data.strip() == "":
-            flash('Please enter a valid name (at least two characters).', 'danger')
-        else:
-            flash('Form submission failed. Please check your inputs and try again.', 'danger')  
-                
     
-    return render_template('home.html', travel_packages=travel_packages, form=wished_holiday_form, callback_request_form=callback_request_form)
+    return render_template('home.html', travel_packages=travel_packages, wished_holiday_form=wished_holiday_form, callback_request_form=callback_request_form)
 
 
 

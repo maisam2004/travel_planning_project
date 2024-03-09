@@ -64,6 +64,31 @@
     {% endif %}
 {% endwith %}
 
+
+{% if callback_request_form.errors   %}
+    <div class="alert alert-danger">
+        **Callback Request Form Errors:**
+        <ul>
+            {% for error in callback_request_form.errors  %}
+                <li>please check your {{ error }} input in callback request </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+
+{% if wished_holiday_form.errors and wished_holiday_form.validate_on_submit() %}
+    <div class="alert alert-danger">
+        **Wished Holiday Form Errors:**
+        <ul>
+            {% for error in wished_holiday_form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+
 <!-- Your existing HTML content -->
 
   <h2 class="mb-4 fira-code-h2">Featured Destinations</h2>
@@ -168,9 +193,10 @@
                     </h2>
                     <div id="collapseThree-{{ package.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample-{{ package.id }}">
                       <div class="accordion-body bg-warning">
-                        <form id="callbackForm" method="POST" method="POST"  class="needs-validation" >
-                          {{ callback_request_form.hidden_tag() }}
-                          
+                        
+                        <form id="callbackForm" method="POST"   class="needs-validation" >
+                          {{ callback_request_form.csrf_token }}
+
                           <div class="mb-3">
                               <label for="callbackName" class="form-label">Name</label>
                               <input type="text" class="form-control rounded-pill" id="callbackName" name="name" required>
@@ -179,7 +205,9 @@
                           <div class="mb-3">
                             <label for="callbackPhone" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control rounded-pill" id="callbackPhone" name="phone" required pattern="^\d{7,14}$">
-                              <div class="invalid-feedback">Please enter your phone number.</div>
+                              
+                            <div class="invalid-feedback">Please enter your phone number.</div>
+                              
                           </div>
                           <div class="mb-3">
                             <label for="package_name" class="form-label">Package Name</label>
@@ -320,8 +348,8 @@
 
   
   <div class="whole_form">
-  <form id="WishedHolidayForm" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
-    {{ form.csrf_token }}
+  <form id="WishedHolidayForm" method="post" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
+    {{ wished_holiday_form.csrf_token }}
     <h2 ><br>Tell us about your dream holiday!<br>
       <i class="fa-solid fa-sun  " style="color: #e9f01f;"></i>
       <i class="fa-solid fa-umbrella-beach "  style="color: #e9f01f;"></i></h2>
