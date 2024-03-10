@@ -230,7 +230,8 @@ body{
   border-radius: 2em;
   border-color: #20be2f;
   border-block-end-width: 3px;
-  color:#20be2f;
+  color: var(--modal-text-color);
+  text-shadow: 1px 1px 1px rgb(27 61 29 / 91%);
 }
 .show-more-btn{
   border-radius: 2em;
