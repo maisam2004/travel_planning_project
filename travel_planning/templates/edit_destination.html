@@ -1,8 +1,23 @@
 {% extends "base.html" %}
 {% block title %}Edit Destination{% endblock %}
 {% block content %}
-<div class="whole_form mx-auto">
+<div class="whole_form mx-auto d-flex flex-column">
     <h2 >Edit Destination</h2>
+    <div class=" error_explore">
+        {% if form.errors %}
+        <div class="alert alert-danger w-50 mx-auto text-center ">
+            <ul>
+                {% for field, errors in form.errors.items() %}
+                    
+                        <li> {{field}} field - {{ errors[0] }} , please check it</li>
+                    
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+
     <form id="editDestinationForm" enctype="multipart/form-data" class="mx-auto" action="{{ url_for('edit_destination', destination_id=destination.id) }}" method="POST" enctype="multipart/form-data">
         {{ form.csrf_token }}
         <div class="row">
