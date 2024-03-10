@@ -637,13 +637,23 @@ Here's an updated list of technologies and frameworks used in your Flask TravelA
 * Flask SQLAlchemy: A Flask extension that adds ORM support for SQLAlchemy, facilitating database interactions.
 * Flask Login: A Flask extension for managing user authentication and session management.
 * Flask Mail: A Flask extension for sending email messages.
+* Phonenumbers:one of the modules that provides numerous features like providing basic information of a phone number, validation of a phone number
 * PostgreSQL: A powerful open-source relational database management system used for data storage in the application.
 * Werkzeug: A utility library for WSGI (Web Server Gateway Interface) applications, used in Flask for file handling and other tasks.
 * Jinja2: A templating engine for Python, used in Flask for generating dynamic HTML content.
+* Flask WTForms :is a library for creating and validating web forms in Python. It supports various fields, widgets, validators, CSRF protection, internationalization and more.
 * Psycopg2: A PostgreSQL adapter for Python, used for interacting with the PostgreSQL database.
 * SQLAlchemy: A SQL toolkit and Object-Relational Mapping (ORM) library for Python, used in conjunction with Flask SQLAlchemy for database operations.
 * SMTPlib: A Python library for sending email messages via the Simple Mail Transfer Protocol (SMTP).
 * Heroku: A cloud platform that hosts your Flask application and provides tools for deployment, scaling, and monitoring.
+
+# WTForms
+
+# Flask-WTF
+
+# Flask-WTF
+
+# Flask-WTF
 
 ### Database Structure:
 
@@ -1286,55 +1296,55 @@ git push heroku main
 
 **Run Database Setup Steps :**
 
-
 1. **Create Your App and Add Heroku PostgreSQL Add-on:**
-    - Ensure that you have created your Flask app and added the Heroku PostgreSQL add-on.
-   
+
+   - Ensure that you have created your Flask app and added the Heroku PostgreSQL add-on.
 2. **Backup Local Database and Add to Heroku:**
-    - In PowerShell, follow these steps:
-        ```powershell
-        # Create a dump of the local database
-        pg_dump -U postgres -d travel_planning | Out-File -FilePath "E:\..\..\..\.\travel_planning\dump.sql"
-        ```
 
-    - To import the dump file into the Heroku PostgreSQL add-on, either:
-        - Execute the dump file directly:
-            ```powershell
-            Invoke-Expression "heroku pg:psql -a your-app-name < dump.sql"
-            ```
+   - In PowerShell, follow these steps:
 
-        - Or access the Heroku Database shell and copy-paste the contents of the dump file:
-            ```shell
-            heroku pg:psql --app your-app-name
-            ```
+     ```powershell
+     # Create a dump of the local database
+     pg_dump -U postgres -d travel_planning | Out-File -FilePath "E:\..\.\travel_planning\dump.sql"
+     ```
+   - To import the dump file into the Heroku PostgreSQL add-on, either:
 
+     - Execute the dump file directly:
+
+       ```powershell
+       Invoke-Expression "heroku pg:psql -a your-app-name < dump.sql"
+       ```
+     - Or access the Heroku Database shell and copy-paste the contents of the dump file:
+
+       ```shell
+       heroku pg:psql --app your-app-name
+       ```
 3. **Database Migration:**
-    - After adding the data to the Heroku database, run the Flask database migration command:
-        ```shell
-        heroku run flask db upgrade
-        ```
+
+   - After adding the data to the Heroku database, run the Flask database migration command:
+     ```shell
+     heroku run flask db upgrade
+     ```
 
 By following these steps, all the data from your local database will be added to your Heroku database.
 
+```
 
-  
+```
 
-  ```
-
-  ```
-
-  ```
+```
   heroku run flask db upgrade
 
-  ```
+```
 
-  ```
+```
 
-  ```
+```
 
-  ```
+```
 
-  ```
+```
+
 - Run any necessary database migrations using:
 
 ```
