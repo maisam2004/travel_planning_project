@@ -24,12 +24,20 @@ class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
 
+
+
 class AddDestinationForm(FlaskForm):
-    name = StringField('Destination Name', validators=[DataRequired()])
+    name = StringField('Destination Name', validators=[DataRequired(), Length(min=4, max=100)])
     location = StringField('Destination Location', validators=[DataRequired()])
-    description = TextAreaField('Description') 
-    image = FileField('Upload Image')
+    description = TextAreaField('Description')
+    image = FileField('Upload Image', validators=[DataRequired(),FileAllowed(['jpg'], 'Only JPG files are allowed!')])
     submit = SubmitField('Add Destination')
+
+    def validate_name(self, name):
+        if not name.data.strip():
+            raise ValidationError('Name cannot be empty or contain only spaces.')
+
+
 
 
 class EditDestinationForm(FlaskForm):

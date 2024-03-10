@@ -497,6 +497,21 @@ svg{
   font-style: italic;
 }
 
+
+.error_explore .alert ul{
+  list-style-type: none;
+  text-decoration: none;
+
+  font-weight: 600;
+
+  list-style-type: none; /* Remove bullets */
+  
+}
+
+  
+
+
+
 /* login page*/
 
 .login{
@@ -596,7 +611,7 @@ svg{
 .contact_us .card{
   color:var(--modal-text-color);
   text-shadow: 1px 1px 1px rgb(91, 89, 89);
-
+  background-color: #117074d6;
   min-height: 8.7em;
   line-height:2em ;
 }

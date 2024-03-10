@@ -6,8 +6,8 @@
 <div class="container mt-5">
     <h2 class="mb-4 fira-code-h2">Your Destinations</h2>
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="border shadow p-4 alert-info fs-4 text-success bg-dark-subtle rounded" role="alert">
+        <div class="col-md-10 offset-md-2">
+            <div class="border shadow p-4 fs-4 rounded" role="alert">
                 On this page, you can add information about your destination, including the destination name, location, and upload an image of your trip. You can only delete and edit the information for your own travel adds.
                 
             </div>
@@ -76,7 +76,20 @@
                 Add New Destination
             </a>
         </div>
-
+        <div class=" error_explore">
+            {% if form.errors %}
+            <div class="alert alert-danger w-50 mx-auto text-center ">
+                <ul>
+                    {% for field, errors in form.errors.items() %}
+                        
+                            <li> {{field}} field - {{ errors[0] }} , please check it</li>
+                        
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+    
+        </div>
         <!-- Add New Destination Form (Initially Hidden) -->
         <div class="collapse text-center" id="collapseExample">
             
@@ -92,7 +105,7 @@
                         <label class="fw-semibold py-2 mt-2" for="newDestinationDescription">Description:</label>
                         <textarea name="description" id="newDestinationDescription" class="form-control rounded-pill"></textarea>
                         <!-- input field  image file -->
-                        <label class="fw-semibold py-2 mt-2" for="newDestinationImage">Upload Image:</label>
+                        <label class="fw-semibold py-2 mt-2" for="newDestinationImage">Upload Image(jpg):</label>
                         <input type="file" name="image" id="newDestinationImage" class="form-control rounded-pill">
                         <!-- more fields  -->
                         <button type="submit" class="btn btn-success  my-4 w-50 shadow-sm rounded-pill">Add Destination</button>
@@ -103,8 +116,9 @@
             
         </div>
     {% else %}
+    
     <div class="text-center mt-4">
-        <a class="btn btn-primary w-50 rounded-pill"   href="{{url_for('login')}}" role="button" >
+        <a class="mb-4 btn btn-primary w-50 rounded-pill"   href="{{url_for('login')}}" role="button" >
             <span id="addDestinationText">Add New Destination</span>
         </a>
     </div>

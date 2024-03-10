@@ -12,10 +12,6 @@ import logging
 from datetime import datetime, timedelta
 
 
-
-
-
-
 @app.route('/', methods=['POST', 'GET'])
 def home():
     """Renders the home page, handles form submissions, and displays travel packages.
@@ -47,9 +43,8 @@ def home():
     callback_request_form = CallbackRequestForm()
     wished_holiday_form = WishedHolidayForm()
 
-    # Collect errors (outside conditional blocks)
-    wished_holiday_errors = []
-    callback_request_errors = []
+    
+    
 
     if wished_holiday_form.validate_on_submit():
         # Handle wished holiday form submission
@@ -64,17 +59,13 @@ def home():
             db.session.commit()
             flash('Your wished holiday has been submitted successfully!', 'success')
             # Redirect to home page after successful submission (optional)
-            # return redirect(url_for('wished_holiday'))
+            return redirect(url_for('wished_holiday'))
         except Exception as e:
             logging.error(f"Error saving wished holiday: {e}")
             flash('An error occurred while submitting your wish.', 'danger')
 
-    # Collect errors after handling submission (if any)
-    if not wished_holiday_form.validate_on_submit():
-        for field, errors in wished_holiday_form.errors.items():
-            for error in errors:
-                wished_holiday_errors.append(f"{field.capitalize()}: {error}")
-
+   
+    
     if callback_request_form.validate_on_submit():
         # Handle callback request form submission (similar to wished_holiday)
         callback_request = UsersCallbackRequest(
@@ -87,6 +78,7 @@ def home():
         try:
             db.session.commit()
             flash('Your call request submitted successfully, we will contact you shortly', 'success')
+            
         except phonenumbers.phonenumberutil.NumberParseException:
             flash('Please enter a valid phone number.', 'danger')
         except Exception as e:
@@ -94,17 +86,20 @@ def home():
             flash('An error occurred while submitting your request.', 'danger')
 
     # Collect errors after handling submission (if any)
-    if not callback_request_form.validate_on_submit():
-        for field, errors in callback_request_form.errors.items():
-            for error in errors:
-                callback_request_errors.append(f"{field.capitalize()}: {error}")
+    wished_holiday_errors = wished_holiday_form.errors.copy()
+    callback_request_errors = callback_request_form.errors.copy()
+
+# Combine all errors
+    all_errors = wished_holiday_errors.copy()
+    all_errors.update(callback_request_errors)
 
     return render_template('home.html',
-                           travel_packages=travel_packages,
-                           wished_holiday_form=wished_holiday_form,
-                           callback_request_form=callback_request_form,
-                           wished_holiday_errors=wished_holiday_errors,
-                           callback_request_errors=callback_request_errors)
+                        travel_packages=travel_packages,
+                        wished_holiday_form=wished_holiday_form,
+                        callback_request_form=callback_request_form,
+                        wished_holiday_errors=wished_holiday_errors,
+                        callback_request_errors=callback_request_errors,
+                        all_errors=all_errors)
 
 #################################################
 @app.route('/account', methods=['GET', 'POST'])
@@ -266,6 +261,7 @@ def explore():
         # Retrieve destinations for the all users
         #user_destinations = Destination.query.filter_by(user_id=current_user.id).all()
         all_destinations = Destination.query.order_by(Destination.name).all()
+        return render_template('explore.html', form=form,all_destinations=all_destinations)
         #return render_template('explore.html', form=form, user_destinations=user_destinations)
 
     else:
