@@ -151,6 +151,12 @@ body{
   font-weight: 700 !important;
   border-radius: 2em;
   text-align: center;
+
+}
+.home .alert-danger ul{
+  list-style-type:none;
+  
+
 }
 
 

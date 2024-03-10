@@ -87,8 +87,8 @@ class WishedHolidayForm(FlaskForm):
                                                      ('moderate', 'Moderate ($1000-$2500)'),
                                                      ('luxury', 'Luxury (>$2500)')],
                                validators=[DataRequired()])
-    travel_time = StringField('Preferred Travel Time', validators=[DataRequired()])
-    departure_location = StringField('Departure Location', validators=[DataRequired()])
+    travel_time = StringField('Preferred Travel Time', validators=[DataRequired(),Length(min=3, max=26)])
+    departure_location = StringField('Departure Location', validators=[DataRequired(), Length(min=3, max=16)])
     additional_info = TextAreaField('Additional Information')
 
 ##request call back on modal

@@ -16,19 +16,13 @@ from datetime import datetime, timedelta
 def home():
     """Renders the home page, handles form submissions, and displays travel packages.
 
-    This route serves the main functionality of the home page:
+     This route serves the main functionality of the home page:
         - Retrieves all travel packages for display.
         - Initializes forms for wished holiday submission and callback requests.
-        - Handles wished holiday form submissions:
-            - Creates a new WishedHoliday object from form data.
-            - Saves the wished holiday to the database on success.
+        - Handles form submissions:
+            - Checks which form was submitted using request.form.
+            - Validates and processes the submitted form.
             - Displays success or error flash messages based on the outcome.
-            - Redirects to the wished holiday page on success (optional).
-        - Handles callback request form submissions:
-            - Creates a new UsersCallbackRequest object from form data.
-            - Saves the callback request to the database.
-            - Displays a success flash message.
-            - Validates form data.
         - Renders the 'home.html' template with:
             - All travel packages.
             - The wished holiday form.
