@@ -38,11 +38,11 @@
               </div>
               <div class="form-group mt-2">
                   <label class="fw-semibold" for="password">Password:</label>
-                  {{ form.password(class="form-control form-control-lg rounded-pill", size=30) }}
+                  {{ form.password(class="form-control form-control-lg rounded-pill",minlength=8, required="required" size=30) }}
               </div>
               <div class="form-group mt-2">
                   <label class="fw-semibold" for="confirm_password">Confirm Password:</label>
-                  {{ form.confirm_password(class="form-control form-control-lg rounded-pill", size=30) }}
+                  {{ form.confirm_password(class="form-control form-control-lg rounded-pill", size=30,minlength=8, required="required") }}
               </div>
               <button type="submit"  class="btn w-50 shadow-sm rounded-pill btn-outline-dark fw-semibold btn-block my-4 mx-auto">Sign Up</button>
           </form>

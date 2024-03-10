@@ -79,7 +79,7 @@
               <img src="{{ package.images[0].filename.replace('\\', '/') }}" class="bd-placeholder-img img-fluid " alt="Destination Image">
               <span class=" like-button position-absolute  start-0 bg-warning text-white rounded-end px-3 fs-5">$ {{ package.package_price }}</span>
               <div class="card-body px-4 d-flex flex-column justify-content-between">
-                <h5 class="card-title fw-bolder fira-code-h5">{{ package.name|title }} <span class="text-success fs-6"> - {{ package.duration }}</span> </h5>
+                <h5 class="card-title fw-bolder fira-code-h5">{{ package.name|title }} <span class="text-danger fs-6"> - {{ package.duration }}</span> </h5>
                   <p class="card-text fw-medium">{{ package.description|split_by_dash }}✈️ 🎉</p>
                   <p class="d-flex "><span  class="list-group-item special text-danger"> 
                     {% for n in package.hotel %}

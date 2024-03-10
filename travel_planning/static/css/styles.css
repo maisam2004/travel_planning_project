@@ -228,6 +228,9 @@ body{
 .btn-outline-success{
   margin-left: 3em;
   border-radius: 2em;
+  border-color: #20be2f;
+  border-block-end-width: 3px;
+  color:#20be2f;
 }
 .show-more-btn{
   border-radius: 2em;
