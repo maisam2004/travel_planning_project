@@ -68,8 +68,6 @@
 {% endif %}
 
 
-
-
 <!-- Your existing HTML content -->
 
   <h2 class="mb-4 fira-code-h2">Featured Destinations</h2>
@@ -349,7 +347,7 @@
 
     <div class="form-group mb-3">
         <label for="travelDuration">How many days can you dedicate to this trip?</label>
-        <input type="number" class="form-control" id="travelDuration" name="travel_duration" min="1" required>
+        <input type="number" class="form-control" id="travelDuration" name="travel_duration" min="3" required>
         <div class="invalid-feedback">Please enter a valid travel duration (minimum 1 day).</div>
     </div>
 
@@ -366,7 +364,7 @@
 
     <div class="form-group mb-3">
         <label for="travelTime">When are you thinking of traveling (flexible dates/specific month/season)?</label>
-        <input type="text" class="form-control" id="travelTime" name="travel_time" placeholder="(e.g., flexible dates, March 2024, summer)" required>
+        <input type="text" class="form-control" id="travelTime" name="travel_time" placeholder="(e.g., flexible dates, March 2024, summer)" required maxlength="45">
         <div class="invalid-feedback">Please enter your preferred travel time.</div>
     </div>
 

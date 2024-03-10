@@ -155,7 +155,8 @@ body{
 }
 .home .alert-danger ul{
   list-style-type:none;
-  
+  padding-left: 0.8em;
+
 
 }
 
@@ -641,10 +642,10 @@ svg{
   min-height: 70vh;
   
 }
-.wished {
+/* .wished {
   
   
-}
+} */
 .reset_pass {
   background-image: none !important;
   background-color: #815eb6;

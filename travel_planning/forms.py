@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,SelectField,IntegerField, PasswordField , SubmitField,FileField, TextAreaField,FloatField,validators
 from flask_wtf.file import FileField, FileAllowed
-from wtforms.validators import DataRequired, Email, EqualTo, Length,ValidationError
+from wtforms.validators import DataRequired, Email, EqualTo, Length,ValidationError,NumberRange
 import phonenumbers 
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
@@ -82,7 +82,7 @@ class WishedHolidayForm(FlaskForm):
                                                       ('cultural', 'Cultural immersion and sightseeing'),
                                                       ('city', 'Bustling city break')],
                                validators=[DataRequired()])
-    travel_duration = IntegerField('Travel Duration (days)', validators=[DataRequired()])
+    travel_duration = IntegerField('Travel Duration (days)', validators=[DataRequired(),NumberRange(min=3, max=200, message="please modify number of days")])
     price_range = SelectField('Price Range', choices=[('budget', 'Budget-friendly (up to $1000)'),
                                                      ('moderate', 'Moderate ($1000-$2500)'),
                                                      ('luxury', 'Luxury (>$2500)')],
