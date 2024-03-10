@@ -44,16 +44,17 @@ def home():
     
     
 
-    #if wished_holiday_form.validate_on_submit():
     if 'wished_holiday-submit' in request.form:
-        # Handle wished holiday form submission
-        submitted_form=wished_holiday_form
-        print('form ___submited but not validated---------')
+    # Handle wished holiday form submission
+        submitted_form = wished_holiday_form
         if wished_holiday_form.validate_on_submit():
             wished_holiday = WishedHoliday(
                 holiday_type=wished_holiday_form.holiday_type.data,
                 travel_duration=wished_holiday_form.travel_duration.data,
-                # ... other fields ...
+                price_range=wished_holiday_form.price_range.data,  # Include price_range field
+                travel_time=wished_holiday_form.travel_time.data,
+                departure_location=wished_holiday_form.departure_location.data,
+                additional_info=wished_holiday_form.additional_info.data,
                 user_id=current_user.id  # Ensure current_user is correct
             )
             db.session.add(wished_holiday)

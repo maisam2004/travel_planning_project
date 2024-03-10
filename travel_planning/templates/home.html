@@ -55,7 +55,13 @@
 <div id="features" class="container mt-5">
 
 
-
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      {% for category, message in [messages[-1]] %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+  {% endif %}
+{% endwith %}
 <!-- Display all errors the form submited -->
 {% if all_errors %}
 <div class="alert mx-auto alert-danger">
@@ -355,11 +361,11 @@
     <div class="form-group mb-3">
         <label for="priceRange">What is your preferred price range?</label>
         <select class="form-control" id="priceRange" name="price_range" required>
-            <option value="">Select an option</option>
-            <option value="budget">Budget-friendly (up to $1000)</option>
-            <option value="moderate">Moderate ($1000-$2500)</option>
-            <option value="luxury">Luxury (>$2500)</option>
-        </select>
+          <option value="">Select an option</option>
+          <option value="budget">Budget-friendly (up to $1000)</option>
+          <option value="moderate">Moderate ($1000-$2500)</option>
+          <option value="luxury">Luxury (>$2500)</option>
+      </select>
         <div class="invalid-feedback">Please choose a price range.</div>
     </div>
 

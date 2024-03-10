@@ -84,9 +84,9 @@ class WishedHolidayForm(FlaskForm):
                                validators=[DataRequired()])
     travel_duration = IntegerField('Travel Duration (days)', validators=[DataRequired(),NumberRange(min=3, max=200, message="please modify number of days")])
     price_range = SelectField('Price Range', choices=[('budget', 'Budget-friendly (up to $1000)'),
-                                                     ('moderate', 'Moderate ($1000-$2500)'),
-                                                     ('luxury', 'Luxury (>$2500)')],
-                               validators=[DataRequired()])
+                                                 ('moderate', 'Moderate ($1000-$2500)'),
+                                                 ('luxury', 'Luxury (>$2500)')],
+                           validators=[DataRequired()], default='budget')
     travel_time = StringField('Preferred Travel Time', validators=[DataRequired(),Length(min=3, max=26)])
     departure_location = StringField('Departure Location', validators=[DataRequired(), Length(min=3, max=16)])
     additional_info = TextAreaField('Additional Information')
