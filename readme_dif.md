@@ -1284,19 +1284,55 @@ heroku create <app_name>
 git push heroku main
 ```
 
-**Run Database Migrations:**
+**Run Database Setup Steps :**
 
-- Please be sure you created you app and heroku add-on
-- ```
-  in powershell ; #for copy of local databse and add to heroku
-  #it asks for database password 
 
-  pg_dump -U postgres -d travel_planning | Out-File -FilePath "E:\..\..\..\.\travel_planning\dump.sql"
+1. **Create Your App and Add Heroku PostgreSQL Add-on:**
+    - Ensure that you have created your Flask app and added the Heroku PostgreSQL add-on.
+   
+2. **Backup Local Database and Add to Heroku:**
+    - In PowerShell, follow these steps:
+        ```powershell
+        # Create a dump of the local database
+        pg_dump -U postgres -d travel_planning | Out-File -FilePath "E:\..\..\..\.\travel_planning\dump.sql"
+        ```
 
-  #to use dump.sql fil in heroku postgress add-on 
+    - To import the dump file into the Heroku PostgreSQL add-on, either:
+        - Execute the dump file directly:
+            ```powershell
+            Invoke-Expression "heroku pg:psql -a your-app-name < dump.sql"
+            ```
 
-  Invoke-Expression "heroku pg:psql -a your-app-name < dump.sql"
+        - Or access the Heroku Database shell and copy-paste the contents of the dump file:
+            ```shell
+            heroku pg:psql --app your-app-name
+            ```
 
+3. **Database Migration:**
+    - After adding the data to the Heroku database, run the Flask database migration command:
+        ```shell
+        heroku run flask db upgrade
+        ```
+
+By following these steps, all the data from your local database will be added to your Heroku database.
+
+
+  
+
+  ```
+
+  ```
+
+  ```
+  heroku run flask db upgrade
+
+  ```
+
+  ```
+
+  ```
+
+  ```
 
   ```
 - Run any necessary database migrations using:
@@ -1580,7 +1616,6 @@ Each device tested the site using the following browsers:
   - **Workflow:** Upon form submission, password data is validated, processed, and updated in the database.
   - **Result:** User's password is securely updated in the database.
   - **Pass/Fail:** Pass
-
 
 ## Credits
 
