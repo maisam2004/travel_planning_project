@@ -53,30 +53,10 @@
 
 <!-- Featured Destinations -->
 <div id="features" class="container mt-5">
-<!-- code where  display flashed messages sumbited request -->
-<!-- Display errors for wished holiday form -->
-{% if wished_holiday_errors %}
-<div class="alert alert-danger">
-    <ul>
-        {% for error in wished_holiday_errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
 
-<!-- Display errors for callback request form -->
-{% if callback_request_errors %}
-<div class="alert alert-danger">
-    <ul>
-        {% for error in callback_request_errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
 
-<!-- Display all errors -->
+
+<!-- Display all errors the form submited -->
 {% if all_errors %}
 <div class="alert alert-danger">
     <ul>
@@ -218,7 +198,7 @@
                               <label for="callbackMessage" class="form-label">Message</label>
                               <textarea class="form-control rounded-pill" id="callbackMessage" name="message" rows="3"></textarea>
                           </div>
-                          <button type="submit" class="btn btn-outline-dark rounded-pill w-50" >Submit</button>
+                          <button type="submit" class="btn btn-outline-dark rounded-pill w-50" name="callback_request-submit" >Submit</button>
                       </form>
                       <div id="callbackMessageContainer"></div>
                       </div>
@@ -402,7 +382,7 @@
     </div>
 
     {% if current_user.is_authenticated %}
-        <button type="submit" class="btn btn-dark w-50 rounded-pill" id="submitBtn">Create holiday</button>
+        <button type="submit" class="btn btn-dark w-50 rounded-pill" id="submitBtn" name="wished_holiday-submit">Create holiday</button>
     {% else %}
         <div class="text-center mt-4"  id="collapseExample">
             <a class="btn btn-dark w-50 rounded-pill" href="{{url_for('login')}}" role="button" aria-controls="collapseExample">

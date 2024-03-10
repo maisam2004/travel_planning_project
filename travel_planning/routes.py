@@ -42,63 +42,80 @@ def home():
     # Initialize the forms
     callback_request_form = CallbackRequestForm()
     wished_holiday_form = WishedHolidayForm()
+    wished_holiday_errors = []
+    callback_request_errors = []
 
+    # Check which form was submitted (and potentially show success message)
+    submitted_form:bool = None
     
     
 
-    if wished_holiday_form.validate_on_submit():
+    #if wished_holiday_form.validate_on_submit():
+    if 'wished_holiday-submit' in request.form:
         # Handle wished holiday form submission
-        wished_holiday = WishedHoliday(
-            holiday_type=wished_holiday_form.holiday_type.data,
-            travel_duration=wished_holiday_form.travel_duration.data,
-            # ... other fields ...
-            user_id=current_user.id  # Ensure current_user is correct
-        )
-        db.session.add(wished_holiday)
-        try:
-            db.session.commit()
-            flash('Your wished holiday has been submitted successfully!', 'success')
-            # Redirect to home page after successful submission (optional)
-            return redirect(url_for('wished_holiday'))
-        except Exception as e:
-            logging.error(f"Error saving wished holiday: {e}")
-            flash('An error occurred while submitting your wish.', 'danger')
+        submitted_form=wished_holiday_form
+        print('form ___submited but not validated---------')
+        if wished_holiday_form.validate_on_submit():
+            wished_holiday = WishedHoliday(
+                holiday_type=wished_holiday_form.holiday_type.data,
+                travel_duration=wished_holiday_form.travel_duration.data,
+                # ... other fields ...
+                user_id=current_user.id  # Ensure current_user is correct
+            )
+            db.session.add(wished_holiday)
+            try:
+                db.session.commit()
+                flash('Your wished holiday has been submitted successfully!', 'success')
+                # Redirect to home page after successful submission (optional)
+                return redirect(url_for('wished_holiday'))
+            except Exception as e:
+                logging.error(f"Error saving wished holiday: {e}")
+                flash('An error occurred while submitting your wish.', 'danger')
 
    
     
-    if callback_request_form.validate_on_submit():
+    #if callback_request_form.validate_on_submit():
+    elif 'callback_request-submit' in request.form:
+        print("Callback part for submit only not validate")
+        submitted_form=callback_request_form
+        if callback_request_form.validate_on_submit():
         # Handle callback request form submission (similar to wished_holiday)
-        callback_request = UsersCallbackRequest(
-            name=callback_request_form.name.data.strip(),
-            phone=callback_request_form.phone.data.strip(),
-            package_name=callback_request_form.package_name.data.strip(),
-            message=callback_request_form.message.data.strip()
-        )
-        db.session.add(callback_request)
-        try:
-            db.session.commit()
-            flash('Your call request submitted successfully, we will contact you shortly', 'success')
-            
-        except phonenumbers.phonenumberutil.NumberParseException:
-            flash('Please enter a valid phone number.', 'danger')
-        except Exception as e:
-            logging.error(f"Error saving callback request: {e}")
-            flash('An error occurred while submitting your request.', 'danger')
+            callback_request = UsersCallbackRequest(
+                name=callback_request_form.name.data.strip(),
+                phone=callback_request_form.phone.data.strip(),
+                package_name=callback_request_form.package_name.data.strip(),
+                message=callback_request_form.message.data.strip()
+            )
+            db.session.add(callback_request)
+            try:
+                db.session.commit()
+                flash('Your call request submitted successfully, we will contact you shortly', 'success')
+                
+            except phonenumbers.phonenumberutil.NumberParseException:
+                flash('Please enter a valid phone number.', 'danger')
+            except Exception as e:
+                logging.error(f"Error saving callback request: {e}")
+                flash('An error occurred while submitting your request.', 'danger')
+    if submitted_form:
+        if not submitted_form.validate_on_submit():
+            for field, errors in submitted_form.errors.items():
+                for error in errors:
+                    wished_holiday_errors.append(f"{field.capitalize()}: {error}")
 
     # Collect errors after handling submission (if any)
-    wished_holiday_errors = wished_holiday_form.errors.copy()
-    callback_request_errors = callback_request_form.errors.copy()
+    #wished_holiday_errors = wished_holiday_form.errors.copy()
+    #callback_request_errors = callback_request_form.errors.copy()
 
 # Combine all errors
     all_errors = wished_holiday_errors.copy()
-    all_errors.update(callback_request_errors)
+    all_errors.extend(callback_request_errors)
 
     return render_template('home.html',
                         travel_packages=travel_packages,
                         wished_holiday_form=wished_holiday_form,
                         callback_request_form=callback_request_form,
-                        wished_holiday_errors=wished_holiday_errors,
-                        callback_request_errors=callback_request_errors,
+                        #wished_holiday_errors=wished_holiday_errors,
+                        #callback_request_errors=callback_request_errors,
                         all_errors=all_errors)
 
 #################################################
