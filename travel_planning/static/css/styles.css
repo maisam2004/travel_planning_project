@@ -231,7 +231,7 @@ body{
   
   border-color: #071409bc;
   border-block-end-width: 3px;
-  color: var(--modal-text-color);
+  color: rgb(35, 34, 34);
   text-shadow: 1px 1px 1px rgb(27 61 29 / 91%);
 }
 .show-more-btn{
@@ -802,9 +802,13 @@ svg{
     
 
 .call_us{
-  display: none;
+  display: none !important;
 }
 
+.why_choose .card {
+  margin-bottom: 0.4em;
+
+}
     
     
   }
