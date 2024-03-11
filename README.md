@@ -2,6 +2,8 @@
 
 ![YourTravelApp Logo](travel_planning/static/images/wireframes/readme_logo.jpg)
 
+
+
 <img src="./travel_planning/static/images/wireframes/three_screen.jpg" style="width: 100%; height: 70%;">
 
 Explore the holiday deals through TravelApp, your ultimate travel companion.
@@ -633,27 +635,21 @@ In the following sections, we'll explore the technologies, database structure, a
 
 Here's an updated list of technologies and frameworks used in your Flask TravelApp project :
 
-* Flask: A lightweight and flexible web framework for Python.
-* Flask SQLAlchemy: A Flask extension that adds ORM support for SQLAlchemy, facilitating database interactions.
-* Flask Login: A Flask extension for managing user authentication and session management.
-* Flask Mail: A Flask extension for sending email messages.
-* Phonenumbers:one of the modules that provides numerous features like providing basic information of a phone number, validation of a phone number
-* PostgreSQL: A powerful open-source relational database management system used for data storage in the application.
-* Werkzeug: A utility library for WSGI (Web Server Gateway Interface) applications, used in Flask for file handling and other tasks.
-* Jinja2: A templating engine for Python, used in Flask for generating dynamic HTML content.
-* Flask WTForms :is a library for creating and validating web forms in Python. It supports various fields, widgets, validators, CSRF protection, internationalization and more.
-* Psycopg2: A PostgreSQL adapter for Python, used for interacting with the PostgreSQL database.
-* SQLAlchemy: A SQL toolkit and Object-Relational Mapping (ORM) library for Python, used in conjunction with Flask SQLAlchemy for database operations.
-* SMTPlib: A Python library for sending email messages via the Simple Mail Transfer Protocol (SMTP).
-* Heroku: A cloud platform that hosts your Flask application and provides tools for deployment, scaling, and monitoring.
+* **Flask**: A lightweight and flexible web framework for Python.
+* **Flask SQLAlchemy**: A Flask extension that adds ORM support for SQLAlchemy, facilitating database interactions.
+* **Flask Login**: A Flask extension for managing user authentication and session management.
+* **flask-bcrypt:** This library integrates the bcrypt password hashing algorithm into Flask applications. It securely stores user passwords by hashing them before storing them in the database, preventing plain text password storage.
+* **Flask Mail**: A Flask extension for sending email messages.
+* **Phonenumbers**:one of the modules that provides numerous features like providing basic information of a phone number, validation of a phone number
+* **PostgreSQL**: A powerful open-source relational database management system used for data storage in the application.
+* **Werkzeug**: A utility library for WSGI (Web Server Gateway Interface) applications, used in Flask for file handling and other tasks.
+* **Jinja2**: A templating engine for Python, used in Flask for generating dynamic HTML content.
+* **Flask WTForms** :is a library for creating and validating web forms in Python. It supports various fields, widgets, validators, CSRF protection, internationalization and more.
+* **Psycopg2**: A PostgreSQL adapter for Python, used for interacting with the PostgreSQL database.
+* **SQLAlchemy**: A SQL toolkit and Object-Relational Mapping (ORM) library for Python, used in conjunction with Flask SQLAlchemy for database operations.
+* **SMTPlib**: A Python library for sending email messages via the Simple Mail Transfer Protocol (SMTP).
+* **datetime** module provides the tools to handle dates, times, and time manipulation within your application
 
-# WTForms
-
-# Flask-WTF
-
-# Flask-WTF
-
-# Flask-WTF
 
 ### Database Structure:
 
@@ -1394,7 +1390,7 @@ heroku logs --tail
 - [jQuery](https://jquery.com/): JavaScript library for DOM manipulation and event handling.
 - [Font Awesome](https://fontawesome.com/): Icon library for scalable vector icons.
 - [Google Fonts](https://fonts.google.com/): Source of custom fonts for enhanced typography.
-- 
+- **[Heroku](https://www.heroku.com/home)**: A cloud platform that hosts your Flask application and provides tools for deployment, scaling, and monitoring.
 - [Adobe XD](https://www.adobe.com/products/xd.html): Design tool for wireframing and prototyping.
 - [Microsoft paint](https://www.microsoft.com/en-us/windows/paint): Drawing tools to Create with pencil, fill, color picker, text and more
 - [GitHub](https://github.com/): Version control and collaboration platform.
@@ -1651,7 +1647,9 @@ Special thanks to the following individuals and resources:
 
 - Stack Overflow community for troubleshooting assistance.
 - Code Institute tutors for guidance and support.
+- Jubril Akolade ,Software Developer and Mentor
 - Friends and family for feedback and encouragement.
+
 
 ---
 
