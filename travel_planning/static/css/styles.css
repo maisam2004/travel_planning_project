@@ -228,7 +228,8 @@ body{
 .btn-outline-success{
   margin-left: 3em;
   border-radius: 2em;
-  border-color: #20be2f;
+  
+  border-color: #071409bc;
   border-block-end-width: 3px;
   color: var(--modal-text-color);
   text-shadow: 1px 1px 1px rgb(27 61 29 / 91%);
@@ -800,14 +801,16 @@ svg{
 }
     
 
-
+.call_us{
+  display: none;
+}
 
     
     
   }
 
 
-  @media screen and (min-width: 500px) and (max-width: 1900px) {
+  @media screen and (min-width: 500px) and (max-width: 2800px) {
     .hero-container{
       padding-top: 1em !important;
       padding-bottom: 5em;
@@ -1033,6 +1036,14 @@ background: linear-gradient(185deg, rgba(115, 126, 140, 0.398) 7%, rgba(125, 162
     min-height: 75vh !important;
   }
    
+  .call_us{
+    position: fixed;
+    top: 80%;
+    right: 0;
+  }
+  .call_us img{
+    width: 320px;
+  }
   
     
 

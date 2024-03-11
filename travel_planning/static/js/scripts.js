@@ -82,6 +82,24 @@ $(document).ready(function () {
   
     // Call the fadeInCards function initially
     fadeInCards();
+
+
+
+    // show travel deals
+    function showImageDelayed() {
+      // Get the image element
+      var image = document.getElementById('travel_deals_image');
+      $('#travel_deals_image').css('display', 'none');
+      
+      // Show the image after 6 seconds
+      setTimeout(function() {
+          image.style.display = 'block'; // Show the image
+      }, 5000); // 6000 milliseconds = 6 seconds
+  }
+
+  // Call the function when the page finishes loading
+  showImageDelayed();
+    
   
 
 
