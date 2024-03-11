@@ -1236,6 +1236,16 @@ python run.py
 
 - The application will be accessible at `http://localhost:5000`.
 
+
+```
+travel_planning_project> flask run
+ * Serving Flask app 'run.py' (lazy loading)
+ * Environment: production
+   Use a production WSGI server instead.
+ * Debug mode: off << make run in production mode 
+ * Running on http://127.0.0.1:5000/ 
+```
+
 #### How to Fork
 
 1. Log in to GitHub and locate the repository: [TravelApp](https://github.com/yourusername/yourtravelapp).
