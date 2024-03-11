@@ -14,9 +14,8 @@ import sqlalchemy.dialects.postgresql
 
 
 
-
 app = Flask(__name__)
-debug= os.environ.get('DEBUG')
+#debug= os.environ.get('DEBUG')
 
 
 
