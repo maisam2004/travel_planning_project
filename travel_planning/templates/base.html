@@ -68,7 +68,7 @@
                           {% if current_user.is_authenticated %}
                           <li class="nav-item {% if request.endpoint == 'account': %} active{% endif %}">
                               <!-- <span class="nav-link"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</span> -->
-                              <a class="nav-link nav-lik-1 " title="account " target="_blank" href="{{ url_for('account') }}"  target="_blank"><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</a>
+                              <a class="nav-link nav-lik-1 " title="account " target="_blank" href="{{ url_for('account') }}"  ><i class="fa-solid fa-user neumorphic-icon-nav "></i> Hi, {{ current_user.username }}</a>
                           </li>
                           {% endif %}
                       </ul>
