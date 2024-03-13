@@ -134,12 +134,14 @@ def account():
     if user_image:
         current_user_image = user_image.image_path
         just_path = current_user_image.split('static\\')
-        current_user_image1 = just_path[1].replace("\\", "/")
+        if len(just_path) > 1:
+            current_user_image1 = just_path[1].replace("\\", "/")
+        else:
+            # If the split doesn't produce the expected result, set a default image path
+            current_user_image1 = "../static/images/wireframes/user_default_image.jpg"
     else:
         # Set a default image file path
-        default_image_path = '../static/images/wireframes/user_default_image.jpg'
-        current_user_image1 = default_image_path
-
+        current_user_image1 = "../static/images/wireframes/user_default_image.jpg"
 ##
     
     
