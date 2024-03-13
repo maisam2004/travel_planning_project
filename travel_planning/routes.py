@@ -840,3 +840,11 @@ def internal_server_error(e):
     """
 
     return render_template("error.html"), 500
+
+
+
+@app.route('/callback_requests', methods=['GET'])
+def callback_requests():
+    """ Retrieve all callback requests from the database"""
+    callback_requests = UsersCallbackRequest.query.all()
+    return render_template('callback_requests.html', callback_requests=callback_requests)
