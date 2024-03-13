@@ -130,14 +130,15 @@ def account():
     current_user_image1 = just_path[1].replace("\\", "/")'''
 #_
 
-    
-user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+ user_image = UserImage.query.filter_by(user_id=current_user.id).first()
 if user_image:
     current_user_image = user_image.image_path
     just_path = current_user_image.split('static\\')
     current_user_image1 = just_path[1].replace("\\", "/")
 else:
-    current_user_image1 = None
+    # Set a default image file path
+    default_image_path = '/static/images/default_profile_image.jpg'
+    current_user_image1 = default_image_path
 
 ##
     
