@@ -402,6 +402,9 @@ This route simply renders the about us page without any additional functionality
 
 <img src="./travel_planning/static/images/wireframes/full_account.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpg" style="width: 30%; height: 50%;">
 
+<img src="./travel_planning/static/images/wireframes/full_accoun_update.jpeg" style="width: 65%; height: 20%;">
+
+
 ## Account Page
 
 The "Account" page of travelapp offers users a personalized space to view and manage their profile information, including uploaded images and details of their last wished holiday. With a focus on user-centric design and functionality, this page provides a seamless experience for users to interact with their account settings and preferences.
@@ -409,7 +412,7 @@ The "Account" page of travelapp offers users a personalized space to view and ma
 - **Profile Information:**
 
   - Users can access and update their profile information, including username, email, and any additional details provided during registration. The user-friendly interface ensures easy navigation and efficient management of account details.
-- **Upload Personal Image:**
+- **Upload Personal Image:(Removed facility )**
 
   - A dedicated feature enables users to upload a personalized profile image, enhancing their presence and adding a touch of personalization to their account. Utilizing Flask's file upload functionality, users can effortlessly select and upload images directly from their device.
 - **Last Wished Holiday:**
@@ -1235,7 +1238,6 @@ python run.py
 ```
 
 - The application will be accessible at `http://localhost:5000`.
-
 
 ```
 travel_planning_project> flask run
