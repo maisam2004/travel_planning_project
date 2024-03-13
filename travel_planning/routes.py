@@ -48,7 +48,7 @@ def home():
     # Handle wished holiday form submission
         submitted_form = wished_holiday_form
         if wished_holiday_form.validate_on_submit():
-            #wished_holiday = WishedHoliday(
+            wished_holiday = WishedHoliday(
                 holiday_type=wished_holiday_form.holiday_type.data,
                 travel_duration=wished_holiday_form.travel_duration.data,
                 price_range=wished_holiday_form.price_range.data,  # Include price_range field
