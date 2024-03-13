@@ -5,7 +5,10 @@ class Config:
  ASSETS_DEBUG = False
 
 class ProductionConfig(Config):
- pass
+  DEBUG = False
+  DEVELOPMENT = False
+  CSRF_ENABLED = True
+  ASSETS_DEBUG = False
 
 class DevelopmentConfig(Config):
  DEBUG = True
