@@ -117,19 +117,6 @@ def home():
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-
-    wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
-
-    # Retrieve user's image if it exists
-    user_image = UserImage.query.filter_by(user_id=current_user.id).first()
-
-    # Pass form and current user's image path to the template
-    return render_template('account.html', user=current_user, user_image=user_image, user_image_form=UserImageForm(), wishes=wishes)
-
-
-
-
-
     """Render the user account page and handle profile image uploads."""
     
 
@@ -143,18 +130,16 @@ def account():
     #current_user_image1 = just_path[1].replace("\\", "/")
 #_
 
-"""  user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+    user_image = UserImage.query.filter_by(user_id=current_user.id).first()
     if user_image:
         current_user_image = user_image.image_path
         just_path = current_user_image.split('static\\')
-        if len(just_path) > 1:
-            current_user_image1 = just_path[1].replace("\\", "/")
-        else:
-            # If the split doesn't produce the expected result, set a default image path
-            current_user_image1 = "../static/images/wireframes/user_default_image.jpg"
+        current_user_image1 = just_path[1].replace("\\", "/")
     else:
         # Set a default image file path
-        current_user_image1 = "../static/images/wireframes/user_default_image.jpg"
+        default_image_path = '../static/images/wireframes/user_default_image.jpg'
+        current_user_image1 = default_image_path
+
 ##
     
     
@@ -185,8 +170,7 @@ def account():
     # Pass form and current user's image path to the template
     return render_template('account.html', user=current_user, current_user_image1=current_user_image1, user_image_form=user_image_form,wishes=wishes )
 
- """
-       
+
 
 @app.route('/wished_holiday')
 @login_required
