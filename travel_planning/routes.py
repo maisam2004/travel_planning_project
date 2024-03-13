@@ -137,7 +137,7 @@ if user_image:
     current_user_image1 = just_path[1].replace("\\", "/")
 else:
     # Set a default image file path
-    default_image_path = '/static/images/default_profile_image.png'
+    default_image_path = '/static/images/wireframes/logo_end2.jpg'
     current_user_image1 = default_image_path
 
 ##
