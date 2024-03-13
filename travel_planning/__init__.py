@@ -24,8 +24,8 @@ login_manager = LoginManager(app)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 uri = os.environ.get("DATABASE_URL")  # or other relevant config var
 
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+#if uri.startswith("postgres://"):
+    #uri = uri.replace("postgres://", "postgresql://", 1)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
@@ -103,3 +103,10 @@ def strip_label_tags(text):
 
 # Register the custom filter
 app.jinja_env.filters['strip_label_tags'] = strip_label_tags
+
+
+def replace_backslashes(url):
+    url =  re.sub(r'%5C', '/', url)
+    url = url[url.find('static'):]
+    return url
+app.jinja_env.filters['replace_backslashes'] = replace_backslashes

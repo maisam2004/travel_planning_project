@@ -6,6 +6,7 @@ from .forms import SignupForm , ResetPasswordForm,ResetPasswordRequestForm,AddDe
 import phonenumbers
 from . import Mail,Message,mail
 import os
+import re
 import secrets 
 from werkzeug.utils import secure_filename
 import logging
@@ -848,3 +849,43 @@ def callback_requests():
     """ Retrieve all callback requests from the database"""
     callback_requests = UsersCallbackRequest.query.all()
     return render_template('callback_requests.html', callback_requests=callback_requests)
+
+
+
+##
+@app.route('/account2', methods=['GET', 'POST'])
+@login_required
+def account2():
+    """Render the user account page and handle profile image uploads."""
+    
+    # Retrieve wished holidays associated with the current user
+    wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
+    
+    # Retrieve user's image if it exists
+    user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+
+    # Create form instance
+    user_image_form = UserImageForm()
+
+    if user_image_form.validate_on_submit():
+        # Save the uploaded image
+        image_file = user_image_form.image.data
+        filename = secure_filename(image_file.filename)
+        filepath = os.path.join(app.root_path, 'static', 'images', filename)
+        image_file.save(filepath)
+
+        # Check if user already has an image record
+        if user_image:
+            # Check if there are backslashes in the filepath and replace them with forward slashes
+
+            user_image.image_path = filepath
+        else:
+            user_image = UserImage(user_id=current_user.id, image_path=filepath)
+            db.session.add(user_image)
+
+        db.session.commit()
+        flash('Profile image uploaded successfully!', 'success')
+        return redirect(url_for('account2'))
+
+    # Pass form, user's image, and wishes to the template
+    return render_template('account2.html', user=current_user, user_image=user_image, user_image_form=user_image_form, wishes=wishes)
