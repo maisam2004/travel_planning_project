@@ -152,7 +152,7 @@ def account():
             user_image.image_path = filepath
         else:
             # Create a new image record for the user
-            user_image = UserImage(user_id=current_user.id, image_path=filepath)
+            user_image = UserImage(user_id=current_user.id)
             db.session.add(user_image)
 
         db.session.commit()
@@ -160,7 +160,7 @@ def account():
         return redirect(url_for('account'))
 
     # Pass form and current user's image path to the template
-    return render_template('account.html', user=current_user, current_user_image1=current_user_image1, user_image_form=user_image_form,wishes=wishes )
+    return render_template('account.html', user=current_user,wishes=wishes )
 
 
 
