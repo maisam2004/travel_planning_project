@@ -5,3 +5,4 @@ core.python*
 oldfiles
 venv
 heroku_commands.txt
+.env
