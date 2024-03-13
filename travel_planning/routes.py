@@ -115,53 +115,6 @@ def home():
                         all_errors=all_errors)
 
 #################################################
-@app.route('/account', methods=['GET', 'POST'])
-@login_required
-def account():
-    """Render the user account page and handle profile image uploads."""
-    
-
-    # Retrieve wished holidays associated with the current user
-    wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
-
-   # Retrieve user's image if it exists
-   #user_image = #UserImage.query.filter_by(user_id=current_use#r.id).first()
-   # current_user_image = user_image.image_path if user_image else None
-   # just_path = current_user_image.split('static\\') 
-    #current_user_image1 = just_path[1].replace("\\", "/")
-#_
-
-   
-
-##
-    
-    
-    # Create form instance
-    user_image_form = UserImageForm()
-
-    if user_image_form.validate_on_submit():
-        # Save the uploaded image
-        image_file = user_image_form.image.data
-        filename = secure_filename(image_file.filename)
-        
-        # Define the file path in the static/images folder
-        filepath = os.path.join(current_app.root_path, 'static', 'images', filename)
-        image_file.save(filepath)
-
-        # Check if user already has an image record
-        if user_image:
-            user_image.image_path = filepath
-        else:
-            # Create a new image record for the user
-            user_image = UserImage(user_id=current_user.id)
-            db.session.add(user_image)
-
-        db.session.commit()
-        flash('Profile image uploaded successfully!', 'success')
-        return redirect(url_for('account'))
-
-    # Pass form and current user's image path to the template
-    return render_template('account.html', user=current_user,wishes=wishes )
 
 
 
@@ -853,9 +806,9 @@ def callback_requests():
 
 
 ##
-@app.route('/account2', methods=['GET', 'POST'])
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
-def account2():
+def account():
     """Render the user account page and handle profile image uploads."""
     
     # Retrieve wished holidays associated with the current user
@@ -885,7 +838,7 @@ def account2():
 
         db.session.commit()
         flash('Profile image uploaded successfully!', 'success')
-        return redirect(url_for('account2'))
+        return redirect(url_for('account'))
 
     # Pass form, user's image, and wishes to the template
-    return render_template('account2.html', user=current_user, user_image=user_image, user_image_form=user_image_form, wishes=wishes)
+    return render_template('account.html', user=current_user, user_image=user_image, user_image_form=user_image_form, wishes=wishes)
