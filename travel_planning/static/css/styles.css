@@ -496,6 +496,7 @@ svg{
 }
 .card_contents{
   background-color: #16463a69;
+  height: 10em;
 
 }
 .explored .card img{
@@ -508,6 +509,13 @@ svg{
   font-size: 1rem;
   font-style: italic;
 }
+.explored .justify-content-between{
+  position: absolute;
+  bottom: 0.3em;
+  gap:160%;
+
+}
+
 
 
 .error_explore .alert ul{
@@ -807,6 +815,15 @@ svg{
 
 .why_choose .card {
   margin-bottom: 0.4em;
+
+}
+
+
+/* explored */
+.explored .justify-content-between{
+  position: absolute;
+  bottom: 0.3em;
+  gap:3em;
 
 }
     
