@@ -809,7 +809,7 @@ def callback_requests():
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    """Render the user account page and handle profile image uploads."""
+    """Renders user account page with wished holidays and profile image upload."""
     
     # Retrieve wished holidays associated with the current user
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()

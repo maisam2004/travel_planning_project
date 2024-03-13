@@ -402,8 +402,6 @@ This route simply renders the about us page without any additional functionality
 
 <img src="./travel_planning/static/images/wireframes/full_account.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpg" style="width: 30%; height: 50%;">
 
-<img src="./travel_planning/static/images/wireframes/full_accoun_update.jpeg" style="width: 65%; height: 20%;">
-
 
 ## Account Page
 
