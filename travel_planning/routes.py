@@ -123,12 +123,23 @@ def account():
     # Retrieve wished holidays associated with the current user
     wishes = WishedHoliday.query.filter_by(user_id=current_user.id).all()
 
-    # Retrieve user's image if it exists
-    user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+   # Retrieve user's image if it exists
+   '''user_image = UserImage.query.filter_by(user_id=current_user.id).first()
     current_user_image = user_image.image_path if user_image else None
     just_path = current_user_image.split('static\\') 
-    current_user_image1 = just_path[1].replace("\\", "/")
+    current_user_image1 = just_path[1].replace("\\", "/")'''
+#_
+
     
+user_image = UserImage.query.filter_by(user_id=current_user.id).first()
+if user_image:
+    current_user_image = user_image.image_path
+    just_path = current_user_image.split('static\\')
+    current_user_image1 = just_path[1].replace("\\", "/")
+else:
+    current_user_image1 = None
+
+##
     
     
     # Create form instance
