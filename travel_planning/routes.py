@@ -184,7 +184,17 @@ def about():
     
     return render_template('about_us.html' )
 
+@app.route('/terms')
+def terms():
+    """Render the Terms page."""
+    
+    return render_template('terms.html' )
 
+@app.route('/privacy')
+def privacy():
+    """Render the privacy page."""
+    
+    return render_template('privacy.html' )
 
 
 

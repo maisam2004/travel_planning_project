@@ -664,7 +664,69 @@ svg{
   background-color: #815eb6;
 }
 
+.main_footer .footer-link:hover{
+  color:rgb(115, 215, 231);
+}
 
+.main_footer .active{
+  color:rgb(115, 215, 231);
+  font-weight: 500;
+  text-decoration:rgb(115, 215, 231) solid underline 0.1em;
+  text-underline-offset:0.14em;
+}
+
+/* terms page  */
+.terms body{
+  background-color: #b8cbe0;
+ 
+  padding:1em;
+  
+}
+.terms .content{
+  
+  background-image: url("/static/images/background/ourapp.jpg");
+  background-size: cover;
+  background-position:80% 60%;
+}
+.terms .haeding-part{
+  background-color: #d8d7b683;
+  position: relative;
+  
+  
+}
+.terms .haeding-part h1{
+  color: #23456a;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.terms section{
+  background-color: #d8d7b683;
+  padding: 1em;
+}
+
+
+.privacy .content{
+  background-color: white;
+
+}
+.privacy .haeding-part{
+  background-color: #d8d7b683;
+  
+  
+}
+.privacy h1{
+  color: #23456a;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.privacy .haeding-part i{
+  font-size: xxx-large;
+  color:#000;
+}
+.privacy section{
+  background-color: #d8d7b683;
+  padding: 1em;
+}
 
 
 @media screen and (min-width: 300px) and (max-width: 550px) {
