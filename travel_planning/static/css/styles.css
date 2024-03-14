@@ -683,6 +683,7 @@ svg{
   
 }
 .terms .content{
+  padding-top:1.6em ;
   
   background-image: url("/static/images/background/ourapp.jpg");
   background-size: cover;
@@ -706,6 +707,7 @@ svg{
 
 
 .privacy .content{
+  padding-top: 1.6em;
   background-color: white;
 
 }
