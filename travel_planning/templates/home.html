@@ -181,8 +181,8 @@
                       <div class="accordion-body bg-warning">
                         
                         <form id="callbackForm{{ package.id }}" method="POST"   class="needs-validation" >
-                          {{ callback_request_form.hidden_tag()|remove_csrf_id }}
                           
+                          {{ callback_request_form.csrf_token(id="csrf_token_" ~ loop.index) }}
 
                           <div class="mb-3">
                               <label for="callbackName{{ package.id }}" class="form-label">Name</label>
