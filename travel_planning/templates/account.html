@@ -7,8 +7,7 @@
     <div class="row">
         <div class="col-md-6 user_info glassmorphism">
             {% if user_image %}
-            <img src="\{{ user_image.image_path|replace_backslashes }}"  class="rounded-circle" alt="Profile Image" width="130" height="130">
-
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="rounded-circle" alt="Profile Image" width="130" height="130">
             {% else %}
             <img src="{{ url_for('static', filename='images/user_default_image.jpg') }}" class="rounded-circle" alt="Default Profile Image" width="130" height="130">
             
