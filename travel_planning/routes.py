@@ -834,8 +834,7 @@ def account():
         # Save the uploaded image
         image_file = user_image_form.image.data
         filename = secure_filename(image_file.filename)
-        #filepath = os.path.join(app.root_path, 'static', 'images', filename)
-        filepath = os.path.join(os.path.dirname(app.root_path), 'uploads', filename)
+        filepath = os.path.join(app.root_path, 'static', 'images', filename)
         image_file.save(filepath)
 
         # Check if user already has an image record
