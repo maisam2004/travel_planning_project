@@ -839,9 +839,9 @@ def account():
 
         # Check if user already has an image record
         if user_image:
-            # Check if there are backslashes in the filepath and replace them with forward slashes
-
-            user_image.image_path = filepath
+            # image path in the database
+            user_image.image_path = os.path.join('static', 'images', filename)
+            #user_image.image_path = filepath
         else:
             user_image = UserImage(user_id=current_user.id, image_path=filepath)
             db.session.add(user_image)

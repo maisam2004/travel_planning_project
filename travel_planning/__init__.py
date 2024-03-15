@@ -108,6 +108,6 @@ app.jinja_env.filters['strip_label_tags'] = strip_label_tags
 def replace_backslashes(url):
     """Replaces backslashes with forward slashes and trims for static URLs."""
     url =  re.sub(r'%5C', '/', url)
-    #url = url[url.find('static'):]
+    url = url[url.find('static'):]
     return url
 app.jinja_env.filters['replace_backslashes'] = replace_backslashes
