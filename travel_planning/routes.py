@@ -834,19 +834,8 @@ def account():
         # Save the uploaded image
         image_file = user_image_form.image.data
         filename = secure_filename(image_file.filename)
-        #filepath = os.path.join(app.root_path, 'static', 'images', filename)
-        #image_file.save(filepath)
-        static_folder = os.path.join(current_app.root_path, 'static')
-        images_folder = os.path.join(static_folder, 'images')
-    
-    # Create the 'images' folder if it doesn't exist
-        os.makedirs(images_folder, exist_ok=True)
-
-        filepath = os.path.join(images_folder, filename)
+        filepath = os.path.join(app.root_path, 'static', 'images', filename)
         image_file.save(filepath)
-
-
-
 
         # Check if user already has an image record
         if user_image:
