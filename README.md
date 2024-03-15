@@ -2,6 +2,8 @@
 
 ![YourTravelApp Logo](travel_planning/static/images/wireframes/readme_logo.jpg)
 
+> **Project submited on 15/03/2024**
+
 <img src="./travel_planning/static/images/wireframes/three_screen.jpg" style="width: 100%; height: 70%;">
 
 Explore the holiday deals through TravelApp, your ultimate travel companion.
@@ -401,7 +403,6 @@ This route simply renders the about us page without any additional functionality
 ---
 
 <img src="./travel_planning/static/images/wireframes/full_account.jpg" style="width: 65%; height: 20%;">- <img src="./travel_planning/static/images/wireframes/full_mobile_account.jpg" style="width: 30%; height: 50%;">
-
 
 ## Account Page
 
