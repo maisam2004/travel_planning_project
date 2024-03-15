@@ -94,14 +94,14 @@
         <div class="container text-center">
             <!-- Links and Info -->
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="{{ url_for('about') }}" class="footer-link {% if request.path == url_for('about') %}active{% endif %}">About</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('about') }}"  rel="noreferrer" target="_blank" class="footer-link {% if request.path == url_for('about') %}active{% endif %}">About</a></li>
                 <li class="list-inline-item separator"><span>|</span></li>
-                <li class="list-inline-item"><a href="{{ url_for('contact_us') }}" class="footer-link {% if request.path == url_for('contact_us') %}active{% endif %}">Contact</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('contact_us') }}" rel="noreferrer" target="_blank" class="footer-link {% if request.path == url_for('contact_us') %}active{% endif %}">Contact</a></li>
                 <li class="list-inline-item separator"><span>|</span></li>
-                <li class="list-inline-item"><a href="{{ url_for('terms') }}" class="footer-link {% if request.path == url_for('terms') %}active{% endif %}">Terms</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('terms') }}" rel="noreferrer" target="_blank" class="footer-link {% if request.path == url_for('terms') %}active{% endif %}">Terms</a></li>
                 
                 <li class="list-inline-item separator"><span>|</span></li>
-                <li class="list-inline-item"><a href="{{ url_for('privacy') }}" class="footer-link {% if request.path == url_for('privacy') %}active{% endif %}">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('privacy') }}" rel="noreferrer" target="_blank" class="footer-link {% if request.path == url_for('privacy') %}active{% endif %}">Privacy Policy</a></li>
                 
             </ul>
             <p class="text-white">"© 2024 Travel App. All rights reserved."</p>
