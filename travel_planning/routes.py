@@ -1,4 +1,4 @@
-from flask import render_template,redirect,request,url_for,flash,current_app,jsonify,session
+from flask import render_template,redirect,request,url_for,flash,current_app,jsonify,session,render_template_string
 from flask_login import login_user, logout_user, login_required,current_user
 from travel_planning import app,db,login_manager
 from .models import User,Destination,TravelPackage,TravelPackageImage,WishedHoliday,UserImage,UsersCallbackRequest
@@ -11,6 +11,7 @@ import secrets
 from werkzeug.utils import secure_filename
 import logging
 from datetime import datetime, timedelta
+from flask_wtf.csrf import generate_csrf
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -42,7 +43,7 @@ def home():
 
     # Check which form was submitted (and potentially show success message)
     submitted_form:bool = None
-    
+    csrf_tokens = [generate_csrf() for _ in range(8)]
     
 
     if 'wished_holiday-submit' in request.form:
@@ -70,7 +71,7 @@ def home():
 
    
     
-    #if callback_request_form.validate_on_submit():
+    #if callback_request_form.validate_on_submit():               
     elif 'callback_request-submit' in request.form:
         print("Callback part for submit only not validate")
         submitted_form=callback_request_form
@@ -112,7 +113,7 @@ def home():
                         callback_request_form=callback_request_form,
                         #wished_holiday_errors=wished_holiday_errors,
                         #callback_request_errors=callback_request_errors,
-                        all_errors=all_errors)
+                        all_errors=all_errors,csrf_tokens=csrf_tokens)
 
 #################################################
 

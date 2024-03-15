@@ -181,32 +181,32 @@
                       <div class="accordion-body bg-warning">
                         
                         <form id="callbackForm{{ package.id }}" method="POST"   class="needs-validation" >
-                          {{ callback_request_form.hidden_tag() }}
+                          {{ callback_request_form.hidden_tag()|remove_csrf_id }}
                           
 
                           <div class="mb-3">
-                              <label for="callbackName" class="form-label">Name</label>
-                              <input type="text" class="form-control rounded-pill" id="callbackName" name="name" required>
+                              <label for="callbackName{{ package.id }}" class="form-label">Name</label>
+                              <input type="text" class="form-control rounded-pill" id="callbackName{{ package.id }}" name="name" required>
                               <div class="invalid-feedback">Please enter your name.</div>
                           </div>
                           <div class="mb-3">
-                            <label for="callbackPhone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control rounded-pill" id="callbackPhone" name="phone" required pattern="^\d{7,14}$">
+                            <label for="callbackPhone{{ package.id }}" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control rounded-pill" id="callbackPhone{{ package.id }}" name="phone" required pattern="^\d{7,14}$">
                               
                             <div class="invalid-feedback">Please enter your phone number.</div>
                               
                           </div>
                           <div class="mb-3">
-                            <label for="package_name" class="form-label">Package Name</label>
-                            <input type="text" class="form-control rounded-pill" id="package_name" name="package_name" value="{{ package.name }}">
+                            <label for="package_name{{ package.id }}" class="form-label">Package Name</label>
+                            <input type="text" class="form-control rounded-pill" id="package_name{{ package.id }}" name="package_name" value="{{ package.name }}">
                           </div>
                           <div class="mb-3">
-                              <label for="callbackMessage" class="form-label">Message</label>
-                              <textarea class="form-control rounded-pill ps-4" id="callbackMessage" name="message" rows="3"></textarea>
+                              <label for="callbackMessage{{ package.id }}" class="form-label">Message</label>
+                              <textarea class="form-control rounded-pill ps-4" id="callbackMessage{{ package.id }}" name="message" rows="3"></textarea>
                           </div>
                           <button type="submit" class="btn btn-outline-dark rounded-pill w-50" name="callback_request-submit" >Submit</button>
                       </form>
-                      <div id="callbackMessageContainer"></div>
+                      <div id="callbackMessageContainer{{ package.id }}"></div>
                       </div>
                     </div>
                   </div>
@@ -335,7 +335,7 @@
 
   
   <div class="whole_form">
-  <form id="WishedHolidayForm" method="post" class="container mt-5 needs-validation" method="POST" novalidate enctype="multipart/form-data">
+  <form id="WishedHolidayForm" method="post" class="container mt-5 needs-validation" novalidate enctype="multipart/form-data">
     {{ wished_holiday_form.csrf_token }}
     <h2 ><br>Tell us about your dream holiday!<br>
       <i class="fa-solid fa-sun  " style="color: #e9f01f;"></i>

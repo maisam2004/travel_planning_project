@@ -111,3 +111,13 @@ def replace_backslashes(url):
     url = url[url.find('static'):]
     return url
 app.jinja_env.filters['replace_backslashes'] = replace_backslashes
+
+
+def remove_csrf_id(html):
+    """Remove the id attribute from the CSRF token field."""
+    #return Markup(html.replace('id=', 'list='))
+    return Markup(html.replace('id=', 'aria-label='))
+    
+
+app.jinja_env.filters['remove_csrf_id'] = remove_csrf_id
+
