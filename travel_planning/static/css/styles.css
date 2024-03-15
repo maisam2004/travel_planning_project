@@ -496,7 +496,12 @@ svg{
 }
 .card_contents{
   background-color: #16463a69;
-  height: max-content;
+  min-height: 14em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+    
+    
 
 }
 .explored .card img{
